@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Visão geral · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="comparacao.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/>
+</svg>Comparação</a>
+      <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 17/10/2026 18:02</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+
+<div class="card agora" id="painelAgora" style="margin-bottom:20px">
+  <div class="card-cab">
+    <span class="agora-pulso"></span>
+    
+    <h3 id="agoraTitulo">Buraco Siga agora</h3>
+    <span class="sub" id="agoraSub">carregando…</span>
+    <div class="dir">
+      <span class="sub so-local" id="agoraAuto"></span>
+      <button class="btn peq so-local" id="agoraBtn" onclick="Agora.coletar()" title="Coletar agora só este tipo (headless)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/>
+</svg><span>Atualizar</span></button>
+      <button class="icone-btn" id="agoraRecolher" title="Recolher / expandir" onclick="Agora.recolher()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/>
+</svg></button>
+    </div>
+  </div>
+  <div class="agora-corpo" id="agoraCorpo">
+    <div class="agora-kpis" id="agoraKpis"></div>
+    <div class="grade" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:0">
+      <div style="position:relative"><div id="mapaAgora" style="height:380px"></div>
+        <div class="legenda" style="position:absolute;left:10px;bottom:10px;z-index:500;background:rgba(255,255,255,.92);padding:5px 9px;border-radius:7px" id="agoraLeg"></div></div>
+      <div style="border-left:1px solid var(--borda);display:flex;flex-direction:column;min-width:0">
+        <div class="card-corpo" style="padding-bottom:6px"><b style="color:var(--navy)">Em aberto nas últimas 48 h</b><div style="height:110px"><canvas id="agoraSerie"></canvas></div></div>
+        <div style="padding:0 16px 4px"><b style="color:var(--navy)">Hoje, por fiscal</b> <span style="font-size:12px;color:var(--muito-suave)">· só Buraco Siga</span></div>
+        <div class="rolagem" style="max-height:220px"><table class="tabela" id="agoraFiscais"></table></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cab-pagina">
+  <div>
+    <h1>O que ainda falta fiscalizar</h1>
+    <p id="descricao">Carregando dados da coleta de 17/10/2026 18:02…</p>
+  </div>
+  <div class="acoes so-local">
+    <button class="btn" onclick="salvarLote()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v6h8M7 21v-7h10v7"/>
+</svg>Salvar como lote de cobrança</button>
+    <button class="btn" onclick="abrirWhatsApp(queryAtual())"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/>
+</svg>WhatsApp</button>
+    <a class="btn prim" id="btnDemanda" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>
+</svg>Gerar demanda deste recorte</a>
+  </div>
+</div>
+
+<div class="filtros" id="barraFiltros"></div>
+
+<div class="aviso" id="avisoModo"></div>
+
+<div class="kpis" id="kpis"></div>
+<div class="foco" id="barraFoco"></div>
+
+<div class="grade g-mapa">
+  <div class="card">
+    <div class="card-cab"><h3>Mapa do recorte</h3><span class="sub" id="subMapa"></span>
+      <div class="dir legenda" id="legenda"></div></div>
+    <div id="mapa"></div>
+  </div>
+  <div class="grade" style="align-content:start">
+    <div class="card">
+      <div class="card-cab"><h3>Por RPA</h3><span class="sub">clique para filtrar</span></div>
+      <div class="card-corpo" id="blocoRpa"></div>
+    </div>
+    <div class="card">
+      <div class="card-cab"><h3>Por tipo de serviço</h3><span class="sub">clique para filtrar</span></div>
+      <div class="card-corpo rolagem" style="max-height:250px" id="blocoTipo"></div>
+    </div>
+  </div>
+</div>
+
+<div class="grade g2 mt">
+  <div class="card">
+    <div class="card-cab"><h3 id="tituloIdade">Quando foi a última fiscalização</h3><span class="sub">IDs do recorte por mês · clique numa barra para filtrar</span></div>
+    <div class="card-corpo" style="height:250px"><canvas id="grafMes"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-cab"><h3>O que mudou</h3><span class="sub" id="subAnterior"></span>
+      <div class="dir"><select id="selBase" title="Comparar a coleta atual com…" style="max-width:300px"></select></div></div>
+    <div class="card-corpo" id="blocoAnterior"></div>
+  </div>
+</div>
+
+<div class="card mt" id="cardTabela">
+  <div class="abas" id="abas">
+    <button data-t="bairro" class="on">Por bairro</button>
+    <button data-t="via">Por logradouro</button>
+    <button data-t="fiscal_nome">Por fiscal</button>
+    <button data-t="lista">Lista de IDs</button>
+  </div>
+  <div style="padding:10px 16px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--borda)">
+    <input type="search" id="buscaTabela" placeholder="Buscar bairro, logradouro, ID…" style="width:320px">
+    <span class="sub" style="color:var(--muito-suave);font-size:12px" id="contTabela"></span>
+    <span id="focoTabela"></span>
+    <div style="margin-left:auto;display:flex;gap:6px">
+      <button class="btn peq" onclick="copiarIds(RECORTE)" title="Copiar os IDs do que está filtrado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>
+</svg>Copiar IDs</button>
+      <button class="btn peq" onclick="exportarExcel(RECORTE.map(o=>o.os_id), CID, nomeExport())" title="Baixar Excel do que está filtrado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>
+</svg>Excel</button>
+    </div>
+  </div>
+  <div class="rolagem" style="max-height:520px"><table class="tabela" id="tabela"></table></div>
+</div>
+
+<div class="modal-fundo" id="modalLote">
+  <div class="modal">
+    <div class="card-cab"><h3>Salvar recorte como lote de cobrança</h3></div>
+    <div class="card-corpo">
+      <p style="margin:0;color:var(--suave)">O lote congela a lista de IDs deste recorte. A cada nova coleta o painel mostra quantos já foram
+        fiscalizados, quantos saíram do aberto e o que falta — por RPA, bairro e logradouro.</p>
+      <div class="campo"><label>Nome do lote</label><input type="text" id="loteNome"></div>
+      <div class="campo"><label>Data em que a demanda foi passada aos fiscais</label><input type="date" id="loteData">
+        <span style="font-size:12px;color:var(--muito-suave)">Se você já passou essa demanda antes, coloque a data real: o painel conta como fiscalizado tudo que tiver visita a partir dela — funciona até na primeira coleta.</span></div>
+      <div class="campo"><label>Observação (opcional)</label><input type="text" id="loteObs" placeholder="ex.: enviado no grupo dos fiscais"></div>
+      <div id="loteResumo" style="font-size:13px;color:var(--navy)"></div>
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn" onclick="document.getElementById('modalLote').classList.remove('aberto')">Cancelar</button>
+        <button class="btn prim" onclick="confirmarLote()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v6h8M7 21v-7h10v7"/>
+</svg>Salvar lote</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias</div>
+</main>
+<div class="toast" id="toast"></div>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;</script>
+<script src="static/painel.js"></script>
+
+<script>
+const CID=54, BASES=[{"data_hora": "2026-10-16T18:02:37", "id": 48}];
+let CID_ANT=48;
+let DADOS=[], ANT=null, F=lerFiltrosURL(), BASE=[], RECORTE=[], mapa, barra, abaAtual="bairro";
+let FOCO=F.foco;   // filtro rápido ligado pelos cards (fica também em F.foco → vale na demanda/WhatsApp)
+if(!F._temURL){ // padrão: mês anterior ao da coleta, prazo de fiscalização
+  const d=new Date("2026-10-17T12:00:00"); d.setDate(0); F.ate=d.toISOString().slice(0,10);
+}
+
+function queryAtual(){ return filtrosParaQuery(F); }
+function queryURL(){ return queryAtual(); }
+
+/* ── Filtro rápido (cards, gráfico de meses, coleta anterior) ── */
+function critCores(){ return modoCor(F)==="fiscalizacao"?["VERMELHO"]:modoCor(F)==="tempo"?["VERMELHO","VINHO"]:["VINHO","VERMELHO"]; }
+function mediaSemF(rows){ const s=rows.filter(o=>o.ult_fiscal); return s.length? Math.round(s.reduce((a,o)=>a+o.dias_fiscal,0)/s.length):0; }
+function focoDef(){ return focoInfo(BASE,F); }
+function ligarFoco(f, rolar=true){
+  FOCO = (FOCO===f||!f) ? null : f;
+  if(FOCO && abaAtual!=="lista"){ abaAtual="lista"; document.querySelectorAll("#abas button").forEach(x=>x.classList.toggle("on",x.dataset.t==="lista")); }
+  atualizar(true);
+  if(rolar) document.getElementById(FOCO?"cardTabela":"barraFiltros").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function nomeExport(){ const d=focoDef(); return (d?d.rot+" - ":"")+descreverFiltro(F).slice(0,50); }
+async function exportarExcel(ids, coleta, nome){
+  if(!ids.length){ toast("Nada para exportar."); return; }
+  if(window.ESTATICO){        // versão de leitura: CSV montado no navegador (abre no Excel)
+    const fonte=coleta===CID_ANT&&ANT?ANT.rows:DADOS, set=new Set(ids.map(String));
+    const cols=[["os_id","ID"],["tipo_servico","Tipo de serviço"],["rpa","RPA"],["bairro","Bairro"],["logradouro","Logradouro"],["trecho","Trecho"],["tipo_via","Tipo de via"],["fiscal_nome","Fiscal"],["data_abertura","Criada em"],["ult_fiscal","Última fiscalização"],["dias_fiscal","Dias sem fiscalizar"]];
+    const linhas=[cols.map(c=>c[1]).join(";")].concat(fonte.filter(o=>set.has(String(o.os_id))).map(o=>cols.map(([k])=>{ let v=o[k]??""; if(k==="data_abertura"||k==="ult_fiscal") v=v?dataBR(v):""; return '"'+String(v).replace(/"/g,'""')+'"'; }).join(";")));
+    const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["\ufeff"+linhas.join("\r\n")],{type:"text/csv;charset=utf-8"}));
+    a.download=(nome||"recorte").replace(/[^\w\- ]+/g,"").slice(0,60)+".csv"; a.click(); return;
+  }
+  toast("Gerando Excel…");
+  const r=await fetch("/api/exportar",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ids, coleta, nome})});
+  const b=await r.blob(); const cd=r.headers.get("Content-Disposition")||""; const m=/filename\*?=(?:UTF-8'')?"?([^";]+)/i.exec(cd);
+  const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=m?decodeURIComponent(m[1]):"recorte.xlsx"; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+async function copiarIds(rows){ await navigator.clipboard.writeText(rows.map(o=>o.os_id).join("\n")); toast(`${fmt(rows.length)} IDs copiados`); }
+function modalLista(titulo, rows, coleta, nota=""){
+  let m=document.getElementById("modalLista");
+  if(!m){ m=document.createElement("div"); m.id="modalLista"; m.className="modal-fundo"; document.body.appendChild(m); m.onclick=e=>{ if(e.target===m) m.classList.remove("aberto"); }; }
+  window._listaAtual=rows;
+  m.innerHTML=`<div class="modal" style="width:min(980px,100%)"><div class="card-cab"><h3>${esc(titulo)}</h3><span class="sub">${fmt(rows.length)} IDs</span>
+    <div class="dir"><button class="btn peq" onclick="copiarIds(window._listaAtual)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>
+</svg>Copiar IDs</button>
+    <button class="btn peq" onclick="exportarExcel(window._listaAtual.map(o=>o.os_id), ${coleta}, '${esc(titulo).replace(/'/g,"")}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>
+</svg>Excel</button>
+    <button class="btn peq" onclick="this.closest('.modal-fundo').classList.remove('aberto')">Fechar</button></div></div>
+    ${nota?`<div style="padding:10px 16px 0;color:var(--suave);font-size:12.5px">${nota}</div>`:""}
+    <div class="rolagem" style="max-height:62vh"><table class="tabela"><thead><tr><th>ID</th><th>Tipo de serviço</th><th>Logradouro</th><th>Bairro</th><th>RPA</th><th class="n">Últ. fiscalização</th><th>Fiscal</th></tr></thead><tbody>
+    ${rows.length?"":`<tr><td colspan="7" class="vazio">Nenhum ID nesta lista.</td></tr>`}${rows.slice(0,1000).map(o=>`<tr><td class="num">${esc(o.os_id)}</td><td>${esc(o.tipo_servico)}</td><td>${esc(o.logradouro)}<div style="color:var(--muito-suave);font-size:12px">${esc(o.trecho)}</div></td><td>${esc(o.bairro)}</td><td>${esc(o.rpa)}</td><td class="n">${dataBR(o.ult_fiscal)}</td><td>${esc(o.fiscal_nome)}</td></tr>`).join("")}
+    </tbody></table></div></div>`;
+  m.classList.add("aberto");
+}
+
+
+async function iniciar(){
+  mapa=criarMapa("mapa");
+  const atual=await carregarColeta(CID); DADOS=atual.rows;
+  montarBases();
+  if(CID_ANT) carregarBase(CID_ANT);
+  barra=montarBarraFiltros(document.getElementById("barraFiltros"), DADOS, F, ()=>atualizar(true));
+  document.querySelectorAll("#abas button").forEach(b=>b.onclick=()=>{ abaAtual=b.dataset.t;
+    document.querySelectorAll("#abas button").forEach(x=>x.classList.toggle("on",x===b)); desenharTabela(); });
+  document.getElementById("buscaTabela").oninput=desenharTabela;
+  atualizar(true);
+}
+
+function atualizar(ajustar){
+  F.foco=FOCO; F._antIdx=ANT&&ANT._idx;
+  BASE=filtrarBase(DADOS,F);
+  const fd=focoDef(); if(FOCO&&!fd){ FOCO=null; F.foco=null; }
+  RECORTE = fd ? BASE.filter(fd.fn) : BASE;
+  history.replaceState(null,"","?"+queryURL());
+  const bf=document.getElementById("barraFoco");
+  bf.classList.toggle("on",!!fd);
+  bf.innerHTML = fd ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/>
+</svg><div>Filtro rápido ligado: <b>${esc(fd.rot)}</b> · ${fmt(RECORTE.length)} de ${fmt(BASE.length)} IDs do recorte. Mapa, quebras e listas mostram só eles.</div>
+     <button class="btn peq" onclick="document.getElementById('cardTabela').scrollIntoView({behavior:'smooth'})">Ver lista</button><button class="btn peq" onclick="ligarFoco(null,false)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/>
+</svg>Desligar</button>` : "";
+  document.getElementById("focoTabela").innerHTML = fd ? `<span class="tag laranja" style="cursor:pointer" title="Desligar" onclick="ligarFoco(null,false)">${esc(fd.rot)} ✕</span>` : "";
+  document.getElementById("btnDemanda").href="/demanda?"+queryAtual();
+  document.getElementById("descricao").textContent=descreverFiltro(F)+" — coleta de 17/10/2026 18:02";
+  document.getElementById("legenda").innerHTML=legendaHTML(modoCor(F));
+  const aviso=document.getElementById("avisoModo");
+  aviso.innerHTML = F.modo==="criacao"
+    ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><div><b>Cobrança das gerências.</b> Aqui a cor mostra a idade da OS desde a criação: IDs antigos precisam ser solucionados primeiro, mesmo que tenham sido fiscalizados há pouco.</div>`
+    : F.cor==="tempo" ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg><div><b>Cobrança dos fiscais.</b> A cor mostra há quanto tempo cada OS está sem visita, independente do tipo de via — útil quando o corte é antigo e tudo já estourou o prazo do SIGA.</div>`
+    : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg><div><b>Cobrança dos fiscais.</b> A cor segue o prazo do SIGA desde a última fiscalização (Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias). OS nunca fiscalizadas aparecem em vermelho.</div>`;
+  desenharKpis(); desenharLados(); desenharGrafico(); desenharTabela(); desenharAnterior();
+  const n=plotar(mapa,RECORTE,modoCor(F),ajustar,extraPopup);
+  document.getElementById("subMapa").textContent=`${fmt(n)} pontos` + (n<RECORTE.length?` · ${fmt(RECORTE.length-n)} sem coordenada`:"");
+}
+
+function extraPopup(o){
+  if(!ANT) return "";
+  const a=ANT._idx?.get(o.os_id);
+  if(!a) return `<div style="margin-top:4px"><span class="tag azul">novo desde a coleta anterior</span></div>`;
+  if(o.ult_fiscal && (!a.ult_fiscal || o.ult_fiscal>a.ult_fiscal)) return `<div style="margin-top:4px"><span class="tag verde">refiscalizado desde a coleta anterior</span></div>`;
+  return `<div style="margin-top:4px"><span class="tag">sem mudança desde a coleta anterior</span></div>`;
+}
+
+function desenharKpis(){
+  const B=BASE, t=B.length, tot=DADOS.length, cc=critCores();
+  const crit=B.filter(o=>cc.includes(corDe(o,modoCor(F)))).length;
+  const nunca=B.filter(o=>!o.ult_fiscal).length;
+  const idade=t? Math.round(B.reduce((s,o)=>s+(o.dias_criacao||0),0)/t):0;
+  const mSemF=mediaSemF(B), acima=B.filter(o=>o.ult_fiscal&&o.dias_fiscal>mSemF).length;
+  const bairros=unico(B.map(o=>o.bairro)).length, vias=unico(B.map(o=>o.via)).length;
+  const art=B.filter(o=>o.tipo_via!=="Local").length;
+  const k=(id,cls,ic,rot,val,det,acao)=>`<div class="kpi clicavel ${cls} ${FOCO===id?"ativo":""}" onclick="ligarFoco(${id?`'${id}'`:"null"})" title="${FOCO===id?"Clique para desligar":"Clique para filtrar mapa e listas"}">
+     <div class="ic">${ic}</div><div><div class="rot">${rot}</div><div class="val">${val}</div><div class="det">${det}</div><div class="acao-kpi">${FOCO===id?"filtro ligado · clique para desligar":acao}</div></div></div>`;
+  document.getElementById("kpis").innerHTML=
+    k("", "destaque", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>`, "IDs no recorte", fmt(t), `${pct(t,tot)}% dos ${fmt(tot)} em aberto`, FOCO?"mostrar todos ›":"ver lista ›")+
+    k("crit","vermelho",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg>`, modoCor(F)==="fiscalizacao"?"Críticos (prazo SIGA)":"Mais de 60 dias", fmt(crit), `${pct(crit,t)}% do recorte`, "filtrar ›")+
+    k("nunca","",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5.7 5.7 12.6 12.6"/>
+</svg>`, "Nunca fiscalizados", fmt(nunca), "sem nenhuma visita registrada", "filtrar ›")+
+    k("acima","azul",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>`, "Sem fiscalizar (média)", fmt(mSemF)+" d", `${fmt(acima)} acima da média · idade média ${fmt(idade)} d`, "filtrar os acima da média ›")+
+    k("principais","",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>`, "Bairros · vias", `${fmt(bairros)} · ${fmt(vias)}`, `${fmt(art)} IDs em arterial/coletora`, "filtrar arteriais/coletoras ›");
+}
+
+function linhaBarra(g, onclick){
+  return `<div class="clicavel" style="display:grid;grid-template-columns:110px 1fr 54px;gap:10px;align-items:center;padding:5px 0;cursor:pointer" onclick="${onclick}">
+     <div style="font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${esc(g.chave)}">${esc(g.chave)}</div>
+     ${barraPilha(g.cores,g.total,modoCor(F))}<div class="num" style="text-align:right">${fmt(g.total)}</div></div>`;
+}
+function desenharLados(){
+  const r=agrupar(RECORTE,"rpa",modoCor(F)).sort((a,b)=>String(a.chave).localeCompare(String(b.chave)));
+  document.getElementById("blocoRpa").innerHTML = r.length ? r.map(g=>linhaBarra(g,`barra.setRpa(${F.rpas.length===1?"null":`'${esc(g.chave)}'`})`)).join("") : `<div class="vazio">Nada no recorte</div>`;
+  const t=agrupar(RECORTE,"tipo_servico",modoCor(F));
+  document.getElementById("blocoTipo").innerHTML = t.length ? t.map(g=>linhaBarra(g,`barra.setTipo(${F.tipos.length===1?"null":`'${esc(g.chave).replace(/'/g,"\\'")}'`})`).replace("grid-template-columns:110px","grid-template-columns:170px")).join("") : `<div class="vazio">Nada no recorte</div>`;
+}
+
+function desenharGrafico(){
+  const campo=F.modo==="criacao"?"data_abertura":"ult_fiscal";
+  document.getElementById("tituloIdade").textContent = F.modo==="criacao" ? "Quando os IDs foram criados" : "Quando foi a última fiscalização";
+  const m=new Map(); let nunca=0;
+  for(const o of BASE){ const v=o[campo]; if(!v){nunca++;continue;} const k=v.slice(0,7); m.set(k,(m.get(k)||0)+1); }
+  const ks=[...m.keys()].sort().slice(-18);
+  const rot=ks.map(mesRot), val=ks.map(k=>m.get(k));
+  if(F.modo!=="criacao" && nunca){ rot.unshift("Nunca"); val.unshift(nunca); }
+  const chaves = (F.modo!=="criacao" && nunca) ? ["nunca", ...ks.map(k=>"mes:"+k)] : ks.map(k=>"mes:"+k);
+  grafBarras(document.getElementById("grafMes"), rot, [{label:"IDs", data:val,
+    backgroundColor: chaves.map((c,i)=>{ const base=rot[i]==="Nunca"?"#D63B32":"#1C4250"; return FOCO&&FOCO!==c? base+"55" : (FOCO===c?"#FFA929":base); })}],
+    {onClick:i=>ligarFoco(chaves[i])});
+  document.getElementById("grafMes").style.cursor="pointer";
+}
+
+/* ── Base da comparação: com várias coletas por dia, a "anterior" pode ser de minutos atrás ── */
+function montarBases(){
+  const sel=document.getElementById("selBase"); if(!sel) return;
+  if(!BASES.length){ sel.style.display="none"; return; }
+  const ref=new Date("2026-10-17T18:02:19");
+  const perto=h=>{ const alvo=ref-h*3600e3; return BASES.reduce((m,b)=>Math.abs(new Date(b.data_hora)-alvo)<Math.abs(new Date(m.data_hora)-alvo)?b:m, BASES[0]); };
+  const atalhos=[["Coleta anterior",BASES[0]],["Ontem",perto(24)],["7 dias atrás",perto(168)],["30 dias atrás",perto(720)]];
+  const rot=b=>`${dataBR(b.data_hora.slice(0,10)).slice(0,5)} ${b.data_hora.slice(11,16)}`;
+  sel.innerHTML=`<optgroup label="Atalhos">${atalhos.map(([t,b])=>`<option value="${b.id}">${t} · ${rot(b)}</option>`).join("")}</optgroup>`+
+    `<optgroup label="Todas as coletas guardadas">${BASES.map(b=>`<option value="${b.id}">${rot(b)}/${b.data_hora.slice(2,4)}</option>`).join("")}</optgroup>`;
+  const idx=[...sel.options].findIndex(o=>+o.value===CID_ANT&&o.parentNode.label==="Atalhos"&&o.text.startsWith("Ontem"));
+  sel.selectedIndex = idx>=0 ? idx : [...sel.options].findIndex(o=>+o.value===CID_ANT);
+  sel.onchange=()=>{ CID_ANT=+sel.value; ANT=null; desenharAnterior(); carregarBase(CID_ANT); };
+}
+function carregarBase(id){
+  carregarColeta(id).then(a=>{ if(id!==CID_ANT) return; ANT=a; ANT._idx=new Map(ANT.rows.map(o=>[o.os_id,o]));
+    if(FOCO==="novos") atualizar(false); else { desenharAnterior(); desenharTabela(); } });
+}
+
+function desenharAnterior(){
+  const el=document.getElementById("blocoAnterior"), sub=document.getElementById("subAnterior");
+  if(!CID_ANT){ sub.textContent="primeira coleta";
+    el.innerHTML=`<p style="margin:0 0 10px;color:var(--suave)">Ainda não há coleta anterior para comparar. Enquanto isso, a leitura retroativa usa as datas da própria planilha:</p>`+retroRecorte(); return; }
+  if(!ANT){ el.innerHTML=`<div class="vazio">Carregando coleta anterior…</div>`; return; }
+  if(!ANT._idx){ ANT._idx=new Map(ANT.rows.map(o=>[o.os_id,o])); }
+  sub.textContent="vs coleta de "+dataBR(ANT.coleta.data_hora.slice(0,10))+" "+ANT.coleta.data_hora.slice(11,16);
+  const antRec=filtrarBase(ANT.rows,F), idsAtual=new Map(DADOS.map(o=>[o.os_id,o])), idsRec=new Set(BASE.map(o=>o.os_id));
+  const lSair=antRec.filter(o=>!idsAtual.has(o.os_id));
+  const lFisc=antRec.filter(o=>idsAtual.has(o.os_id)&&!idsRec.has(o.os_id)).map(o=>idsAtual.get(o.os_id));
+  window._ant={sair:lSair, fisc:lFisc};
+  const sairamAberto=lSair.length, fiscalizados=lFisc.length;
+  const entraram=BASE.filter(o=>!ANT._idx.has(o.os_id)).length;
+  const delta=BASE.length-antRec.length;
+  const resolvidosPct=pct(sairamAberto+fiscalizados, antRec.length);
+  el.innerHTML=`
+   <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+     <div class="passo"><div class="rot" style="font-size:11px;color:var(--suave);text-transform:uppercase;font-weight:600">Recorte antes → agora</div>
+       <div class="num" style="font-size:22px;color:var(--navy)">${fmt(antRec.length)} → ${fmt(BASE.length)}</div>
+       <div class="${delta>0?"up":delta<0?"down":"neutro"}" style="font-weight:600">${delta>0?"+":""}${fmt(delta)} IDs</div></div>
+     <div class="passo"><div class="rot" style="font-size:11px;color:var(--suave);text-transform:uppercase;font-weight:600">Andou desde a comparação</div>
+       <div class="num" style="font-size:22px;color:var(--verde)">${resolvidosPct}%</div><div class="progresso" style="margin-top:6px"><i style="width:${resolvidosPct}%;background:var(--verde)"></i></div></div>
+   </div>
+   <table class="tabela" style="margin-top:10px">
+     <tr class="linha-acao" onclick="modalLista('Saíram do aberto desde a coleta de comparação', window._ant.sair, CID_ANT, 'Dados como estavam na coleta anterior (finalizados ou cancelados depois dela).')"><td><i class="bolinha" style="background:#2E9D57"></i> Saíram do aberto (finalizados/cancelados)</td><td class="n">${fmt(sairamAberto)}</td><td style="width:60px;text-align:right;color:var(--muito-suave)">lista ›</td></tr>
+     <tr class="linha-acao" onclick="modalLista('Fiscalizados desde a coleta de comparação', window._ant.fisc, CID, 'Seguem abertos, mas saíram do recorte porque receberam visita.')"><td><i class="bolinha" style="background:#2F6FB3"></i> Fiscalizados (saíram do recorte, seguem abertos)</td><td class="n">${fmt(fiscalizados)}</td><td style="text-align:right;color:var(--muito-suave)">lista ›</td></tr>
+     <tr class="linha-acao ${FOCO==="novos"?"sel-fiscal":""}" onclick="ligarFoco('novos')"><td><i class="bolinha" style="background:#D63B32"></i> Entraram no recorte (OS novas)</td><td class="n">${fmt(entraram)}</td><td style="text-align:right;color:var(--muito-suave)">${FOCO==="novos"?"desligar":"filtrar"} ›</td></tr>
+   </table>`;
+}
+function retroRecorte(){
+  const ref=new Date("2026-10-17T12:00:00");
+  const jan=[[7,"últimos 7 dias"],[15,"últimos 15 dias"],[30,"últimos 30 dias"]];
+  const todos=filtrarBase(DADOS,{...F,ate:null});  // retroativo ignora o filtro rápido
+  return `<table class="tabela">${jan.map(([n,t])=>{ const c=todos.filter(o=>o.ult_fiscal&&o.dias_fiscal<=n).length;
+     return `<tr><td>Fiscalizados nos ${t} (mesmos filtros, sem corte de mês)</td><td class="n">${fmt(c)}</td></tr>`;}).join("")}
+     <tr><td>Nunca fiscalizados</td><td class="n">${fmt(todos.filter(o=>!o.ult_fiscal).length)}</td></tr></table>`;
+}
+
+function desenharTabela(){
+  const q=document.getElementById("buscaTabela").value.toLowerCase().trim();
+  const tab=document.getElementById("tabela"), cont=document.getElementById("contTabela");
+  if(abaAtual==="lista"){
+    let l=RECORTE.filter(o=>!q||(o.os_id+" "+o.via+" "+o.tipo_servico).toLowerCase().includes(q));
+    l=l.sort((a,b)=>(b.dias_fiscal??9999)-(a.dias_fiscal??9999));
+    cont.textContent=`${fmt(l.length)} IDs${l.length>500?" · mostrando os 500 mais atrasados":""}`;
+    tab.innerHTML=`<thead><tr><th>ID</th><th>Tipo de serviço</th><th>Logradouro</th><th>Bairro</th><th>RPA</th><th>Via</th><th class="n">Últ. fiscalização</th><th class="n">Dias</th><th class="n">Criada</th><th>Fiscal</th></tr></thead><tbody>`+
+      l.slice(0,500).map(o=>`<tr class="clicavel" onclick="focar('${o.os_id}')"><td class="num"><i class="bolinha" style="background:${CORES[corDe(o,modoCor(F))]}"></i> ${esc(o.os_id)}</td><td>${esc(o.tipo_servico)}</td><td>${esc(o.logradouro)}<div style="color:var(--muito-suave);font-size:12px">${esc(o.trecho)}</div></td><td>${esc(o.bairro)}</td><td>${esc(o.rpa)}</td><td>${esc(o.tipo_via)}</td><td class="n">${dataBR(o.ult_fiscal)}</td><td class="n">${o.dias_fiscal??"—"}</td><td class="n">${dataBR(o.data_abertura)}</td><td>${esc(o.fiscal_nome)}</td></tr>`).join("")+"</tbody>";
+    return;
+  }
+  const chave = abaAtual==="via" ? "via" : abaAtual;
+  let g=agrupar(RECORTE,chave,modoCor(F)).filter(x=>!q||String(x.chave).toLowerCase().includes(q));
+  const antMap = ANT ? new Map(agrupar(filtrar(ANT.rows,F),chave,modoCor(F)).map(x=>[x.chave,x.total])) : null;
+  cont.textContent=`${fmt(g.length)} ${abaAtual==="via"?"logradouros":abaAtual==="bairro"?"bairros":"fiscais"}`;
+  const rotulo={bairro:"Bairro",via:"Logradouro · Bairro",fiscal_nome:"Fiscal"}[abaAtual];
+  const crit = modoCor(F)==="fiscalizacao"?["VERMELHO"]:["VINHO","VERMELHO"];
+  tab.innerHTML=`<thead><tr><th>${rotulo}</th><th class="n">IDs</th><th style="width:28%">Distribuição por prazo</th><th class="n">${modoCor(F)==="fiscalizacao"?"Críticos":"> 60 dias"}</th><th class="n">Nunca fisc.</th>${antMap?'<th class="n">Comparação</th><th class="n">Δ</th>':""}<th></th></tr></thead><tbody>`+
+    g.slice(0,400).map(x=>{ const a=antMap?(antMap.get(x.chave)||0):null, d=a!=null?x.total-a:null;
+      const acao = abaAtual==="bairro" ? `barra.setBairro('${esc(x.chave).replace(/'/g,"\\'")}')` : abaAtual==="fiscal_nome" ? `barra.setFiscal('${esc(x.chave).replace(/'/g,"\\'")}')` : `focarVia('${esc(x.chave).replace(/'/g,"\\'")}')`;
+      return `<tr class="clicavel" onclick="${acao}"><td><b style="color:var(--navy)">${esc(x.chave)}</b></td><td class="n">${fmt(x.total)}</td><td>${barraPilha(x.cores,x.total,modoCor(F))}</td>
+      <td class="n">${fmt(crit.reduce((s,c)=>s+(x.cores[c]||0),0))}</td><td class="n">${fmt(x.nunca)}</td>
+      ${antMap?`<td class="n">${fmt(a)}</td><td class="n ${d>0?"up":d<0?"down":"neutro"}">${d>0?"+":""}${fmt(d)}</td>`:""}
+      <td style="text-align:right;color:var(--muito-suave)">${abaAtual==="via"?"ver no mapa":"filtrar"} ›</td></tr>`; }).join("")+"</tbody>";
+}
+
+function focar(id){ const o=RECORTE.find(x=>x.os_id===id); if(o&&o.lat){ mapa.setView([o.lat,o.lng],17); L.popup().setLatLng([o.lat,o.lng]).setContent(popupHTML(o,extraPopup(o))).openOn(mapa); window.scrollTo({top:0,behavior:"smooth"}); } }
+function focarVia(via){ const p=RECORTE.filter(o=>o.via===via&&o.lat).map(o=>[o.lat,o.lng]); if(p.length){ mapa.fitBounds(p,{padding:[40,40],maxZoom:17}); window.scrollTo({top:0,behavior:"smooth"}); } }
+
+function salvarLote(){
+  if(!RECORTE.length){ toast("O recorte está vazio."); return; }
+  const hoje=new Date().toISOString().slice(0,10);
+  const nome = (F.tipos.length===1?F.tipos[0]:F.tipos.length?F.tipos.length+" tipos":"Todos os tipos") +
+     (F.ate? (F.modo==="criacao"?" · criados até ":" · sem fiscalização até ")+mesRot(F.ate.slice(0,7)) : "") + (F.rpas.length?" · "+F.rpas.join("/"):"");
+  document.getElementById("loteNome").value=nome; document.getElementById("loteData").value=hoje;
+  document.getElementById("loteResumo").innerHTML=`<b>${fmt(RECORTE.length)} IDs</b> · ${descreverFiltro(F)}`;
+  document.getElementById("modalLote").classList.add("aberto");
+}
+async function confirmarLote(){
+  const corpo={coleta:CID, nome:document.getElementById("loteNome").value, data_entrega:document.getElementById("loteData").value,
+    obs:document.getElementById("loteObs").value, ids:RECORTE.map(o=>o.os_id), criterio:{...F, descricao:descreverFiltro(F)}};
+  const r=await fetch("/api/lotes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(corpo)});
+  const j=await r.json(); if(j.ok) location.href=j.url; else toast(j.erro||"Erro ao salvar");
+}
+/* ── Painel "agora" (coleta rápida) ─────────────────────── */
+const Agora={
+  tipo:"Buraco Siga", mapa:null, dados:null, timer:null,
+  async carregar(ajustar=false){
+    if(!document.getElementById("painelAgora")) return;
+    const j=await (await fetch("/api/tempo_real?tipo="+encodeURIComponent(this.tipo))).json(); this.dados=j;
+    document.getElementById("agoraTitulo").textContent=this.tipo+" agora";
+    if(j.vazio||j.erro){ document.getElementById("agoraSub").textContent=j.erro||"ainda sem coleta"; return; }
+    const quando=new Date(j.coleta.data_hora), min=Math.round((Date.now()-quando)/60000);
+    const ha=min<1?"agora há pouco":min<60?`há ${min} min`:min<1440?`há ${Math.round(min/60)} h`:`em ${dataBR(j.coleta.data_hora.slice(0,10))}`;
+    document.getElementById("agoraSub").innerHTML=`coleta ${j.coleta.fonte==="rapida"?"rápida":"geral"} das <b>${j.coleta.data_hora.slice(11,16)}</b> (${ha})`;
+    const rows=await carregarColeta(j.coleta.id).then(c=>c.rows.filter(o=>o.tipo_servico===this.tipo));
+    const cnt=c=>rows.filter(o=>o.cor_fiscal===c).length, nunca=rows.filter(o=>!o.ult_fiscal).length;
+    const d=j.total_24h!=null? j.total-j.total_24h : null;
+    const k=(rot,val,det,cor)=>`<div class="ak"><div class="rot">${rot}</div><div class="val" style="${cor?"color:"+cor:""}">${val}</div><div class="det">${det||""}</div></div>`;
+    document.getElementById("agoraKpis").innerHTML=
+      k("Em aberto",fmt(j.total), d==null?"":`<span class="${d>0?"up":d<0?"down":"neutro"}">${d>0?"+":""}${fmt(d)}</span> em 24 h`)+
+      k("Críticos",fmt(cnt("VERMELHO")),`${pct(cnt("VERMELHO"),j.total)}% · ${fmt(nunca)} nunca fisc.`,"#D63B32")+
+      k("Atrasados",fmt(cnt("LARANJA")),"prazo SIGA","#C4620F")+k("Atenção",fmt(cnt("AMARELO")),"prazo SIGA","#A57F0E")+
+      k("Em dia",fmt(cnt("VERDE")),"prazo SIGA","#2E9D57")+
+      `<div class="ak hoje"><div class="rot">Hoje</div><div class="hoje-l"><span><b>${fmt(j.hoje.criou)}</b> criados</span><span><b>${fmt(j.hoje.fiscalizou)}</b> fiscalizados</span><span><b>${fmt(j.hoje.fechou)}</b> fechados</span></div></div>`;
+    if(!this.mapa){ this.mapa=criarMapa("mapaAgora"); setTimeout(()=>this.mapa.invalidateSize(),300); }
+    plotar(this.mapa, rows, "fiscalizacao", ajustar||!this._ajustado, extraPopup); this._ajustado=true;
+    document.getElementById("agoraLeg").innerHTML=legendaHTML("fiscalizacao");
+    const S=j.serie||[];
+    grafLinha(document.getElementById("agoraSerie"), S.map(p=>p.t.slice(8,10)+"/"+p.t.slice(5,7)+" "+p.t.slice(11,16)), S.map(p=>p.total));
+    document.getElementById("agoraFiscais").innerHTML=`<thead><tr><th>Fiscal</th><th class="n">Abertos</th><th class="n">Críticos</th><th class="n">Fisc.</th><th class="n">Criou</th><th class="n">Fechou</th><th class="n">Último</th></tr></thead><tbody>`+
+      (j.por_fiscal.map(f=>`<tr><td><b style="color:var(--navy)">${esc(f.nome)}</b> <span style="font-size:11px;color:var(--muito-suave)">${esc(f.rpa)}</span></td><td class="n">${fmt(f.abertos)}</td><td class="n" style="color:${f.criticos?"#D63B32":"inherit"}">${fmt(f.criticos)}</td>
+        <td class="n"><b>${f.fiscalizou||"·"}</b></td><td class="n">${f.criou||"·"}</td><td class="n">${f.fechou||"·"}</td><td class="n">${f.ultimo||"—"}</td></tr>`).join("")||`<tr><td colspan="7" class="vazio">Sem registros hoje</td></tr>`)+"</tbody>";
+  },
+  async coletar(){
+    const r=await fetch("/api/rapida/coletar",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({tipo:this.tipo})});
+    const j=await r.json(); if(!r.ok){ toast(j.erro||"Não foi possível iniciar"); return; }
+    toast("Coletando "+this.tipo+" no SIGA (em segundo plano)…"); this.acompanhar();
+  },
+  async acompanhar(){
+    if(window.ESTATICO) return;
+    const st=await (await fetch("/api/rapida/status")).json(), btn=document.getElementById("agoraBtn");
+    const rod=st.estado==="rodando";
+    btn.disabled=rod; btn.querySelector("span").textContent=rod?(st.etapa||"Coletando…").slice(0,34):"Atualizar";
+    btn.classList.toggle("girando",rod);
+    document.getElementById("agoraAuto").innerHTML = st.auto ? `automático · próxima ${st.proxima?st.proxima.slice(11,16):"—"}` : `<a href="/coletas#automacao">ligar automático</a>`;
+    if(this._rodava && !rod){ if(st.estado==="ok") toast(this.tipo+" atualizado"); else if(st.estado==="erro") toast("Coleta rápida: "+(st.etapa||"falhou"),5000); this.carregar(); }
+    this._rodava=rod; clearTimeout(this.timer); this.timer=setTimeout(()=>this.acompanhar(), rod?4000:60000);
+  },
+  recolher(){ const p=document.getElementById("painelAgora"); p.classList.toggle("fechado");
+    try{ localStorage.setItem("agoraFechado", p.classList.contains("fechado")?"1":"0"); }catch(e){}
+    if(!p.classList.contains("fechado")&&this.mapa) setTimeout(()=>this.mapa.invalidateSize(),200); },
+  iniciar(){
+    if(!document.getElementById("painelAgora")) return;
+    try{ if(localStorage.getItem("agoraFechado")==="1") document.getElementById("painelAgora").classList.add("fechado"); }catch(e){}
+    document.querySelectorAll("#agoraTipos button").forEach(b=>b.onclick=()=>{ this.tipo=b.dataset.v; this._ajustado=false;
+      document.querySelectorAll("#agoraTipos button").forEach(x=>x.classList.toggle("on",x===b)); this.carregar(true); });
+    this.carregar(true); this.acompanhar();
+    setInterval(()=>this.carregar(false), 5*60000);        // recarrega os dados a cada 5 min
+  }
+};
+iniciar();
+Agora.iniciar();
+setTimeout(()=>mapa&&mapa.invalidateSize(),400);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lotes de cobrança · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="comparacao.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/>
+</svg>Comparação</a>
+      <a href="lotes.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 17/10/2026 18:02</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<div class="cab-pagina">
+  <div><h1>Lotes de cobrança</h1>
+    <p>Cada lote é uma demanda que você passou aos fiscais. O painel acompanha o que já foi feito e o que falta, coleta após coleta.</p></div>
+  <div class="acoes so-local"><a class="btn" href="/conferir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Conferir demanda já enviada</a>
+    <a class="btn prim" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/>
+</svg>Novo lote a partir do mapa</a></div>
+</div>
+
+
+
+
+
+
+<form method="post" action="/lotes/excluir-varios" id="formLimpeza">
+<div class="filtros so-local" style="align-items:center">
+  <b style="color:var(--navy);display:inline-flex;gap:6px;align-items:center"><span style="width:16px;height:16px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span>Limpar histórico</b>
+  <button class="btn peq" name="modo" value="selecionados" onclick="return confirmar('selecionadas')">Excluir selecionadas</button>
+  <button class="btn peq" name="modo" value="arquivados" onclick="return confirmarArquivadas()">Excluir arquivadas</button>
+  <span style="display:inline-flex;gap:6px;align-items:center">entregues antes de <input type="date" name="antes" style="min-height:30px;padding:3px 8px">
+    <button class="btn peq" name="modo" value="antes" onclick="return confirmarData()">Excluir</button></span>
+  <label style="margin-left:auto;font-size:13px;color:var(--suave);display:flex;gap:6px;align-items:center"><input type="checkbox" onchange="document.querySelectorAll('.sel-cob').forEach(c=>c.checked=this.checked)"> marcar todas</label>
+  <span style="font-size:12px;color:var(--muito-suave);width:100%">Excluir uma cobrança não apaga nenhuma coleta — só a lista de acompanhamento.</span>
+</div>
+
+<div class="grade g2">
+
+  <div class="card" style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="12">
+      <h3><a href="lote_12.html" style="color:inherit">Demanda de Fiscalização · 15/10/2026</a></h3>
+      
+      <span class="dir sub">entregue em 15/10/2026</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:12" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 15/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="lote_12.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:10px">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento · Fiscal: WELDSON</div>
+      
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+        <span class="num" style="font-size:28px;font-weight:600;color:var(--navy)">83%</span>
+        <span style="color:var(--suave)">concluído · <b class="num">14</b> pendentes de 81 · 2 dia(s) desde a entrega</span></div>
+      <div class="progresso" style="height:12px"><i style="width:12.345679012345679%;background:var(--verde)"></i><i style="width:70.37037037037037%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin-top:8px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 10</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 57</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 14</span></div>
+      
+    </a>
+  </div>
+
+  <div class="card" style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="10">
+      <h3><a href="lote_10.html" style="color:inherit">Demanda de Fiscalização · 15/10/2026</a></h3>
+      
+      <span class="dir sub">entregue em 15/10/2026</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:10" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 15/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="lote_10.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:10px">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento, Abatimento Compesa - Água, Abatimento Compesa - Esgoto., Abatimento Copergás, +10 · Fiscal: WASHINGTON</div>
+      
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+        <span class="num" style="font-size:28px;font-weight:600;color:var(--navy)">49%</span>
+        <span style="color:var(--suave)">concluído · <b class="num">35</b> pendentes de 69 · 2 dia(s) desde a entrega</span></div>
+      <div class="progresso" style="height:12px"><i style="width:8.695652173913043%;background:var(--verde)"></i><i style="width:40.57971014492754%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin-top:8px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 6</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 28</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 35</span></div>
+      
+    </a>
+  </div>
+
+  <div class="card" style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="5">
+      <h3><a href="lote_5.html" style="color:inherit">FABIO · DEMANDA JOAO P</a></h3>
+      <span class="tag azul">conferência</span>
+      <span class="dir sub">entregue em 14/10/2026</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:5" onclick="return confirm('Excluir a cobrança “FABIO · DEMANDA JOAO P”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="lote_5.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:10px">Demanda importada · padrão 02 · PDF do painel (IDs embutidos) · DEMANDA JOAO P.pdf</div>
+      
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+        <span class="num" style="font-size:28px;font-weight:600;color:var(--navy)">11%</span>
+        <span style="color:var(--suave)">concluído · <b class="num">281</b> pendentes de 316 · 3 dia(s) desde a entrega</span></div>
+      <div class="progresso" style="height:12px"><i style="width:7.2784810126582276%;background:var(--verde)"></i><i style="width:3.79746835443038%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin-top:8px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 23</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 12</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 281</span></div>
+      
+    </a>
+  </div>
+
+  <div class="card" style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="6">
+      <h3><a href="lote_6.html" style="color:inherit">CARLOS M · DEMANDA SEU CARLOS</a></h3>
+      <span class="tag azul">conferência</span>
+      <span class="dir sub">entregue em 13/10/2026</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:6" onclick="return confirm('Excluir a cobrança “CARLOS M · DEMANDA SEU CARLOS”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="lote_6.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:10px">Demanda importada · padrão 02 · PDF do painel · DEMANDA SEU CARLOS.pdf</div>
+      
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+        <span class="num" style="font-size:28px;font-weight:600;color:var(--navy)">17%</span>
+        <span style="color:var(--suave)">concluído · <b class="num">5</b> pendentes de 6 · 4 dia(s) desde a entrega</span></div>
+      <div class="progresso" style="height:12px"><i style="width:0.0%;background:var(--verde)"></i><i style="width:16.666666666666664%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin-top:8px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 0</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 1</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 5</span></div>
+      
+    </a>
+  </div>
+
+  <div class="card" style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="2">
+      <h3><a href="lote_2.html" style="color:inherit">JAÍLSON + CARLOS M + FABIO · REFISCALIZAR</a></h3>
+      <span class="tag azul">conferência</span>
+      <span class="dir sub">entregue em 09/10/2026</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:2" onclick="return confirm('Excluir a cobrança “JAÍLSON + CARLOS M + FABIO · REFISCALIZAR”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="lote_2.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:10px">Demanda importada · padrão 01 · Planilha do SIGA impressa · REFISCALIZAR.pdf</div>
+      
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+        <span class="num" style="font-size:28px;font-weight:600;color:var(--navy)">20%</span>
+        <span style="color:var(--suave)">concluído · <b class="num">229</b> pendentes de 288 · 8 dia(s) desde a entrega</span></div>
+      <div class="progresso" style="height:12px"><i style="width:6.597222222222222%;background:var(--verde)"></i><i style="width:13.88888888888889%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin-top:8px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 19</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 40</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 229</span></div>
+      
+    </a>
+  </div>
+
+
+  <div class="card so-local">
+    <div class="card-cab"><h3><a href="/geovista/2" style="color:inherit">RPA3 - OS EM ANDAMENTO</a></h3><span class="tag laranja">GeoVista</span>
+      <span class="dir sub">entregue em 14/10/2026</span></div>
+    <a class="card-corpo" href="/geovista/2" style="display:block;text-decoration:none;color:inherit">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+        <span class="num" style="font-size:28px;font-weight:600;color:var(--navy)">8%</span>
+        <span style="color:var(--suave)">com ID do SIGA identificado · <b class="num">205</b> pendentes de 222</span></div>
+      <div class="progresso" style="height:12px"><i style="width:7.657657657657657%;background:#7FC79A"></i><i style="width:0.0%;background:var(--verde)"></i></div>
+      <div class="legenda" style="margin-top:8px"><span><i class="bolinha" style="background:#7FC79A"></i>já tinham ID no SIGA 17</span><span><i class="bolinha" style="background:var(--verde)"></i>confirmadas por você 0</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 205</span></div>
+    </a>
+  </div>
+
+  <div class="card so-local">
+    <div class="card-cab"><h3><a href="/geovista/1" style="color:inherit">RPA2 - OS EM ANDAMENTO</a></h3><span class="tag laranja">GeoVista</span>
+      <span class="dir sub">entregue em 13/10/2026</span></div>
+    <a class="card-corpo" href="/geovista/1" style="display:block;text-decoration:none;color:inherit">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+        <span class="num" style="font-size:28px;font-weight:600;color:var(--navy)">18%</span>
+        <span style="color:var(--suave)">com ID do SIGA identificado · <b class="num">61</b> pendentes de 74</span></div>
+      <div class="progresso" style="height:12px"><i style="width:17.56756756756757%;background:#7FC79A"></i><i style="width:0.0%;background:var(--verde)"></i></div>
+      <div class="legenda" style="margin-top:8px"><span><i class="bolinha" style="background:#7FC79A"></i>já tinham ID no SIGA 13</span><span><i class="bolinha" style="background:var(--verde)"></i>confirmadas por você 0</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 61</span></div>
+    </a>
+  </div>
+
+
+</div>
+</form>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias</div>
+</main>
+<div class="toast" id="toast"></div>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;</script>
+<script src="static/painel.js"></script>
+
+<script>
+const N_ARQ=0;
+function confirmarArquivadas(){ if(!N_ARQ){ toast('Não há cobranças arquivadas.'); return false; } return confirm(`Excluir ${N_ARQ} cobrança(s) arquivada(s)?`); }
+function confirmarData(){ const d=document.querySelector('input[name="antes"]').value; if(!d){ toast('Escolha a data primeiro.'); return false; }
+  return confirm('Excluir todas as cobranças entregues antes de '+d.split('-').reverse().join('/')+'?'); }
+function confirmar(){ const n=document.querySelectorAll('.sel-cob:checked').length; if(!n){ toast('Marque ao menos uma cobrança.'); return false; } return confirm(`Excluir ${n} cobrança(s) selecionada(s)?`); }
+</script>
+
+</body>
+</html>
