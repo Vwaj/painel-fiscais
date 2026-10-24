@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lotes de cobrança · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 24/10/2026 16:02</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<div class="cab-pagina">
+  <div><h1>Lotes de cobrança</h1>
+    <p>Cada lote é uma demanda que você passou aos fiscais. O painel acompanha o que já foi feito, o ritmo e quando deve terminar.</p></div>
+  <div class="acoes so-local"><a class="btn" href="/conferir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Conferir demanda já enviada</a>
+    <a class="btn prim" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/>
+</svg>Novo lote a partir do mapa</a></div>
+</div>
+
+
+
+
+
+<div class="kpis">
+  <div class="kpi destaque"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg></div><div><div class="rot">Cobranças ativas</div><div class="val">12</div><div class="det">1.482 IDs cobrados</div></div></div>
+  <div class="kpi verde"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg></div><div><div class="rot">Concluído (geral)</div><div class="val">37.0%</div><div class="det"><span class="delta pos">+4.9 pp</span> em 24 h · <span class="delta pos">+23.4 pp</span> em 7 dias</div></div></div>
+  <div class="kpi azul"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg></div><div><div class="rot">Feitos na semana</div><div class="val">347</div><div class="det">~69.4 por dia útil · 72 nas últimas 24 h</div></div></div>
+  <div class="kpi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg></div><div><div class="rot">Ainda falta</div><div class="val">933</div><div class="det">IDs pendentes em todas as cobranças</div></div></div>
+  <div class="kpi vermelho"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg></div><div><div class="rot">Precisam de atenção</div><div class="val">2</div>
+    <div class="det">2 parada(s) · 0 atrasada(s) · 3 lenta(s)</div></div></div>
+</div>
+
+
+<div class="card" id="envio" style="margin-bottom:16px">
+  <div class="card-cab"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg>Envio diário — refiscalização</h3>
+    <span class="sub">o que cada fiscal recebeu no WhatsApp (forçar envio) e quanto refiscalizou</span>
+    <div class="dir so-local"><form method="post" action="/lotes/registrar-envio" onsubmit="return confirm('Registrar como enviada hoje a lista do processador do SIGA-BOT (planilha das 7h)?')">
+      <button class="btn peq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>
+</svg>Registrar envio de hoje</button></form></div></div>
+  
+  <div class="card-corpo" style="color:var(--suave);font-size:13px">Ainda não há envio registrado. Com a linha de gancho no fim do <span class="mono">forcar_envio.py</span>/<span class="mono">enviador.py</span>, cada envio entra aqui sozinho; ou use <b>Registrar envio de hoje</b> depois de enviar. (Veja “Envio diário” no LEIA-ME.)</div>
+  
+</div>
+
+
+
+
+<div class="filtros" style="align-items:center">
+  <div class="campo"><label>Situação</label>
+    <div class="chips" id="fSit"><span class="chip on" data-v="todas">todas</span><span class="chip " data-v="no ritmo">no ritmo (7)</span><span class="chip " data-v="lento">lento (3)</span><span class="chip " data-v="parado">parado (2)</span><span class="chip " data-v="atrasado">atrasado</span><span class="chip " data-v="concluído">concluído</span></div></div>
+  <div class="campo"><label>Ordenar por</label>
+    <select id="fOrdem"><option value="recente">Envio mais recente</option><option value="antigo">Envio mais antigo</option><option value="pct">Menor % concluído</option>
+      <option value="parado">Mais tempo parado</option><option value="ritmo">Maior ritmo</option><option value="previsao">Termina antes</option></select></div>
+  <div class="campo"><label>Mostrar</label><label style="display:flex;gap:6px;align-items:center;min-height:36px;font-size:13px"><input type="checkbox" id="fArq"> arquivadas</label></div>
+  <span style="margin-left:auto;font-size:12px;color:var(--muito-suave)">“Parado” = 3 dias úteis sem avanço · ritmo = feitos por dia útil (últimos 3)</span>
+</div>
+
+<form method="post" action="/lotes/excluir-varios" id="formLimpeza">
+<div class="filtros so-local" style="align-items:center">
+  <b style="color:var(--navy);display:inline-flex;gap:6px;align-items:center"><span style="width:16px;height:16px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span>Limpar histórico</b>
+  <button class="btn peq" name="modo" value="selecionados" onclick="return confirmar('selecionadas')">Excluir selecionadas</button>
+  <button class="btn peq" name="modo" value="arquivados" onclick="return confirmarArquivadas()">Excluir arquivadas</button>
+  <span style="display:inline-flex;gap:6px;align-items:center">entregues antes de <input type="date" name="antes" style="min-height:30px;padding:3px 8px">
+    <button class="btn peq" name="modo" value="antes" onclick="return confirmarData()">Excluir</button></span>
+  <label style="margin-left:auto;font-size:13px;color:var(--suave);display:flex;gap:6px;align-items:center"><input type="checkbox" onchange="document.querySelectorAll('.sel-cob').forEach(c=>c.checked=this.checked)"> marcar todas</label>
+</div>
+
+<div class="grade g2" id="gradeCob">
+
+  <div class="card cob" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-23"
+       data-pct="14.5" data-parado="0" data-ritmo="28.0" data-prev="2026-11-02"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="17">
+      <h3><a href="lote_17.html" style="color:inherit">Pendências — JAÍLSON + CARLOS M + FABIO · REFISCALIZAR · 23/10/2026</a></h3>
+      <span class="tag">demanda gerada</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:17" onclick="return confirm('Excluir a cobrança “Pendências — JAÍLSON + CARLOS M + FABIO · REFISCALIZAR · 23/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_17.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Pendentes do lote “JAÍLSON + CARLOS M + FABIO · REFISCALIZAR” (entregue em 09/10/2026) · entregue em 23/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">14%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta pos">+14.5 pp</span> em 24 h · <span class="delta pos">+14.5 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="14" height="26">
+  <rect x="0" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="7" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>24/10: 28</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:2.072538860103627%;background:var(--verde)"></i><i style="width:12.435233160621761%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 4</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 24</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 165</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>28</b><i>de 193</i></div>
+  <div><span>falta</span><b>165</b><i>86% do total</i></div>
+  <div><span>desde o envio</span><b>1 d</b><i>1 úteis</i></div>
+  <div><span>ritmo</span><b>28.0/dia</b><i>média 28.0 · estável</i></div>
+  <div><span>% por dia</span><b>14.5%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>02/11</b><i>~6 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-21"
+       data-pct="18.2" data-parado="0" data-ritmo="4.5" data-prev="2026-11-12"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="16">
+      <h3><a href="lote_16.html" style="color:inherit">Demanda de Fiscalização · 21/10/2026</a></h3>
+      <span class="tag">demanda gerada</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:16" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 21/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_16.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento · Fiscal: WELLINGTON · entregue em 21/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">18%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+18.2 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="28" height="26">
+  <rect x="0" y="8.0" width="5" height="18.0" rx="1" fill="#2E9D57"><title>21/10: 5</title></rect>
+  <rect x="7" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>22/10: 7</title></rect>
+  <rect x="14" y="19.0" width="5" height="7.0" rx="1" fill="#2E9D57"><title>23/10: 2</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:12.987012987012985%;background:var(--verde)"></i><i style="width:5.194805194805195%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 10</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 4</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 63</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>14</b><i>de 77</i></div>
+  <div><span>falta</span><b>63</b><i>82% do total</i></div>
+  <div><span>desde o envio</span><b>3 d</b><i>2 úteis</i></div>
+  <div><span>ritmo</span><b>4.5/dia</b><i>média 7.0 · estável</i></div>
+  <div><span>% por dia</span><b>9.1%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>12/11</b><i>~14 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-20"
+       data-pct="94.1" data-parado="0" data-ritmo="16.5" data-prev="2026-10-26"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="15">
+      <h3><a href="lote_15.html" style="color:inherit">Demanda de Fiscalização · 20/10/2026</a></h3>
+      <span class="tag">demanda gerada</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:15" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 20/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_15.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Fiscal: WASHINGTON · entregue em 20/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">94%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+94.1 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="35" height="26">
+  <rect x="0" y="13.0" width="5" height="13.0" rx="1" fill="#2E9D57"><title>20/10: 16</title></rect>
+  <rect x="7" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>21/10: 31</title></rect>
+  <rect x="14" y="13.0" width="5" height="13.0" rx="1" fill="#2E9D57"><title>22/10: 16</title></rect>
+  <rect x="21" y="12.0" width="5" height="14.0" rx="1" fill="#2E9D57"><title>23/10: 17</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:55.294117647058826%;background:var(--verde)"></i><i style="width:38.82352941176471%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 47</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 33</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 5</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>80</b><i>de 85</i></div>
+  <div><span>falta</span><b>5</b><i>6% do total</i></div>
+  <div><span>desde o envio</span><b>4 d</b><i>3 úteis</i></div>
+  <div><span>ritmo</span><b>16.5/dia</b><i>média 26.7 · estável</i></div>
+  <div><span>% por dia</span><b>31.4%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>26/10</b><i>~0 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="lento" data-ativo="1" data-envio="2026-10-20"
+       data-pct="66.7" data-parado="1" data-ritmo="0.5" data-prev="2026-11-02"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="14">
+      <h3><a href="lote_14.html" style="color:inherit">Pendências — Demanda de Fiscalização · 15/10/2026 · 20/10/2026</a></h3>
+      <span class="tag">demanda gerada</span>
+      <span class="dir">
+<span class="tag laranja">lento</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:14" onclick="return confirm('Excluir a cobrança “Pendências — Demanda de Fiscalização · 15/10/2026 · 20/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_14.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Pendentes do lote “Demanda de Fiscalização · 15/10/2026” (entregue em 15/10/2026) · entregue em 20/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">67%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+66.7 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="35" height="26">
+  <rect x="0" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>20/10: 0</title></rect>
+  <rect x="7" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>21/10: 5</title></rect>
+  <rect x="14" y="21.0" width="5" height="5.0" rx="1" fill="#2E9D57"><title>22/10: 1</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:33.33333333333333%;background:var(--verde)"></i><i style="width:33.33333333333333%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 3</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 3</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 3</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>6</b><i>de 9</i></div>
+  <div><span>falta</span><b>3</b><i>33% do total</i></div>
+  <div><span>desde o envio</span><b>4 d</b><i>3 úteis</i></div>
+  <div><span>ritmo</span><b>0.5/dia</b><i>média 2.0 · caindo</i></div>
+  <div><span>% por dia</span><b>22.2%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>02/11</b><i>~6 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="parado" data-ativo="1" data-envio="2026-10-19"
+       data-pct="6.5" data-parado="4" data-ritmo="0.0" data-prev="2027-01-13"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="13">
+      <h3><a href="lote_13.html" style="color:inherit">Demanda de Fiscalização · 19/10/2026</a></h3>
+      <span class="tag">demanda gerada</span>
+      <span class="dir">
+<span class="tag vermelho">parado há 4 dia(s) úteis</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:13" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 19/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_13.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Monitoramento Buraco - P, Abatimento Compesa - Esgoto., Abatimento Compesa - Água · Fiscal: WELLINGTON · entregue em 19/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">6%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+6.5 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="42" height="26">
+  <rect x="0" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>19/10: 4</title></rect>
+  <rect x="7" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>20/10: 0</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>21/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>22/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="35" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:3.225806451612903%;background:var(--verde)"></i><i style="width:3.225806451612903%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 2</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 2</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 58</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>4</b><i>de 62</i></div>
+  <div><span>falta</span><b>58</b><i>94% do total</i></div>
+  <div><span>desde o envio</span><b>5 d</b><i>4 úteis</i></div>
+  <div><span>ritmo</span><b>0.0/dia</b><i>média 1.0 · caindo</i></div>
+  <div><span>% por dia</span><b>1.6%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>13/01</b><i>~58 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="lento" data-ativo="1" data-envio="2026-10-15"
+       data-pct="95.1" data-parado="1" data-ritmo="1.0" data-prev="2026-10-29"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="12">
+      <h3><a href="lote_12.html" style="color:inherit">Demanda de Fiscalização · 15/10/2026</a></h3>
+      <span class="tag">demanda gerada</span>
+      <span class="dir">
+<span class="tag laranja">lento</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:12" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 15/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_12.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento · Fiscal: WELDSON · entregue em 15/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">95%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+12.3 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="70" height="26">
+  <rect x="0" y="16.0" width="5" height="10.0" rx="1" fill="#2E9D57"><title>15/10: 19</title></rect>
+  <rect x="7" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>16/10: 48</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="28" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>19/10: 3</title></rect>
+  <rect x="35" y="25.0" width="5" height="1.0" rx="1" fill="#2E9D57"><title>20/10: 2</title></rect>
+  <rect x="42" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>21/10: 3</title></rect>
+  <rect x="49" y="25.0" width="5" height="1.0" rx="1" fill="#2E9D57"><title>22/10: 2</title></rect>
+  <rect x="56" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="63" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:13.580246913580247%;background:var(--verde)"></i><i style="width:81.48148148148148%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 11</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 66</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 4</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>77</b><i>de 81</i></div>
+  <div><span>falta</span><b>4</b><i>5% do total</i></div>
+  <div><span>desde o envio</span><b>9 d</b><i>6 úteis</i></div>
+  <div><span>ritmo</span><b>1.0/dia</b><i>média 12.8 · caindo</i></div>
+  <div><span>% por dia</span><b>15.8%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>29/10</b><i>~4 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="lento" data-ativo="1" data-envio="2026-10-15"
+       data-pct="95.7" data-parado="1" data-ritmo="0.5" data-prev="2026-11-02"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="10">
+      <h3><a href="lote_10.html" style="color:inherit">Demanda de Fiscalização · 15/10/2026</a></h3>
+      <span class="tag">demanda gerada</span>
+      <span class="dir">
+<span class="tag laranja">lento</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:10" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 15/10/2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_10.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento, Abatimento Compesa - Água, Abatimento Compesa - Esgoto., Abatimento Copergás, +10 · Fiscal: WASHINGTON · entregue em 15/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">96%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+46.4 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="70" height="26">
+  <rect x="0" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>15/10: 0</title></rect>
+  <rect x="7" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>16/10: 34</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="28" y="10.0" width="5" height="16.0" rx="1" fill="#2E9D57"><title>19/10: 22</title></rect>
+  <rect x="35" y="23.0" width="5" height="3.0" rx="1" fill="#2E9D57"><title>20/10: 4</title></rect>
+  <rect x="42" y="22.0" width="5" height="4.0" rx="1" fill="#2E9D57"><title>21/10: 5</title></rect>
+  <rect x="49" y="25.0" width="5" height="1.0" rx="1" fill="#2E9D57"><title>22/10: 1</title></rect>
+  <rect x="56" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="63" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:20.28985507246377%;background:var(--verde)"></i><i style="width:75.36231884057972%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 14</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 52</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 3</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>66</b><i>de 69</i></div>
+  <div><span>falta</span><b>3</b><i>4% do total</i></div>
+  <div><span>desde o envio</span><b>9 d</b><i>6 úteis</i></div>
+  <div><span>ritmo</span><b>0.5/dia</b><i>média 11.0 · caindo</i></div>
+  <div><span>% por dia</span><b>15.9%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>02/11</b><i>~6 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-14"
+       data-pct="29.4" data-parado="0" data-ritmo="12.0" data-prev="2026-11-19"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="5">
+      <h3><a href="lote_5.html" style="color:inherit">FABIO · DEMANDA JOAO P</a></h3>
+      <span class="tag azul">conferência</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:5" onclick="return confirm('Excluir a cobrança “FABIO · DEMANDA JOAO P”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_5.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Demanda importada · padrão 02 · PDF do painel (IDs embutidos) · DEMANDA JOAO P.pdf · entregue em 14/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">29%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+18.4 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="77" height="26">
+  <rect x="0" y="16.0" width="5" height="10.0" rx="1" fill="#2E9D57"><title>14/10: 9</title></rect>
+  <rect x="7" y="19.0" width="5" height="7.0" rx="1" fill="#2E9D57"><title>15/10: 6</title></rect>
+  <rect x="14" y="5.0" width="5" height="21.0" rx="1" fill="#2E9D57"><title>16/10: 20</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="35" y="17.0" width="5" height="9.0" rx="1" fill="#2E9D57"><title>19/10: 8</title></rect>
+  <rect x="42" y="12.0" width="5" height="14.0" rx="1" fill="#2E9D57"><title>20/10: 13</title></rect>
+  <rect x="49" y="12.0" width="5" height="14.0" rx="1" fill="#2E9D57"><title>21/10: 13</title></rect>
+  <rect x="56" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>22/10: 1</title></rect>
+  <rect x="63" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>23/10: 23</title></rect>
+  <rect x="70" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:17.72151898734177%;background:var(--verde)"></i><i style="width:11.708860759493671%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 56</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 37</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 223</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>93</b><i>de 316</i></div>
+  <div><span>falta</span><b>223</b><i>71% do total</i></div>
+  <div><span>desde o envio</span><b>10 d</b><i>7 úteis</i></div>
+  <div><span>ritmo</span><b>12.0/dia</b><i>média 13.3 · estável</i></div>
+  <div><span>% por dia</span><b>4.2%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>19/11</b><i>~19 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-13"
+       data-pct="83.3" data-parado="1" data-ritmo="1.0" data-prev="2026-10-26"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="6">
+      <h3><a href="lote_6.html" style="color:inherit">CARLOS M · DEMANDA SEU CARLOS</a></h3>
+      <span class="tag azul">conferência</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:6" onclick="return confirm('Excluir a cobrança “CARLOS M · DEMANDA SEU CARLOS”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_6.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Demanda importada · padrão 02 · PDF do painel · DEMANDA SEU CARLOS.pdf · entregue em 13/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">83%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+66.7 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="84" height="26">
+  <rect x="0" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>13/10: 0</title></rect>
+  <rect x="7" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>14/10: 0</title></rect>
+  <rect x="14" y="14.0" width="5" height="12.0" rx="1" fill="#2E9D57"><title>15/10: 1</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>16/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="35" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="42" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>19/10: 2</title></rect>
+  <rect x="49" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>20/10: 0</title></rect>
+  <rect x="56" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>21/10: 0</title></rect>
+  <rect x="63" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>22/10: 2</title></rect>
+  <rect x="70" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="77" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:33.33333333333333%;background:var(--verde)"></i><i style="width:50.0%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 2</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 3</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 1</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>5</b><i>de 6</i></div>
+  <div><span>falta</span><b>1</b><i>17% do total</i></div>
+  <div><span>desde o envio</span><b>11 d</b><i>8 úteis</i></div>
+  <div><span>ritmo</span><b>1.0/dia</b><i>média 0.6 · acelerando</i></div>
+  <div><span>% por dia</span><b>10.4%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>26/10</b><i>~1 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+  <div class="card cob" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-09"
+       data-pct="42.7" data-parado="0" data-ritmo="22.5" data-prev="2026-11-04"
+       style="">
+    <div class="card-cab"><input type="checkbox" class="sel-cob so-local" name="lote" value="2">
+      <h3><a href="lote_2.html" style="color:inherit">JAÍLSON + CARLOS M + FABIO · REFISCALIZAR</a></h3>
+      <span class="tag azul">conferência</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span>
+      <button class="btn peq so-local" title="Excluir esta cobrança" name="unico" value="lote:2" onclick="return confirm('Excluir a cobrança “JAÍLSON + CARLOS M + FABIO · REFISCALIZAR”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></span></div>
+    <a class="card-corpo" href="lote_2.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">Demanda importada · padrão 01 · Planilha do SIGA impressa · REFISCALIZAR.pdf · entregue em 09/10/2026</div>
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">43%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">concluído<br><span class="delta pos">+15.3 pp</span> em 24 h · <span class="delta pos">+27.8 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="112" height="26">
+  <rect x="0" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>09/10: 0</title></rect>
+  <rect x="7" y="6.0" width="5" height="20.0" rx="1" fill="#2E9D57"><title>10/10: 36</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>11/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>12/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>13/10: 0</title></rect>
+  <rect x="35" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>14/10: 0</title></rect>
+  <rect x="42" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>15/10: 2</title></rect>
+  <rect x="49" y="23.0" width="5" height="3.0" rx="1" fill="#2E9D57"><title>16/10: 5</title></rect>
+  <rect x="56" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="63" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="70" y="7.0" width="5" height="19.0" rx="1" fill="#2E9D57"><title>19/10: 34</title></rect>
+  <rect x="77" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>20/10: 0</title></rect>
+  <rect x="84" y="25.0" width="5" height="1.0" rx="1" fill="#2E9D57"><title>21/10: 1</title></rect>
+  <rect x="91" y="25.0" width="5" height="1.0" rx="1" fill="#2E9D57"><title>22/10: 1</title></rect>
+  <rect x="98" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="105" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>24/10: 44</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">feitos por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:13.88888888888889%;background:var(--verde)"></i><i style="width:28.819444444444443%;background:#7FB6E6"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:var(--verde)"></i>saíram do aberto 40</span><span><i class="bolinha" style="background:#7FB6E6"></i>fiscalizados 83</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 165</span></div>
+      <div class="lstats">
+  <div><span>feitos</span><b>123</b><i>de 288</i></div>
+  <div><span>falta</span><b>165</b><i>57% do total</i></div>
+  <div><span>desde o envio</span><b>15 d</b><i>10 úteis</i></div>
+  <div><span>ritmo</span><b>22.5/dia</b><i>média 12.3 · acelerando</i></div>
+  <div><span>% por dia</span><b>4.3%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>04/11</b><i>~7 dia(s) útil(eis)</i></div>
+</div>
+
+      
+    </a>
+  </div>
+
+
+  <div class="card cob so-local" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-14"
+       data-pct="18" data-parado="0" data-ritmo="13.0" data-prev="2026-11-12">
+    <div class="card-cab"><h3><a href="/geovista/2" style="color:inherit">RPA3 - OS EM ANDAMENTO</a></h3><span class="tag laranja">GeoVista</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span></span></div>
+    <a class="card-corpo" href="/geovista/2" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">entregue em 14/10/2026</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">18%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">com ID do SIGA identificado<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta pos">+14.0 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="77" height="26">
+  <rect x="0" y="17.0" width="5" height="9.0" rx="1" fill="#2E9D57"><title>14/10: 9</title></rect>
+  <rect x="7" y="25.0" width="5" height="1.0" rx="1" fill="#2E9D57"><title>15/10: 1</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>16/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="35" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>19/10: 0</title></rect>
+  <rect x="42" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>20/10: 2</title></rect>
+  <rect x="49" y="23.0" width="5" height="3.0" rx="1" fill="#2E9D57"><title>21/10: 3</title></rect>
+  <rect x="56" y="25.0" width="5" height="1.0" rx="1" fill="#2E9D57"><title>22/10: 1</title></rect>
+  <rect x="63" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>23/10: 25</title></rect>
+  <rect x="70" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">identificadas por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:8.558558558558559%;background:#7FC79A"></i><i style="width:4.504504504504505%;background:var(--verde)"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:#7FC79A"></i>já tinham ID 19</span><span><i class="bolinha" style="background:var(--verde)"></i>confirmadas 10</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 181</span>
+        <span><span class="tag azul">22 ID(s) novo(s) aberto(s) após o envio</span></span></div>
+      <div class="lstats">
+  <div><span>identificadas</span><b>41</b><i>de 222</i></div>
+  <div><span>falta</span><b>181</b><i>82% do total</i></div>
+  <div><span>desde o envio</span><b>10 d</b><i>7 úteis</i></div>
+  <div><span>ritmo</span><b>13.0/dia</b><i>média 5.9 · acelerando</i></div>
+  <div><span>% por dia</span><b>2.6%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>12/11</b><i>~14 dia(s) útil(eis)</i></div>
+</div>
+
+    </a>
+  </div>
+
+  <div class="card cob so-local" data-sit="parado" data-ativo="1" data-envio="2026-10-13"
+       data-pct="16" data-parado="8" data-ritmo="0.0" data-prev="2026-12-22">
+    <div class="card-cab"><h3><a href="/geovista/1" style="color:inherit">RPA2 - OS EM ANDAMENTO</a></h3><span class="tag laranja">GeoVista</span>
+      <span class="dir">
+<span class="tag vermelho">parado há 8 dia(s) úteis</span></span></div>
+    <a class="card-corpo" href="/geovista/1" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:8px">entregue em 13/10/2026</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span class="num" style="font-size:30px;font-weight:600;color:var(--navy)">16%</span>
+        <div style="font-size:12.5px;color:var(--suave);line-height:1.5">com ID do SIGA identificado<br><span class="delta zero">0.0 pp</span> em 24 h · <span class="delta zero">0.0 pp</span> em 7 dias</div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="84" height="26">
+  <rect x="0" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>13/10: 12</title></rect>
+  <rect x="7" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>14/10: 0</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>15/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>16/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="35" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="42" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>19/10: 0</title></rect>
+  <rect x="49" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>20/10: 0</title></rect>
+  <rect x="56" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>21/10: 0</title></rect>
+  <rect x="63" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>22/10: 0</title></rect>
+  <rect x="70" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="77" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">identificadas por dia</div></div></div>
+      <div class="progresso" style="height:10px"><i style="width:16.216216216216218%;background:#7FC79A"></i><i style="width:0.0%;background:var(--verde)"></i></div>
+      <div class="legenda" style="margin:6px 0 10px"><span><i class="bolinha" style="background:#7FC79A"></i>já tinham ID 12</span><span><i class="bolinha" style="background:var(--verde)"></i>confirmadas 0</span><span><i class="bolinha" style="background:#D8DEE5"></i>pendentes 62</span>
+        </div>
+      <div class="lstats">
+  <div><span>identificadas</span><b>12</b><i>de 74</i></div>
+  <div><span>falta</span><b>62</b><i>84% do total</i></div>
+  <div><span>desde o envio</span><b>11 d</b><i>8 úteis</i></div>
+  <div><span>ritmo</span><b>0.0/dia</b><i>média 1.5 · caindo</i></div>
+  <div><span>% por dia</span><b>2.0%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>22/12</b><i>~41 dia(s) útil(eis)</i></div>
+</div>
+
+    </a>
+  </div>
+
+
+  <div class="card cob so-local" data-sit="" data-ativo="1" data-envio="2026-10-23" data-pct="0" data-parado="0" data-ritmo="0" data-prev="9999">
+    <div class="card-cab"><input type="checkbox" class="sel-cob" name="ocorr" value="6">
+      <h3><a href="/ocorrencias/6" style="color:inherit">GeoVista sem ID no SIGA - 23-10-2026</a></h3><span class="tag verde">ocorrências</span>
+      <span class="dir sub">entregue em 23/10/2026</span>
+      <button class="btn peq" title="Excluir esta cobrança" name="unico" value="ocorr:6" onclick="return confirm('Excluir a conferência “GeoVista sem ID no SIGA - 23-10-2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="/ocorrencias/6" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave)"><b class="num" style="color:var(--navy);font-size:22px">30</b> ocorrência(s) para ir ao local · RPAs RPA 2</div>
+    </a>
+  </div>
+
+  <div class="card cob so-local" data-sit="" data-ativo="1" data-envio="2026-10-23" data-pct="0" data-parado="0" data-ritmo="0" data-prev="9999">
+    <div class="card-cab"><input type="checkbox" class="sel-cob" name="ocorr" value="5">
+      <h3><a href="/ocorrencias/5" style="color:inherit">GeoVista sem ID no SIGA - 23-10-2026</a></h3><span class="tag verde">ocorrências</span>
+      <span class="dir sub">entregue em 23/10/2026</span>
+      <button class="btn peq" title="Excluir esta cobrança" name="unico" value="ocorr:5" onclick="return confirm('Excluir a conferência “GeoVista sem ID no SIGA - 23-10-2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="/ocorrencias/5" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave)"><b class="num" style="color:var(--navy);font-size:22px">109</b> ocorrência(s) para ir ao local · RPAs RPA 3</div>
+    </a>
+  </div>
+
+</div>
+<div class="vazio" id="semCob" hidden>Nenhuma cobrança nesta situação.</div>
+</form>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js"></script>
+
+<script>
+const N_ARQ=0;
+function confirmarArquivadas(){ if(!N_ARQ){ toast('Não há cobranças arquivadas.'); return false; } return confirm(`Excluir ${N_ARQ} cobrança(s) arquivada(s)?`); }
+function confirmarData(){ const d=document.querySelector('input[name="antes"]').value; if(!d){ toast('Escolha a data primeiro.'); return false; }
+  return confirm('Excluir todas as cobranças entregues antes de '+d.split('-').reverse().join('/')+'?'); }
+function confirmar(){ const n=document.querySelectorAll('.sel-cob:checked').length; if(!n){ toast('Marque ao menos uma cobrança.'); return false; } return confirm(`Excluir ${n} cobrança(s) selecionada(s)?`); }
+/* filtro por situação e ordenação dos cards */
+let SIT="todas";
+function aplicarCob(){
+  const g=document.getElementById("gradeCob"); if(!g) return;
+  const ord=document.getElementById("fOrdem").value, arq=document.getElementById("fArq").checked;
+  const cs=[...g.querySelectorAll(".cob")];
+  const k={recente:c=>[c.dataset.envio,-1], antigo:c=>[c.dataset.envio,1], pct:c=>[+c.dataset.pct,1], parado:c=>[+c.dataset.parado,-1], ritmo:c=>[+c.dataset.ritmo,-1], previsao:c=>[c.dataset.prev,1]}[ord];
+  cs.sort((a,b)=>{ const [x,s]=k(a), [y]=k(b); return (x>y?1:x<y?-1:0)*s; }).forEach(c=>g.appendChild(c));
+  let n=0; cs.forEach(c=>{ const ok=(SIT==="todas"||c.dataset.sit===SIT)&&(arq||c.dataset.ativo==="1"); c.hidden=!ok; if(ok) n++; });
+  document.getElementById("semCob").hidden=n>0;
+}
+document.querySelectorAll("#fSit .chip").forEach(c=>c.onclick=()=>{ SIT=c.dataset.v; document.querySelectorAll("#fSit .chip").forEach(x=>x.classList.toggle("on",x===c)); aplicarCob(); });
+const fo=document.getElementById("fOrdem"); if(fo){ fo.onchange=aplicarCob; document.getElementById("fArq").onchange=aplicarCob; aplicarCob(); }
+</script>
+
+</body>
+</html>

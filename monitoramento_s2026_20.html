@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Monitoramento · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 24/10/2026 16:02</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+
+<div class="cab-pagina" style="margin-bottom:8px">
+  <div><h1>Monitoramento — Operação Tapa-Buraco</h1>
+    <p>Só <b>Buraco Siga</b>, com dados do SIGA: cada número abre os IDs de verdade · escolha a semana no seletor ou use ‹ ›.</p></div>
+</div>
+
+
+<div class="m-subabas">
+  <a href="monitoramento_s2026_20.html" class="on">Painel da semana</a>
+  <a href="monitoramento_ids.html" class="">IDs em aberto</a>
+  <a href="monitoramento_bairros.html" class="">Por bairro</a>
+  <a href="monitoramento_frentes.html" class="">Frentes de serviço</a>
+  <a href="monitoramento_abatimento.html" class="">Abatimentos Concessionárias</a>
+  
+</div>
+
+
+
+<div class="m-cab">
+  <div class="m-sem">
+    <a class="m-seta" id="semAnt" href="monitoramento_s2026_19.html" title="Semana 19 (tecla ←)">‹</a>
+    <div><div class="m-chip">SEMANA EMLURB</div><div class="m-n">20</div></div>
+    <div class="m-d"><b>qua 13/05 → ter 19/05/2026</b><br>
+      <select class="m-sel-sem" aria-label="Escolher a semana" onchange="if(this.value) location.href=this.value">
+        <option value="monitoramento_s2026_43.html" >Semana 43 · 21/10 a 27/10</option><option value="monitoramento_s2026_42.html" >Semana 42 · 14/10 a 20/10</option><option value="monitoramento_s2026_41.html" >Semana 41 · 07/10 a 13/10</option><option value="monitoramento_s2026_40.html" >Semana 40 · 30/09 a 06/10</option><option value="monitoramento_s2026_39.html" >Semana 39 · 23/09 a 29/09</option><option value="monitoramento_s2026_38.html" >Semana 38 · 16/09 a 22/09</option><option value="monitoramento_s2026_37.html" >Semana 37 · 09/09 a 15/09</option><option value="monitoramento_s2026_36.html" >Semana 36 · 02/09 a 08/09</option><option value="monitoramento_s2026_35.html" >Semana 35 · 26/08 a 01/09</option><option value="monitoramento_s2026_34.html" >Semana 34 · 19/08 a 25/08</option><option value="monitoramento_s2026_33.html" >Semana 33 · 12/08 a 18/08</option><option value="monitoramento_s2026_32.html" >Semana 32 · 05/08 a 11/08</option><option value="monitoramento_s2026_31.html" >Semana 31 · 29/07 a 04/08</option><option value="monitoramento_s2026_30.html" >Semana 30 · 22/07 a 28/07</option><option value="monitoramento_s2026_29.html" >Semana 29 · 15/07 a 21/07</option><option value="monitoramento_s2026_28.html" >Semana 28 · 08/07 a 14/07</option><option value="monitoramento_s2026_27.html" >Semana 27 · 01/07 a 07/07</option><option value="monitoramento_s2026_26.html" >Semana 26 · 24/06 a 30/06</option><option value="monitoramento_s2026_25.html" >Semana 25 · 17/06 a 23/06</option><option value="monitoramento_s2026_24.html" >Semana 24 · 10/06 a 16/06</option><option value="monitoramento_s2026_23.html" >Semana 23 · 03/06 a 09/06</option><option value="monitoramento_s2026_22.html" >Semana 22 · 27/05 a 02/06</option><option value="monitoramento_s2026_21.html" >Semana 21 · 20/05 a 26/05</option><option value="monitoramento_s2026_20.html" selected>Semana 20 · 13/05 a 19/05</option><option value="monitoramento_s2026_19.html" >Semana 19 · 06/05 a 12/05</option><option value="monitoramento_s2026_18.html" >Semana 18 · 29/04 a 05/05</option><option value="monitoramento_s2026_17.html" >Semana 17 · 22/04 a 28/04</option><option value="monitoramento_s2026_16.html" >Semana 16 · 15/04 a 21/04</option><option value="monitoramento_s2026_15.html" >Semana 15 · 08/04 a 14/04</option><option value="monitoramento_s2026_14.html" >Semana 14 · 01/04 a 07/04</option><option value="monitoramento_s2026_13.html" >Semana 13 · 25/03 a 31/03</option><option value="monitoramento_s2026_12.html" >Semana 12 · 18/03 a 24/03</option><option value="monitoramento_s2026_11.html" >Semana 11 · 11/03 a 17/03</option><option value="monitoramento_s2026_10.html" >Semana 10 · 04/03 a 10/03</option><option value="monitoramento_s2026_09.html" >Semana 9 · 25/02 a 03/03</option><option value="monitoramento_s2026_08.html" >Semana 8 · 18/02 a 24/02</option><option value="monitoramento_s2026_07.html" >Semana 7 · 11/02 a 17/02</option><option value="monitoramento_s2026_06.html" >Semana 6 · 04/02 a 10/02</option><option value="monitoramento_s2026_05.html" >Semana 5 · 28/01 a 03/02</option><option value="monitoramento_s2026_04.html" >Semana 4 · 21/01 a 27/01</option><option value="monitoramento_s2026_03.html" >Semana 3 · 14/01 a 20/01</option><option value="monitoramento_s2026_02.html" >Semana 2 · 07/01 a 13/01</option><option value="monitoramento_s2026_01.html" >Semana 1 · 31/12 a 06/01</option><option value="monitoramento_s2025_53.html" >Semana 53/2025 · 01/01 a 07/01</option><option value="monitoramento_s2025_52.html" >Semana 52/2025 · 23/12 a 30/12</option><option value="monitoramento_s2025_51.html" >Semana 51/2025 · 17/12 a 22/12</option><option value="monitoramento_s2025_50.html" >Semana 50/2025 · 10/12 a 15/12</option><option value="monitoramento_s2025_49.html" >Semana 49/2025 · 03/12 a 09/12</option><option value="monitoramento_s2025_48.html" >Semana 48/2025 · 26/11 a 02/12</option>
+      </select>
+      </div>
+    <a class="m-seta" id="semProx" href="monitoramento_s2026_21.html" title="Semana 21 (tecla →)">›</a>
+  </div>
+  
+  <div class="m-info">
+    <span class="tag" style="background:#E1F3E8;color:#1F7A41">fechada</span>
+    <div>última coleta 24/10/2026 16:02 · finalizados 24/10/2026 06:40</div>
+  </div>
+  
+
+  <div class="m-ferr">
+    
+    
+    <button class="btn btn-apres" type="button" onclick="Apresentar.alternar()" title="Tela cheia, sem menus — ← → trocam a semana">▶ Apresentar</button>
+    <button class="btn" type="button" onclick="window.print()" title="Imprimir ou salvar em PDF">Imprimir / PDF</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="aviso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg><div>Semana anterior ao início do painel (13/10/2026).
+  O “em aberto” é reconstruído e pode faltar algo.</div></div>
+
+<div class="m-kpi-bar"><span>Números da semana</span>
+  <div class="seg" id="segKpi"><button data-v="siga" class="on">SIGA</button><button data-v="rep">Números Emlurb</button></div></div>
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+<div class="m-kpis" id="kpiEmlurb" hidden>
+  <div class="m-k" style="--c:var(--laranja-st)"><img class="marca-kpi emlurb" src="static/pptx/logo_emlurb.png" alt="Emlurb" title="Números Emlurb"><div class="r">Buracos encontrados</div><div class="v">603</div>
+    <div class="det">tapados + não tapados · <span class="up">+197</span> vs semana 19</div></div>
+  <div class="m-k" style="--c:var(--verde)"><img class="marca-kpi emlurb" src="static/pptx/logo_emlurb.png" alt="Emlurb" title="Números Emlurb"><div class="r">Buracos tapados</div><div class="v">484</div>
+    <div class="det"><span class="down">+200</span> vs semana 19 (284)</div></div>
+  <div class="m-k" style="--c:var(--navy-2)"><img class="marca-kpi emlurb" src="static/pptx/logo_emlurb.png" alt="Emlurb" title="Números Emlurb"><div class="r">Média semanal do ano</div><div class="v">315</div>
+    <div class="det">buracos tapados por semana em 2026 · 8 semana(s) até esta</div></div>
+  <div class="m-k destaque" style="--c:var(--navy)"><img class="marca-kpi emlurb" src="static/pptx/logo_emlurb.png" alt="Emlurb" title="Números Emlurb"><div class="r">Não tapados</div><div class="v">119</div>
+    <div class="det">saldo a tapar · <span class="down">-3</span> vs semana 19 (122)</div></div>
+  <div class="m-k" style="--c:var(--navy-2)"><img class="marca-kpi emlurb" src="static/pptx/logo_emlurb.png" alt="Emlurb" title="Números Emlurb"><div class="r">Atendimento</div><div class="v">80%</div>
+    <div class="det">tapados ÷ encontrados · sem. 19: 70%</div></div>
+  <div class="m-k" style="--c:var(--azul)">
+    <div class="r">Chuva na semana</div><div class="v" style="color:#1F4E8C">42,4<small> mm</small></div>
+    <div class="det">Recife (CEMADEN) · média 20ª sem. anos ant.: 104,5 mm</div></div>
+</div>
+<div class="m-kpis" id="kpiSiga">
+  <a class="m-k" style="--c:var(--laranja-st)" href="monitoramento_ids.html?so=semana&amp;ini=2026-05-13&amp;fim=2026-05-19&amp;sem=20">
+    <img class="marca-kpi" src="static/logo_siga.png" alt="SIGA" title="Números do SIGA"><div class="r">Buracos encontrados</div><div class="v">238</div>
+    <div class="det"><span class="up">+52</span> vs semana 19 (186)</div></a>
+  <div class="m-k" style="--c:var(--verde)">
+    <img class="marca-kpi" src="static/logo_siga.png" alt="SIGA" title="Números do SIGA"><div class="r">Buracos tapados</div><div class="v">197</div>
+    <div class="det"><span class="up">-2</span> vs semana 19 (199)</div></div>
+  <a class="m-k" style="--c:var(--vermelho)" href="monitoramento_ids.html?so=semana&amp;ini=2026-05-13&amp;fim=2026-05-19&amp;sem=20">
+    <img class="marca-kpi" src="static/logo_siga.png" alt="SIGA" title="Números do SIGA"><div class="r">Não tapados da semana</div><div class="v">193</div>
+    <div class="det">dos 238 encontrados nesta semana, quantos ainda estão abertos</div></a>
+  <a class="m-k destaque" style="--c:var(--navy)" href="monitoramento_ids.html?min=8">
+    <img class="marca-kpi" src="static/logo_siga.png" alt="SIGA" title="Números do SIGA"><div class="r">Em aberto no total</div><div class="v">351</div>
+    <div class="det">desta e de semanas anteriores · <b style="color:#A92B23">142</b> há +7 dias · <b style="color:#7A1F3D">43</b> há +30 · ver IDs ›</div></a>
+  <div class="m-k" style="--c:var(--navy-2)">
+    <img class="marca-kpi" src="static/logo_siga.png" alt="SIGA" title="Números do SIGA"><div class="r">Atendimento</div><div class="v">83%</div>
+    <div class="det">tapados ÷ encontrados · sem. 19: 107%</div></div>
+  <div class="m-k" style="--c:var(--azul)">
+    <div class="r">Chuva na semana</div><div class="v" style="color:#1F4E8C">42,4<small> mm</small></div>
+    <div class="det">Recife (CEMADEN) · média 20ª sem. anos ant.: 104,5 mm</div></div>
+</div>
+
+<details class="m-glossario">
+  <summary>Como ler estes números</summary>
+  <div class="m-gl-grade">
+    <div><b style="color:#EE7D22">Encontrados</b>Buraco Siga <b>criados no SIGA</b> entre 13/05 e 19/05.</div>
+    <div><b style="color:#2E9D57">Tapados</b>Buraco Siga <b>finalizados no SIGA</b> nesse período — de qualquer idade. Cancelado não conta.</div>
+    <div><b style="color:#D63B32">Não tapados da semana</b>Dos encontrados <b>nesta</b> semana, quantos continuam abertos. É o “saldo a tapar” da semana.</div>
+    <div><b style="color:#112D37">Em aberto no total</b>Tudo que está aberto no fim da semana, <b>inclusive buracos de semanas anteriores</b>. Sempre ≥ não tapados da semana.</div>
+    <div><b style="color:#1C4250">Atendimento</b>Tapados ÷ encontrados. Acima de 100% = tapou mais do que apareceu (reduziu o acumulado).</div>
+    <div><b style="color:#9A7B2F">Emlurb</b>Números do acompanhamento semanal Emlurb (no gráfico de evolução, opção “Emlurb”).</div>
+  </div>
+</details>
+
+<div class="grade" style="grid-template-columns:minmax(0,1fr)">
+  <div class="card m-evo tem-marca"><img class="marca-dagua" id="evoMarca" data-siga="static/logo_siga.png" data-emlurb="static/pptx/logo_emlurb.png" src="static/logo_siga.png" alt="SIGA"><div class="card-cab"><h3>Evolução das últimas semanas</h3><span class="sub" id="evoSub"></span>
+      <div class="dir seg" id="segEvo"><button data-v="siga">SIGA</button><button data-v="rep">Números Emlurb</button></div></div>
+    <div class="card-corpo">
+      <div class="m-evo-cards" id="evoCards"></div>
+      <div class="m-evo-graf"><canvas id="grafEvo"></canvas></div>
+      <div class="m-evo-aviso" id="evoAviso"></div>
+      <div class="leg" style="justify-content:space-between"><span id="evoLeg"></span>
+        </div>
+    </div></div>
+
+  <div class="card"><div class="card-cab"><h3>Chuva dia a dia</h3>
+      <span class="sub">semana 20 · postos de Recife (CEMADEN)</span>
+      <div class="dir m-chuva-tot"><span>Total da semana</span><b>42,4 mm</b><small>média histórica: 104,5 mm</small></div></div>
+    <div class="card-corpo" style="height:230px"><canvas id="grafChuva"></canvas></div></div>
+
+  
+  <div class="card tem-marca"><img class="marca-dagua" src="static/logo_siga.png"
+     alt="SIGA" title="Números do SIGA"><div class="card-cab"><h3>Em aberto ao fechar cada semana Emlurb</h3>
+      <span class="sub">Buraco Siga · 2026 · e o que aconteceu com eles depois · clique numa barra para abrir a semana</span></div>
+    <div class="m-estq-resumo">Ao fechar a semana <b>20</b> (terça 19/05) havia <b>351</b> buracos em aberto: <span style="color:#1F7A41"><b>350</b> já foram tapados</span> (metade em até 7 dias),
+      <span style="color:#5F7180"><b>0</b> fechados sem tapar</span> e <span style="color:#A92B23"><b>1</b> continuam abertos hoje</span>.</div>
+    <div class="card-corpo" style="height:260px"><canvas id="grafEstq"></canvas></div>
+    <div class="m-nota" style="padding:0 16px 8px">Semana Emlurb = quarta a terça. Em aberto = registrado até a terça que fecha a semana e ainda não finalizado nem cancelado nesse dia. Semanas antes de o painel começar (barras claras) são um piso:
+      buracos cancelados naquela época não chegaram à base.</div></div>
+
+  <div class="card"><div class="card-cab"><h3>20ª semana nos anos anteriores</h3><span class="sub">chuva — Recife (CEMADEN)</span></div>
+    <div class="card-corpo" style="padding-top:4px">
+    
+    <table class="tabela m-anos"><thead>
+      <tr><th rowspan="2">Ano · período</th><th colspan="2" class="c m-g2 g-rep" title="Acompanhamento semanal Emlurb">Números Emlurb<img class="marca-mini" src="static/pptx/logo_emlurb.png"
+     alt="Emlurb" title="Números Emlurb"></th><th colspan="3" class="c m-g1 g-siga"><img class="marca-mini" src="static/logo_siga.png"
+     alt="SIGA" title="Números do SIGA"></th>
+        <th rowspan="2" class="n">Chuva na<br>semana (mm)</th><th rowspan="2" class="n">Chuva no ano<br>até a semana (mm)</th><th rowspan="2" style="width:14%"></th></tr>
+      <tr><th class="n m-g2 g-rep">Tapados</th><th class="n m-g2 g-rep">Não tapados</th><th class="n m-g1 g-siga">Tapados<br><span class="m-th-sub">finalizados</span></th>
+        <th class="n m-g1 g-siga">Não tapados<br><span class="m-th-sub">da semana</span></th><th class="n m-g1 g-siga">Em aberto<br><span class="m-th-sub">no total</span></th></tr></thead><tbody>
+    <tr class=""><td><b>2021</b><div style="font-size:11px;color:var(--muito-suave)">19/05–25/05</div></td>
+      
+        <td class="n mono m-g2 g-rep"><b>837</b></td><td class="n mono m-g2 g-rep">267</td>
+      
+      <td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td>
+      <td class="n mono">28,4</td><td class="n mono">1.160</td>
+      <td><div class="m-mini"><i style="width:91.0%;background:#6FA3D8"></i></div></td></tr>
+    <tr class=""><td><b>2022</b><div style="font-size:11px;color:var(--muito-suave)">11/05–17/05</div></td>
+      
+        <td class="n mono m-g2 g-rep"><b>263</b></td><td class="n mono m-g2 g-rep">111</td>
+      
+      <td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td>
+      <td class="n mono">57,8</td><td class="n mono">1.215</td>
+      <td><div class="m-mini"><i style="width:95.0%;background:#6FA3D8"></i></div></td></tr>
+    <tr class=""><td><b>2023</b><div style="font-size:11px;color:var(--muito-suave)">10/05–16/05</div></td>
+      
+        <td class="n mono m-g2 g-rep"><b>464</b></td><td class="n mono m-g2 g-rep">108</td>
+      
+      <td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td>
+      <td class="n mono">68,7</td><td class="n mono">900</td>
+      <td><div class="m-mini"><i style="width:71.0%;background:#6FA3D8"></i></div></td></tr>
+    <tr class=""><td><b>2024</b><div style="font-size:11px;color:var(--muito-suave)">08/05–14/05</div></td>
+      
+        <td class="n mono m-g2 g-rep"><b>441</b></td><td class="n mono m-g2 g-rep">172</td>
+      
+      <td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td>
+      <td class="n mono">103,0</td><td class="n mono">794</td>
+      <td><div class="m-mini"><i style="width:62.0%;background:#6FA3D8"></i></div></td></tr>
+    <tr class=""><td><b>2025</b><div style="font-size:11px;color:var(--muito-suave)">14/05–20/05</div></td>
+      
+        <td class="n mono m-g2 g-rep"><b>115</b></td><td class="n mono m-g2 g-rep">198</td>
+      
+      <td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td><td class="n m-g1 g-siga" style="color:var(--muito-suave)">—</td>
+      <td class="n mono">264,6</td><td class="n mono">1.096</td>
+      <td><div class="m-mini"><i style="width:86.0%;background:#6FA3D8"></i></div></td></tr>
+    <tr class="m-atual"><td><b>2026</b><div style="font-size:11px;color:var(--muito-suave)">13/05–19/05</div></td>
+      
+        <td class="n mono m-g2 g-rep"><b>484</b></td><td class="n mono m-g2 g-rep">119</td>
+      
+      <td class="n mono m-g1 g-siga"><b>197</b></td>
+        <td class="n mono m-g1 g-siga"><b>193</b></td><td class="n mono m-g1 g-siga">351</td>
+      
+      <td class="n mono">42,4</td><td class="n mono">1.276</td>
+      <td><div class="m-mini"><i style="width:100.0%;background:#1F4E8C"></i></div></td></tr>
+    </tbody></table>
+    
+    <div class="m-nota"><b>Não tapados da semana</b> = encontrados nesta semana que seguem abertos · <b>Em aberto no total</b> = inclui os de semanas anteriores.
+      “—” no SIGA = antes de o painel existir. A barra mostra a chuva acumulada no ano até o fim da semana, para comparar os anos.</div>
+  </div></div>
+</div>
+
+<div class="grade mt" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+  <div class="card tem-marca"><img class="marca-dagua" src="static/logo_siga.png"
+     alt="SIGA" title="Números do SIGA"><div class="card-cab"><h3>Por RPA</h3><span class="sub">semana 20 · Δ vs semana 19</span></div>
+    <div class="rolagem"><table class="tabela"><thead><tr><th>RPA</th><th class="n">Encontr.</th><th class="n">Tapados</th><th class="n" title="Encontrados na semana ainda em aberto">Não tap.<br>semana</th><th class="n">Em aberto<br>total</th><th class="n">&gt; 7 dias</th><th class="n">Mais<br>antigo</th><th style="width:15%">Atendimento</th></tr></thead><tbody>
+    <tr>
+      <td><b style="color:var(--navy)">RPA 1</b></td>
+      <td class="n mono">27</td>
+      <td class="n mono">17 <small class="down">+10</small></td>
+      <td class="n mono">12</td>
+      <td class="n mono"><a href="monitoramento_ids.html?rpa=RPA 1">29</a></td>
+      <td class="n mono" style="color:#A92B23"><b>17</b></td>
+      <td class="n">698 d</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px"><div class="m-mini" style="flex:1"><i style="width:63%;background:#E8B524"></i></div><span class="mono" style="font-size:11.5px">63%</span></div></td></tr>
+    <tr>
+      <td><b style="color:var(--navy)">RPA 2</b></td>
+      <td class="n mono">22</td>
+      <td class="n mono">34 <small class="down">+17</small></td>
+      <td class="n mono">22</td>
+      <td class="n mono"><a href="monitoramento_ids.html?rpa=RPA 2">46</a></td>
+      <td class="n mono" style="color:#A92B23"><b>24</b></td>
+      <td class="n">63 d</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px"><div class="m-mini" style="flex:1"><i style="width:100%;background:#2E9D57"></i></div><span class="mono" style="font-size:11.5px">155%</span></div></td></tr>
+    <tr>
+      <td><b style="color:var(--navy)">RPA 3</b></td>
+      <td class="n mono">24</td>
+      <td class="n mono">24 <small class="down">+8</small></td>
+      <td class="n mono">20</td>
+      <td class="n mono"><a href="monitoramento_ids.html?rpa=RPA 3">30</a></td>
+      <td class="n mono" style="color:#A92B23"><b>9</b></td>
+      <td class="n">547 d</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px"><div class="m-mini" style="flex:1"><i style="width:100%;background:#2E9D57"></i></div><span class="mono" style="font-size:11.5px">100%</span></div></td></tr>
+    <tr>
+      <td><b style="color:var(--navy)">RPA 4</b></td>
+      <td class="n mono">30</td>
+      <td class="n mono">53 <small class="down">+30</small></td>
+      <td class="n mono">16</td>
+      <td class="n mono"><a href="monitoramento_ids.html?rpa=RPA 4">37</a></td>
+      <td class="n mono" style="color:#A92B23"><b>18</b></td>
+      <td class="n">98 d</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px"><div class="m-mini" style="flex:1"><i style="width:100%;background:#2E9D57"></i></div><span class="mono" style="font-size:11.5px">177%</span></div></td></tr>
+    <tr>
+      <td><b style="color:var(--navy)">RPA 5</b></td>
+      <td class="n mono">51</td>
+      <td class="n mono">51 <small class="down">+11</small></td>
+      <td class="n mono">39</td>
+      <td class="n mono"><a href="monitoramento_ids.html?rpa=RPA 5">62</a></td>
+      <td class="n mono" style="color:#A92B23"><b>23</b></td>
+      <td class="n">375 d</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px"><div class="m-mini" style="flex:1"><i style="width:100%;background:#2E9D57"></i></div><span class="mono" style="font-size:11.5px">100%</span></div></td></tr>
+    <tr>
+      <td><b style="color:var(--navy)">RPA 6</b></td>
+      <td class="n mono">84</td>
+      <td class="n mono">18 <small class="up">-78</small></td>
+      <td class="n mono">84</td>
+      <td class="n mono"><a href="monitoramento_ids.html?rpa=RPA 6">147</a></td>
+      <td class="n mono" style="color:#A92B23"><b>51</b></td>
+      <td class="n">158 d</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px"><div class="m-mini" style="flex:1"><i style="width:21%;background:#D63B32"></i></div><span class="mono" style="font-size:11.5px">21%</span></div></td></tr>
+    
+    <tr class="m-total"><td>Total</td><td class="n mono">238</td><td class="n mono">197</td><td class="n mono">193</td><td class="n mono">351</td><td class="n mono">142</td><td></td><td></td></tr>
+    </tbody></table></div></div>
+
+  <div class="card tem-marca"><img class="marca-dagua" src="static/logo_siga.png"
+     alt="SIGA" title="Números do SIGA"><div class="card-cab"><h3>Tapados por dia</h3><span class="sub">RPA × dia da semana Emlurb · chuva do dia</span>
+      <div class="dir seg" id="segDia"><button class="on" data-v="tapados">Tapados</button><button data-v="encontrados">Encontrados</button></div></div>
+    <div class="rolagem"><table class="tabela m-calor" id="tabCalor"></table></div>
+    <div class="leg" style="padding:0 16px 12px"><span><i style="background:#FBE3E1"></i>dia útil sem nenhum</span><span><i style="background:#F3F5F8"></i>fim de semana</span><span><i style="background:#fff;border:1px dashed #CFD7E0"></i>ainda não chegou</span><span style="margin-left:auto">chuva: postos de Recife (CEMADEN); sobrescrito = posto substituto no dia (Tor = Torreão)</span></div>
+  </div>
+</div>
+
+<div class="grade mt" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,.75fr)">
+  <div class="card tem-marca"><img class="marca-dagua" src="static/logo_siga.png"
+     alt="SIGA" title="Números do SIGA"><div class="card-cab"><h3>Em aberto por tipo de via</h3><span class="sub">fim da semana · Δ vs semana 19</span></div>
+    <div class="card-corpo">
+    
+    
+      <div class="m-via"><b>Arterial</b><div class="m-mini"><i style="width:39.0%;background:#D63B32"></i></div>
+        <span class="mono">86</span><small class="up">↑ 1%</small></div>
+      <div class="m-ruas">Avenida Doutor José Rufino <span>(Barro, RPA 5)</span> <b>7</b> · Avenida Beberibe <span>(Beberibe, RPA 2)</span> <b>6</b> · Avenida Marechal Mascarenhas de Moraes <span>(Imbiribeira, RPA 6)</span> <b>6</b></div>
+    
+      <div class="m-via"><b>Coletora</b><div class="m-mini"><i style="width:19.0%;background:#E8B524"></i></div>
+        <span class="mono">42</span><small class="up">↑ 50%</small></div>
+      <div class="m-ruas">Rua Vinte e Um de Abril <span>(Afogados, RPA 5)</span> <b>11</b> · Avenida Dois Rios <span>(Ibura, RPA 6)</span> <b>6</b> · Avenida Conselheiro Aguiar <span>(Pina, RPA 6)</span> <b>5</b></div>
+    
+      <div class="m-via"><b>Local</b><div class="m-mini"><i style="width:100.0%;background:#1C4250"></i></div>
+        <span class="mono">223</span><small class="up">↑ 13%</small></div>
+      <div class="m-ruas">Rua Onze de Fevereiro <span>(Cordeiro, RPA 4)</span> <b>7</b> · Rua Emílio Monteiro Fonseca <span>(Ibura, RPA 6)</span> <b>6</b> · Avenida Marechal Juarez Távora <span>(Boa Viagem, RPA 6)</span> <b>6</b></div>
+    
+    <div class="m-nota">A base de logradouros classifica em Arterial, Coletora e Local (sem separar principal/secundária).</div>
+    </div></div>
+
+  <div class="card tem-marca"><img class="marca-dagua" src="static/logo_siga.png"
+     alt="SIGA" title="Números do SIGA"><div class="card-cab"><h3>Bairros que mais pedem atenção</h3><span class="sub">mais IDs com +7 dias em aberto</span></div>
+    <div class="rolagem"><table class="tabela"><thead><tr><th>Bairro</th><th>RPA</th><th class="n">Encontr.</th><th class="n">Tapados</th><th class="n">Em aberto</th><th class="n">&gt;7 d</th><th class="n">Mais antigo</th></tr></thead><tbody>
+    <tr><td><b style="color:var(--navy)">Ibura</b></td><td>6</td><td class="n mono">12</td><td class="n mono">0</td>
+      <td class="n mono">28</td><td class="n mono" style="color:#A92B23"><b>14</b></td><td class="n">21 d</td></tr>
+    <tr><td><b style="color:var(--navy)">Cohab</b></td><td>6</td><td class="n mono">8</td><td class="n mono">3</td>
+      <td class="n mono">18</td><td class="n mono" style="color:#A92B23"><b>10</b></td><td class="n">63 d</td></tr>
+    <tr><td><b style="color:var(--navy)">Barro</b></td><td>5</td><td class="n mono">2</td><td class="n mono">10</td>
+      <td class="n mono">10</td><td class="n mono" style="color:#A92B23"><b>9</b></td><td class="n">375 d</td></tr>
+    <tr><td><b style="color:var(--navy)">Imbiribeira</b></td><td>6</td><td class="n mono">19</td><td class="n mono">14</td>
+      <td class="n mono">27</td><td class="n mono" style="color:#A92B23"><b>8</b></td><td class="n">36 d</td></tr>
+    <tr><td><b style="color:var(--navy)">Pina</b></td><td>6</td><td class="n mono">9</td><td class="n mono">0</td>
+      <td class="n mono">22</td><td class="n mono" style="color:#A92B23"><b>8</b></td><td class="n">55 d</td></tr>
+    <tr><td><b style="color:var(--navy)">Boa Viagem</b></td><td>6</td><td class="n mono">19</td><td class="n mono">1</td>
+      <td class="n mono">30</td><td class="n mono" style="color:#A92B23"><b>6</b></td><td class="n">158 d</td></tr>
+    <tr><td><b style="color:var(--navy)">Dois Unidos</b></td><td>2</td><td class="n mono">6</td><td class="n mono">12</td>
+      <td class="n mono">12</td><td class="n mono" style="color:#A92B23"><b>6</b></td><td class="n">21 d</td></tr>
+    <tr><td><b style="color:var(--navy)">Afogados</b></td><td>5</td><td class="n mono">22</td><td class="n mono">4</td>
+      <td class="n mono">24</td><td class="n mono" style="color:#A92B23"><b>5</b></td><td class="n">186 d</td></tr>
+    </tbody></table></div></div>
+
+  <div class="card tem-marca"><img class="marca-dagua" src="static/logo_siga.png"
+     alt="SIGA" title="Números do SIGA"><div class="card-cab"><h3>Há quanto tempo estão abertos</h3><span class="sub">351 IDs</span></div>
+    <div class="card-corpo">
+    
+    
+      <a class="m-idade" href="monitoramento_ids.html?min=0"><span>até 7 d</span><div class="m-mini" style="height:12px"><i style="width:100.0%;background:#2E9D57"></i></div><b class="mono">209</b></a>
+    
+      <a class="m-idade" href="monitoramento_ids.html?min=8"><span>8–15 d</span><div class="m-mini" style="height:12px"><i style="width:32.0%;background:#E8B524"></i></div><b class="mono">67</b></a>
+    
+      <a class="m-idade" href="monitoramento_ids.html?min=16"><span>16–30 d</span><div class="m-mini" style="height:12px"><i style="width:15.0%;background:#EE7D22"></i></div><b class="mono">32</b></a>
+    
+      <a class="m-idade" href="monitoramento_ids.html?min=31"><span>31–90 d</span><div class="m-mini" style="height:12px"><i style="width:12.0%;background:#D63B32"></i></div><b class="mono">25</b></a>
+    
+      <a class="m-idade" href="monitoramento_ids.html?min=91"><span>+90 d</span><div class="m-mini" style="height:12px"><i style="width:9.0%;background:#7A1F3D"></i></div><b class="mono">18</b></a>
+    
+    <div class="m-nota">Clique numa faixa para ver os IDs (com mapa e Excel).</div></div></div>
+</div>
+<p class="m-nota" style="margin-top:12px">Encontrados = Buraco Siga criados na semana. Tapados = finalizados no SIGA na semana (cancelados não contam). Não tapados da semana = encontrados na semana que seguem em aberto no fim dela; “em aberto (todos)” inclui os de semanas anteriores. Chuva: postos de Recife da rede CEMADEN/MCTI.</p>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js"></script>
+
+<script>
+function abrirRep(ano,num,per,t,nt,pl){ const g=id=>document.getElementById(id);
+  g("rpAno").value=ano; g("rpNumI").value=num; g("rpNum").textContent=num; g("rpPer").textContent=per+"/"+ano;
+  g("rpT").value=t??""; g("rpNT").value=nt??""; g("rpP").value=pl!=null?String(pl).replace(".",","):""; g("mdRep").classList.add("aberto"); _rpRpa(ano,num); setTimeout(()=>g("rpT").focus(),50); }
+function _rpRpa(ano,num){ const g=id=>document.getElementById(id);
+  for(let k=1;k<=6;k++) g("rpS"+k).value="";
+  const soma=()=>{ let t=0,a=0; for(let k=1;k<=6;k++){ const v=parseInt(g("rpS"+k).value); if(!isNaN(v)){t+=v;a++;} }
+    const nt=parseInt(g("rpNT").value); g("rpSoma").textContent=a?`soma das RPAs: ${t}`+(!isNaN(nt)&&nt!==t?` · diferente do saldo total (${nt})`:" ✓"):""; };
+  for(let k=1;k<=6;k++) g("rpS"+k).oninput=soma; g("rpNT").addEventListener("input",soma);
+  fetch(`/api/reportado_rpa/${ano}/${num}`).then(r=>r.json()).then(j=>{ let tem=false;
+    for(let k=1;k<=6;k++){ const v=j["RPA "+k]; if(v!=null){ g("rpS"+k).value=v; tem=true; } }
+    g("rpRpa").open=tem; soma(); }).catch(()=>{});
+}
+const DD={"dias": [{"chuva": 4.59, "chuva_fonte": "Várzea", "dia": "2026-05-13", "dsem": "qua", "futuro": false}, {"chuva": 9.49, "chuva_fonte": "Várzea", "dia": "2026-05-14", "dsem": "qui", "futuro": false}, {"chuva": 5.78, "chuva_fonte": "Várzea", "dia": "2026-05-15", "dsem": "sex", "futuro": false}, {"chuva": 6.32, "chuva_fonte": "Várzea", "dia": "2026-05-16", "dsem": "sáb", "futuro": false}, {"chuva": 13.04, "chuva_fonte": "Várzea", "dia": "2026-05-17", "dsem": "dom", "futuro": false}, {"chuva": 3.16, "chuva_fonte": "Várzea", "dia": "2026-05-18", "dsem": "seg", "futuro": false}, {"chuva": 0.0, "chuva_fonte": "Várzea", "dia": "2026-05-19", "dsem": "ter", "futuro": false}], "encontrados": {"RPA 1": [12, 13, 2, 0, 0, 0, 0], "RPA 2": [4, 4, 2, 0, 0, 9, 3], "RPA 3": [5, 0, 4, 0, 0, 13, 2], "RPA 4": [0, 7, 10, 0, 0, 5, 8], "RPA 5": [9, 3, 6, 0, 0, 18, 15], "RPA 6": [14, 18, 19, 0, 0, 30, 3]}, "tapados": {"RPA 1": [0, 0, 0, 0, 0, 0, 0], "RPA 2": [0, 0, 0, 0, 0, 0, 0], "RPA 3": [0, 0, 0, 0, 0, 0, 0], "RPA 4": [0, 0, 0, 0, 0, 0, 0], "RPA 5": [0, 0, 0, 0, 0, 0, 0], "RPA 6": [0, 0, 0, 0, 0, 0, 0]}, "tapados_sem_dia": 197, "tem_tapados": true}, EVO=[{"ano": 2026, "atual": false, "chuva": 96.31, "encontrados": 193, "estoque": null, "fim": "2026-03-31", "inicio": "2026-03-25", "nao_tapados_semana": 142, "num": 13, "reportado": {"nao_tapados": 95, "origem": null, "pluv": 96.3, "tapados": 257}, "tapados": 168, "tapados_reais": true}, {"ano": 2026, "atual": false, "chuva": 244.59, "encontrados": 159, "estoque": null, "fim": "2026-04-07", "inicio": "2026-04-01", "nao_tapados_semana": 150, "num": 14, "reportado": {"nao_tapados": 131, "origem": null, "pluv": 244.59, "tapados": 96}, "tapados": 82, "tapados_reais": true}, {"ano": 2026, "atual": false, "chuva": 99.8, "encontrados": 249, "estoque": null, "fim": "2026-04-14", "inicio": "2026-04-08", "nao_tapados_semana": 199, "num": 15, "reportado": {"nao_tapados": 146, "origem": null, "pluv": 99.9, "tapados": 365}, "tapados": 193, "tapados_reais": true}, {"ano": 2026, "atual": false, "chuva": 18.13, "encontrados": 103, "estoque": null, "fim": "2026-04-21", "inicio": "2026-04-15", "nao_tapados_semana": 65, "num": 16, "reportado": {"nao_tapados": 99, "origem": null, "pluv": 18.13, "tapados": 393}, "tapados": 225, "tapados_reais": true}, {"ano": 2026, "atual": false, "chuva": 69.12, "encontrados": 269, "estoque": null, "fim": "2026-04-28", "inicio": "2026-04-22", "nao_tapados_semana": 165, "num": 17, "reportado": {"nao_tapados": 71, "origem": null, "pluv": 69.13, "tapados": 447}, "tapados": 263, "tapados_reais": true}, {"ano": 2026, "atual": false, "chuva": 262.18, "encontrados": 203, "estoque": null, "fim": "2026-05-05", "inicio": "2026-04-29", "nao_tapados_semana": 199, "num": 18, "reportado": {"nao_tapados": 114, "origem": null, "pluv": 262.18, "tapados": 195}, "tapados": 123, "tapados_reais": true}, {"ano": 2026, "atual": false, "chuva": 131.04, "encontrados": 186, "estoque": null, "fim": "2026-05-12", "inicio": "2026-05-06", "nao_tapados_semana": 175, "num": 19, "reportado": {"nao_tapados": 122, "origem": null, "pluv": 131.04, "tapados": 284}, "tapados": 199, "tapados_reais": true}, {"ano": 2026, "atual": true, "chuva": 42.38, "encontrados": 238, "estoque": null, "fim": "2026-05-19", "inicio": "2026-05-13", "nao_tapados_semana": 193, "num": 20, "reportado": {"nao_tapados": 119, "origem": null, "pluv": 42.38, "tapados": 484}, "tapados": 197, "tapados_reais": true}], SEM_ATUAL=20, SITE_EMLURB=true;
+const ARQ_SEM=(ano,num)=>`monitoramento_s${ano}_${String(num).padStart(2,"0")}.html`;
+/* ── Evolução: SIGA × Números Emlurb (visões separadas) ── */
+const Evo={ graf:null,
+  dados(modo){
+    if(modo==="rep") return EVO.filter(e=>e.reportado&&(e.reportado.tapados!=null||e.reportado.nao_tapados!=null))
+      .map(e=>({num:e.num,per:e.inicio.slice(8,10)+"/"+e.inicio.slice(5,7)+"–"+e.fim.slice(8,10)+"/"+e.fim.slice(5,7),tap:e.reportado.tapados??null,nt:e.reportado.nao_tapados??null,enc:null,est:null,chuva:e.chuva,atual:e.atual}));
+    return EVO.filter(e=>e.tapados!=null||e.encontrados)
+      .map(e=>({num:e.num,per:e.inicio.slice(8,10)+"/"+e.inicio.slice(5,7)+"–"+e.fim.slice(8,10)+"/"+e.fim.slice(5,7),tap:e.tapados,nt:e.nao_tapados_semana,enc:e.encontrados,est:e.estoque,chuva:e.chuva,atual:e.atual}));
+  },
+  desenhar(modo){
+    try{ localStorage.setItem("evoModo2",modo); if(window.ESTATICO) sessionStorage.setItem("modoSite",modo); }catch(e){}
+    kpiModo(modo);
+    document.querySelectorAll("#segEvo button").forEach(b=>b.classList.toggle("on",b.dataset.v===modo));
+    const D=this.dados(modo), soma=k=>D.reduce((a,x)=>a+(x[k]||0),0), comV=k=>D.filter(x=>x[k]!=null), med=k=>comV(k).length?Math.round(soma(k)/comV(k).length):null;
+    const ult=D[D.length-1], ant=D[D.length-2];
+    const dl=(a,b,bomSubir)=>{ if(a==null||b==null) return ""; const v=a-b; if(!v) return `<span class="neutro">= sem. anterior</span>`;
+      return `<span class="${(v>0)===bomSubir?"down":"up"}">${v>0?"+":""}${fmt(v)}</span> vs sem. ${ant.num}`; };
+    const card=(cor,rot,val,det)=>`<div class="m-ec" style="--c:${cor}"><div class="r">${rot}</div><div class="v">${val}</div><div class="det">${det||""}</div></div>`;
+    const mk=document.getElementById("evoMarca"); if(mk){ mk.src=modo==="rep"?mk.dataset.emlurb:mk.dataset.siga; mk.alt=modo==="rep"?"Emlurb":"SIGA"; mk.title=modo==="rep"?"Números Emlurb":"Números do SIGA"; }
+    document.getElementById("evoSub").textContent = modo==="rep" ? "acompanhamento semanal Emlurb" : "SIGA (tapados = finalizados) · clique numa barra para abrir a semana";
+    document.getElementById("evoCards").innerHTML = !D.length ? "" :
+      card("#2E9D57","Tapados · semana "+ult.num, ult.tap==null?"—":fmt(ult.tap), ant?dl(ult.tap,ant.tap,true):"")+
+      card("#EE7D22","Não tapados · semana "+ult.num, ult.nt==null?"—":fmt(ult.nt), ant?dl(ult.nt,ant.nt,false):"")+
+      card("#1C4250","Média de tapados", fmt(med("tap")), `por semana · ${comV("tap").length} semana${comV("tap").length>1?"s":""}`)+
+      (modo==="siga"
+        ? card("#112D37","Em aberto no total", ult.est!=null?fmt(ult.est):"—", "fim da semana "+ult.num+", todas as idades")
+        : card("#2F6FB3","Chuva no período", String(Math.round(soma("chuva"))).replace(".",",")+" mm", "Recife · CEMADEN · "+D.length+" semanas"));
+    const av=document.getElementById("evoAviso");
+    av.innerHTML = window.ESTATICO ? (!D.length ? "Sem números para este intervalo." : "")
+      : !D.length ? (modo==="rep"?"Nenhuma semana com Números Emlurb neste intervalo.":"Ainda não há semana com tapados reais (finalizados) — clique em <b>Atualizar tapados</b>.")
+      : (modo==="siga" && D.length<3 ? `O histórico <b>real</b> começa na semana ${D[0].num}: a cada semana fechada entra mais uma barra aqui. Para semanas anteriores, veja os <b>Números Emlurb</b>.` : "");
+    av.style.display=av.innerHTML?"block":"none";
+    document.getElementById("evoLeg").innerHTML=`<span><i style="background:#2E9D57"></i>tapados</span><span><i style="background:#EE7D22"></i>não tapados (saldo)</span>`+
+      (modo==="siga"?`<span><i style="background:#8A99A6;height:2px"></i>encontrados</span>`:"")+`<span><i style="background:#2F6FB3;height:2px"></i>chuva (mm)</span>`;
+    if(this.graf) this.graf.destroy();
+    if(!D.length){ document.getElementById("grafEvo").style.display="none"; return; }
+    document.getElementById("grafEvo").style.display="";
+    const rotulos={id:"rotulos",afterDatasetsDraw(ch){ const c=ch.ctx; c.save(); c.font="600 11px Inter, Segoe UI, sans-serif"; c.textAlign="center"; c.textBaseline="middle";
+      [0,1].forEach(di=>{ const m=ch.getDatasetMeta(di); if(m.hidden) return; m.data.forEach((b,k)=>{ const v=ch.data.datasets[di].data[k]; if(!v) return;
+        const h=Math.abs(b.base-b.y); if(h<14) return; c.fillStyle="#fff"; c.fillText(fmt(v), b.x, (b.y+b.base)/2); }); });
+      const m0=ch.getDatasetMeta(0), t=ch.getDatasetMeta(1); t.data.forEach((b,k)=>{ const a0=ch.data.datasets[0].data[k], a1=ch.data.datasets[1].data[k];
+        if(a0==null||a1==null) return; const topo=Math.min(b.y, m0.data[k].y); c.fillStyle="#1B2A33"; c.fillText(fmt(a0+a1), b.x, topo-9); }); c.restore(); }};
+    const ds=[
+      {type:"bar",label:"Tapados",data:D.map(x=>x.tap),backgroundColor:D.map(x=>x.atual?"#23824A":"#2E9D57"),stack:"s",borderRadius:{topLeft:0,topRight:0,bottomLeft:5,bottomRight:5},maxBarThickness:58,order:3},
+      {type:"bar",label:"Não tapados",data:D.map(x=>x.nt),backgroundColor:D.map(x=>x.atual?"#D96A12":"#EE7D22"),stack:"s",borderRadius:{topLeft:5,topRight:5},maxBarThickness:58,order:3},
+      {type:"line",label:"Chuva (mm)",data:D.map(x=>x.chuva),borderColor:"#2F6FB3",backgroundColor:"#2F6FB3",yAxisID:"y1",cubicInterpolationMode:"monotone",pointRadius:3,borderWidth:2,order:1}];
+    if(modo==="siga") ds.push({type:"line",label:"Encontrados",data:D.map(x=>x.enc),borderColor:"#8A99A6",borderDash:[5,4],pointRadius:3,tension:.25,order:2});
+    this.graf=new Chart(document.getElementById("grafEvo"),{data:{labels:D.map(x=>["Sem. "+x.num,x.per]),datasets:ds},plugins:[rotulos],
+      options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:16}},interaction:{mode:"index",intersect:false},
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw==null?"—":(c.dataset.yAxisID==="y1"?String(c.raw).replace(".",",")+" mm":fmt(c.raw))}`}}},
+        scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:11}}},y:{stacked:true,beginAtZero:true,grid:{color:"#EEF1F4"},ticks:{font:{size:10}}},
+          y1:{position:"right",beginAtZero:true,grid:{display:false},ticks:{font:{size:10},callback:v=>v+" mm"}}},
+        onClick:(e,els)=>{ if(!els.length) return; const n=D[els[0].index].num; const w=EVO.find(x=>x.num===n); if(!w) return; location.href = window.ESTATICO ? ARQ_SEM(w.ano,w.num) : `?ano=${w.ano}&num=${w.num}`; },
+        onHover:(e,els)=>{ e.native.target.style.cursor=els.length?"pointer":"default"; }}});
+  },
+  iniciar(){ let m="siga"; try{ m=localStorage.getItem("evoModo2")||"siga"; }catch(e){}
+    if(window.ESTATICO){ m=SITE_EMLURB?"rep":"siga"; try{ m=sessionStorage.getItem("modoSite")||m; }catch(e){} if(!SITE_EMLURB) { this.desenhar("siga"); return; } }
+    document.querySelectorAll("#segEvo button").forEach(b=>b.onclick=()=>this.desenhar(b.dataset.v)); this.desenhar(m); }
+};
+function kpiModo(m){ const em=m==="rep"&&document.getElementById("kpiEmlurb"); document.body.dataset.modo=em?"rep":"siga";
+  document.getElementById("kpiSiga").hidden=!!em; if(document.getElementById("kpiEmlurb")) document.getElementById("kpiEmlurb").hidden=!em;
+  document.querySelectorAll("#segKpi button").forEach(b=>b.classList.toggle("on",b.dataset.v===(em?"rep":"siga"))); }
+document.querySelectorAll("#segKpi button").forEach(b=>b.onclick=()=>Evo.desenhar(b.dataset.v));
+Evo.iniciar();
+function calor(qual){
+  const D=DD.dias, M=DD[qual], rp=Object.keys(M);
+  if(qual==="tapados" && !DD.tem_tapados){ document.getElementById("tabCalor").innerHTML=`<tbody><tr><td class="vazio" style="padding:22px">Tapados (finalizados no SIGA) ainda não disponíveis para esta semana — veja “Encontrados”.</td></tr></tbody>`; return; }
+  const mx=Math.max(1,...rp.flatMap(r=>M[r]));
+  const cor=(v,d)=>{ if(d.futuro) return "background:#fff;color:#CFD7E0";
+    const fds=["sáb","dom"].includes(d.dsem);
+    if(!v) return fds?"background:#F3F5F8;color:#B0BAC4":"background:#FBE3E1;color:#A92B23";
+    const t=v/mx; return `background:rgba(46,157,87,${(0.15+t*0.7).toFixed(2)});color:${t>.6?"#fff":"#1B2A33"}`; };
+  let h=`<thead><tr><th>RPA</th>${D.map(d=>`<th class="n">${d.dsem} ${d.dia.slice(8,10)}</th>`).join("")}<th class="n">Total</th></tr></thead><tbody>`;
+  rp.forEach(r=>{ const v=M[r]; h+=`<tr><td><b>${r.replace("RPA ","")}</b></td>${v.map((x,k)=>`<td style="${cor(x,D[k])}">${D[k].futuro?"·":x}</td>`).join("")}<td><b>${v.reduce((a,b)=>a+b,0)}</b></td></tr>`; });
+  const tot=D.map((_,k)=>rp.reduce((a,r)=>a+M[r][k],0));
+  h+=`<tr class="m-total"><td>Total</td>${tot.map((x,k)=>`<td>${D[k].futuro?"":x}</td>`).join("")}<td>${tot.reduce((a,b)=>a+b,0)}</td></tr>`;
+  h+=`<tr class="m-chuva"><td>Chuva mm</td>${D.map(d=>`<td title="${d.chuva_fonte?"posto: "+d.chuva_fonte:""}">${d.chuva==null?(d.futuro?"":"—"):String(d.chuva).replace(".",",")}${d.chuva_fonte&&d.chuva_fonte!=="Várzea"?`<sup class="m-sub-posto">${d.chuva_fonte==="média da cidade"?"méd":d.chuva_fonte.slice(0,3)}</sup>`:""}</td>`).join("")}<td>${D.reduce((a,d)=>a+(d.chuva||0),0).toFixed(1).replace(".",",")}</td></tr></tbody>`;
+  if(qual==="tapados" && DD.tapados_sem_dia) h+=`<tbody><tr><td colspan="${D.length+2}" style="text-align:left;font-family:inherit;font-weight:400;font-size:12px;color:#5F7180;padding:8px 12px">+ ${DD.tapados_sem_dia} tapados desta semana vieram da reconstrução pelo filtro de finalização do SIGA (sabe-se a semana, não o dia) — entram no total da semana, não por dia.</td></tr></tbody>`;
+  document.getElementById("tabCalor").innerHTML=h;
+}
+calor("tapados");
+/* ── Em aberto no fim de cada semana ── */
+(()=>{ const E=[{"acima_30": 30, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 188, "fechados_sem_tapar": 0, "fim": "2026-01-06", "inicio": "2025-12-31", "num": 1, "parcial": false, "tapados_depois": 187}, {"acima_30": 22, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 200, "fechados_sem_tapar": 0, "fim": "2026-01-13", "inicio": "2026-01-07", "num": 2, "parcial": false, "tapados_depois": 199}, {"acima_30": 19, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 2, "em_aberto": 162, "fechados_sem_tapar": 0, "fim": "2026-01-20", "inicio": "2026-01-14", "num": 3, "parcial": false, "tapados_depois": 161}, {"acima_30": 15, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 160, "fechados_sem_tapar": 0, "fim": "2026-01-27", "inicio": "2026-01-21", "num": 4, "parcial": false, "tapados_depois": 159}, {"acima_30": 15, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 147, "fechados_sem_tapar": 0, "fim": "2026-02-03", "inicio": "2026-01-28", "num": 5, "parcial": false, "tapados_depois": 146}, {"acima_30": 15, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 9, "em_aberto": 144, "fechados_sem_tapar": 0, "fim": "2026-02-10", "inicio": "2026-02-04", "num": 6, "parcial": false, "tapados_depois": 143}, {"acima_30": 19, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 173, "fechados_sem_tapar": 0, "fim": "2026-02-17", "inicio": "2026-02-11", "num": 7, "parcial": false, "tapados_depois": 172}, {"acima_30": 20, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 7, "em_aberto": 212, "fechados_sem_tapar": 0, "fim": "2026-02-24", "inicio": "2026-02-18", "num": 8, "parcial": false, "tapados_depois": 211}, {"acima_30": 18, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 227, "fechados_sem_tapar": 0, "fim": "2026-03-03", "inicio": "2026-02-25", "num": 9, "parcial": false, "tapados_depois": 226}, {"acima_30": 25, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 201, "fechados_sem_tapar": 0, "fim": "2026-03-10", "inicio": "2026-03-04", "num": 10, "parcial": false, "tapados_depois": 200}, {"acima_30": 38, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 209, "fechados_sem_tapar": 0, "fim": "2026-03-17", "inicio": "2026-03-11", "num": 11, "parcial": false, "tapados_depois": 208}, {"acima_30": 31, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 201, "fechados_sem_tapar": 0, "fim": "2026-03-24", "inicio": "2026-03-18", "num": 12, "parcial": false, "tapados_depois": 200}, {"acima_30": 34, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 13, "em_aberto": 226, "fechados_sem_tapar": 0, "fim": "2026-03-31", "inicio": "2026-03-25", "num": 13, "parcial": false, "tapados_depois": 225}, {"acima_30": 34, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 8, "em_aberto": 303, "fechados_sem_tapar": 0, "fim": "2026-04-07", "inicio": "2026-04-01", "num": 14, "parcial": false, "tapados_depois": 302}, {"acima_30": 35, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 359, "fechados_sem_tapar": 0, "fim": "2026-04-14", "inicio": "2026-04-08", "num": 15, "parcial": false, "tapados_depois": 358}, {"acima_30": 36, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 237, "fechados_sem_tapar": 0, "fim": "2026-04-21", "inicio": "2026-04-15", "num": 16, "parcial": false, "tapados_depois": 236}, {"acima_30": 38, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 8, "em_aberto": 243, "fechados_sem_tapar": 0, "fim": "2026-04-28", "inicio": "2026-04-22", "num": 17, "parcial": false, "tapados_depois": 242}, {"acima_30": 36, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 7, "em_aberto": 323, "fechados_sem_tapar": 0, "fim": "2026-05-05", "inicio": "2026-04-29", "num": 18, "parcial": false, "tapados_depois": 322}, {"acima_30": 42, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 8, "em_aberto": 310, "fechados_sem_tapar": 0, "fim": "2026-05-12", "inicio": "2026-05-06", "num": 19, "parcial": false, "tapados_depois": 309}, {"acima_30": 43, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 7, "em_aberto": 351, "fechados_sem_tapar": 0, "fim": "2026-05-19", "inicio": "2026-05-13", "num": 20, "parcial": false, "tapados_depois": 350}, {"acima_30": 40, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 10, "em_aberto": 347, "fechados_sem_tapar": 0, "fim": "2026-05-26", "inicio": "2026-05-20", "num": 21, "parcial": false, "tapados_depois": 346}, {"acima_30": 46, "ainda_aberto": 1, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 9, "em_aberto": 454, "fechados_sem_tapar": 0, "fim": "2026-06-02", "inicio": "2026-05-27", "num": 22, "parcial": false, "tapados_depois": 453}, {"acima_30": 50, "ainda_aberto": 2, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 457, "fechados_sem_tapar": 0, "fim": "2026-06-09", "inicio": "2026-06-03", "num": 23, "parcial": false, "tapados_depois": 455}, {"acima_30": 50, "ainda_aberto": 2, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 376, "fechados_sem_tapar": 0, "fim": "2026-06-16", "inicio": "2026-06-10", "num": 24, "parcial": false, "tapados_depois": 374}, {"acima_30": 51, "ainda_aberto": 2, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 8, "em_aberto": 325, "fechados_sem_tapar": 0, "fim": "2026-06-23", "inicio": "2026-06-17", "num": 25, "parcial": false, "tapados_depois": 323}, {"acima_30": 52, "ainda_aberto": 2, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 381, "fechados_sem_tapar": 0, "fim": "2026-06-30", "inicio": "2026-06-24", "num": 26, "parcial": false, "tapados_depois": 379}, {"acima_30": 60, "ainda_aberto": 3, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 432, "fechados_sem_tapar": 0, "fim": "2026-07-07", "inicio": "2026-07-01", "num": 27, "parcial": false, "tapados_depois": 429}, {"acima_30": 51, "ainda_aberto": 3, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 7, "em_aberto": 312, "fechados_sem_tapar": 0, "fim": "2026-07-14", "inicio": "2026-07-08", "num": 28, "parcial": false, "tapados_depois": 309}, {"acima_30": 46, "ainda_aberto": 3, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 8, "em_aberto": 391, "fechados_sem_tapar": 0, "fim": "2026-07-21", "inicio": "2026-07-15", "num": 29, "parcial": false, "tapados_depois": 388}, {"acima_30": 35, "ainda_aberto": 3, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 8, "em_aberto": 485, "fechados_sem_tapar": 0, "fim": "2026-07-28", "inicio": "2026-07-22", "num": 30, "parcial": false, "tapados_depois": 482}, {"acima_30": 40, "ainda_aberto": 3, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 409, "fechados_sem_tapar": 0, "fim": "2026-08-04", "inicio": "2026-07-29", "num": 31, "parcial": false, "tapados_depois": 406}, {"acima_30": 39, "ainda_aberto": 3, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 7, "em_aberto": 301, "fechados_sem_tapar": 0, "fim": "2026-08-11", "inicio": "2026-08-05", "num": 32, "parcial": false, "tapados_depois": 298}, {"acima_30": 45, "ainda_aberto": 3, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 295, "fechados_sem_tapar": 0, "fim": "2026-08-18", "inicio": "2026-08-12", "num": 33, "parcial": false, "tapados_depois": 292}, {"acima_30": 27, "ainda_aberto": 4, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 310, "fechados_sem_tapar": 0, "fim": "2026-08-25", "inicio": "2026-08-19", "num": 34, "parcial": false, "tapados_depois": 306}, {"acima_30": 23, "ainda_aberto": 6, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 262, "fechados_sem_tapar": 0, "fim": "2026-09-01", "inicio": "2026-08-26", "num": 35, "parcial": false, "tapados_depois": 256}, {"acima_30": 19, "ainda_aberto": 7, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 322, "fechados_sem_tapar": 0, "fim": "2026-09-08", "inicio": "2026-09-02", "num": 36, "parcial": false, "tapados_depois": 315}, {"acima_30": 15, "ainda_aberto": 8, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 271, "fechados_sem_tapar": 0, "fim": "2026-09-15", "inicio": "2026-09-09", "num": 37, "parcial": false, "tapados_depois": 263}, {"acima_30": 18, "ainda_aberto": 18, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 7, "em_aberto": 282, "fechados_sem_tapar": 1, "fim": "2026-09-22", "inicio": "2026-09-16", "num": 38, "parcial": false, "tapados_depois": 263}, {"acima_30": 11, "ainda_aberto": 37, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 6, "em_aberto": 309, "fechados_sem_tapar": 4, "fim": "2026-09-29", "inicio": "2026-09-23", "num": 39, "parcial": false, "tapados_depois": 268}, {"acima_30": 14, "ainda_aberto": 61, "ano": 2026, "antes_painel": true, "dias_ate_tapar": 3, "em_aberto": 356, "fechados_sem_tapar": 4, "fim": "2026-10-06", "inicio": "2026-09-30", "num": 40, "parcial": false, "tapados_depois": 291}, {"acima_30": 12, "ainda_aberto": 91, "ano": 2026, "antes_painel": false, "dias_ate_tapar": 2, "em_aberto": 234, "fechados_sem_tapar": 4, "fim": "2026-10-13", "inicio": "2026-10-07", "num": 41, "parcial": false, "tapados_depois": 139}, {"acima_30": 17, "ainda_aberto": 170, "ano": 2026, "antes_painel": false, "dias_ate_tapar": 2, "em_aberto": 243, "fechados_sem_tapar": 4, "fim": "2026-10-20", "inicio": "2026-10-14", "num": 42, "parcial": false, "tapados_depois": 69}, {"acima_30": 19, "ainda_aberto": 326, "ano": 2026, "antes_painel": false, "dias_ate_tapar": null, "em_aberto": 326, "fechados_sem_tapar": 0, "fim": "2026-10-27", "inicio": "2026-10-21", "num": 43, "parcial": true, "tapados_depois": 0}], el=document.getElementById("grafEstq"); if(!el||!E.length) return;
+  const al=(c,e)=>e.antes_painel?c+"88":c, atual=e=>e.num===SEM_ATUAL;
+  new Chart(el,{type:"bar",data:{labels:E.map(e=>"S"+String(e.num).padStart(2,"0")),datasets:[
+    {label:"Tapados depois",data:E.map(e=>e.tapados_depois),backgroundColor:E.map(e=>al(atual(e)?"#1F7A41":"#2E9D57",e)),stack:"s"},
+    {label:"Fechados sem tapar",data:E.map(e=>e.fechados_sem_tapar),backgroundColor:E.map(e=>al("#A9B4C0",e)),stack:"s"},
+    {label:"Ainda em aberto hoje",data:E.map(e=>e.ainda_aberto),backgroundColor:E.map(e=>al(atual(e)?"#A92B23":"#D63B32",e)),stack:"s",borderRadius:{topLeft:3,topRight:3}}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"},
+      tooltip:{callbacks:{title:c=>{ const e=E[c[0].dataIndex]; return `Semana ${e.num} · ${e.inicio.slice(8,10)}/${e.inicio.slice(5,7)}–${e.fim.slice(8,10)}/${e.fim.slice(5,7)} · ${fmt(e.em_aberto)} em aberto`; },
+        footer:c=>{ const e=E[c[0].dataIndex]; return (e.dias_ate_tapar!=null?`metade dos tapados em até ${e.dias_ate_tapar} dias`:"")+(e.antes_painel?"\nantes do painel: piso (sem cancelados da época)":""); }}}},
+      scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:10}}},y:{stacked:true,beginAtZero:true,grid:{color:"#EEF1F4"},ticks:{callback:v=>fmt(v)}}},
+      onClick:(e,els)=>{ if(!els.length) return; const w=E[els[0].index]; location.href = window.ESTATICO ? ARQ_SEM(w.ano,w.num) : `?ano=${w.ano}&num=${w.num}`; },
+      onHover:(e,els)=>{ e.native.target.style.cursor=els.length?"pointer":"default"; }}});
+})();
+/* ── Chuva dia a dia ── */
+(()=>{ const D=DD.dias, el=document.getElementById("grafChuva"); if(!el) return;
+  const rot={id:"rotChuva",afterDatasetsDraw(ch){ const c=ch.ctx; c.save(); c.font="600 12px Inter, Segoe UI, sans-serif"; c.textAlign="center"; c.fillStyle="#1F4E8C";
+    ch.getDatasetMeta(0).data.forEach((b,k)=>{ const v=D[k].chuva; if(v==null) return; c.fillText(String(Math.round(v*10)/10).replace(".",",")+" mm", b.x, b.y-7); }); c.restore(); }};
+  new Chart(el,{type:"bar",data:{labels:D.map(d=>[d.dsem,d.dia.slice(8,10)+"/"+d.dia.slice(5,7)]),
+    datasets:[{label:"Chuva (mm)",data:D.map(d=>d.chuva==null?0:d.chuva),backgroundColor:D.map(d=>d.futuro?"#E6EEF8":"#2F6FB3"),borderRadius:5,maxBarThickness:70}]},
+    plugins:[rot],options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:22}},plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:c=>{ const d=D[c.dataIndex]; return d.chuva==null?(d.futuro?" ainda não chegou":" sem leitura"):` ${String(d.chuva).replace(".",",")} mm`+(d.chuva_fonte&&d.chuva_fonte!=="Várzea"?` (posto ${d.chuva_fonte})`:""); }}}},
+      scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:"#EEF1F4"},ticks:{callback:v=>v+" mm",font:{size:10}}}}}});
+})();
+document.querySelectorAll("#segDia button").forEach(b=>b.onclick=()=>{ document.querySelectorAll("#segDia button").forEach(x=>x.classList.toggle("on",x===b)); calor(b.dataset.v); });
+</script>
+
+</body>
+</html>
