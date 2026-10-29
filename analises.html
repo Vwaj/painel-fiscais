@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Análises · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1793296857">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-analises">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 29/10/2026 14:32</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<div class="cab-pagina">
+  <div><h1>Análises</h1>
+    <p>Chuva, maré e alagamentos; quanto tempo as OS levam para sair do aberto e onde os problemas voltam a aparecer.</p></div>
+  <div class="acoes so-local"><a class="btn" href="/analises/excel?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>
+</svg>Excel</a></div>
+</div>
+
+<form class="filtros" method="get" id="fAn" style="align-items:flex-end">
+  <div class="campo"><label>Tipo de serviço</label><div style="display:flex;gap:6px;align-items:center"><div id="fTipos"></div>
+    <a class="chip" href="?todos=1&meses=6&dias=365">todos os tipos</a></div></div>
+  <div class="campo"><label>Tempo de resolução: OS fechadas nos últimos</label><select name="meses" onchange="this.form.submit()"><option value="1" >1 mês</option><option value="3" >3 meses</option><option value="6" selected>6 meses</option><option value="12" >12 meses</option><option value="24" >24 meses</option></select></div>
+  <div class="campo"><label>Reincidência: OS abertas nos últimos</label><select name="dias" onchange="this.form.submit()"><option value="90" >90 dias</option><option value="180" >180 dias</option><option value="365" selected>365 dias</option><option value="730" >730 dias</option></select></div>
+  <div class="campo"><label>Chuva × buracos: últimos</label><select name="dias_chuva" onchange="this.form.submit()"><option value="90" >90 dias</option><option value="180" selected>180 dias</option><option value="365" >365 dias</option><option value="730" >730 dias</option></select></div>
+  <div class="campo"><label>Alagamentos: últimos</label><select name="dias_alag" onchange="this.form.submit()"><option value="30" >30 dias</option><option value="90" selected>90 dias</option><option value="180" >180 dias</option><option value="365" >365 dias</option></select></div>
+  <div id="tiposHidden"></div>
+</form>
+
+
+
+<section class="dren" id="drenagem">
+  <div class="dren-faixa">
+    <svg class="dren-ondas" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C100 10 200 50 300 30 S500 10 600 30 800 50 900 30 1100 10 1200 30" fill="none" stroke="#5FD3C7" stroke-width="2" opacity=".35"/><path d="M0 44 C100 24 200 64 300 44 S500 24 600 44 800 64 900 44 1100 24 1200 44" fill="none" stroke="#5FD3C7" stroke-width="2" opacity=".2"/></svg>
+    <div class="dren-regua" aria-label="Régua de maré usada pelo painel">
+      <span><i class="r0"></i>abaixo de 1,6 m · tranquilo</span>
+      <span><i class="r1"></i>1,6 m · com chuva, alaga</span>
+      <span><i class="r2"></i>1,7 m · alaga até sem chuva</span>
+      <span><i class="r3"></i>2,2 m · maré muito alta</span>
+    </div>
+    <div>
+      <span class="dren-sobre">Drenagem</span>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M2 17c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M12 3v4M9.5 5.5 12 8l2.5-2.5"/>
+</svg>Chuva, maré e alagamentos</h2>
+      <p>Onde alaga, com que maré e quanta chuva, e quais caixas coletoras limpar primeiro. Últimos 90 dias.</p>
+    </div>
+  </div>
+  
+  
+  <div class="dren-kpis">
+    <div class="dk"><span>Pontos de alagamento abertos</span><b>684</b><em>0 nunca fiscalizado(s)</em></div>
+    <div class="dk"><span>Críticos abertos</span><b class="v">14</b><em>mais antigo há 877 dias</em></div>
+    <div class="dk"><span>Sem fiscalização há +45 dias</span><b class="a">664</b>
+      
+      <div class="dk-barra"><i style="width:3.151862464183381%;background:#0B7A8C"></i><i style="width:1.7191977077363898%;background:#E0921F"></i><i style="width:95.12893982808023%;background:#B8321A"></i></div></div>
+    <div class="dk"><span>Locais reincidentes</span><b>0</b><em>3 ou mais OS no mesmo ponto em 90 dias</em></div>
+    <a class="dk escuro" href="#limpeza"><span>Caixas para limpar já</span><b>20</b><em>nota 60 ou mais · ver a fila →</em></a>
+  </div>
+
+  <div class="dren-g2">
+    <div class="card dren-card">
+      <div class="card-cab"><h3>Quando Recife alaga</h3><span class="sub">novos pontos de alagamento por dia</span></div>
+      <div class="card-corpo">
+        
+        
+        
+        <div class="mz" style="grid-template-columns:120px repeat(5,1fr)">
+          <span></span><span class="mz-c">sem chuva</span><span class="mz-c">até 5 mm</span><span class="mz-c">5–20 mm</span><span class="mz-c">20–50 mm</span><span class="mz-c">+50 mm</span>
+          
+            
+            <span class="mz-l">maré acima de 2,20 m</span>
+            
+              
+              <span class="mz-v n1" title="2 dia(s) · 0 novo(s) ponto(s)">0,0</span>
+            
+              
+              <span class="mz-v n1" title="3 dia(s) · 2 novo(s) ponto(s)">0,7</span>
+            
+              
+              <span class="mz-v n1" title="2 dia(s) · 0 novo(s) ponto(s)">0,0</span>
+            
+              
+              <span class="mz-v n7" title="1 dia(s) · 6 novo(s) ponto(s)">6,0</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+            
+          
+            
+            <span class="mz-l">maré 2,00–2,20 m</span>
+            
+              
+              <span class="mz-v n1" title="2 dia(s) · 0 novo(s) ponto(s)">0,0</span>
+            
+              
+              <span class="mz-v n1" title="1 dia(s) · 0 novo(s) ponto(s)">0,0</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+            
+          
+            
+            <span class="mz-l">maré 1,70–2,00 m</span>
+            
+              
+              <span class="mz-v n1 hoje" title="4 dia(s) · 0 novo(s) ponto(s)">0,0</span>
+            
+              
+              <span class="mz-v n1" title="4 dia(s) · 2 novo(s) ponto(s)">0,5</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+            
+          
+            
+            <span class="mz-l">maré até 1,70 m</span>
+            
+              
+              <span class="mz-v n1" title="1 dia(s) · 0 novo(s) ponto(s)">0,0</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+              
+              <span class="mz-v n0" title="0 dia(s) · 0 novo(s) ponto(s)">—</span>
+            
+            
+          
+        </div>
+        <div class="mz-nota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><span><b>Leitura:</b> cada quadro é a média de novos pontos de alagamento por dia, conforme a maré mais alta do dia e a chuva do dia. Quanto mais escuro, mais alaga. Com a maré acima de 1,6 m, pouca chuva já basta; acima de 1,7 m, os pontos baixos alagam até sem chuva. O quadro com contorno é <b>hoje</b>.</span></div>
+        <div class="mz-rod">20 dias com maré e chuva medidas · 20 novos pontos no período</div>
+        
+      </div>
+    </div>
+    <div class="card dren-card">
+      <div class="card-cab"><h3>Maré × alagamentos · últimos 30 dias</h3><span class="sub">linha: maré mais alta do dia · barras: chuva · bolinhas: novos pontos</span></div>
+      <div class="card-corpo"><div style="height:250px"><canvas id="grafMareAlag"></canvas></div>
+        <div class="dren-chips">
+          <span class="ch t">30% dos pontos foram abertos com maré acima de 1,6 m</span>
+          <span class="ch v">Próximas marés muito altas (≥ 2,2 m): 31/10 · até 2,33 m</span>
+        </div></div>
+    </div>
+  </div>
+
+  <div class="card mt dren-card" id="limpeza">
+    <div class="card-cab"><h3>Fila de limpeza das caixas coletoras</h3>
+      <span class="sub">sugestão para a Limpeza Programada (limpeza do conteúdo), não para a vistoria da estrutura</span>
+      <div class="dir"><button type="button" class="btn peq" onclick="copiarFila()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>
+</svg>Copiar lista para WhatsApp</button></div></div>
+    <div class="rolagem" style="max-height:560px">
+    <table class="tabela fila"><thead><tr><th>#</th><th>Local</th><th style="width:200px">Nota</th><th>Por quê</th><th>Última limpeza</th><th>Fiscal</th></tr></thead><tbody>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">1</td>
+        <td><b style="color:var(--navy)">Praça do Jardim São Paulo</b> <span style="color:var(--muito-suave)">· praça</span>
+          <div style="font-size:12px;color:var(--suave)">Jardim Sao Paulo · RPA 5 · ID 52446</div></td>
+        <td><div class="nota"><div><i style="width:79%;background:#D9662B"></i></div><b>79</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 156 d</span><span class="m-reinc">alagou 2× em 90 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 89 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 363 dias</td>
+        <td>WELDSON</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">2</td>
+        <td><b style="color:var(--navy)">Travessa do Gaspar</b> <span style="color:var(--muito-suave)">· toda via</span>
+          <div style="font-size:12px;color:var(--suave)">Sao Jose · RPA 1 · ID 20499</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 654 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 639 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 456 dias</td>
+        <td>DRENAGEM R1</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">3</td>
+        <td><b style="color:var(--navy)">Rua Imperial</b> <span style="color:var(--muito-suave)">· após travessa do Gaspar</span>
+          <div style="font-size:12px;color:var(--suave)">Sao Jose · RPA 1 · ID 21397</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 639 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 630 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 456 dias</td>
+        <td>DRENAGEM R1</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">4</td>
+        <td><b style="color:var(--navy)">Rua Alemanha</b> <span style="color:var(--muito-suave)">· com rua Noruega</span>
+          <div style="font-size:12px;color:var(--suave)">Imbiribeira · RPA 6 · ID 28832</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 520 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 463 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 488 dias</td>
+        <td>RENILSON</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">5</td>
+        <td><b style="color:var(--navy)">Avenida Norte Miguel Arraes de Alencar</b> <span style="color:var(--muito-suave)">· em frente ao número 6292 obs, trecho de via com alagamento. Caixa coletora com obstrução na captação da água</span>
+          <div style="font-size:12px;color:var(--suave)">Casa Amarela · RPA 3 · ID 43299</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 330 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 240 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">6</td>
+        <td><b style="color:var(--navy)">Rua Sete Pecados</b> <span style="color:var(--muito-suave)">· número 59 oposto</span>
+          <div style="font-size:12px;color:var(--suave)">Arruda · RPA 2 · ID 4417</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 891 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 861 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>JOÃO PAULO</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">7</td>
+        <td><b style="color:var(--navy)">Avenida Sul Gov. Cid Sampaio</b> <span style="color:var(--muito-suave)">· numero 1290</span>
+          <div style="font-size:12px;color:var(--suave)">Cabanga · RPA 1 · ID 46635</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 259 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 259 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 183 dias</td>
+        <td>WELLINGTON</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">8</td>
+        <td><b style="color:var(--navy)">Avenida Norte Miguel Arraes de Alencar</b> <span style="color:var(--muito-suave)">· esquina com a Rua Desembargador Fonseca Galvão. obs, via com ponto de alagamento.</span>
+          <div style="font-size:12px;color:var(--suave)">Vasco da Gama · RPA 3 · ID 47750</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 240 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 184 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">9</td>
+        <td><b style="color:var(--navy)">Rua Professor Manuel Torres</b> <span style="color:var(--muito-suave)">· esquina com a Rua Jacob. obs, linha d&#39;água com obstrução na passagem da água</span>
+          <div style="font-size:12px;color:var(--suave)">Bomba do Hemeterio · RPA 2 · ID 56804</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 86 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 86 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">10</td>
+        <td><b style="color:var(--navy)">Avenida Santos Dumont</b> <span style="color:var(--muito-suave)">· esquina com a Rua Paulino Gomes de Souza. obs, Ha obstrução na rede de canaletas e caixa de drenagem</span>
+          <div style="font-size:12px;color:var(--suave)">Gracas · RPA 3 · ID 56959</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 83 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 83 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">11</td>
+        <td><b style="color:var(--navy)">Rua São Sebastião</b> <span style="color:var(--muito-suave)">· em frente ao número 408 obs, obstrução na captação de água suja provavelmente Compesa.</span>
+          <div style="font-size:12px;color:var(--suave)">Agua Fria · RPA 2 · ID 57310</div></td>
+        <td><div class="nota"><div><i style="width:72%;background:#D9662B"></i></div><b>72</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 76 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 76 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">12</td>
+        <td><b style="color:var(--navy)">Avenida Mário Álvares Pereira de Lyra</b> <span style="color:var(--muito-suave)">· Trecho N⁰ 1593</span>
+          <div style="font-size:12px;color:var(--suave)">Cordeiro · RPA 4 · ID 56954</div></td>
+        <td><div class="nota"><div><i style="width:64%;background:#D9662B"></i></div><b>64</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 84 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 84 d</span></div></td>
+        <td style="">há 82 dias</td>
+        <td>MARCELO</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">13</td>
+        <td><b style="color:var(--navy)">Rua Paris</b> <span style="color:var(--muito-suave)">· igreja essência de Cristo</span>
+          <div style="font-size:12px;color:var(--suave)">Imbiribeira · RPA 6 · ID 33087</div></td>
+        <td><div class="nota"><div><i style="width:62%;background:#D9662B"></i></div><b>62</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 457 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 457 d</span></div></td>
+        <td style="">há 61 dias</td>
+        <td>RENILSON</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">14</td>
+        <td><b style="color:var(--navy)">Rua Noruega</b> <span style="color:var(--muito-suave)">· numero 200</span>
+          <div style="font-size:12px;color:var(--suave)">Imbiribeira · RPA 6 · ID 56825</div></td>
+        <td><div class="nota"><div><i style="width:62%;background:#D9662B"></i></div><b>62</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 86 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 86 d</span></div></td>
+        <td style="">há 61 dias</td>
+        <td>RENILSON</td></tr>
+    
+      <tr><td class="n" style="color:var(--muito-suave)">15</td>
+        <td><b style="color:var(--navy)">Rua Nogueira Lima</b> <span style="color:var(--muito-suave)">· esquina com a Rua Prudente de Moraes. obs, linha d&#39;água com obstrução na passagem da água</span>
+          <div style="font-size:12px;color:var(--suave)">Hipodromo · RPA 2 · ID 59983</div></td>
+        <td><div class="nota"><div><i style="width:60%;background:#D9662B"></i></div><b>60</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 30 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">16</td>
+        <td><b style="color:var(--navy)">Estrada Velha de Água Fria</b> <span style="color:var(--muito-suave)">· esquina com a Rua professor Manuel Torres. obs, trecho de via com ponto de alagamento</span>
+          <div style="font-size:12px;color:var(--suave)">Arruda · RPA 2 · ID 50670</div></td>
+        <td><div class="nota"><div><i style="width:59%;background:#E0A23F"></i></div><b>59</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 188 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span><span class="m-visita">sem visita há 188 d</span></div></td>
+        <td style="">há 23 dias</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">17</td>
+        <td><b style="color:var(--navy)">Praça do Jardim São Paulo</b> <span style="color:var(--muito-suave)">· 33/2</span>
+          <div style="font-size:12px;color:var(--suave)">Jardim Sao Paulo · RPA 5 · ID 61315</div></td>
+        <td><div class="nota"><div><i style="width:54%;background:#E0A23F"></i></div><b>54</b></div></td>
+        <td><div class="motivos"><span class="m-reinc">alagou 2× em 90 d</span><span class="m-pouca">alaga com pouca chuva ou maré baixa</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>WELDSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">18</td>
+        <td><b style="color:var(--navy)">Avenida Norte Miguel Arraes de Alencar</b> <span style="color:var(--muito-suave)">· ao lado do número 7574, e lado oposto ao parque da macaxeira. obs, existe vazamento Compesa no local</span>
+          <div style="font-size:12px;color:var(--suave)">Macaxeira · RPA 3 · ID 60969</div></td>
+        <td><div class="nota"><div><i style="width:50%;background:#E0A23F"></i></div><b>50</b></div></td>
+        <td><div class="motivos"><span class="m-pouca">alaga com pouca chuva ou maré baixa</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 619 dias</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">19</td>
+        <td><b style="color:var(--navy)">Avenida Beberibe</b> <span style="color:var(--muito-suave)">· em frente ao número 1350 obs, trecho de via sem a drenagem em linha d&#39;água</span>
+          <div style="font-size:12px;color:var(--suave)">Arruda · RPA 2 · ID 60904</div></td>
+        <td><div class="nota"><div><i style="width:50%;background:#E0A23F"></i></div><b>50</b></div></td>
+        <td><div class="motivos"><span class="m-pouca">alaga com pouca chuva ou maré baixa</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 188 dias</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">20</td>
+        <td><b style="color:var(--navy)">Avenida Dois Rios</b> <span style="color:var(--muito-suave)">· Sesi do ibura</span>
+          <div style="font-size:12px;color:var(--suave)">Ibura · RPA 6 · ID 20593 · <b style="color:#8A2412">crítico</b></div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-crit">crítico aberto há 653 d</span><span class="m-visita">sem visita há 86 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">21</td>
+        <td><b style="color:var(--navy)">Avenida Engenheiro Abdias de Carvalho</b> <span style="color:var(--muito-suave)">· PRACA DA CHESF</span>
+          <div style="font-size:12px;color:var(--suave)">Torroes · RPA 4 · ID 33030 · <b style="color:#8A2412">crítico</b></div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-crit">crítico aberto há 458 d</span><span class="m-visita">sem visita há 97 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>MARCELO</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">22</td>
+        <td><b style="color:var(--navy)">Rua José Natário</b> <span style="color:var(--muito-suave)">· enfrente ao Administrativo Metrô REC</span>
+          <div style="font-size:12px;color:var(--suave)">Areias · RPA 5 · ID 46750 · <b style="color:#8A2412">crítico</b></div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-crit">crítico aberto há 255 d</span><span class="m-visita">sem visita há 97 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 531 dias</td>
+        <td>MARCELO</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">23</td>
+        <td><b style="color:var(--navy)">Avenida Dois Rios</b> <span style="color:var(--muito-suave)">· entrada do Sesi</span>
+          <div style="font-size:12px;color:var(--suave)">Cohab · RPA 6 · ID 49382 · <b style="color:#8A2412">crítico</b></div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-crit">crítico aberto há 211 d</span><span class="m-visita">sem visita há 156 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>ADRIANO J</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">24</td>
+        <td><b style="color:var(--navy)">Rua Delmiro Gouveia</b> <span style="color:var(--muito-suave)">· Enfrente a CHESF</span>
+          <div style="font-size:12px;color:var(--suave)">Torroes · RPA 4 · ID 5346 · <b style="color:#8A2412">crítico</b></div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-crit">crítico aberto há 877 d</span><span class="m-visita">sem visita há 93 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>MARCELO</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">25</td>
+        <td><b style="color:var(--navy)">Rua Quinze de Março</b> <span style="color:var(--muito-suave)">· Praça da CHESF</span>
+          <div style="font-size:12px;color:var(--suave)">Torroes · RPA 4 · ID 5348 · <b style="color:#8A2412">crítico</b></div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-crit">crítico aberto há 877 d</span><span class="m-visita">sem visita há 93 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>MARCELO</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">26</td>
+        <td><b style="color:var(--navy)">Avenida Encanta Moça</b> <span style="color:var(--muito-suave)">· numero 162</span>
+          <div style="font-size:12px;color:var(--suave)">Pina · RPA 6 · ID 54170 · <b style="color:#8A2412">crítico</b></div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-crit">crítico aberto há 125 d</span><span class="m-visita">sem visita há 125 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">27</td>
+        <td><b style="color:var(--navy)">Rua Jornalista Edson Regis</b> <span style="color:var(--muito-suave)">· frevo</span>
+          <div style="font-size:12px;color:var(--suave)">Ibura · RPA 6 · ID 1038</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 946 d</span><span class="m-visita">sem visita há 457 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">28</td>
+        <td><b style="color:var(--navy)">Rua Francisco Barreto</b> <span style="color:var(--muito-suave)">· com rua Cosme e Damião</span>
+          <div style="font-size:12px;color:var(--suave)">Ipsep · RPA 6 · ID 1096</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 945 d</span><span class="m-visita">sem visita há 177 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">29</td>
+        <td><b style="color:var(--navy)">Avenida Engenho Muribara</b> <span style="color:var(--muito-suave)">· academia superação</span>
+          <div style="font-size:12px;color:var(--suave)">Cohab · RPA 6 · ID 13272</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 777 d</span><span class="m-visita">sem visita há 527 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">30</td>
+        <td><b style="color:var(--navy)">Rua São Miguel</b> <span style="color:var(--muito-suave)">· 945</span>
+          <div style="font-size:12px;color:var(--suave)">Afogados · RPA 5 · ID 13899</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 770 d</span><span class="m-visita">sem visita há 205 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>WELDSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">31</td>
+        <td><b style="color:var(--navy)">Rua do Muniz</b> <span style="color:var(--muito-suave)">· numero 162</span>
+          <div style="font-size:12px;color:var(--suave)">Sao Jose · RPA 1 · ID 15382</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 749 d</span><span class="m-visita">sem visita há 749 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 303 dias</td>
+        <td>WELLINGTON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">32</td>
+        <td><b style="color:var(--navy)">Avenida Dr Dirceu Velloso Toscano de Brito</b> <span style="color:var(--muito-suave)">· embaixo da via mangue</span>
+          <div style="font-size:12px;color:var(--suave)">Pina · RPA 6 · ID 1559</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 933 d</span><span class="m-visita">sem visita há 933 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">33</td>
+        <td><b style="color:var(--navy)">Rua Mamanguape</b> <span style="color:var(--muito-suave)">· numero 665</span>
+          <div style="font-size:12px;color:var(--suave)">Boa Viagem · RPA 6 · ID 15977</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 742 d</span><span class="m-visita">sem visita há 476 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">34</td>
+        <td><b style="color:var(--navy)">Avenida Centenário Alberto Santos Dumont</b> <span style="color:var(--muito-suave)">· túnel</span>
+          <div style="font-size:12px;color:var(--suave)">Ibura · RPA 6 · ID 19044</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 687 d</span><span class="m-visita">sem visita há 638 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>RENILSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">35</td>
+        <td><b style="color:var(--navy)">Rua Bernardo Vieira de Melo</b> <span style="color:var(--muito-suave)">· próximo ao cruzamento com a rua do Brum</span>
+          <div style="font-size:12px;color:var(--suave)">Recife · RPA 1 · ID 19618</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 678 d</span><span class="m-visita">sem visita há 255 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 252 dias</td>
+        <td>WELLINGTON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">36</td>
+        <td><b style="color:var(--navy)">Avenida Norte Miguel Arraes de Alencar</b> <span style="color:var(--muito-suave)">· esquina com a rua da Mangabeira</span>
+          <div style="font-size:12px;color:var(--suave)">Mangabeira · RPA 3 · ID 20493</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 654 d</span><span class="m-visita">sem visita há 654 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>CARLOS M</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">37</td>
+        <td><b style="color:var(--navy)">Rua Desembargador Góis Cavalcante</b> <span style="color:var(--muito-suave)">· frente ao VIA ROMA CENTER (oposto ao nro 480)</span>
+          <div style="font-size:12px;color:var(--suave)">Parnamirim · RPA 3 · ID 20517</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 654 d</span><span class="m-visita">sem visita há 654 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>JAÍLSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">38</td>
+        <td><b style="color:var(--navy)">Avenida Rui Barbosa</b> <span style="color:var(--muito-suave)">· frente a Acadêmia Pernambuca de Letras (Av Dr Malaquias)</span>
+          <div style="font-size:12px;color:var(--suave)">Jaqueira · RPA 3 · ID 20520</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 654 d</span><span class="m-visita">sem visita há 630 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>JAÍLSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">39</td>
+        <td><b style="color:var(--navy)">Avenida Liberdade</b> <span style="color:var(--muito-suave)">· 972</span>
+          <div style="font-size:12px;color:var(--suave)">Jardim Sao Paulo · RPA 5 · ID 20534</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 654 d</span><span class="m-visita">sem visita há 654 d</span></div></td>
+        <td style="">nenhuma registrada</td>
+        <td>WELDSON</td></tr>
+    
+      <tr class="fila-mais" hidden><td class="n" style="color:var(--muito-suave)">40</td>
+        <td><b style="color:var(--navy)">Avenida Marechal Mascarenhas de Moraes</b> <span style="color:var(--muito-suave)">· Rua Nápoles</span>
+          <div style="font-size:12px;color:var(--suave)">Imbiribeira · RPA 6 · ID 20545</div></td>
+        <td><div class="nota"><div><i style="width:47%;background:#E0A23F"></i></div><b>47</b></div></td>
+        <td><div class="motivos"><span class="m-tempo">aberto há 653 d</span><span class="m-visita">sem visita há 653 d</span></div></td>
+        <td style="color:#8A2412;font-weight:600">há 488 dias</td>
+        <td>ADRIANO J</td></tr>
+    
+    </tbody></table></div>
+    <div style="padding:8px 16px"><button type="button" class="btn peq" onclick="document.querySelectorAll('.fila-mais').forEach(t=>t.hidden=!t.hidden);this.textContent=this.textContent.startsWith('Ver')?'Mostrar só os 15 primeiros':'Ver os 40'">Ver os 40</button></div>
+    <div class="dren-pesos">
+      <div><b>Reincidência · 35%</b><span>OS de alagamento a até 150 m em 90 dias</span></div>
+      <div><b>Tempo em aberto · 25%</b><span>dias com o ponto aberto; crítico pesa o dobro</span></div>
+      <div><b>Alaga com pouca chuva · 25%</b><span>abriu com menos de 5 mm no dia ou com maré baixa — sinal de caixa suja</span></div>
+      <div><b>Última limpeza · 15%</b><span>dias desde a última Limpeza Programada perto do ponto</span></div>
+    </div>
+  </div>
+
+  <div class="card mt dren-card">
+    <div class="card-cab"><h3>Pontos de alagamento por RPA</h3><span class="sub">cor = tempo desde a última fiscalização</span></div>
+    <div class="card-corpo dren-rpas">
+    
+      <div class="dr"><b>RPA 1</b><span>124 aberto(s) · 1 crítico(s)</span>
+        <div class="dk-barra"><i style="width:0.8064516129032258%;background:#0B7A8C"></i><i style="width:0.0%;background:#E0921F"></i><i style="width:99.19354838709677%;background:#B8321A"></i></div>
+        <em>média de 447 dias sem visita</em></div>
+    
+      <div class="dr"><b>RPA 2</b><span>53 aberto(s)</span>
+        <div class="dk-barra"><i style="width:1.8867924528301887%;background:#0B7A8C"></i><i style="width:5.660377358490567%;background:#E0921F"></i><i style="width:92.45283018867924%;background:#B8321A"></i></div>
+        <em>média de 366 dias sem visita</em></div>
+    
+      <div class="dr"><b>RPA 3</b><span>110 aberto(s)</span>
+        <div class="dk-barra"><i style="width:1.8181818181818181%;background:#0B7A8C"></i><i style="width:1.8181818181818181%;background:#E0921F"></i><i style="width:96.36363636363636%;background:#B8321A"></i></div>
+        <em>média de 383 dias sem visita</em></div>
+    
+      <div class="dr"><b>RPA 4</b><span>17 aberto(s) · 3 crítico(s)</span>
+        <div class="dk-barra"><i style="width:5.88235294117647%;background:#0B7A8C"></i><i style="width:11.76470588235294%;background:#E0921F"></i><i style="width:82.35294117647058%;background:#B8321A"></i></div>
+        <em>média de 199 dias sem visita</em></div>
+    
+      <div class="dr"><b>RPA 5</b><span>162 aberto(s) · 4 crítico(s)</span>
+        <div class="dk-barra"><i style="width:6.790123456790123%;background:#0B7A8C"></i><i style="width:3.0864197530864197%;background:#E0921F"></i><i style="width:90.12345679012346%;background:#B8321A"></i></div>
+        <em>média de 338 dias sem visita</em></div>
+    
+      <div class="dr pior"><b>RPA 6</b><span>232 aberto(s) · 6 crítico(s)</span>
+        <div class="dk-barra"><i style="width:2.586206896551724%;background:#0B7A8C"></i><i style="width:0.0%;background:#E0921F"></i><i style="width:97.41379310344827%;background:#B8321A"></i></div>
+        <em>mais pontos sem visita há +45 d</em></div>
+    
+    </div>
+  </div>
+  
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const DR={"fila": [{"abertura": "2026-05-26T11:22", "bairro": "Jardim Sao Paulo", "chuva_ult": 15.2, "critico": false, "dias_aberto": 156, "dias_limpeza": 363, "dias_sem_visita": 89, "fiscal": "WELDSON", "lat": -8.081668, "lng": -34.93885, "logradouro": "Praça do Jardim São Paulo", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 156 d"], ["reinc", "alagou 2× em 90 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 89 d"]], "n_fisc": 2, "nota": 79, "nunca": false, "os_id": "52446", "pouca_chuva": 2, "prioridade": 53, "reinc": 2, "reinc_mare": 2, "rpa": "RPA 5", "tipo": "Ponto de Alagamento", "trecho": "praça", "ult_fiscal": "2026-07-31T16:19", "ult_limpeza": "2025-10-31", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-13T10:49", "bairro": "Sao Jose", "chuva_ult": null, "critico": false, "dias_aberto": 654, "dias_limpeza": 456, "dias_sem_visita": 639, "fiscal": "DRENAGEM R1", "lat": -8.0764122, "lng": -34.8959847, "logradouro": "Travessa do Gaspar", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 654 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 639 d"]], "n_fisc": 3, "nota": 72, "nunca": false, "os_id": "20499", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 1", "tipo": "Ponto de Alagamento", "trecho": "toda via", "ult_fiscal": "2025-01-28T09:22", "ult_limpeza": "2025-07-30", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-28T09:24", "bairro": "Sao Jose", "chuva_ult": null, "critico": false, "dias_aberto": 639, "dias_limpeza": 456, "dias_sem_visita": 630, "fiscal": "DRENAGEM R1", "lat": -8.0767639, "lng": -34.8965797, "logradouro": "Rua Imperial", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 639 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 630 d"]], "n_fisc": 2, "nota": 72, "nunca": false, "os_id": "21397", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 1", "tipo": "Ponto de Alagamento", "trecho": "após travessa do Gaspar", "ult_fiscal": "2025-02-06T10:22", "ult_limpeza": "2025-07-30", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-05-26T15:51", "bairro": "Imbiribeira", "chuva_ult": null, "critico": false, "dias_aberto": 520, "dias_limpeza": 488, "dias_sem_visita": 463, "fiscal": "RENILSON", "lat": -8.1047656, "lng": -34.9119107, "logradouro": "Rua Alemanha", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 520 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 463 d"]], "n_fisc": 3, "nota": 72, "nunca": false, "os_id": "28832", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "com rua Noruega", "ult_fiscal": "2025-07-23T11:41", "ult_limpeza": "2025-06-27", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-12-03T10:05", "bairro": "Casa Amarela", "chuva_ult": 5.2, "critico": false, "dias_aberto": 330, "dias_limpeza": null, "dias_sem_visita": 240, "fiscal": "CARLOS M", "lat": -8.02070697, "lng": -34.92137197, "logradouro": "Avenida Norte Miguel Arraes de Alencar", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 330 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 240 d"]], "n_fisc": 9, "nota": 72, "nunca": false, "os_id": "43299", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 3", "tipo": "Ponto de Alagamento", "trecho": "em frente ao número 6292 obs, trecho de via com alagamento. Caixa coletora com obstrução na captação da água", "ult_fiscal": "2026-03-03T14:30", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-05-20T18:21", "bairro": "Arruda", "chuva_ult": null, "critico": false, "dias_aberto": 891, "dias_limpeza": null, "dias_sem_visita": 861, "fiscal": "JOÃO PAULO", "lat": -8.024309, "lng": -34.894215, "logradouro": "Rua Sete Pecados", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 891 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 861 d"]], "n_fisc": 2, "nota": 72, "nunca": false, "os_id": "4417", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 2", "tipo": "Ponto de Alagamento", "trecho": "número 59 oposto", "ult_fiscal": "2024-06-20T13:29", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-02-12T13:55", "bairro": "Cabanga", "chuva_ult": 13.0, "critico": false, "dias_aberto": 259, "dias_limpeza": 183, "dias_sem_visita": 259, "fiscal": "WELLINGTON", "lat": -8.07759897, "lng": -34.897302, "logradouro": "Avenida Sul Gov. Cid Sampaio", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 259 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 259 d"]], "n_fisc": 1, "nota": 72, "nunca": false, "os_id": "46635", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 1", "tipo": "Ponto de Alagamento", "trecho": "numero 1290", "ult_fiscal": "2026-02-12T13:55", "ult_limpeza": "2026-04-29", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-03-03T14:23", "bairro": "Vasco da Gama", "chuva_ult": 4.8, "critico": false, "dias_aberto": 240, "dias_limpeza": null, "dias_sem_visita": 184, "fiscal": "CARLOS M", "lat": -8.020825, "lng": -34.92089697, "logradouro": "Avenida Norte Miguel Arraes de Alencar", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 240 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 184 d"]], "n_fisc": 4, "nota": 72, "nunca": false, "os_id": "47750", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 3", "tipo": "Ponto de Alagamento", "trecho": "esquina com a Rua Desembargador Fonseca Galvão. obs, via com ponto de alagamento.", "ult_fiscal": "2026-04-28T10:05", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-08-04T10:46", "bairro": "Bomba do Hemeterio", "chuva_ult": 22.2, "critico": false, "dias_aberto": 86, "dias_limpeza": null, "dias_sem_visita": 86, "fiscal": "CARLOS M", "lat": -8.0241728, "lng": -34.8985812, "logradouro": "Rua Professor Manuel Torres", "mare_ult": 0.3, "mare_ult_max": 2.3, "mare_ult_tend": "baixando", "motivos": [["tempo", "aberto há 86 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 86 d"]], "n_fisc": 2, "nota": 72, "nunca": false, "os_id": "56804", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 2", "tipo": "Ponto de Alagamento", "trecho": "esquina com a Rua Jacob. obs, linha d\u0027água com obstrução na passagem da água", "ult_fiscal": "2026-08-04T10:46", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-08-06T15:52", "bairro": "Gracas", "chuva_ult": 0.5, "critico": false, "dias_aberto": 83, "dias_limpeza": null, "dias_sem_visita": 83, "fiscal": "CARLOS M", "lat": -8.0408633, "lng": -34.900038, "logradouro": "Avenida Santos Dumont", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 83 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 83 d"]], "n_fisc": 3, "nota": 72, "nunca": false, "os_id": "56959", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 3", "tipo": "Ponto de Alagamento", "trecho": "esquina com a Rua Paulino Gomes de Souza. obs, Ha obstrução na rede de canaletas e caixa de drenagem", "ult_fiscal": "2026-08-06T15:53", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-08-14T10:16", "bairro": "Agua Fria", "chuva_ult": 0.0, "critico": false, "dias_aberto": 76, "dias_limpeza": null, "dias_sem_visita": 76, "fiscal": "CARLOS M", "lat": -8.0206087, "lng": -34.8971952, "logradouro": "Rua São Sebastião", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 76 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 76 d"]], "n_fisc": 2, "nota": 72, "nunca": false, "os_id": "57310", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 2", "tipo": "Ponto de Alagamento", "trecho": "em frente ao número 408 obs, obstrução na captação de água suja provavelmente Compesa.", "ult_fiscal": "2026-08-14T10:17", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-08-06T14:01", "bairro": "Cordeiro", "chuva_ult": 0.5, "critico": false, "dias_aberto": 84, "dias_limpeza": 82, "dias_sem_visita": 84, "fiscal": "MARCELO", "lat": -8.04709897, "lng": -34.93524597, "logradouro": "Avenida Mário Álvares Pereira de Lyra", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 84 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 84 d"]], "n_fisc": 1, "nota": 64, "nunca": false, "os_id": "56954", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 4", "tipo": "Ponto de Alagamento", "trecho": "Trecho N⁰ 1593", "ult_fiscal": "2026-08-06T14:01", "ult_limpeza": "2026-08-07", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-07-29T10:41", "bairro": "Imbiribeira", "chuva_ult": null, "critico": false, "dias_aberto": 457, "dias_limpeza": 61, "dias_sem_visita": 457, "fiscal": "RENILSON", "lat": -8.103637, "lng": -34.9132196, "logradouro": "Rua Paris", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 457 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 457 d"]], "n_fisc": 1, "nota": 62, "nunca": false, "os_id": "33087", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "igreja essência de Cristo", "ult_fiscal": "2025-07-29T10:41", "ult_limpeza": "2026-08-28", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-08-04T14:03", "bairro": "Imbiribeira", "chuva_ult": 22.2, "critico": false, "dias_aberto": 86, "dias_limpeza": 61, "dias_sem_visita": 86, "fiscal": "RENILSON", "lat": -8.1045789, "lng": -34.913002, "logradouro": "Rua Noruega", "mare_ult": 1.11, "mare_ult_max": 2.3, "mare_ult_tend": "subindo", "motivos": [["tempo", "aberto há 86 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 86 d"]], "n_fisc": 1, "nota": 62, "nunca": false, "os_id": "56825", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "numero 200", "ult_fiscal": "2026-08-04T14:03", "ult_limpeza": "2026-08-28", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-09-29T14:57", "bairro": "Hipodromo", "chuva_ult": 1.2, "critico": false, "dias_aberto": 30, "dias_limpeza": null, "dias_sem_visita": 30, "fiscal": "CARLOS M", "lat": -8.0308716, "lng": -34.8866701, "logradouro": "Rua Nogueira Lima", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 30 d"], ["pouca", "alaga com pouca chuva ou maré baixa"]], "n_fisc": 3, "nota": 60, "nunca": false, "os_id": "59983", "pouca_chuva": 1, "prioridade": 23, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 2", "tipo": "Ponto de Alagamento", "trecho": "esquina com a Rua Prudente de Moraes. obs, linha d\u0027água com obstrução na passagem da água", "ult_fiscal": "2026-09-29T14:58", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-04-24T09:13", "bairro": "Arruda", "chuva_ult": 4.0, "critico": false, "dias_aberto": 188, "dias_limpeza": 23, "dias_sem_visita": 188, "fiscal": "CARLOS M", "lat": -8.0249442, "lng": -34.8975937, "logradouro": "Estrada Velha de Água Fria", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 188 d"], ["pouca", "alaga com pouca chuva ou maré baixa"], ["visita", "sem visita há 188 d"]], "n_fisc": 3, "nota": 59, "nunca": false, "os_id": "50670", "pouca_chuva": 1, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 2", "tipo": "Ponto de Alagamento", "trecho": "esquina com a Rua professor Manuel Torres. obs, trecho de via com ponto de alagamento", "ult_fiscal": "2026-04-24T09:14", "ult_limpeza": "2026-10-06", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-10-28T11:50", "bairro": "Jardim Sao Paulo", "chuva_ult": 2.3, "critico": false, "dias_aberto": 1, "dias_limpeza": null, "dias_sem_visita": 1, "fiscal": "WELDSON", "lat": -8.08203897, "lng": -34.93821297, "logradouro": "Praça do Jardim São Paulo", "mare_ult": 1.86, "mare_ult_max": 1.99, "mare_ult_tend": "baixando", "motivos": [["reinc", "alagou 2× em 90 d"], ["pouca", "alaga com pouca chuva ou maré baixa"]], "n_fisc": 1, "nota": 54, "nunca": false, "os_id": "61315", "pouca_chuva": 2, "prioridade": 23, "reinc": 2, "reinc_mare": 2, "rpa": "RPA 5", "tipo": "Ponto de Alagamento", "trecho": "33/2", "ult_fiscal": "2026-10-28T11:50", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-10-21T15:44", "bairro": "Macaxeira", "chuva_ult": 1.8, "critico": false, "dias_aberto": 7, "dias_limpeza": 619, "dias_sem_visita": 7, "fiscal": "CARLOS M", "lat": -8.0152692, "lng": -34.9312244, "logradouro": "Avenida Norte Miguel Arraes de Alencar", "mare_ult": 1.89, "mare_ult_max": 2.37, "mare_ult_tend": "subindo", "motivos": [["pouca", "alaga com pouca chuva ou maré baixa"]], "n_fisc": 4, "nota": 50, "nunca": false, "os_id": "60969", "pouca_chuva": 1, "prioridade": 16, "reinc": 1, "reinc_mare": 1, "rpa": "RPA 3", "tipo": "Ponto de Alagamento", "trecho": "ao lado do número 7574, e lado oposto ao parque da macaxeira. obs, existe vazamento Compesa no local", "ult_fiscal": "2026-10-21T15:46", "ult_limpeza": "2025-02-17", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2026-10-21T09:14", "bairro": "Arruda", "chuva_ult": 1.8, "critico": false, "dias_aberto": 8, "dias_limpeza": 188, "dias_sem_visita": 8, "fiscal": "CARLOS M", "lat": -8.0253372, "lng": -34.8934464, "logradouro": "Avenida Beberibe", "mare_ult": 0.96, "mare_ult_max": 2.37, "mare_ult_tend": "baixando", "motivos": [["pouca", "alaga com pouca chuva ou maré baixa"]], "n_fisc": 2, "nota": 50, "nunca": false, "os_id": "60904", "pouca_chuva": 1, "prioridade": 8, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 2", "tipo": "Ponto de Alagamento", "trecho": "em frente ao número 1350 obs, trecho de via sem a drenagem em linha d\u0027água", "ult_fiscal": "2026-10-21T09:14", "ult_limpeza": "2026-04-24", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-14T09:21", "bairro": "Ibura", "chuva_ult": 22.2, "critico": true, "dias_aberto": 653, "dias_limpeza": null, "dias_sem_visita": 86, "fiscal": "RENILSON", "lat": -8.110333, "lng": -34.9369517, "logradouro": "Avenida Dois Rios", "mare_ult": 1.01, "mare_ult_max": 2.3, "mare_ult_tend": "subindo", "motivos": [["crit", "crítico aberto há 653 d"], ["visita", "sem visita há 86 d"]], "n_fisc": 9, "nota": 47, "nunca": false, "os_id": "20593", "pouca_chuva": 0, "prioridade": 63, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento Crítico", "trecho": "Sesi do ibura", "ult_fiscal": "2026-08-04T13:52", "ult_limpeza": null, "visto_siga": "2026-10-29T15:03"}, {"abertura": "2025-07-28T11:02", "bairro": "Torroes", "chuva_ult": 27.6, "critico": true, "dias_aberto": 458, "dias_limpeza": null, "dias_sem_visita": 97, "fiscal": "MARCELO", "lat": -8.06256697, "lng": -34.93182, "logradouro": "Avenida Engenheiro Abdias de Carvalho", "mare_ult": null, "mare_ult_max": null, "motivos": [["crit", "crítico aberto há 458 d"], ["visita", "sem visita há 97 d"]], "n_fisc": 17, "nota": 47, "nunca": false, "os_id": "33030", "pouca_chuva": 0, "prioridade": 63, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 4", "tipo": "Ponto de Alagamento Crítico", "trecho": "PRACA DA CHESF", "ult_fiscal": "2026-07-23T16:41", "ult_limpeza": null, "visto_siga": "2026-10-29T15:03"}, {"abertura": "2026-02-16T08:21", "bairro": "Areias", "chuva_ult": 27.6, "critico": true, "dias_aberto": 255, "dias_limpeza": 531, "dias_sem_visita": 97, "fiscal": "MARCELO", "lat": -8.087232, "lng": -34.93751, "logradouro": "Rua José Natário", "mare_ult": null, "mare_ult_max": null, "motivos": [["crit", "crítico aberto há 255 d"], ["visita", "sem visita há 97 d"]], "n_fisc": 13, "nota": 47, "nunca": false, "os_id": "46750", "pouca_chuva": 0, "prioridade": 63, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 5", "tipo": "Ponto de Alagamento Crítico", "trecho": "enfrente ao Administrativo Metrô REC", "ult_fiscal": "2026-07-23T16:08", "ult_limpeza": "2025-05-16", "visto_siga": "2026-10-29T15:03"}, {"abertura": "2026-04-01T10:36", "bairro": "Cohab", "chuva_ult": 28.6, "critico": true, "dias_aberto": 211, "dias_limpeza": null, "dias_sem_visita": 156, "fiscal": "ADRIANO J", "lat": -8.110929, "lng": -34.937175, "logradouro": "Avenida Dois Rios", "mare_ult": null, "mare_ult_max": null, "motivos": [["crit", "crítico aberto há 211 d"], ["visita", "sem visita há 156 d"]], "n_fisc": 3, "nota": 47, "nunca": false, "os_id": "49382", "pouca_chuva": 0, "prioridade": 63, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento Crítico", "trecho": "entrada do Sesi", "ult_fiscal": "2026-05-26T11:38", "ult_limpeza": null, "visto_siga": "2026-10-29T15:03"}, {"abertura": "2024-06-04T14:46", "bairro": "Torroes", "chuva_ult": 4.0, "critico": true, "dias_aberto": 877, "dias_limpeza": null, "dias_sem_visita": 93, "fiscal": "MARCELO", "lat": -8.06343, "lng": -34.930945, "logradouro": "Rua Delmiro Gouveia", "mare_ult": null, "mare_ult_max": null, "motivos": [["crit", "crítico aberto há 877 d"], ["visita", "sem visita há 93 d"]], "n_fisc": 15, "nota": 47, "nunca": false, "os_id": "5346", "pouca_chuva": 0, "prioridade": 63, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 4", "tipo": "Ponto de Alagamento Crítico", "trecho": "Enfrente a CHESF", "ult_fiscal": "2026-07-28T10:03", "ult_limpeza": null, "visto_siga": "2026-10-29T15:03"}, {"abertura": "2024-06-04T14:48", "bairro": "Torroes", "chuva_ult": 4.0, "critico": true, "dias_aberto": 877, "dias_limpeza": null, "dias_sem_visita": 93, "fiscal": "MARCELO", "lat": -8.06232497, "lng": -34.930267, "logradouro": "Rua Quinze de Março", "mare_ult": null, "mare_ult_max": null, "motivos": [["crit", "crítico aberto há 877 d"], ["visita", "sem visita há 93 d"]], "n_fisc": 11, "nota": 47, "nunca": false, "os_id": "5348", "pouca_chuva": 0, "prioridade": 63, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 4", "tipo": "Ponto de Alagamento Crítico", "trecho": "Praça da CHESF", "ult_fiscal": "2026-07-28T10:04", "ult_limpeza": null, "visto_siga": "2026-10-29T15:03"}, {"abertura": "2026-06-26T12:52", "bairro": "Pina", "chuva_ult": 26.2, "critico": true, "dias_aberto": 125, "dias_limpeza": null, "dias_sem_visita": 125, "fiscal": "RENILSON", "lat": -8.0896674, "lng": -34.8857268, "logradouro": "Avenida Encanta Moça", "mare_ult": null, "mare_ult_max": null, "motivos": [["crit", "crítico aberto há 125 d"], ["visita", "sem visita há 125 d"]], "n_fisc": 1, "nota": 47, "nunca": false, "os_id": "54170", "pouca_chuva": 0, "prioridade": 63, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento Crítico", "trecho": "numero 162", "ult_fiscal": "2026-06-26T12:52", "ult_limpeza": null, "visto_siga": "2026-10-29T15:03"}, {"abertura": "2024-03-27T13:38", "bairro": "Ibura", "chuva_ult": null, "critico": false, "dias_aberto": 946, "dias_limpeza": null, "dias_sem_visita": 457, "fiscal": "RENILSON", "lat": -8.1118931, "lng": -34.9328692, "logradouro": "Rua Jornalista Edson Regis", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 946 d"], ["visita", "sem visita há 457 d"]], "n_fisc": 3, "nota": 47, "nunca": false, "os_id": "1038", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "frevo", "ult_fiscal": "2025-07-28T16:57", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-03-28T09:58", "bairro": "Ipsep", "chuva_ult": 53.2, "critico": false, "dias_aberto": 945, "dias_limpeza": null, "dias_sem_visita": 177, "fiscal": "RENILSON", "lat": -8.1095512, "lng": -34.9404981, "logradouro": "Rua Francisco Barreto", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 945 d"], ["visita", "sem visita há 177 d"]], "n_fisc": 5, "nota": 47, "nunca": false, "os_id": "1096", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "com rua Cosme e Damião", "ult_fiscal": "2026-05-05T12:25", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-09-11T16:17", "bairro": "Cohab", "chuva_ult": null, "critico": false, "dias_aberto": 777, "dias_limpeza": null, "dias_sem_visita": 527, "fiscal": "RENILSON", "lat": -8.1152329, "lng": -34.9494797, "logradouro": "Avenida Engenho Muribara", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 777 d"], ["visita", "sem visita há 527 d"]], "n_fisc": 2, "nota": 47, "nunca": false, "os_id": "13272", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "academia superação", "ult_fiscal": "2025-05-20T10:21", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-09-18T15:42", "bairro": "Afogados", "chuva_ult": 42.8, "critico": false, "dias_aberto": 770, "dias_limpeza": null, "dias_sem_visita": 205, "fiscal": "WELDSON", "lat": -8.08077197, "lng": -34.91497197, "logradouro": "Rua São Miguel", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 770 d"], ["visita", "sem visita há 205 d"]], "n_fisc": 2, "nota": 47, "nunca": false, "os_id": "13899", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 5", "tipo": "Ponto de Alagamento", "trecho": "945", "ult_fiscal": "2026-04-07T12:54", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-10-09T15:59", "bairro": "Sao Jose", "chuva_ult": null, "critico": false, "dias_aberto": 749, "dias_limpeza": 303, "dias_sem_visita": 749, "fiscal": "WELLINGTON", "lat": -8.07174997, "lng": -34.88488797, "logradouro": "Rua do Muniz", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 749 d"], ["visita", "sem visita há 749 d"]], "n_fisc": 1, "nota": 47, "nunca": false, "os_id": "15382", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 1", "tipo": "Ponto de Alagamento", "trecho": "numero 162", "ult_fiscal": "2024-10-09T15:59", "ult_limpeza": "2025-12-30", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-04-08T16:49", "bairro": "Pina", "chuva_ult": null, "critico": false, "dias_aberto": 933, "dias_limpeza": null, "dias_sem_visita": 933, "fiscal": "RENILSON", "lat": -8.0892716, "lng": -34.8919351, "logradouro": "Avenida Dr Dirceu Velloso Toscano de Brito", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 933 d"], ["visita", "sem visita há 933 d"]], "n_fisc": 1, "nota": 47, "nunca": false, "os_id": "1559", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "embaixo da via mangue", "ult_fiscal": "2024-04-08T16:49", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-10-16T16:09", "bairro": "Boa Viagem", "chuva_ult": null, "critico": false, "dias_aberto": 742, "dias_limpeza": null, "dias_sem_visita": 476, "fiscal": "RENILSON", "lat": -8.1146425, "lng": -34.8995702, "logradouro": "Rua Mamanguape", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 742 d"], ["visita", "sem visita há 476 d"]], "n_fisc": 4, "nota": 47, "nunca": false, "os_id": "15977", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "numero 665", "ult_fiscal": "2025-07-10T12:32", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-12-11T15:06", "bairro": "Ibura", "chuva_ult": null, "critico": false, "dias_aberto": 687, "dias_limpeza": null, "dias_sem_visita": 638, "fiscal": "RENILSON", "lat": -8.1421474, "lng": -34.9182113, "logradouro": "Avenida Centenário Alberto Santos Dumont", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 687 d"], ["visita", "sem visita há 638 d"]], "n_fisc": 2, "nota": 47, "nunca": false, "os_id": "19044", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "túnel", "ult_fiscal": "2025-01-29T12:11", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2024-12-19T15:55", "bairro": "Recife", "chuva_ult": 1.6, "critico": false, "dias_aberto": 678, "dias_limpeza": 252, "dias_sem_visita": 255, "fiscal": "WELLINGTON", "lat": -8.05897597, "lng": -34.87085297, "logradouro": "Rua Bernardo Vieira de Melo", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 678 d"], ["visita", "sem visita há 255 d"]], "n_fisc": 10, "nota": 47, "nunca": false, "os_id": "19618", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 1", "tipo": "Ponto de Alagamento", "trecho": "próximo ao cruzamento com a rua do Brum", "ult_fiscal": "2026-02-16T06:22", "ult_limpeza": "2026-02-19", "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-13T10:33", "bairro": "Mangabeira", "chuva_ult": null, "critico": false, "dias_aberto": 654, "dias_limpeza": null, "dias_sem_visita": 654, "fiscal": "CARLOS M", "lat": -8.025546, "lng": -34.90663897, "logradouro": "Avenida Norte Miguel Arraes de Alencar", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 654 d"], ["visita", "sem visita há 654 d"]], "n_fisc": 1, "nota": 47, "nunca": false, "os_id": "20493", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 3", "tipo": "Ponto de Alagamento", "trecho": "esquina com a rua da Mangabeira", "ult_fiscal": "2025-01-13T10:33", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-13T14:54", "bairro": "Parnamirim", "chuva_ult": null, "critico": false, "dias_aberto": 654, "dias_limpeza": null, "dias_sem_visita": 654, "fiscal": "JAÍLSON", "lat": -8.03231597, "lng": -34.90977, "logradouro": "Rua Desembargador Góis Cavalcante", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 654 d"], ["visita", "sem visita há 654 d"]], "n_fisc": 1, "nota": 47, "nunca": false, "os_id": "20517", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 3", "tipo": "Ponto de Alagamento", "trecho": "frente ao VIA ROMA CENTER (oposto ao nro 480)", "ult_fiscal": "2025-01-13T14:54", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-13T15:08", "bairro": "Jaqueira", "chuva_ult": null, "critico": false, "dias_aberto": 654, "dias_limpeza": null, "dias_sem_visita": 630, "fiscal": "JAÍLSON", "lat": -8.039837, "lng": -34.903973, "logradouro": "Avenida Rui Barbosa", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 654 d"], ["visita", "sem visita há 630 d"]], "n_fisc": 3, "nota": 47, "nunca": false, "os_id": "20520", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 3", "tipo": "Ponto de Alagamento", "trecho": "frente a Acadêmia Pernambuca de Letras (Av Dr Malaquias)", "ult_fiscal": "2025-02-05T16:17", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-13T15:35", "bairro": "Jardim Sao Paulo", "chuva_ult": null, "critico": false, "dias_aberto": 654, "dias_limpeza": null, "dias_sem_visita": 654, "fiscal": "WELDSON", "lat": -8.08354397, "lng": -34.95727097, "logradouro": "Avenida Liberdade", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 654 d"], ["visita", "sem visita há 654 d"]], "n_fisc": 1, "nota": 47, "nunca": false, "os_id": "20534", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 5", "tipo": "Ponto de Alagamento", "trecho": "972", "ult_fiscal": "2025-01-13T15:35", "ult_limpeza": null, "visto_siga": "2026-10-29T15:34"}, {"abertura": "2025-01-13T15:50", "bairro": "Imbiribeira", "chuva_ult": null, "critico": false, "dias_aberto": 653, "dias_limpeza": 488, "dias_sem_visita": 653, "fiscal": "ADRIANO J", "lat": -8.10361297, "lng": -34.91096, "logradouro": "Avenida Marechal Mascarenhas de Moraes", "mare_ult": null, "mare_ult_max": null, "motivos": [["tempo", "aberto há 653 d"], ["visita", "sem visita há 653 d"]], "n_fisc": 1, "nota": 47, "nunca": false, "os_id": "20545", "pouca_chuva": 0, "prioridade": 33, "reinc": 1, "reinc_mare": 0, "rpa": "RPA 6", "tipo": "Ponto de Alagamento", "trecho": "Rua Nápoles", "ult_fiscal": "2025-01-13T15:50", "ult_limpeza": "2025-06-27", "visto_siga": "2026-10-29T15:34"}], "lim": {"alta": 2.2, "atencao": 1.6, "sem_chuva": 1.7}, "linha30": [{"chuva": 3.4, "dia": "2026-09-30", "mare": null, "novos": 0}, {"chuva": 3.4, "dia": "2026-10-01", "mare": null, "novos": 0}, {"chuva": 0.3, "dia": "2026-10-02", "mare": null, "novos": 0}, {"chuva": 0.6, "dia": "2026-10-03", "mare": null, "novos": 0}, {"chuva": 0.1, "dia": "2026-10-04", "mare": null, "novos": 0}, {"chuva": 0.5, "dia": "2026-10-05", "mare": null, "novos": 0}, {"chuva": 5.4, "dia": "2026-10-06", "mare": null, "novos": 1}, {"chuva": 0.0, "dia": "2026-10-07", "mare": null, "novos": 0}, {"chuva": 0.2, "dia": "2026-10-08", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-09", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-10", "mare": null, "novos": 0}, {"chuva": 0.3, "dia": "2026-10-11", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-12", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-13", "mare": 1.75, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-14", "mare": 1.83, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-15", "mare": 1.94, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-16", "mare": 2.05, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-17", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-18", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-19", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-20", "mare": null, "novos": 0}, {"chuva": 1.8, "dia": "2026-10-21", "mare": 2.37, "novos": 2}, {"chuva": 0.8, "dia": "2026-10-22", "mare": 2.32, "novos": 0}, {"chuva": 0.7, "dia": "2026-10-23", "mare": 2.24, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-24", "mare": 2.12, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-25", "mare": 0.8, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-26", "mare": null, "novos": 0}, {"chuva": 0.0, "dia": "2026-10-27", "mare": 1.85, "novos": 0}, {"chuva": 2.3, "dia": "2026-10-28", "mare": 1.99, "novos": 2}, {"chuva": 0.1, "dia": "2026-10-29", "mare": 1.99, "novos": 0}]};
+  const S=DR.linha30, lim=DR.lim.atencao;
+  window.copiarFila=()=>{ const t="*Fila de limpeza das caixas coletoras*\n"+DR.fila.slice(0,15).map((x,i)=>`${i+1}. ${x.logradouro}${x.trecho?" ("+x.trecho+")":""} · ${x.bairro} · ${x.rpa} · ID ${x.os_id} · nota ${x.nota}`).join("\n");
+    navigator.clipboard.writeText(t).then(()=>toast("Lista copiada"),()=>toast("Não consegui copiar")); };
+  const el=document.getElementById("grafMareAlag"); if(!el||!S.length) return;
+  new Chart(el,{data:{labels:S.map(p=>dataBR(p.dia).slice(0,5)),datasets:[
+    {type:"line",label:"Maré mais alta (m)",data:S.map(p=>p.mare),yAxisID:"y1",borderColor:"#0B7A8C",borderWidth:2.5,tension:.35,order:1,
+      pointRadius:S.map(p=>p.novos?4+Math.min(p.novos,6)*1.6:0),pointBackgroundColor:"#B8321A",pointBorderColor:"#fff",pointBorderWidth:1.5,pointHoverRadius:S.map(p=>p.novos?7+Math.min(p.novos,6)*1.6:3)},
+    {type:"line",label:`Maré de atenção (${String(lim).replace(".",",")} m)`,data:S.map(()=>lim),yAxisID:"y1",borderColor:"#E0613F",borderDash:[5,4],borderWidth:1.2,pointRadius:0,order:2},
+    {type:"bar",label:"Chuva (mm)",data:S.map(p=>p.chuva),yAxisID:"y",backgroundColor:"#9CC6EC",borderRadius:3,order:3}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{position:"bottom",labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{afterBody:it=>{ const p=S[it[0].dataIndex]; return p.novos?`${p.novos} novo(s) ponto(s) de alagamento`:"nenhum ponto novo"; }}}},
+      scales:{y:{beginAtZero:true,position:"left",title:{display:true,text:"mm"},grid:{color:"#EEF1F4"}},
+        y1:{position:"right",min:0,suggestedMax:2.8,title:{display:true,text:"maré (m)"},grid:{display:false}},x:{grid:{display:false},ticks:{maxTicksLimit:10}}}}});
+});
+</script>
+
+
+<div class="aviso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg><div>O tempo de resolução conta só as OS que <b>saíram do aberto depois que o painel começou a coletar</b> (13/10/2026). Ele fica mais completo a cada semana de coletas. “Saiu do aberto” inclui finalizadas e canceladas.</div></div>
+
+<div class="kpis">
+  <div class="kpi destaque"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg></div><div><div class="rot">OS que saíram do aberto</div><div class="val">400</div><div class="det">nos últimos 6 meses</div></div></div>
+  <div class="kpi azul"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg></div><div><div class="rot">Tempo mediano</div><div class="val">7 d</div><div class="det">média 12.0 d · 90% em até 20 d</div></div></div>
+  <div class="kpi verde"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg></div><div><div class="rot">Resolvidas em até 7 dias</div><div class="val">55%</div><div class="det">97% em até 30 dias</div></div></div>
+  <div class="kpi vermelho"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg></div><div><div class="rot">Abertas há mais de 90 dias</div><div class="val">2</div><div class="det">de 342 abertas · idade mediana 7 d</div></div></div>
+  <div class="kpi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg></div><div><div class="rot">Pontos reincidentes</div><div class="val">69</div><div class="det">16 reabriram após fechar · 153 OS</div></div></div>
+</div>
+
+<div class="grade g2">
+  <div class="card"><div class="card-cab"><h3>Tempo de resolução por mês</h3><span class="sub">mediana (linha) e OS fechadas (barras)</span></div>
+    <div class="card-corpo" style="height:250px"><canvas id="grafMes"></canvas></div></div>
+  <div class="card"><div class="card-cab"><h3>Em quanto tempo saíram do aberto</h3><span class="sub">OS fechadas no período</span></div>
+    <div class="card-corpo" style="height:250px"><canvas id="grafFaixa"></canvas></div></div>
+</div>
+
+<div class="card mt">
+  <div class="abas" id="abasT"><button data-t="rpa" class="on">Por RPA</button><button data-t="tipo">Por tipo de serviço</button><button data-t="fiscal">Por fiscal (login)</button></div>
+  <div class="rolagem" style="max-height:460px">
+    <div data-p="rpa">
+<table class="tabela"><thead><tr><th>RPA</th><th class="n">OS fechadas</th><th class="n">Mediana</th><th class="n">Média</th><th class="n" title="90% foram resolvidas em até">90% até</th><th class="n">≤ 7 dias</th><th class="n">≤ 30 dias</th><th class="n">Abertas hoje</th><th class="n">Idade das abertas</th></tr></thead><tbody>
+<tr><td><b style="color:var(--navy)">RPA 6</b></td><td class="n">172</td>
+  <td class="n"><b>6 d</b></td><td class="n">6.3 d</td>
+  <td class="n">9 d</td>
+  <td class="n">77%</td><td class="n">99%</td>
+  <td class="n">62</td><td class="n">1 d</td></tr><tr><td><b style="color:var(--navy)">RPA 3</b></td><td class="n">102</td>
+  <td class="n"><b>12 d</b></td><td class="n">12.4 d</td>
+  <td class="n">20 d</td>
+  <td class="n">40%</td><td class="n">99%</td>
+  <td class="n">89</td><td class="n">7 d</td></tr><tr><td><b style="color:var(--navy)">RPA 1</b></td><td class="n">46</td>
+  <td class="n"><b>7 d</b></td><td class="n">26.3 d</td>
+  <td class="n">44 d</td>
+  <td class="n">54%</td><td class="n">87%</td>
+  <td class="n">14</td><td class="n">15 d</td></tr><tr><td><b style="color:var(--navy)">RPA 2</b></td><td class="n">35</td>
+  <td class="n"><b>11 d</b></td><td class="n">11.7 d</td>
+  <td class="n">20 d</td>
+  <td class="n">46%</td><td class="n">100%</td>
+  <td class="n">47</td><td class="n">6 d</td></tr><tr><td><b style="color:var(--navy)">RPA 5</b></td><td class="n">23</td>
+  <td class="n"><b>20 d</b></td><td class="n">18.7 d</td>
+  <td class="n">30 d</td>
+  <td class="n">9%</td><td class="n">87%</td>
+  <td class="n">66</td><td class="n">15 d</td></tr><tr><td><b style="color:var(--navy)">RPA 4</b></td><td class="n">22</td>
+  <td class="n"><b>20 d</b></td><td class="n">18.5 d</td>
+  <td class="n">23 d</td>
+  <td class="n">14%</td><td class="n">100%</td>
+  <td class="n">64</td><td class="n">14 d</td></tr>
+</tbody></table>
+</div>
+    <div data-p="tipo" hidden>
+<table class="tabela"><thead><tr><th>Tipo de serviço</th><th class="n">OS fechadas</th><th class="n">Mediana</th><th class="n">Média</th><th class="n" title="90% foram resolvidas em até">90% até</th><th class="n">≤ 7 dias</th><th class="n">≤ 30 dias</th><th class="n">Abertas hoje</th><th class="n">Idade das abertas</th></tr></thead><tbody>
+<tr><td><b style="color:var(--navy)">Buraco Siga</b></td><td class="n">400</td>
+  <td class="n"><b>7 d</b></td><td class="n">12.0 d</td>
+  <td class="n">20 d</td>
+  <td class="n">55%</td><td class="n">97%</td>
+  <td class="n">342</td><td class="n">7 d</td></tr>
+</tbody></table>
+</div>
+    <div data-p="fiscal" hidden>
+<table class="tabela"><thead><tr><th>Fiscal</th><th class="n">OS fechadas</th><th class="n">Mediana</th><th class="n">Média</th><th class="n" title="90% foram resolvidas em até">90% até</th><th class="n">≤ 7 dias</th><th class="n">≤ 30 dias</th><th class="n">Abertas hoje</th><th class="n">Idade das abertas</th></tr></thead><tbody>
+<tr><td><b style="color:var(--navy)">RENILSON</b></td><td class="n">172</td>
+  <td class="n"><b>6 d</b></td><td class="n">6.3 d</td>
+  <td class="n">9 d</td>
+  <td class="n">77%</td><td class="n">99%</td>
+  <td class="n">65</td><td class="n">1 d</td></tr><tr><td><b style="color:var(--navy)">JAÍLSON</b></td><td class="n">94</td>
+  <td class="n"><b>11 d</b></td><td class="n">11.7 d</td>
+  <td class="n">20 d</td>
+  <td class="n">45%</td><td class="n">99%</td>
+  <td class="n">75</td><td class="n">6 d</td></tr><tr><td><b style="color:var(--navy)">WELLINGTON</b></td><td class="n">46</td>
+  <td class="n"><b>7 d</b></td><td class="n">26.3 d</td>
+  <td class="n">44 d</td>
+  <td class="n">54%</td><td class="n">87%</td>
+  <td class="n">14</td><td class="n">15 d</td></tr><tr><td><b style="color:var(--navy)">JOÃO PAULO</b></td><td class="n">43</td>
+  <td class="n"><b>17 d</b></td><td class="n">13.2 d</td>
+  <td class="n">20 d</td>
+  <td class="n">35%</td><td class="n">100%</td>
+  <td class="n">61</td><td class="n">6 d</td></tr><tr><td><b style="color:var(--navy)">WELDSON</b></td><td class="n">23</td>
+  <td class="n"><b>20 d</b></td><td class="n">18.7 d</td>
+  <td class="n">30 d</td>
+  <td class="n">9%</td><td class="n">87%</td>
+  <td class="n">63</td><td class="n">15 d</td></tr><tr><td><b style="color:var(--navy)">WASHINGTON</b></td><td class="n">22</td>
+  <td class="n"><b>20 d</b></td><td class="n">18.5 d</td>
+  <td class="n">23 d</td>
+  <td class="n">14%</td><td class="n">100%</td>
+  <td class="n">64</td><td class="n">14 d</td></tr>
+</tbody></table>
+</div>
+  </div>
+</div>
+
+<h2 style="margin:26px 0 10px;font-size:21px">Reincidência</h2>
+<p style="margin:-4px 0 12px;color:var(--suave)">Mesmo ponto = mesma rua, bairro e tipo de serviço, com número do trecho até ±30 (ou até ~35 m pelas coordenadas quando não há número). <b>Reabertura</b> = OS aberta no ponto depois que uma anterior já tinha saído do aberto.</p>
+<div class="grade g-mapa">
+  <div class="card"><div class="card-cab"><h3>Mapa dos pontos</h3><div class="dir legenda"><span><i class="bolinha" style="background:#D63B32"></i>reabriu após fechar</span><span><i class="bolinha" style="background:#EE7D22"></i>mais de uma OS</span><span>tamanho = nº de OS</span></div></div>
+    <div id="mapa" style="height:460px"></div></div>
+  <div class="card"><div class="card-cab"><h3>Ruas com mais reincidência</h3></div>
+    <div class="rolagem" style="max-height:460px"><table class="tabela"><thead><tr><th>Rua · bairro</th><th class="n">Pontos</th><th class="n">OS</th><th class="n">Reab.</th></tr></thead><tbody>
+    <tr><td><b style="color:var(--navy)">Rua Ladeira de Pedra</b><div style="font-size:11.5px;color:var(--muito-suave)">Agua Fria · RPA 2</div></td>
+      <td class="n">4</td><td class="n">8</td><td class="n" style="color:#D63B32"><b>2</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Avenida Conselheiro Aguiar</b><div style="font-size:11.5px;color:var(--muito-suave)">Pina · RPA 6</div></td>
+      <td class="n">1</td><td class="n">4</td><td class="n" style="color:#D63B32"><b>2</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Avenida Ministro Apolônio Sales</b><div style="font-size:11.5px;color:var(--muito-suave)">Jordao · RPA 6</div></td>
+      <td class="n">1</td><td class="n">4</td><td class="n" style="color:#D63B32"><b>2</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Virgínia Heráclio</b><div style="font-size:11.5px;color:var(--muito-suave)">Ipsep · RPA 6</div></td>
+      <td class="n">2</td><td class="n">4</td><td class="n" style="color:#D63B32"><b>2</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Doze de Junho</b><div style="font-size:11.5px;color:var(--muito-suave)">Cohab · RPA 6</div></td>
+      <td class="n">2</td><td class="n">4</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Avenida Maria Irene</b><div style="font-size:11.5px;color:var(--muito-suave)">Jordao · RPA 6</div></td>
+      <td class="n">1</td><td class="n">3</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Antônio Lumack do Monte</b><div style="font-size:11.5px;color:var(--muito-suave)">Boa Viagem · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Cônego Lira</b><div style="font-size:11.5px;color:var(--muito-suave)">Imbiribeira · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Emílio Monteiro Fonseca</b><div style="font-size:11.5px;color:var(--muito-suave)">Ibura · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Itanagé</b><div style="font-size:11.5px;color:var(--muito-suave)">Ipsep · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Rio Brígida</b><div style="font-size:11.5px;color:var(--muito-suave)">Ibura · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Rio Xingu</b><div style="font-size:11.5px;color:var(--muito-suave)">Ibura · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Vale do Itajaí</b><div style="font-size:11.5px;color:var(--muito-suave)">Cohab · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Vasco da Gama</b><div style="font-size:11.5px;color:var(--muito-suave)">Vasco da Gama · RPA 3</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:#D63B32"><b>1</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Córrego do Inácio</b><div style="font-size:11.5px;color:var(--muito-suave)">Nova Descoberta · RPA 3</div></td>
+      <td class="n">2</td><td class="n">6</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Antônio Batista de Souza</b><div style="font-size:11.5px;color:var(--muito-suave)">Macaxeira · RPA 3</div></td>
+      <td class="n">3</td><td class="n">6</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Lindolfo Color</b><div style="font-size:11.5px;color:var(--muito-suave)">Engenho do Meio · RPA 4</div></td>
+      <td class="n">1</td><td class="n">4</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Avenida Chagas Ferreira</b><div style="font-size:11.5px;color:var(--muito-suave)">Dois Unidos · RPA 2</div></td>
+      <td class="n">2</td><td class="n">4</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Avenida Dezessete de Agosto</b><div style="font-size:11.5px;color:var(--muito-suave)">Parnamirim · RPA 3</div></td>
+      <td class="n">2</td><td class="n">4</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Bianor de Oliveira</b><div style="font-size:11.5px;color:var(--muito-suave)">Campo Grande · RPA 2</div></td>
+      <td class="n">2</td><td class="n">4</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Marquês do Paraná</b><div style="font-size:11.5px;color:var(--muito-suave)">Espinheiro · RPA 3</div></td>
+      <td class="n">2</td><td class="n">4</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua São Mateus</b><div style="font-size:11.5px;color:var(--muito-suave)">Iputinga · RPA 4</div></td>
+      <td class="n">2</td><td class="n">4</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Ladeira do Sapoti</b><div style="font-size:11.5px;color:var(--muito-suave)">Porto da Madeira · RPA 2</div></td>
+      <td class="n">1</td><td class="n">3</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Carneiro de Mariz</b><div style="font-size:11.5px;color:var(--muito-suave)">Engenho do Meio · RPA 4</div></td>
+      <td class="n">1</td><td class="n">3</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Diadema</b><div style="font-size:11.5px;color:var(--muito-suave)">Vasco da Gama · RPA 3</div></td>
+      <td class="n">1</td><td class="n">3</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Doutor Antônio da Rosa Borges</b><div style="font-size:11.5px;color:var(--muito-suave)">Brejo de Beberibe · RPA 3</div></td>
+      <td class="n">1</td><td class="n">3</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Escritor Souza Barros</b><div style="font-size:11.5px;color:var(--muito-suave)">Cabanga · RPA 1</div></td>
+      <td class="n">1</td><td class="n">3</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Rua Tamboril</b><div style="font-size:11.5px;color:var(--muito-suave)">Cordeiro · RPA 4</div></td>
+      <td class="n">1</td><td class="n">3</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Avenida Boa Viagem</b><div style="font-size:11.5px;color:var(--muito-suave)">Boa Viagem · RPA 6</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    <tr><td><b style="color:var(--navy)">Avenida Caxangá</b><div style="font-size:11.5px;color:var(--muito-suave)">Iputinga · RPA 4</div></td>
+      <td class="n">1</td><td class="n">2</td><td class="n" style="color:inherit"><b>0</b></td></tr>
+    </tbody></table></div></div>
+</div>
+<div class="card mt">
+  <div class="card-cab"><h3>Pontos</h3><span class="sub">69 ponto(s) · clique para ver os IDs</span></div>
+  <div class="rolagem" style="max-height:520px"><table class="tabela" id="tabPontos"><thead><tr><th>Logradouro · trecho</th><th>Bairro</th><th>RPA</th><th>Tipo</th><th class="n">OS</th><th class="n">Reaberturas</th><th class="n">Abertas</th><th class="n">Primeira</th><th class="n">Última</th></tr></thead><tbody></tbody></table></div>
+</div>
+
+<h2 id="chuva" style="margin:30px 0 10px;font-size:21px;display:flex;align-items:center;gap:8px"><span class="chuva-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15.5A4.5 4.5 0 0 0 17.5 7a6 6 0 0 0-11.4 1.8A4 4 0 0 0 7 16.5"/><path d="M8 19l-1 2M12 18l-1 3M16 19l-1 2"/>
+</svg></span>Chuva × novos buracos</h2>
+
+
+<p style="margin:-4px 0 12px;color:var(--suave)">Compara a chuva média de Recife (pluviômetros do CEMADEN) com os IDs <b>criados</b> pelos fiscais de <b>Buraco Siga</b>, de 13/10/2026 a 29/10/2026. Só entram dias depois que o painel começou a coletar.</p>
+<div class="aviso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><div><b>Pouco dado ainda (17 dias).</b> Correlação com menos de 2 meses engana fácil — trate os números como indício. Importar o histórico de chuva não resolve isto: o que limita é o histórico de coletas do SIGA.</div></div>
+<div class="cb-grade">
+  <div class="cb-destaque">
+    <span>Chuva × buracos</span>
+    
+    <b>Ainda sem dia de chuva forte (≥ 30 mm) no período para comparar</b>
+    <p>6 mm de chuva e 510 IDs criados em 17 dias.</p>
+    
+  </div>
+  <div class="card cb-card"><div class="card-cab"><h3>Buracos novos por dia útil, conforme a chuva</h3><span class="sub">chuva de 2 dia(s) antes</span></div>
+    <div class="card-corpo cb-barras">
+    
+    <div class="cb-l"><span>sem chuva</span><div><i class="f1" style="width:53%"></i></div><b>37,4</b><em>9 dia(s)</em></div><div class="cb-l"><span>fraca · até 10 mm</span><div><i class="f2" style="width:100%"></i></div><b>71,0</b><em>1 dia(s)</em></div><div class="cb-l"><span>moderada · 10–30 mm</span><div><i class="f3" style="width:0%"></i></div><b>—</b><em>0 dia(s)</em></div><div class="cb-l"><span>forte · 30 mm ou mais</span><div><i class="f4" style="width:0%"></i></div><b>—</b><em>0 dia(s)</em></div>
+    </div></div>
+  <div class="card cb-card"><div class="card-cab"><h3>Em quantos dias a chuva vira buraco</h3><span class="sub">quanto mais alta a barra, mais forte a relação</span></div>
+    <div class="card-corpo" style="height:190px"><canvas id="grafDefas"></canvas></div>
+    <div class="cb-nota">Ainda sem relação clara entre chuva e buracos novos.</div></div>
+</div>
+<div class="card mt"><div class="card-cab"><h3>Semana a semana</h3><span class="sub">chuva (barras) · IDs criados e fiscalizações (linhas)</span></div>
+  <div class="card-corpo" style="height:260px"><canvas id="grafChuvaSem"></canvas></div></div>
+<div class="card mt">
+  <div class="card-cab"><h3>Por RPA</h3><span class="sub">chuva do pluviômetro mais perto do centro da RPA</span></div>
+  <div class="rolagem"><table class="tabela"><thead><tr><th>RPA</th><th>Pluviômetro</th><th class="n">Distância</th><th class="n">Chuva no período</th><th class="n">Dias com dado</th><th class="n">IDs criados</th></tr></thead><tbody>
+  <tr><td><b style="color:var(--navy)">RPA 1</b></td><td>Porto</td><td class="n">1.4 km</td><td class="n"><b>4 mm</b></td><td class="n">17</td><td class="n">28</td></tr>
+  <tr><td><b style="color:var(--navy)">RPA 2</b></td><td>COMPAZ - Alto Sta. Terezinha</td><td class="n">1.6 km</td><td class="n"><b>9 mm</b></td><td class="n">17</td><td class="n">64</td></tr>
+  <tr><td><b style="color:var(--navy)">RPA 3</b></td><td>Morro da Conceição</td><td class="n">1.0 km</td><td class="n"><b>4 mm</b></td><td class="n">17</td><td class="n">127</td></tr>
+  <tr><td><b style="color:var(--navy)">RPA 4</b></td><td>San Martin</td><td class="n">2.7 km</td><td class="n"><b>8 mm</b></td><td class="n">17</td><td class="n">57</td></tr>
+  <tr><td><b style="color:var(--navy)">RPA 5</b></td><td>San Martin</td><td class="n">1.1 km</td><td class="n"><b>8 mm</b></td><td class="n">17</td><td class="n">49</td></tr>
+  <tr><td><b style="color:var(--navy)">RPA 6</b></td><td>Imbiribeira</td><td class="n">0.6 km</td><td class="n"><b>0 mm</b></td><td class="n">17</td><td class="n">185</td></tr>
+  </tbody></table></div>
+</div>
+<p style="font-size:12px;color:var(--muito-suave);margin-top:8px">“r” vai de −1 a 1: perto de 0 = sem relação; acima de 0,4 = relação forte. A linha tracejada usa <b>criados por 100 fiscalizações</b>, que tira o efeito de “teve mais (ou menos) gente na rua” — chuva forte também pode reduzir o trabalho de campo. Correlação não prova causa. Chuva: rede observacional do CEMADEN/MCTI.</p>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1793296857"></script>
+
+<script>
+const T={"abertas": 342, "abertas_90": 2, "desde_historico": "2026-10-13T08:18:50", "faixas": [{"n": 220, "rot": "até 7 dias"}, {"n": 168, "rot": "8–30"}, {"n": 10, "rot": "31–90"}, {"n": 1, "rot": "91–180"}, {"n": 1, "rot": "+180"}], "geral": {"ate30": 97, "ate7": 55, "media": 12.0, "mediana": 7.0, "n": 400, "p90": 20.1}, "idade_abertas": 7.0, "meses": 6, "por_fiscal": [{"abertas": 65, "ate30": 99, "ate7": 77, "chave": "RENILSON", "idade_abertas": 1.0, "media": 6.3, "mediana": 6.0, "n": 172, "p90": 9.0}, {"abertas": 75, "ate30": 99, "ate7": 45, "chave": "JAÍLSON", "idade_abertas": 6.0, "media": 11.7, "mediana": 11.0, "n": 94, "p90": 20.0}, {"abertas": 14, "ate30": 87, "ate7": 54, "chave": "WELLINGTON", "idade_abertas": 15.0, "media": 26.3, "mediana": 7.0, "n": 46, "p90": 43.5}, {"abertas": 61, "ate30": 100, "ate7": 35, "chave": "JOÃO PAULO", "idade_abertas": 6.0, "media": 13.2, "mediana": 17.0, "n": 43, "p90": 20.0}, {"abertas": 63, "ate30": 87, "ate7": 9, "chave": "WELDSON", "idade_abertas": 15.0, "media": 18.7, "mediana": 20.0, "n": 23, "p90": 30.4}, {"abertas": 64, "ate30": 100, "ate7": 14, "chave": "WASHINGTON", "idade_abertas": 14.0, "media": 18.5, "mediana": 20.0, "n": 22, "p90": 23.0}], "por_mes": [{"ate30": 97, "ate7": 55, "media": 12.0, "mediana": 7.0, "mes": "2026-10", "n": 400, "p90": 20.1}], "por_rpa": [{"abertas": 62, "ate30": 99, "ate7": 77, "chave": "RPA 6", "idade_abertas": 1.0, "media": 6.3, "mediana": 6.0, "n": 172, "p90": 9.0}, {"abertas": 89, "ate30": 99, "ate7": 40, "chave": "RPA 3", "idade_abertas": 7.0, "media": 12.4, "mediana": 12.0, "n": 102, "p90": 20.0}, {"abertas": 14, "ate30": 87, "ate7": 54, "chave": "RPA 1", "idade_abertas": 15.0, "media": 26.3, "mediana": 7.0, "n": 46, "p90": 43.5}, {"abertas": 47, "ate30": 100, "ate7": 46, "chave": "RPA 2", "idade_abertas": 6.0, "media": 11.7, "mediana": 11.0, "n": 35, "p90": 20.0}, {"abertas": 66, "ate30": 87, "ate7": 9, "chave": "RPA 5", "idade_abertas": 15.0, "media": 18.7, "mediana": 20.0, "n": 23, "p90": 30.4}, {"abertas": 64, "ate30": 100, "ate7": 14, "chave": "RPA 4", "idade_abertas": 14.0, "media": 18.5, "mediana": 20.0, "n": 22, "p90": 23.0}], "por_tipo": [{"abertas": 342, "ate30": 97, "ate7": 55, "chave": "Buraco Siga", "idade_abertas": 7.0, "media": 12.0, "mediana": 7.0, "n": 400, "p90": 20.1}]}, R={"com_reabertura": 16, "dias": 365, "os_envolvidas": 153, "pontos": [{"abertas": 0, "bairro": "Pina", "ids": [{"abertura": "2026-10-14", "fechada": "2026-10-15", "id": "60658", "tipo": "Buraco Siga", "trecho": "empório frutaria \"2\""}, {"abertura": "2026-10-14", "fechada": "2026-10-15", "id": "60660", "tipo": "Buraco Siga", "trecho": "solo brewing \"2\""}, {"abertura": "2026-10-15", "fechada": "2026-10-23", "id": "60746", "tipo": "Buraco Siga", "trecho": "ao lado da rua padre carapuceiro - EDF Pampulha \"2\""}, {"abertura": "2026-10-23", "fechada": "2026-10-29", "id": "61142", "tipo": "Buraco Siga", "trecho": "com rua 26 de janeiro"}], "lat": -8.1203223, "lng": -34.8970604, "logradouro": "Avenida Conselheiro Aguiar", "n": 4, "primeira": "2026-10-14", "reaberturas": 2, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "com rua 26 de janeiro", "ultima": "2026-10-23"}, {"abertas": 0, "bairro": "Jordao", "ids": [{"abertura": "2026-10-13", "fechada": "2026-10-16", "id": "60593", "tipo": "Buraco Siga", "trecho": "com Br 101"}, {"abertura": "2026-10-13", "fechada": "2026-10-16", "id": "60594", "tipo": "Buraco Siga", "trecho": "com Br 101 \"2\""}, {"abertura": "2026-10-16", "fechada": "2026-10-20", "id": "60811", "tipo": "Buraco Siga", "trecho": "próximo a Br 101"}, {"abertura": "2026-10-16", "fechada": "2026-10-22", "id": "60812", "tipo": "Buraco Siga", "trecho": "com Br 101 \"3\""}], "lat": -8.1343551, "lng": -34.9471695, "logradouro": "Avenida Ministro Apolônio Sales", "n": 4, "primeira": "2026-10-13", "reaberturas": 2, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "com Br 101 \"3\"", "ultima": "2026-10-16"}, {"abertas": 1, "bairro": "Jordao", "ids": [{"abertura": "2026-10-27", "fechada": "2026-10-29", "id": "61242", "tipo": "Buraco Siga", "trecho": "numero 1019"}, {"abertura": "2026-10-27", "fechada": "2026-10-29", "id": "61243", "tipo": "Buraco Siga", "trecho": "numero 1038"}, {"abertura": "2026-10-29", "fechada": null, "id": "61344", "tipo": "Buraco Siga", "trecho": "numero 1019 \"2\""}], "lat": -8.1408781, "lng": -34.930503, "logradouro": "Avenida Maria Irene", "n": 3, "primeira": "2026-10-27", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 1019 \"2\"", "ultima": "2026-10-29"}, {"abertas": 1, "bairro": "Boa Viagem", "ids": [{"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61137", "tipo": "Buraco Siga", "trecho": "empresarial center 3"}, {"abertura": "2026-10-29", "fechada": null, "id": "61382", "tipo": "Buraco Siga", "trecho": "parada 01"}], "lat": -8.1181808, "lng": -34.9027577, "logradouro": "Rua Antônio Lumack do Monte", "n": 2, "primeira": "2026-10-23", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "parada 01", "ultima": "2026-10-29"}, {"abertas": 0, "bairro": "Imbiribeira", "ids": [{"abertura": "2026-10-13", "fechada": "2026-10-21", "id": "60632", "tipo": "Buraco Siga", "trecho": "ao lado do número 117"}, {"abertura": "2026-10-22", "fechada": "2026-10-29", "id": "61054", "tipo": "Buraco Siga", "trecho": "numero 117"}], "lat": -8.0943921, "lng": -34.9102279, "logradouro": "Rua Cônego Lira", "n": 2, "primeira": "2026-10-13", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 117", "ultima": "2026-10-22"}, {"abertas": 0, "bairro": "Cohab", "ids": [{"abertura": "2026-10-13", "fechada": "2026-10-21", "id": "60601", "tipo": "Buraco Siga", "trecho": "oposto ao numero 165"}, {"abertura": "2026-10-21", "fechada": "2026-10-26", "id": "60916", "tipo": "Buraco Siga", "trecho": "numero 164"}], "lat": -8.1108344, "lng": -34.9541922, "logradouro": "Rua Doze de Junho", "n": 2, "primeira": "2026-10-13", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 164", "ultima": "2026-10-21"}, {"abertas": 1, "bairro": "Ibura", "ids": [{"abertura": "2026-10-20", "fechada": "2026-10-26", "id": "60889", "tipo": "Buraco Siga", "trecho": "ao lado do numero 1534"}, {"abertura": "2026-10-26", "fechada": null, "id": "61203", "tipo": "Buraco Siga", "trecho": "numero 1534"}], "lat": -8.1271097, "lng": -34.9383041, "logradouro": "Rua Emílio Monteiro Fonseca", "n": 2, "primeira": "2026-10-20", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 1534", "ultima": "2026-10-26"}, {"abertas": 1, "bairro": "Ipsep", "ids": [{"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61153", "tipo": "Buraco Siga", "trecho": "numero 33"}, {"abertura": "2026-10-28", "fechada": null, "id": "61292", "tipo": "Buraco Siga", "trecho": "numero 43"}], "lat": -8.106738, "lng": -34.9215819, "logradouro": "Rua Itanagé", "n": 2, "primeira": "2026-10-23", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 43", "ultima": "2026-10-28"}, {"abertas": 1, "bairro": "Agua Fria", "ids": [{"abertura": "2026-10-16", "fechada": "2026-10-27", "id": "60792", "tipo": "Buraco Siga", "trecho": "em frente ao N 407"}, {"abertura": "2026-10-28", "fechada": null, "id": "61306", "tipo": "Buraco Siga", "trecho": "em frente ao N 378"}], "lat": -8.01837728, "lng": -34.89534758, "logradouro": "Rua Ladeira de Pedra", "n": 2, "primeira": "2026-10-16", "reaberturas": 1, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 378", "ultima": "2026-10-28"}, {"abertas": 1, "bairro": "Agua Fria", "ids": [{"abertura": "2026-10-16", "fechada": "2026-10-21", "id": "60794", "tipo": "Buraco Siga", "trecho": "em frente ao N 468"}, {"abertura": "2026-10-22", "fechada": null, "id": "61046", "tipo": "Buraco Siga", "trecho": "em frente ao N 498"}], "lat": -8.01767731, "lng": -34.8990135, "logradouro": "Rua Ladeira de Pedra", "n": 2, "primeira": "2026-10-16", "reaberturas": 1, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 498", "ultima": "2026-10-22"}, {"abertas": 1, "bairro": "Ibura", "ids": [{"abertura": "2026-10-21", "fechada": "2026-10-26", "id": "60905", "tipo": "Buraco Siga", "trecho": "numero 56a"}, {"abertura": "2026-10-26", "fechada": null, "id": "61201", "tipo": "Buraco Siga", "trecho": "numero 50"}], "lat": -8.1106288, "lng": -34.9405619, "logradouro": "Rua Rio Brígida", "n": 2, "primeira": "2026-10-21", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 50", "ultima": "2026-10-26"}, {"abertas": 1, "bairro": "Ibura", "ids": [{"abertura": "2026-10-15", "fechada": "2026-10-20", "id": "60720", "tipo": "Buraco Siga", "trecho": "numero 122"}, {"abertura": "2026-10-28", "fechada": null, "id": "61341", "tipo": "Buraco Siga", "trecho": "numero 95"}], "lat": -8.1185264, "lng": -34.9407911, "logradouro": "Rua Rio Xingu", "n": 2, "primeira": "2026-10-15", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 95", "ultima": "2026-10-28"}, {"abertas": 0, "bairro": "Cohab", "ids": [{"abertura": "2026-10-13", "fechada": "2026-10-21", "id": "60600", "tipo": "Buraco Siga", "trecho": "numero 25"}, {"abertura": "2026-10-21", "fechada": "2026-10-26", "id": "60907", "tipo": "Buraco Siga", "trecho": "oposto ao número 8"}], "lat": -8.1303138, "lng": -34.9496949, "logradouro": "Rua Vale do Itajaí", "n": 2, "primeira": "2026-10-13", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "oposto ao número 8", "ultima": "2026-10-21"}, {"abertas": 0, "bairro": "Vasco da Gama", "ids": [{"abertura": "2026-09-30", "fechada": "2026-10-14", "id": "60058", "tipo": "Buraco Siga", "trecho": "Em frente ao número 1348"}, {"abertura": "2026-10-16", "fechada": "2026-10-26", "id": "60849", "tipo": "Buraco Siga", "trecho": "em frente ao número 1367"}], "lat": -8.009308, "lng": -34.920692, "logradouro": "Rua Vasco da Gama", "n": 2, "primeira": "2026-09-30", "reaberturas": 1, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "em frente ao número 1367", "ultima": "2026-10-16"}, {"abertas": 0, "bairro": "Ipsep", "ids": [{"abertura": "2026-10-13", "fechada": "2026-10-19", "id": "60583", "tipo": "Buraco Siga", "trecho": "numero 135"}, {"abertura": "2026-10-19", "fechada": "2026-10-26", "id": "60860", "tipo": "Buraco Siga", "trecho": "numero 125"}], "lat": -8.1119198, "lng": -34.9224871, "logradouro": "Rua Virgínia Heráclio", "n": 2, "primeira": "2026-10-13", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 125", "ultima": "2026-10-19"}, {"abertas": 0, "bairro": "Ipsep", "ids": [{"abertura": "2026-10-13", "fechada": "2026-10-19", "id": "60584", "tipo": "Buraco Siga", "trecho": "numero 65"}, {"abertura": "2026-10-19", "fechada": "2026-10-26", "id": "60859", "tipo": "Buraco Siga", "trecho": "numero 80"}], "lat": -8.1123689, "lng": -34.9220846, "logradouro": "Rua Virgínia Heráclio", "n": 2, "primeira": "2026-10-13", "reaberturas": 1, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 80", "ultima": "2026-10-19"}, {"abertas": 1, "bairro": "Nova Descoberta", "ids": [{"abertura": "2026-10-21", "fechada": "2026-10-26", "id": "60934", "tipo": "Buraco Siga", "trecho": "Em frente ao número 65"}, {"abertura": "2026-10-21", "fechada": "2026-10-26", "id": "60936", "tipo": "Buraco Siga", "trecho": "Em frente ao número 62/1"}, {"abertura": "2026-10-21", "fechada": "2026-10-26", "id": "60959", "tipo": "Buraco Siga", "trecho": "Em frente ao número 62"}, {"abertura": "2026-10-21", "fechada": null, "id": "60960", "tipo": "Buraco Siga", "trecho": "Em frente ao número 89"}], "lat": -7.997652, "lng": -34.93021, "logradouro": "Córrego do Inácio", "n": 4, "primeira": "2026-10-21", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 89", "ultima": "2026-10-21"}, {"abertas": 0, "bairro": "Engenho do Meio", "ids": [{"abertura": "2026-09-25", "fechada": "2026-10-15", "id": "59814", "tipo": "Buraco Siga", "trecho": "próximo ao nro 234"}, {"abertura": "2026-09-25", "fechada": "2026-10-15", "id": "59815", "tipo": "Buraco Siga", "trecho": "frente ao nro 234"}, {"abertura": "2026-09-25", "fechada": "2026-10-15", "id": "59816", "tipo": "Buraco Siga", "trecho": "frente ao nro 248"}, {"abertura": "2026-09-25", "fechada": "2026-10-15", "id": "59817", "tipo": "Buraco Siga", "trecho": "frente ao nro 260"}], "lat": -8.052419, "lng": -34.941647, "logradouro": "Rua Lindolfo Color", "n": 4, "primeira": "2026-09-25", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "frente ao nro 260", "ultima": "2026-09-25"}, {"abertas": 0, "bairro": "Porto da Madeira", "ids": [{"abertura": "2026-10-02", "fechada": "2026-10-22", "id": "60226", "tipo": "Buraco Siga", "trecho": "55"}, {"abertura": "2026-10-02", "fechada": "2026-10-22", "id": "60227", "tipo": "Buraco Siga", "trecho": "71"}, {"abertura": "2026-10-16", "fechada": "2026-10-22", "id": "60832", "tipo": "Buraco Siga", "trecho": "em frente ao N 71"}], "lat": -8.007177, "lng": -34.89135997, "logradouro": "Ladeira do Sapoti", "n": 3, "primeira": "2026-10-02", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 71", "ultima": "2026-10-16"}, {"abertas": 3, "bairro": "Engenho do Meio", "ids": [{"abertura": "2026-10-02", "fechada": null, "id": "60278", "tipo": "Buraco Siga", "trecho": "frente ao nro 720"}, {"abertura": "2026-10-02", "fechada": null, "id": "60282", "tipo": "Buraco Siga", "trecho": "frente ao nro 735"}, {"abertura": "2026-10-02", "fechada": null, "id": "60285", "tipo": "Buraco Siga", "trecho": "frente ao nro 712"}], "lat": -8.06229597, "lng": -34.94146097, "logradouro": "Rua Carneiro de Mariz", "n": 3, "primeira": "2026-10-02", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "frente ao nro 712", "ultima": "2026-10-02"}, {"abertas": 0, "bairro": "Vasco da Gama", "ids": [{"abertura": "2026-10-01", "fechada": "2026-10-14", "id": "60140", "tipo": "Buraco Siga", "trecho": "Em frente ao número 339"}, {"abertura": "2026-10-01", "fechada": "2026-10-14", "id": "60142", "tipo": "Buraco Siga", "trecho": "Em frente ao número 348"}, {"abertura": "2026-10-01", "fechada": "2026-10-14", "id": "60143", "tipo": "Buraco Siga", "trecho": "Em frente ao número 310"}], "lat": -8.0065054, "lng": -34.9172885, "logradouro": "Rua Diadema", "n": 3, "primeira": "2026-10-01", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 310", "ultima": "2026-10-01"}, {"abertas": 0, "bairro": "Brejo de Beberibe", "ids": [{"abertura": "2026-10-01", "fechada": "2026-10-21", "id": "60101", "tipo": "Buraco Siga", "trecho": "Em frente ao número 95"}, {"abertura": "2026-10-01", "fechada": "2026-10-21", "id": "60102", "tipo": "Buraco Siga", "trecho": "Em frente ao número 93"}, {"abertura": "2026-10-01", "fechada": "2026-10-21", "id": "60104", "tipo": "Buraco Siga", "trecho": "Em frente ao número 93/1"}], "lat": -7.99947097, "lng": -34.921526, "logradouro": "Rua Doutor Antônio da Rosa Borges", "n": 3, "primeira": "2026-10-01", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 93/1", "ultima": "2026-10-01"}, {"abertas": 1, "bairro": "Cabanga", "ids": [{"abertura": "2026-10-07", "fechada": "2026-10-28", "id": "60465", "tipo": "Buraco Siga", "trecho": "18"}, {"abertura": "2026-10-14", "fechada": null, "id": "60663", "tipo": "Buraco Siga", "trecho": "01"}, {"abertura": "2026-10-26", "fechada": "2026-10-28", "id": "61224", "tipo": "Buraco Siga", "trecho": "defronte ao 03, próximo do 170 e 02"}], "lat": -8.079361, "lng": -34.89957197, "logradouro": "Rua Escritor Souza Barros", "n": 3, "primeira": "2026-10-07", "reaberturas": 0, "rpa": "RPA 1", "tipos": ["Buraco Siga"], "trecho": "defronte ao 03, próximo do 170 e 02", "ultima": "2026-10-26"}, {"abertas": 3, "bairro": "Cordeiro", "ids": [{"abertura": "2026-10-01", "fechada": null, "id": "60125", "tipo": "Buraco Siga", "trecho": "frente ao nro 73"}, {"abertura": "2026-10-01", "fechada": null, "id": "60126", "tipo": "Buraco Siga", "trecho": "frente ao nro 98"}, {"abertura": "2026-10-01", "fechada": null, "id": "60127", "tipo": "Buraco Siga", "trecho": "frente ao nro 47"}], "lat": -8.05905697, "lng": -34.929813, "logradouro": "Rua Tamboril", "n": 3, "primeira": "2026-10-01", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "frente ao nro 47", "ultima": "2026-10-01"}, {"abertas": 2, "bairro": "Boa Viagem", "ids": [{"abertura": "2026-10-27", "fechada": null, "id": "61267", "tipo": "Buraco Siga", "trecho": "numero 1870"}, {"abertura": "2026-10-27", "fechada": null, "id": "61268", "tipo": "Buraco Siga", "trecho": "numero 1870 \"2\""}], "lat": -8.1073666, "lng": -34.8880768, "logradouro": "Avenida Boa Viagem", "n": 2, "primeira": "2026-10-27", "reaberturas": 0, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 1870 \"2\"", "ultima": "2026-10-27"}, {"abertas": 0, "bairro": "Iputinga", "ids": [{"abertura": "2026-10-08", "fechada": "2026-10-14", "id": "60526", "tipo": "Buraco Siga", "trecho": "oposto estação BRT BR101"}, {"abertura": "2026-10-08", "fechada": "2026-10-14", "id": "60527", "tipo": "Buraco Siga", "trecho": "faixa de pedestre estação BRT BR101"}], "lat": -8.03849897, "lng": -34.94247297, "logradouro": "Avenida Caxangá", "n": 2, "primeira": "2026-10-08", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "faixa de pedestre estação BRT BR101", "ultima": "2026-10-08"}, {"abertas": 2, "bairro": "Dois Unidos", "ids": [{"abertura": "2026-10-16", "fechada": null, "id": "60786", "tipo": "Buraco Siga", "trecho": "em frente ao N 695b"}, {"abertura": "2026-10-28", "fechada": null, "id": "61289", "tipo": "Buraco Siga", "trecho": "em frente ao N 698 A"}], "lat": -8.00637625, "lng": -34.90629958, "logradouro": "Avenida Chagas Ferreira", "n": 2, "primeira": "2026-10-16", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 698 A", "ultima": "2026-10-28"}, {"abertas": 2, "bairro": "Dois Unidos", "ids": [{"abertura": "2026-10-26", "fechada": null, "id": "61199", "tipo": "Buraco Siga", "trecho": "em frente ao N 980"}, {"abertura": "2026-10-27", "fechada": null, "id": "61274", "tipo": "Buraco Siga", "trecho": "em frente ao N 1000"}], "lat": -8.01037, "lng": -34.9084667, "logradouro": "Avenida Chagas Ferreira", "n": 2, "primeira": "2026-10-26", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 1000", "ultima": "2026-10-27"}, {"abertas": 0, "bairro": "Parnamirim", "ids": [{"abertura": "2026-10-15", "fechada": "2026-10-19", "id": "60742", "tipo": "Buraco Siga", "trecho": "Em frente ao número 296 A"}, {"abertura": "2026-10-15", "fechada": "2026-10-19", "id": "60743", "tipo": "Buraco Siga", "trecho": "Em frente ao número 296A/1"}], "lat": -8.0379083, "lng": -34.8753489, "logradouro": "Avenida Dezessete de Agosto", "n": 2, "primeira": "2026-10-15", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 296A/1", "ultima": "2026-10-15"}, {"abertas": 0, "bairro": "Parnamirim", "ids": [{"abertura": "2026-10-22", "fechada": "2026-10-28", "id": "61008", "tipo": "Buraco Siga", "trecho": "Em frente ao número 1176"}, {"abertura": "2026-10-22", "fechada": "2026-10-28", "id": "61009", "tipo": "Buraco Siga", "trecho": "Em frente ao número 1176/1"}], "lat": -8.0372669, "lng": -34.9193687, "logradouro": "Avenida Dezessete de Agosto", "n": 2, "primeira": "2026-10-22", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 1176/1", "ultima": "2026-10-22"}, {"abertas": 2, "bairro": "Barro", "ids": [{"abertura": "2026-10-26", "fechada": null, "id": "61217", "tipo": "Buraco Siga", "trecho": "numero 400"}, {"abertura": "2026-10-26", "fechada": null, "id": "61218", "tipo": "Buraco Siga", "trecho": "numero 395"}], "lat": -8.1091599, "lng": -34.9541249, "logradouro": "Avenida Presidente Médici", "n": 2, "primeira": "2026-10-26", "reaberturas": 0, "rpa": "RPA 5", "tipos": ["Buraco Siga"], "trecho": "numero 395", "ultima": "2026-10-26"}, {"abertas": 2, "bairro": "Arruda", "ids": [{"abertura": "2026-10-23", "fechada": null, "id": "61158", "tipo": "Buraco Siga", "trecho": "em frente ao N 280"}, {"abertura": "2026-10-23", "fechada": null, "id": "61159", "tipo": "Buraco Siga", "trecho": "em frente ao N 280 b"}], "lat": -8.02786253, "lng": -34.88911819, "logradouro": "Avenida Professor José dos Anjos", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 280 b", "ultima": "2026-10-23"}, {"abertas": 2, "bairro": "Nova Descoberta", "ids": [{"abertura": "2026-10-21", "fechada": null, "id": "60932", "tipo": "Buraco Siga", "trecho": "Em frente ao número 176"}, {"abertura": "2026-10-21", "fechada": null, "id": "60961", "tipo": "Buraco Siga", "trecho": "Em frente ao número 152"}], "lat": -7.99715797, "lng": -34.930477, "logradouro": "Córrego do Inácio", "n": 2, "primeira": "2026-10-21", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 152", "ultima": "2026-10-21"}, {"abertas": 0, "bairro": "Passarinho", "ids": [{"abertura": "2026-10-01", "fechada": "2026-10-14", "id": "60078", "tipo": "Buraco Siga", "trecho": "Em frente ao número 182"}, {"abertura": "2026-10-01", "fechada": "2026-10-14", "id": "60079", "tipo": "Buraco Siga", "trecho": "Em frente ao número 182 /1"}], "lat": -8.0377109, "lng": -34.8755482, "logradouro": "Estrada de Passarinho", "n": 2, "primeira": "2026-10-01", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 182 /1", "ultima": "2026-10-01"}, {"abertas": 0, "bairro": "Macaxeira", "ids": [{"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61139", "tipo": "Buraco Siga", "trecho": "Em frente ao número 24"}, {"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61168", "tipo": "Buraco Siga", "trecho": "Em frente ao número 40"}], "lat": -8.01760697, "lng": -34.932451, "logradouro": "Rua Antônio Batista de Souza", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 40", "ultima": "2026-10-23"}, {"abertas": 0, "bairro": "Macaxeira", "ids": [{"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61167", "tipo": "Buraco Siga", "trecho": "Em frente ao número 130"}, {"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61171", "tipo": "Buraco Siga", "trecho": "Em frente ao número 150"}], "lat": -8.01769097, "lng": -34.933568, "logradouro": "Rua Antônio Batista de Souza", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 150", "ultima": "2026-10-23"}, {"abertas": 0, "bairro": "Macaxeira", "ids": [{"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61172", "tipo": "Buraco Siga", "trecho": "Em frente ao número 245"}, {"abertura": "2026-10-23", "fechada": "2026-10-28", "id": "61173", "tipo": "Buraco Siga", "trecho": "Em frente ao número 245/1"}], "lat": -8.017132, "lng": -34.93428697, "logradouro": "Rua Antônio Batista de Souza", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 245/1", "ultima": "2026-10-23"}, {"abertas": 2, "bairro": "Boa Viagem", "ids": [{"abertura": "2026-10-29", "fechada": null, "id": "61362", "tipo": "Buraco Siga", "trecho": "numero 158"}, {"abertura": "2026-10-29", "fechada": null, "id": "61364", "tipo": "Buraco Siga", "trecho": "numero 151"}], "lat": -8.1359257, "lng": -34.9099375, "logradouro": "Rua Baronesa de Palmares", "n": 2, "primeira": "2026-10-29", "reaberturas": 0, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 151", "ultima": "2026-10-29"}, {"abertas": 0, "bairro": "Campo Grande", "ids": [{"abertura": "2026-10-02", "fechada": "2026-10-21", "id": "60316", "tipo": "Buraco Siga", "trecho": "106"}, {"abertura": "2026-10-02", "fechada": "2026-10-19", "id": "60321", "tipo": "Buraco Siga", "trecho": "134"}], "lat": -8.031413, "lng": -34.88041297, "logradouro": "Rua Bianor de Oliveira", "n": 2, "primeira": "2026-10-02", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "134", "ultima": "2026-10-02"}, {"abertas": 0, "bairro": "Campo Grande", "ids": [{"abertura": "2026-10-02", "fechada": "2026-10-19", "id": "60322", "tipo": "Buraco Siga", "trecho": "185"}, {"abertura": "2026-10-09", "fechada": "2026-10-29", "id": "60568", "tipo": "Buraco Siga", "trecho": "Em frente ao número 195"}], "lat": -8.03102697, "lng": -34.877887, "logradouro": "Rua Bianor de Oliveira", "n": 2, "primeira": "2026-10-02", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 195", "ultima": "2026-10-09"}, {"abertas": 0, "bairro": "Apipucos", "ids": [{"abertura": "2026-10-08", "fechada": "2026-10-14", "id": "60508", "tipo": "Buraco Siga", "trecho": "Em frente ao número 150"}, {"abertura": "2026-10-08", "fechada": "2026-10-14", "id": "60509", "tipo": "Buraco Siga", "trecho": "Em frente ao número 150/1"}], "lat": -8.01786897, "lng": -34.93251097, "logradouro": "Rua Coronel João Batista do Rego Barros", "n": 2, "primeira": "2026-10-08", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 150/1", "ultima": "2026-10-08"}, {"abertas": 2, "bairro": "Alto Jose Bonifacio", "ids": [{"abertura": "2026-10-23", "fechada": null, "id": "61122", "tipo": "Buraco Siga", "trecho": "Em frente ao número 142"}, {"abertura": "2026-10-23", "fechada": null, "id": "61123", "tipo": "Buraco Siga", "trecho": "Em frente ao número 170"}], "lat": -8.016932, "lng": -34.91501997, "logradouro": "Rua Córrego do Ouro", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 170", "ultima": "2026-10-23"}, {"abertas": 2, "bairro": "Casa Amarela", "ids": [{"abertura": "2026-10-23", "fechada": null, "id": "61105", "tipo": "Buraco Siga", "trecho": "Em frente ao número 187"}, {"abertura": "2026-10-29", "fechada": null, "id": "61366", "tipo": "Buraco Siga", "trecho": "Em frente ao número 190"}], "lat": -8.02641997, "lng": -34.90987797, "logradouro": "Rua Desembargador Motta Júnior", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 190", "ultima": "2026-10-29"}, {"abertas": 2, "bairro": "Boa Viagem", "ids": [{"abertura": "2026-10-29", "fechada": null, "id": "61359", "tipo": "Buraco Siga", "trecho": "numero 37"}, {"abertura": "2026-10-29", "fechada": null, "id": "61360", "tipo": "Buraco Siga", "trecho": "numero 52"}], "lat": -8.1364531, "lng": -34.909226, "logradouro": "Rua Dom Silverio", "n": 2, "primeira": "2026-10-29", "reaberturas": 0, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 52", "ultima": "2026-10-29"}, {"abertas": 2, "bairro": "Cohab", "ids": [{"abertura": "2026-10-21", "fechada": null, "id": "60913", "tipo": "Buraco Siga", "trecho": "numero 335"}, {"abertura": "2026-10-21", "fechada": null, "id": "60914", "tipo": "Buraco Siga", "trecho": "numero 315"}], "lat": -8.109552, "lng": -34.9544398, "logradouro": "Rua Doze de Junho", "n": 2, "primeira": "2026-10-21", "reaberturas": 0, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 315", "ultima": "2026-10-21"}, {"abertas": 2, "bairro": "Apipucos", "ids": [{"abertura": "2026-10-28", "fechada": null, "id": "61302", "tipo": "Buraco Siga", "trecho": "Em frente ao número 320"}, {"abertura": "2026-10-28", "fechada": null, "id": "61303", "tipo": "Buraco Siga", "trecho": "Em frente ao número 320/1"}], "lat": -8.01681697, "lng": -34.93531, "logradouro": "Rua Dr Anauro Dornellas Câmara", "n": 2, "primeira": "2026-10-28", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 320/1", "ultima": "2026-10-28"}, {"abertas": 2, "bairro": "Alto Jose Bonifacio", "ids": [{"abertura": "2026-10-22", "fechada": null, "id": "60979", "tipo": "Buraco Siga", "trecho": "em frente ao N 179 em frente a associação de moradores do ajp"}, {"abertura": "2026-10-22", "fechada": null, "id": "60980", "tipo": "Buraco Siga", "trecho": "em frente a o número 179 associação de moradores do alto José Bonifácio"}], "lat": -8.01578425, "lng": -34.91327283, "logradouro": "Rua Dr Benvenuto Teles Neto", "n": 2, "primeira": "2026-10-22", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "em frente a o número 179 associação de moradores do alto José Bonifácio", "ultima": "2026-10-22"}, {"abertas": 0, "bairro": "Tejipio", "ids": [{"abertura": "2026-09-25", "fechada": "2026-10-26", "id": "59841", "tipo": "Buraco Siga", "trecho": "451"}, {"abertura": "2026-09-25", "fechada": "2026-10-26", "id": "59842", "tipo": "Buraco Siga", "trecho": "451 faixa"}], "lat": -8.0920782, "lng": -34.9614031, "logradouro": "Rua Falcão de Lacerda", "n": 2, "primeira": "2026-09-25", "reaberturas": 0, "rpa": "RPA 5", "tipos": ["Buraco Siga"], "trecho": "451 faixa", "ultima": "2026-09-25"}, {"abertas": 0, "bairro": "Vasco da Gama", "ids": [{"abertura": "2026-09-30", "fechada": "2026-10-22", "id": "60054", "tipo": "Buraco Siga", "trecho": "Em frente ao número 98"}, {"abertura": "2026-10-06", "fechada": "2026-10-15", "id": "60383", "tipo": "Buraco Siga", "trecho": "Em frente ao número 89"}], "lat": -8.014167, "lng": -34.91903297, "logradouro": "Rua Frederico Ozanan", "n": 2, "primeira": "2026-09-30", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 89", "ultima": "2026-10-06"}, {"abertas": 2, "bairro": "Iputinga", "ids": [{"abertura": "2026-10-15", "fechada": null, "id": "60701", "tipo": "Buraco Siga", "trecho": "frente ao nro 133"}, {"abertura": "2026-10-15", "fechada": null, "id": "60702", "tipo": "Buraco Siga", "trecho": "frente ao nro 125"}], "lat": -8.04285197, "lng": -34.93747797, "logradouro": "Rua General Cândido Borges Castelo Branco", "n": 2, "primeira": "2026-10-15", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "frente ao nro 125", "ultima": "2026-10-15"}, {"abertas": 0, "bairro": "Imbiribeira", "ids": [{"abertura": "2026-10-14", "fechada": "2026-10-16", "id": "60642", "tipo": "Buraco Siga", "trecho": "numero 280"}, {"abertura": "2026-10-14", "fechada": "2026-10-16", "id": "60643", "tipo": "Buraco Siga", "trecho": "numero 300"}], "lat": -8.1079182, "lng": -34.9125747, "logradouro": "Rua Izabel de Souza", "n": 2, "primeira": "2026-10-14", "reaberturas": 0, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 300", "ultima": "2026-10-14"}, {"abertas": 2, "bairro": "Mustardinha", "ids": [{"abertura": "2026-09-17", "fechada": null, "id": "59335", "tipo": "Buraco Siga", "trecho": "24"}, {"abertura": "2026-09-30", "fechada": null, "id": "60025", "tipo": "Buraco Siga", "trecho": "33"}], "lat": -8.06967397, "lng": -34.91718, "logradouro": "Rua João Trajano da Silva", "n": 2, "primeira": "2026-09-17", "reaberturas": 0, "rpa": "RPA 5", "tipos": ["Buraco Siga"], "trecho": "33", "ultima": "2026-09-30"}, {"abertas": 2, "bairro": "Agua Fria", "ids": [{"abertura": "2026-10-22", "fechada": null, "id": "61043", "tipo": "Buraco Siga", "trecho": "em frente ao N 358"}, {"abertura": "2026-10-28", "fechada": null, "id": "61305", "tipo": "Buraco Siga", "trecho": "em frente ao N 369"}], "lat": -8.01836583, "lng": -34.89833067, "logradouro": "Rua Ladeira de Pedra", "n": 2, "primeira": "2026-10-22", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 369", "ultima": "2026-10-28"}, {"abertas": 2, "bairro": "Agua Fria", "ids": [{"abertura": "2026-10-22", "fechada": null, "id": "61047", "tipo": "Buraco Siga", "trecho": "em frente ao N 992"}, {"abertura": "2026-10-28", "fechada": null, "id": "61301", "tipo": "Buraco Siga", "trecho": "em frente ao N 1008"}], "lat": -8.01458167, "lng": -34.90244292, "logradouro": "Rua Ladeira de Pedra", "n": 2, "primeira": "2026-10-22", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "em frente ao N 1008", "ultima": "2026-10-28"}, {"abertas": 2, "bairro": "Vasco da Gama", "ids": [{"abertura": "2026-10-28", "fechada": null, "id": "61304", "tipo": "Buraco Siga", "trecho": "Em frente ao número 372"}, {"abertura": "2026-10-28", "fechada": null, "id": "61308", "tipo": "Buraco Siga", "trecho": "Em frente ao número 366"}], "lat": -8.018895, "lng": -34.924711, "logradouro": "Rua Luiz Cesário de Melo", "n": 2, "primeira": "2026-10-28", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 366", "ultima": "2026-10-28"}, {"abertas": 2, "bairro": "Tejipio", "ids": [{"abertura": "2026-06-06", "fechada": null, "id": "53133", "tipo": "Buraco Siga", "trecho": "viaduto/1"}, {"abertura": "2026-09-29", "fechada": null, "id": "59938", "tipo": "Buraco Siga", "trecho": "viaduto 2"}], "lat": -8.08974597, "lng": -34.94694497, "logradouro": "Rua Luiz Soares", "n": 2, "primeira": "2026-06-06", "reaberturas": 0, "rpa": "RPA 5", "tipos": ["Buraco Siga"], "trecho": "viaduto 2", "ultima": "2026-09-29"}, {"abertas": 0, "bairro": "Espinheiro", "ids": [{"abertura": "2026-10-15", "fechada": "2026-10-22", "id": "60687", "tipo": "Buraco Siga", "trecho": "Em frente ao número 302"}, {"abertura": "2026-10-15", "fechada": "2026-10-21", "id": "60688", "tipo": "Buraco Siga", "trecho": "Em frente ao número 297"}], "lat": -8.04121897, "lng": -34.888584, "logradouro": "Rua Marquês do Paraná", "n": 2, "primeira": "2026-10-15", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 297", "ultima": "2026-10-15"}, {"abertas": 0, "bairro": "Espinheiro", "ids": [{"abertura": "2026-10-15", "fechada": "2026-10-21", "id": "60765", "tipo": "Buraco Siga", "trecho": "Em frente ao número 44"}, {"abertura": "2026-10-15", "fechada": "2026-10-21", "id": "60766", "tipo": "Buraco Siga", "trecho": "Lado oposto ao número 36"}], "lat": -8.042571, "lng": -34.89038097, "logradouro": "Rua Marquês do Paraná", "n": 2, "primeira": "2026-10-15", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Lado oposto ao número 36", "ultima": "2026-10-15"}, {"abertas": 2, "bairro": "Alto Jose do Pinho", "ids": [{"abertura": "2026-10-20", "fechada": null, "id": "60875", "tipo": "Buraco Siga", "trecho": "Em frente ao número 184"}, {"abertura": "2026-10-26", "fechada": null, "id": "61189", "tipo": "Buraco Siga", "trecho": "Em frente ao número 191"}], "lat": -8.02408997, "lng": -34.90758697, "logradouro": "Rua Monte Horeb", "n": 2, "primeira": "2026-10-20", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 191", "ultima": "2026-10-26"}, {"abertas": 1, "bairro": "Campo Grande", "ids": [{"abertura": "2026-10-02", "fechada": null, "id": "60319", "tipo": "Buraco Siga", "trecho": "próximo ao número 96"}, {"abertura": "2026-10-02", "fechada": "2026-10-19", "id": "60320", "tipo": "Buraco Siga", "trecho": "86"}], "lat": -8.030373, "lng": -34.87972597, "logradouro": "Rua Oliveira Fonseca", "n": 2, "primeira": "2026-10-02", "reaberturas": 0, "rpa": "RPA 2", "tipos": ["Buraco Siga"], "trecho": "86", "ultima": "2026-10-02"}, {"abertas": 0, "bairro": "Imbiribeira", "ids": [{"abertura": "2026-10-07", "fechada": "2026-10-14", "id": "60446", "tipo": "Buraco Siga", "trecho": "numero 43"}, {"abertura": "2026-10-13", "fechada": "2026-10-21", "id": "60630", "tipo": "Buraco Siga", "trecho": "numero 61"}], "lat": -8.0897552, "lng": -34.914144, "logradouro": "Rua Sueli Luna Menelau", "n": 2, "primeira": "2026-10-07", "reaberturas": 0, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 61", "ultima": "2026-10-13"}, {"abertas": 1, "bairro": "Alto Jose Bonifacio", "ids": [{"abertura": "2026-10-01", "fechada": "2026-10-19", "id": "60174", "tipo": "Buraco Siga", "trecho": "49"}, {"abertura": "2026-10-01", "fechada": null, "id": "60180", "tipo": "Buraco Siga", "trecho": "70"}], "lat": -8.017773, "lng": -34.91152497, "logradouro": "Rua São Domingos Sávio", "n": 2, "primeira": "2026-10-01", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "70", "ultima": "2026-10-01"}, {"abertas": 2, "bairro": "Iputinga", "ids": [{"abertura": "2026-10-23", "fechada": null, "id": "61111", "tipo": "Buraco Siga", "trecho": "oposto ao nro 600"}, {"abertura": "2026-10-23", "fechada": null, "id": "61112", "tipo": "Buraco Siga", "trecho": "frente ao nro 593"}], "lat": -8.03627297, "lng": -34.935273, "logradouro": "Rua São Mateus", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "frente ao nro 593", "ultima": "2026-10-23"}, {"abertas": 2, "bairro": "Iputinga", "ids": [{"abertura": "2026-10-23", "fechada": null, "id": "61113", "tipo": "Buraco Siga", "trecho": "frente ao nro 852"}, {"abertura": "2026-10-23", "fechada": null, "id": "61115", "tipo": "Buraco Siga", "trecho": "oposto ao nro 852"}], "lat": -8.03388997, "lng": -34.934874, "logradouro": "Rua São Mateus", "n": 2, "primeira": "2026-10-23", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "oposto ao nro 852", "ultima": "2026-10-23"}, {"abertas": 2, "bairro": "Varzea", "ids": [{"abertura": "2026-10-15", "fechada": null, "id": "60705", "tipo": "Buraco Siga", "trecho": "próximo ao nro 17 (próximo a R Otávio Sarmento Cardoso)"}, {"abertura": "2026-10-15", "fechada": null, "id": "60706", "tipo": "Buraco Siga", "trecho": "frente ao nro 17"}], "lat": -8.038351, "lng": -34.954224, "logradouro": "Rua Torres Homem", "n": 2, "primeira": "2026-10-15", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "frente ao nro 17", "ultima": "2026-10-15"}, {"abertas": 0, "bairro": "Varzea", "ids": [{"abertura": "2026-09-28", "fechada": "2026-10-21", "id": "59892", "tipo": "Buraco Siga", "trecho": "próximo ao nro 2030"}, {"abertura": "2026-09-28", "fechada": "2026-10-21", "id": "59893", "tipo": "Buraco Siga", "trecho": "próximo ao nro 2052"}], "lat": -8.03853697, "lng": -34.968915, "logradouro": "Rua Vale do Siriji", "n": 2, "primeira": "2026-09-28", "reaberturas": 0, "rpa": "RPA 4", "tipos": ["Buraco Siga"], "trecho": "próximo ao nro 2052", "ultima": "2026-09-28"}, {"abertas": 2, "bairro": "Alto Jose do Pinho", "ids": [{"abertura": "2026-10-14", "fechada": null, "id": "60651", "tipo": "Buraco Siga", "trecho": "Em frente ao número 376"}, {"abertura": "2026-10-20", "fechada": null, "id": "60871", "tipo": "Buraco Siga", "trecho": "Em frente ao número 375"}], "lat": -8.023179, "lng": -34.909911, "logradouro": "Rua Valeriano Lobo", "n": 2, "primeira": "2026-10-14", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "Em frente ao número 375", "ultima": "2026-10-20"}, {"abertas": 2, "bairro": "Ibura", "ids": [{"abertura": "2026-10-26", "fechada": null, "id": "61205", "tipo": "Buraco Siga", "trecho": "numero 50"}, {"abertura": "2026-10-26", "fechada": null, "id": "61206", "tipo": "Buraco Siga", "trecho": "numero 60"}], "lat": -8.1293844, "lng": -34.937037, "logradouro": "Rua Virginópolis", "n": 2, "primeira": "2026-10-26", "reaberturas": 0, "rpa": "RPA 6", "tipos": ["Buraco Siga"], "trecho": "numero 60", "ultima": "2026-10-26"}, {"abertas": 0, "bairro": "Mangabeira", "ids": [{"abertura": "2026-10-02", "fechada": "2026-10-29", "id": "60296", "tipo": "Buraco Siga", "trecho": "363"}, {"abertura": "2026-10-02", "fechada": "2026-10-19", "id": "60300", "tipo": "Buraco Siga", "trecho": "378 do outro lado"}], "lat": -8.025176, "lng": -34.90363397, "logradouro": "Rua da Mangabeira", "n": 2, "primeira": "2026-10-02", "reaberturas": 0, "rpa": "RPA 3", "tipos": ["Buraco Siga"], "trecho": "378 do outro lado", "ultima": "2026-10-02"}], "ruas": [{"bairro": "Agua Fria", "logradouro": "Rua Ladeira de Pedra", "os": 8, "pontos": 4, "reaberturas": 2, "rpa": "RPA 2"}, {"bairro": "Pina", "logradouro": "Avenida Conselheiro Aguiar", "os": 4, "pontos": 1, "reaberturas": 2, "rpa": "RPA 6"}, {"bairro": "Jordao", "logradouro": "Avenida Ministro Apolônio Sales", "os": 4, "pontos": 1, "reaberturas": 2, "rpa": "RPA 6"}, {"bairro": "Ipsep", "logradouro": "Rua Virgínia Heráclio", "os": 4, "pontos": 2, "reaberturas": 2, "rpa": "RPA 6"}, {"bairro": "Cohab", "logradouro": "Rua Doze de Junho", "os": 4, "pontos": 2, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Jordao", "logradouro": "Avenida Maria Irene", "os": 3, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Boa Viagem", "logradouro": "Rua Antônio Lumack do Monte", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Imbiribeira", "logradouro": "Rua Cônego Lira", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Ibura", "logradouro": "Rua Emílio Monteiro Fonseca", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Ipsep", "logradouro": "Rua Itanagé", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Ibura", "logradouro": "Rua Rio Brígida", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Ibura", "logradouro": "Rua Rio Xingu", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Cohab", "logradouro": "Rua Vale do Itajaí", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 6"}, {"bairro": "Vasco da Gama", "logradouro": "Rua Vasco da Gama", "os": 2, "pontos": 1, "reaberturas": 1, "rpa": "RPA 3"}, {"bairro": "Nova Descoberta", "logradouro": "Córrego do Inácio", "os": 6, "pontos": 2, "reaberturas": 0, "rpa": "RPA 3"}, {"bairro": "Macaxeira", "logradouro": "Rua Antônio Batista de Souza", "os": 6, "pontos": 3, "reaberturas": 0, "rpa": "RPA 3"}, {"bairro": "Engenho do Meio", "logradouro": "Rua Lindolfo Color", "os": 4, "pontos": 1, "reaberturas": 0, "rpa": "RPA 4"}, {"bairro": "Dois Unidos", "logradouro": "Avenida Chagas Ferreira", "os": 4, "pontos": 2, "reaberturas": 0, "rpa": "RPA 2"}, {"bairro": "Parnamirim", "logradouro": "Avenida Dezessete de Agosto", "os": 4, "pontos": 2, "reaberturas": 0, "rpa": "RPA 3"}, {"bairro": "Campo Grande", "logradouro": "Rua Bianor de Oliveira", "os": 4, "pontos": 2, "reaberturas": 0, "rpa": "RPA 2"}, {"bairro": "Espinheiro", "logradouro": "Rua Marquês do Paraná", "os": 4, "pontos": 2, "reaberturas": 0, "rpa": "RPA 3"}, {"bairro": "Iputinga", "logradouro": "Rua São Mateus", "os": 4, "pontos": 2, "reaberturas": 0, "rpa": "RPA 4"}, {"bairro": "Porto da Madeira", "logradouro": "Ladeira do Sapoti", "os": 3, "pontos": 1, "reaberturas": 0, "rpa": "RPA 2"}, {"bairro": "Engenho do Meio", "logradouro": "Rua Carneiro de Mariz", "os": 3, "pontos": 1, "reaberturas": 0, "rpa": "RPA 4"}, {"bairro": "Vasco da Gama", "logradouro": "Rua Diadema", "os": 3, "pontos": 1, "reaberturas": 0, "rpa": "RPA 3"}, {"bairro": "Brejo de Beberibe", "logradouro": "Rua Doutor Antônio da Rosa Borges", "os": 3, "pontos": 1, "reaberturas": 0, "rpa": "RPA 3"}, {"bairro": "Cabanga", "logradouro": "Rua Escritor Souza Barros", "os": 3, "pontos": 1, "reaberturas": 0, "rpa": "RPA 1"}, {"bairro": "Cordeiro", "logradouro": "Rua Tamboril", "os": 3, "pontos": 1, "reaberturas": 0, "rpa": "RPA 4"}, {"bairro": "Boa Viagem", "logradouro": "Avenida Boa Viagem", "os": 2, "pontos": 1, "reaberturas": 0, "rpa": "RPA 6"}, {"bairro": "Iputinga", "logradouro": "Avenida Caxangá", "os": 2, "pontos": 1, "reaberturas": 0, "rpa": "RPA 4"}], "total_pontos": 69}, TODOS=["Abatimento", "Abatimento Compesa - Esgoto.", "Abatimento Compesa - Água", "Abatimento Copergás", "Abatimento Telefonia", "Baixa no Pavimento", "Boca de lobo", "Buraco - Demanda Extra", "Buraco - Stand-by", "Buraco - Stand-by (Executados)", "Buraco Concessionária", "Buraco Siga", "Caixa Coletora", "Caixa de Gaveta (CG)", "Canaleta", "DNIT", "Desgaste", "Drenagem", "Ecocestos", "Elevação de tampão", "Fiscalização Recapeamento", "Fissuras interligadas", "Grelhas Pluviais", "Intervenção BRK", "Intervenção Compesa", "Intervenção Copergás", "Junta de Dilatação", "Leito Natural", "Ligação Irregular", "Limpeza - DLU", "Limpeza Programada", "Limpeza Programada - CANAIS", "Monitoramento Buraco - P", "Monitoramento Viadutos", "Obra Drenagem", "Obra Governo do Estado", "Obra Sesan", "Pavimento em Bom Estado", "Pavimento em Paralelo", "Placa de Concreto", "Ponto de Alagamento", "Ponto de Alagamento Crítico", "Poço de visita (PV)", "Pré-moldado", "Recapeamento Asfáltico", "Reconstrução de linha d\u0027água", "Recuperação de Paralelo", "Serviço GPO", "Serviço URB", "Tampão", "Tampão Concessionária", "Tampão SESAN", "Tampão Temporário", "Tampão de Fibra de vidro", "Tampão de Telefonia", "Vazamento", "Vistoria", "Vistoria CODEVASF", "Vistoria Canais", "Área de Risco"], SEL=["Buraco Siga"];
+const form=document.getElementById("fAn");
+function enviarTipos(v){ const h=document.getElementById("tiposHidden"); h.innerHTML=v.map(t=>`<input type="hidden" name="tipo" value="${esc(t)}">`).join("")+(v.length?"":`<input type="hidden" name="todos" value="1">`); form.submit(); }
+criarMulti(document.getElementById("fTipos"),"Tipos",TODOS.map(v=>({valor:v})),SEL,v=>{ clearTimeout(window._t); window._t=setTimeout(()=>enviarTipos(v),900); });
+document.getElementById("tiposHidden").innerHTML=SEL.map(t=>`<input type="hidden" name="tipo" value="${esc(t)}">`).join("");
+const M=T.por_mes;
+new Chart(document.getElementById("grafMes"),{data:{labels:M.map(x=>mesRot(x.mes)),datasets:[
+  {type:"line",label:"Mediana (dias)",data:M.map(x=>x.mediana),borderColor:"#D63B32",yAxisID:"y1",tension:.25,pointRadius:3},
+  {type:"bar",label:"OS fechadas",data:M.map(x=>x.n),backgroundColor:"#1C4250",borderRadius:3,maxBarThickness:38}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}},scales:{y:{beginAtZero:true,grid:{color:"#EEF1F4"}},y1:{position:"right",beginAtZero:true,grid:{display:false}},x:{grid:{display:false}}}}});
+grafBarras(document.getElementById("grafFaixa"), T.faixas.map(f=>f.rot), [{label:"OS",data:T.faixas.map(f=>f.n),backgroundColor:["#2E9D57","#E8B524","#EE7D22","#D63B32","#7A1F3D"]}]);
+document.querySelectorAll("#abasT button").forEach(b=>b.onclick=()=>{ document.querySelectorAll("#abasT button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll("[data-p]").forEach(p=>p.hidden=p.dataset.p!==b.dataset.t); });
+/* reincidência */
+const mapa=criarMapa("mapa"); const pts=[];
+R.pontos.forEach((p,i)=>{ if(!p.lat) return; const c=p.reaberturas?"#D63B32":"#EE7D22";
+  L.circleMarker([p.lat,p.lng],{radius:5+Math.min(p.n,8)*1.6,color:"#fff",weight:1.3,fillColor:c,fillOpacity:.85})
+   .bindPopup(`<b>${esc(p.logradouro)}</b> · ${esc(p.trecho||"")}<br><span style="color:#5F7180">${esc(p.bairro)} · ${esc(p.rpa)} · ${esc(p.tipos.join(", "))}</span>
+     <div style="margin-top:4px">${p.n} OS · ${p.reaberturas} reabertura(s) · ${p.abertas} aberta(s)</div>
+     <div style="margin-top:4px">${p.ids.map(x=>`<a href="#" onclick="abrirHistorico('${x.id}');return false">${x.id}</a> <span style="color:#5F7180">${dataBR(x.abertura)}${x.fechada?" → "+dataBR(x.fechada):" (aberta)"}</span>`).join("<br>")}</div>`)
+   .addTo(mapa._camada); pts.push([p.lat,p.lng]); });
+if(pts.length) mapa.fitBounds(pts,{padding:[24,24],maxZoom:15});
+document.querySelector("#tabPontos tbody").innerHTML = R.pontos.map((p,i)=>`<tr class="linha-acao" onclick="abrirPonto(${i},this)"><td><b style="color:var(--navy)">${esc(p.logradouro)}</b><div style="font-size:11.5px;color:var(--muito-suave)">${esc(p.trecho||"")}</div></td>
+  <td>${esc(p.bairro)}</td><td>${esc(p.rpa)}</td><td>${esc(p.tipos.join(", "))}</td><td class="n"><b>${p.n}</b></td>
+  <td class="n" style="color:${p.reaberturas?"#D63B32":"inherit"}"><b>${p.reaberturas||"·"}</b></td><td class="n">${p.abertas}</td><td class="n">${dataBR(p.primeira)}</td><td class="n">${dataBR(p.ultima)}</td></tr>`).join("") || `<tr><td colspan="9" class="vazio">Nenhum ponto com mais de uma OS no período.</td></tr>`;
+function abrirPonto(i,tr){ const nx=tr.nextElementSibling; if(nx&&nx.classList.contains("det")){ nx.remove(); return; }
+  const p=R.pontos[i]; const d=document.createElement("tr"); d.className="det";
+  d.innerHTML=`<td colspan="9" style="background:#FAFBFD">${p.ids.map(x=>`<span class="tag" style="margin:2px"><a href="#" onclick="abrirHistorico('${x.id}');return false">${x.id}</a> ${sigaLinks(x.id,true)} · ${esc(x.tipo)} · ${esc(x.trecho||"")} · ${dataBR(x.abertura)}${x.fechada?" → "+dataBR(x.fechada):" (aberta)"}</span>`).join(" ")}
+    ${p.lat?` <a href="https://www.google.com/maps?q=${p.lat},${p.lng}" target="_blank">Google Maps ↗</a>`:""}</td>`;
+  tr.after(d); if(p.lat){ mapa.setView([p.lat,p.lng],17); } }
+setTimeout(()=>mapa.invalidateSize(),400);
+/* chuva × buracos */
+const CH={"configurado": true, "defasagens": [], "diario": [{"chuva": 0.0, "criados": 25, "dia": "2026-10-13", "fiscalizados": 141}, {"chuva": 0.0, "criados": 38, "dia": "2026-10-14", "fiscalizados": 78}, {"chuva": 0.0, "criados": 70, "dia": "2026-10-15", "fiscalizados": 31}, {"chuva": 0.0, "criados": 45, "dia": "2026-10-16", "fiscalizados": 2}, {"chuva": 0.0, "criados": 0, "dia": "2026-10-17", "fiscalizados": 0}, {"chuva": 0.0, "criados": 0, "dia": "2026-10-18", "fiscalizados": 0}, {"chuva": 0.0, "criados": 8, "dia": "2026-10-19", "fiscalizados": 123}, {"chuva": 0.0, "criados": 23, "dia": "2026-10-20", "fiscalizados": 48}, {"chuva": 1.8, "criados": 37, "dia": "2026-10-21", "fiscalizados": 21}, {"chuva": 0.8, "criados": 59, "dia": "2026-10-22", "fiscalizados": 21}, {"chuva": 0.7, "criados": 71, "dia": "2026-10-23", "fiscalizados": 23}, {"chuva": 0.0, "criados": 0, "dia": "2026-10-24", "fiscalizados": 0}, {"chuva": 0.0, "criados": 0, "dia": "2026-10-25", "fiscalizados": 0}, {"chuva": 0.0, "criados": 29, "dia": "2026-10-26", "fiscalizados": 136}, {"chuva": 0.0, "criados": 28, "dia": "2026-10-27", "fiscalizados": 57}, {"chuva": 2.3, "criados": 38, "dia": "2026-10-28", "fiscalizados": 45}, {"chuva": 0.1, "criados": 39, "dia": "2026-10-29", "fiscalizados": 28}], "dias": 17, "dias_chuva": 17, "fim": "2026-10-29", "ini": "2026-10-13", "k_faixa": 2, "melhor": null, "por_faixa": [{"criados": 37.4, "dias": 9, "rot": "sem chuva"}, {"criados": 71.0, "dias": 1, "rot": "fraca · até 10 mm"}, {"criados": null, "dias": 0, "rot": "moderada · 10–30 mm"}, {"criados": null, "dias": 0, "rot": "forte · 30 mm ou mais"}], "por_rpa": [{"chuva": 4.4, "criados": 28, "dias_dado": 17, "estacao": "Porto", "km": 1.4, "rpa": "RPA 1"}, {"chuva": 8.6, "criados": 64, "dias_dado": 17, "estacao": "COMPAZ - Alto Sta. Terezinha", "km": 1.6, "rpa": "RPA 2"}, {"chuva": 3.8, "criados": 127, "dias_dado": 17, "estacao": "Morro da Conceição", "km": 1.0, "rpa": "RPA 3"}, {"chuva": 7.5, "criados": 57, "dias_dado": 17, "estacao": "San Martin", "km": 2.7, "rpa": "RPA 4"}, {"chuva": 7.5, "criados": 49, "dias_dado": 17, "estacao": "San Martin", "km": 1.1, "rpa": "RPA 5"}, {"chuva": 0.0, "criados": 185, "dias_dado": 17, "estacao": "Imbiribeira", "km": 0.6, "rpa": "RPA 6"}], "pos_forte": null, "pouco_dado": true, "semanas": [{"chuva": 0.0, "criados": 178, "fiscalizados": 252, "ini": "2026-10-12"}, {"chuva": 3.3, "criados": 198, "fiscalizados": 236, "ini": "2026-10-19"}, {"chuva": 2.4, "criados": 134, "fiscalizados": 266, "ini": "2026-10-26"}], "tipos": ["Buraco Siga"], "total_chuva": 5.7, "total_criados": 510};
+if(CH.semanas && document.getElementById("grafChuvaSem")){
+  const W=CH.semanas;
+  new Chart(document.getElementById("grafChuvaSem"),{data:{labels:W.map(w=>dataBR(w.ini).slice(0,5)),datasets:[
+    {type:"bar",label:"Chuva (mm)",data:W.map(w=>w.chuva),backgroundColor:"#6FA3D8",borderRadius:3,yAxisID:"y",order:3},
+    {type:"line",label:"IDs criados",data:W.map(w=>w.criados),borderColor:"#EE7D22",backgroundColor:"#EE7D22",yAxisID:"y1",tension:.25,pointRadius:3,order:1},
+    {type:"line",label:"Fiscalizações",data:W.map(w=>w.fiscalizados),borderColor:"#8A99A6",borderDash:[4,4],yAxisID:"y1",tension:.25,pointRadius:0,order:2}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{legend:{position:"bottom"}},
+      scales:{y:{beginAtZero:true,title:{display:true,text:"mm"},grid:{color:"#EEF1F4"}},y1:{position:"right",beginAtZero:true,grid:{display:false}},x:{grid:{display:false}}}}});
+  const D=(CH.defasagens||[]).filter(d=>d.dias<=7);
+  new Chart(document.getElementById("grafDefas"),{type:"bar",data:{labels:D.map(d=>d.dias===0?"mesmo dia":d.dias+" d"),datasets:[
+    {label:"Relação",data:D.map(d=>d.r==null?null:Math.max(d.r,0)),backgroundColor:D.map(d=>CH.melhor&&d.dias===CH.melhor.dias?"#C2550B":"#F2B66B"),borderRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{ const r=D[c.dataIndex].r; return r==null?" sem dado":r>=.4?" relação forte":r>=.2?" relação moderada":" relação fraca"; }}}},
+      scales:{y:{min:0,max:1,display:false},x:{grid:{display:false}}}}});
+}
+</script>
+
+</body>
+</html>

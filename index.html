@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Visão geral · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1793296857">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-geral">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 29/10/2026 14:32</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<section class="dia-faixa compacta" id="painelDia" hidden>
+  <div class="df-mini" id="dfMini"></div>
+  <div class="df-full">
+  <div class="df-topo">
+    <div class="df-tit"><span class="df-data" id="dfData"></span><h2>Maré e chuva em Recife</h2></div>
+    <div class="df-risco" id="dfRisco"></div>
+    <button type="button" class="df-tog" onclick="Dia.expandir(false)" title="Deixar compacto">Recolher ▴</button>
+  </div>
+  <div id="dfAviso"></div>
+  <div class="df-grade">
+    <div class="df-card df-mare" id="dfMare"></div>
+    <button type="button" class="df-card df-chuva" id="dfChuva" onclick="Dia.irChuva()" title="Ver a chuva em detalhe"></button>
+  </div>
+  <div class="df-prev" id="dfPrev"></div>
+  <div class="df-rodape" id="dfRodape"></div>
+  </div>
+</section>
+
+<div class="card agora" id="painelAgora" style="margin-bottom:20px">
+  <div class="card-cab">
+    <div class="seg camada" id="agoraCamada" role="group" aria-label="Camada do mapa">
+      <button type="button" data-c="buraco" class="on">Buraco Siga <b id="cntBuraco"></b></button>
+      <button type="button" data-c="crit" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg>Alagamento crítico <b id="cntCrit"></b></button>
+    </div>
+    <span class="agora-pulso"></span>
+    
+    <h3 id="agoraTitulo">Buraco Siga agora</h3>
+    <span class="sub" id="agoraSub">carregando…</span>
+    <div class="dir">
+      <span class="sub so-local" id="agoraAuto"></span>
+      <button class="btn peq so-local" id="agoraBtn" onclick="Agora.coletar()" title="Coletar agora só este tipo (headless)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/>
+</svg><span>Atualizar</span></button>
+      <button class="icone-btn" id="agoraRecolher" title="Recolher / expandir" onclick="Agora.recolher()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/>
+</svg></button>
+    </div>
+  </div>
+  <div id="agoraAlertas"></div>
+  <div class="agora-corpo" id="agoraCorpo">
+    <div class="agora-kpis" id="agoraKpis"></div>
+    <div class="grade" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:0">
+      <div style="position:relative"><div id="mapaAgora" style="height:430px"></div>
+        <div class="agora-rpas" id="agoraRpas"></div>
+        <div class="agora-filtro" id="agoraFiltro" hidden></div>
+        <div class="legenda" style="position:absolute;left:10px;bottom:10px;z-index:500;background:rgba(255,255,255,.94);padding:5px 9px;border-radius:7px;box-shadow:0 1px 6px rgba(17,45,55,.12)" id="agoraLeg"></div></div>
+      <div style="border-left:1px solid var(--borda);display:flex;flex-direction:column;min-width:0">
+        <div class="card-corpo" style="padding-bottom:6px"><b style="color:var(--navy)">Em aberto nas últimas 48 h</b><div style="height:110px"><canvas id="agoraSerie"></canvas></div></div>
+        <div style="padding:0 16px 4px"><b style="color:var(--navy)">Hoje, por fiscal</b> <span style="font-size:12px;color:var(--muito-suave)">· clique num fiscal para ver só os pontos dele</span></div>
+        <div class="rolagem" style="max-height:270px"><table class="tabela" id="agoraFiscais"></table></div>
+      </div>
+    </div>
+  </div>
+  <div class="alag-corpo" id="alagCorpo" hidden>
+    <div class="alag-barra" id="alagBarra"></div>
+    <div class="alag-grade">
+      <div style="position:relative"><div id="mapaAlag" style="height:500px"></div>
+        <div class="legenda alag-leg"><span><i class="bolinha" style="background:#0B7A8C"></i>fiscalizado até 15 dias</span><span><i class="bolinha" style="background:#E0921F"></i>16–45 dias</span><span><i class="bolinha" style="background:#B8321A"></i>mais de 45 dias</span><span><i class="bolinha" style="background:#5B1F5E"></i>nunca fiscalizado</span><span><i class="losango"></i>crítico</span></div></div>
+      <aside class="alag-lado">
+        <div class="alag-lado-cab"><b>Olhar primeiro hoje</b><span>Ordem: crítico, tempo sem visita e quantas vezes alagou com maré alta. Sem prazo SIGA: o que conta é a última fiscalização.</span></div>
+        <div class="alag-lista" id="alagLista"></div>
+        <div class="alag-kpis" id="alagKpis"></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="card chuva-card" id="painelChuva" hidden style="margin-bottom:20px">
+  <div class="card-cab">
+    <span class="chuva-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15.5A4.5 4.5 0 0 0 17.5 7a6 6 0 0 0-11.4 1.8A4 4 0 0 0 7 16.5"/><path d="M8 19l-1 2M12 18l-1 3M16 19l-1 2"/>
+</svg></span>
+    <h3>Chuva em Recife</h3>
+    <span class="sub" id="chuvaSub">carregando…</span>
+    <div class="dir">
+      <button class="btn peq so-local" id="chuvaBtn" onclick="Chuva.atualizar()" title="Buscar agora no CEMADEN"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/>
+</svg><span>Atualizar</span></button>
+      <button class="icone-btn" title="Recolher / expandir" onclick="Chuva.recolher()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/>
+</svg></button>
+    </div>
+  </div>
+  <div id="chuvaAlertas"></div>
+  <div class="chuva-corpo">
+    <div class="chuva-kpis" id="chuvaKpis"></div>
+    <div class="chuva-graf">
+      <div class="chuva-graf-cab"><b>Últimos 30 dias</b><span id="chuvaLegenda"></span></div>
+      <div style="height:150px"><canvas id="chuvaSerie"></canvas></div>
+    </div>
+    <div class="chuva-prev" id="chuvaPrev"></div>
+  </div>
+  <div class="chuva-rodape" id="chuvaRodape"></div>
+</div>
+<div class="aviso so-local" id="chuvaLigar" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15.5A4.5 4.5 0 0 0 17.5 7a6 6 0 0 0-11.4 1.8A4 4 0 0 0 7 16.5"/><path d="M8 19l-1 2M12 18l-1 3M16 19l-1 2"/>
+</svg><div>A pluviometria de Recife (CEMADEN) ainda não está ligada. <a href="/coletas#chuva">Ver como ligar</a>.</div></div>
+<div class="cab-pagina">
+  <div>
+    <h1>O que ainda falta fiscalizar</h1>
+    <p id="descricao">Carregando dados da coleta de 29/10/2026 14:32…</p>
+  </div>
+  <div class="acoes so-local">
+    <button class="btn" onclick="salvarLote()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v6h8M7 21v-7h10v7"/>
+</svg>Salvar como lote de cobrança</button>
+    <button class="btn" onclick="abrirWhatsApp(queryAtual())"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/>
+</svg>WhatsApp</button>
+    <a class="btn prim" id="btnDemanda" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>
+</svg>Gerar demanda deste recorte</a>
+  </div>
+</div>
+
+<div class="filtros" id="barraFiltros"></div>
+
+<div class="aviso" id="avisoModo"></div>
+
+<div class="kpis" id="kpis"></div>
+<div class="foco" id="barraFoco"></div>
+
+<div class="grade g-mapa">
+  <div class="card">
+    <div class="card-cab"><h3>Mapa do recorte</h3><span class="sub" id="subMapa"></span>
+      <div class="dir legenda" id="legenda"></div></div>
+    <div id="mapa"></div>
+  </div>
+  <div class="grade" style="align-content:start">
+    <div class="card">
+      <div class="card-cab"><h3>Por RPA</h3><span class="sub">clique para filtrar</span></div>
+      <div class="card-corpo" id="blocoRpa"></div>
+    </div>
+    <div class="card">
+      <div class="card-cab"><h3>Por tipo de serviço</h3><span class="sub">clique para filtrar</span></div>
+      <div class="card-corpo rolagem" style="max-height:250px" id="blocoTipo"></div>
+    </div>
+  </div>
+</div>
+
+<div class="grade g2 mt">
+  <div class="card">
+    <div class="card-cab"><h3 id="tituloIdade">Quando foi a última fiscalização</h3><span class="sub">IDs do recorte por mês · clique numa barra para filtrar</span></div>
+    <div class="card-corpo" style="height:250px"><canvas id="grafMes"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-cab"><h3>O que mudou</h3><span class="sub" id="subAnterior"></span>
+      <div class="dir"><select id="selBase" title="Comparar a coleta atual com…" style="max-width:300px"></select></div></div>
+    <div class="card-corpo" id="blocoAnterior"></div>
+  </div>
+</div>
+
+<div class="card mt" id="cardTabela">
+  <div class="abas" id="abas">
+    <button data-t="bairro" class="on">Por bairro</button>
+    <button data-t="via">Por logradouro</button>
+    <button data-t="fiscal_nome">Por fiscal</button>
+    <button data-t="lista">Lista de IDs</button>
+  </div>
+  <div style="padding:10px 16px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--borda)">
+    <input type="search" id="buscaTabela" placeholder="Buscar bairro, logradouro, ID…" style="width:320px">
+    <span class="sub" style="color:var(--muito-suave);font-size:12px" id="contTabela"></span>
+    <span id="focoTabela"></span>
+    <div style="margin-left:auto;display:flex;gap:6px">
+      <button class="btn peq" onclick="copiarIds(RECORTE)" title="Copiar os IDs do que está filtrado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>
+</svg>Copiar IDs</button>
+      <button class="btn peq" onclick="exportarExcel(RECORTE.map(o=>o.os_id), CID, nomeExport())" title="Baixar Excel do que está filtrado"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>
+</svg>Excel</button>
+    </div>
+  </div>
+  <div class="rolagem" style="max-height:520px"><table class="tabela" id="tabela"></table></div>
+</div>
+
+<div class="modal-fundo" id="modalLote">
+  <div class="modal">
+    <div class="card-cab"><h3>Salvar recorte como lote de cobrança</h3></div>
+    <div class="card-corpo">
+      <p style="margin:0;color:var(--suave)">O lote congela a lista de IDs deste recorte. A cada nova coleta o painel mostra quantos já foram
+        fiscalizados, quantos saíram do aberto e o que falta — por RPA, bairro e logradouro.</p>
+      <div class="campo"><label>Nome do lote</label><input type="text" id="loteNome"></div>
+      <div class="campo"><label>Data em que a demanda foi passada aos fiscais</label><input type="date" id="loteData">
+        <span style="font-size:12px;color:var(--muito-suave)">Se você já passou essa demanda antes, coloque a data real: o painel conta como fiscalizado tudo que tiver visita a partir dela — funciona até na primeira coleta.</span></div>
+      <div class="campo"><label>Observação (opcional)</label><input type="text" id="loteObs" placeholder="ex.: enviado no grupo dos fiscais"></div>
+      <div id="loteResumo" style="font-size:13px;color:var(--navy)"></div>
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn" onclick="document.getElementById('modalLote').classList.remove('aberto')">Cancelar</button>
+        <button class="btn prim" onclick="confirmarLote()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v6h8M7 21v-7h10v7"/>
+</svg>Salvar lote</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1793296857"></script>
+
+<script>
+const CID=291, BASES=[{"data_hora": "2026-10-28T14:32:43", "id": 277}];
+let CID_ANT=277;
+let DADOS=[], ANT=null, F=lerFiltrosURL(), BASE=[], RECORTE=[], mapa, barra, abaAtual="bairro";
+let FOCO=F.foco;   // filtro rápido ligado pelos cards (fica também em F.foco → vale na demanda/WhatsApp)
+if(!F._temURL){ // padrão: mês anterior ao da coleta, prazo de fiscalização
+  const d=new Date("2026-10-29T12:00:00"); d.setDate(0); F.ate=d.toISOString().slice(0,10);
+}
+
+function queryAtual(){ return filtrosParaQuery(F); }
+function queryURL(){ return queryAtual(); }
+
+/* ── Filtro rápido (cards, gráfico de meses, coleta anterior) ── */
+function critCores(){ return modoCor(F)==="fiscalizacao"?["VERMELHO"]:modoCor(F)==="tempo"?["VERMELHO","VINHO"]:["VINHO","VERMELHO"]; }
+function mediaSemF(rows){ const s=rows.filter(o=>o.ult_fiscal); return s.length? Math.round(s.reduce((a,o)=>a+o.dias_fiscal,0)/s.length):0; }
+function focoDef(){ return focoInfo(BASE,F); }
+function ligarFoco(f, rolar=true){
+  FOCO = (FOCO===f||!f) ? null : f;
+  if(FOCO && abaAtual!=="lista"){ abaAtual="lista"; document.querySelectorAll("#abas button").forEach(x=>x.classList.toggle("on",x.dataset.t==="lista")); }
+  atualizar(true);
+  if(rolar) document.getElementById(FOCO?"cardTabela":"barraFiltros").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function nomeExport(){ const d=focoDef(); return (d?d.rot+" - ":"")+descreverFiltro(F).slice(0,50); }
+async function exportarExcel(ids, coleta, nome){
+  if(!ids.length){ toast("Nada para exportar."); return; }
+  if(window.ESTATICO){        // versão de leitura: CSV montado no navegador (abre no Excel)
+    const fonte=coleta===CID_ANT&&ANT?ANT.rows:DADOS, set=new Set(ids.map(String));
+    const cols=[["os_id","ID"],["tipo_servico","Tipo de serviço"],["rpa","RPA"],["bairro","Bairro"],["logradouro","Logradouro"],["trecho","Trecho"],["tipo_via","Tipo de via"],["fiscal_nome","Fiscal"],["data_abertura","Criada em"],["ult_fiscal","Última fiscalização"],["dias_fiscal","Dias sem fiscalizar"]];
+    const linhas=[cols.map(c=>c[1]).join(";")].concat(fonte.filter(o=>set.has(String(o.os_id))).map(o=>cols.map(([k])=>{ let v=o[k]??""; if(k==="data_abertura"||k==="ult_fiscal") v=v?dataBR(v):""; return '"'+String(v).replace(/"/g,'""')+'"'; }).join(";")));
+    const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["\ufeff"+linhas.join("\r\n")],{type:"text/csv;charset=utf-8"}));
+    a.download=(nome||"recorte").replace(/[^\w\- ]+/g,"").slice(0,60)+".csv"; a.click(); return;
+  }
+  toast("Gerando Excel…");
+  const r=await fetch("/api/exportar",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ids, coleta, nome})});
+  const b=await r.blob(); const cd=r.headers.get("Content-Disposition")||""; const m=/filename\*?=(?:UTF-8'')?"?([^";]+)/i.exec(cd);
+  const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=m?decodeURIComponent(m[1]):"recorte.xlsx"; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+async function copiarIds(rows){ await navigator.clipboard.writeText(rows.map(o=>o.os_id).join("\n")); toast(`${fmt(rows.length)} IDs copiados`); }
+function modalLista(titulo, rows, coleta, nota=""){
+  let m=document.getElementById("modalLista");
+  if(!m){ m=document.createElement("div"); m.id="modalLista"; m.className="modal-fundo"; document.body.appendChild(m); m.onclick=e=>{ if(e.target===m) m.classList.remove("aberto"); }; }
+  window._listaAtual=rows;
+  m.innerHTML=`<div class="modal" style="width:min(980px,100%)"><div class="card-cab"><h3>${esc(titulo)}</h3><span class="sub">${fmt(rows.length)} IDs</span>
+    <div class="dir"><button class="btn peq" onclick="copiarIds(window._listaAtual)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>
+</svg>Copiar IDs</button>
+    <button class="btn peq" onclick="exportarExcel(window._listaAtual.map(o=>o.os_id), ${coleta}, '${esc(titulo).replace(/'/g,"")}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>
+</svg>Excel</button>
+    <button class="btn peq" onclick="this.closest('.modal-fundo').classList.remove('aberto')">Fechar</button></div></div>
+    ${nota?`<div style="padding:10px 16px 0;color:var(--suave);font-size:12.5px">${nota}</div>`:""}
+    <div class="rolagem" style="max-height:62vh"><table class="tabela"><thead><tr><th>ID</th><th>Tipo de serviço</th><th>Logradouro</th><th>Bairro</th><th>RPA</th><th class="n">Últ. fiscalização</th><th>Fiscal</th></tr></thead><tbody>
+    ${rows.length?"":`<tr><td colspan="7" class="vazio">Nenhum ID nesta lista.</td></tr>`}${rows.slice(0,1000).map(o=>`<tr><td class="num">${esc(o.os_id)}</td><td>${esc(o.tipo_servico)}</td><td>${esc(o.logradouro)}<div style="color:var(--muito-suave);font-size:12px">${esc(o.trecho)}</div></td><td>${esc(o.bairro)}</td><td>${esc(o.rpa)}</td><td class="n">${dataBR(o.ult_fiscal)}</td><td>${esc(o.fiscal_nome)}</td></tr>`).join("")}
+    </tbody></table></div></div>`;
+  m.classList.add("aberto");
+}
+
+
+async function iniciar(){
+  mapa=criarMapa("mapa");
+  const atual=await carregarColeta(CID); DADOS=atual.rows;
+  montarBases();
+  if(CID_ANT) carregarBase(CID_ANT);
+  barra=montarBarraFiltros(document.getElementById("barraFiltros"), DADOS, F, ()=>atualizar(true));
+  document.querySelectorAll("#abas button").forEach(b=>b.onclick=()=>{ abaAtual=b.dataset.t;
+    document.querySelectorAll("#abas button").forEach(x=>x.classList.toggle("on",x===b)); desenharTabela(); });
+  document.getElementById("buscaTabela").oninput=desenharTabela;
+  atualizar(true);
+}
+
+function atualizar(ajustar){
+  F.foco=FOCO; F._antIdx=ANT&&ANT._idx;
+  BASE=filtrarBase(DADOS,F);
+  const fd=focoDef(); if(FOCO&&!fd){ FOCO=null; F.foco=null; }
+  RECORTE = fd ? BASE.filter(fd.fn) : BASE;
+  history.replaceState(null,"","?"+queryURL());
+  const bf=document.getElementById("barraFoco");
+  bf.classList.toggle("on",!!fd);
+  bf.innerHTML = fd ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/>
+</svg><div>Filtro rápido ligado: <b>${esc(fd.rot)}</b> · ${fmt(RECORTE.length)} de ${fmt(BASE.length)} IDs do recorte. Mapa, quebras e listas mostram só eles.</div>
+     <button class="btn peq" onclick="document.getElementById('cardTabela').scrollIntoView({behavior:'smooth'})">Ver lista</button><button class="btn peq" onclick="ligarFoco(null,false)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/>
+</svg>Desligar</button>` : "";
+  document.getElementById("focoTabela").innerHTML = fd ? `<span class="tag laranja" style="cursor:pointer" title="Desligar" onclick="ligarFoco(null,false)">${esc(fd.rot)} ✕</span>` : "";
+  document.getElementById("btnDemanda").href="/demanda?"+queryAtual();
+  document.getElementById("descricao").textContent=descreverFiltro(F)+" — coleta de 29/10/2026 14:32";
+  document.getElementById("legenda").innerHTML=legendaHTML(modoCor(F));
+  const aviso=document.getElementById("avisoModo");
+  aviso.innerHTML = F.modo==="criacao"
+    ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><div><b>Cobrança das gerências.</b> Aqui a cor mostra a idade da OS desde a criação: IDs antigos precisam ser solucionados primeiro, mesmo que tenham sido fiscalizados há pouco.</div>`
+    : F.cor==="tempo" ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg><div><b>Cobrança dos fiscais.</b> A cor mostra há quanto tempo cada OS está sem visita, independente do tipo de via — útil quando o corte é antigo e tudo já estourou o prazo do SIGA.</div>`
+    : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg><div><b>Cobrança dos fiscais.</b> A cor segue o prazo do SIGA desde a última fiscalização (Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias). OS nunca fiscalizadas aparecem em vermelho.</div>`;
+  desenharKpis(); desenharLados(); desenharGrafico(); desenharTabela(); desenharAnterior();
+  const n=plotar(mapa,RECORTE,modoCor(F),ajustar,extraPopup);
+  document.getElementById("subMapa").textContent=`${fmt(n)} pontos` + (n<RECORTE.length?` · ${fmt(RECORTE.length-n)} sem coordenada`:"");
+}
+
+function extraPopup(o){
+  if(!ANT) return "";
+  const a=ANT._idx?.get(o.os_id);
+  if(!a) return `<div style="margin-top:4px"><span class="tag azul">novo desde a coleta anterior</span></div>`;
+  if(o.ult_fiscal && (!a.ult_fiscal || o.ult_fiscal>a.ult_fiscal)) return `<div style="margin-top:4px"><span class="tag verde">refiscalizado desde a coleta anterior</span></div>`;
+  return `<div style="margin-top:4px"><span class="tag">sem mudança desde a coleta anterior</span></div>`;
+}
+
+function desenharKpis(){
+  const B=BASE, t=B.length, tot=DADOS.length, cc=critCores();
+  const crit=B.filter(o=>cc.includes(corDe(o,modoCor(F)))).length;
+  const nunca=B.filter(o=>!o.ult_fiscal).length;
+  const idade=t? Math.round(B.reduce((s,o)=>s+(o.dias_criacao||0),0)/t):0;
+  const mSemF=mediaSemF(B), acima=B.filter(o=>o.ult_fiscal&&o.dias_fiscal>mSemF).length;
+  const bairros=unico(B.map(o=>o.bairro)).length, vias=unico(B.map(o=>o.via)).length;
+  const art=B.filter(o=>o.tipo_via!=="Local").length;
+  const k=(id,cls,ic,rot,val,det,acao)=>`<div class="kpi clicavel ${cls} ${FOCO===id?"ativo":""}" onclick="ligarFoco(${id?`'${id}'`:"null"})" title="${FOCO===id?"Clique para desligar":"Clique para filtrar mapa e listas"}">
+     <div class="ic">${ic}</div><div><div class="rot">${rot}</div><div class="val">${val}</div><div class="det">${det}</div><div class="acao-kpi">${FOCO===id?"filtro ligado · clique para desligar":acao}</div></div></div>`;
+  document.getElementById("kpis").innerHTML=
+    k("", "destaque", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>`, "IDs no recorte", fmt(t), `${pct(t,tot)}% dos ${fmt(tot)} em aberto`, FOCO?"mostrar todos ›":"ver lista ›")+
+    k("crit","vermelho",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg>`, modoCor(F)==="fiscalizacao"?"Críticos (prazo SIGA)":"Mais de 60 dias", fmt(crit), `${pct(crit,t)}% do recorte`, "filtrar ›")+
+    k("nunca","",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5.7 5.7 12.6 12.6"/>
+</svg>`, "Nunca fiscalizados", fmt(nunca), "sem nenhuma visita registrada", "filtrar ›")+
+    k("acima","azul",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>`, "Sem fiscalizar (média)", fmt(mSemF)+" d", `${fmt(acima)} acima da média · idade média ${fmt(idade)} d`, "filtrar os acima da média ›")+
+    k("principais","",`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>`, "Bairros · vias", `${fmt(bairros)} · ${fmt(vias)}`, `${fmt(art)} IDs em arterial/coletora`, "filtrar arteriais/coletoras ›");
+}
+
+function linhaBarra(g, onclick){
+  return `<div class="clicavel" style="display:grid;grid-template-columns:110px 1fr 54px;gap:10px;align-items:center;padding:5px 0;cursor:pointer" onclick="${onclick}">
+     <div style="font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${esc(g.chave)}">${esc(g.chave)}</div>
+     ${barraPilha(g.cores,g.total,modoCor(F))}<div class="num" style="text-align:right">${fmt(g.total)}</div></div>`;
+}
+function desenharLados(){
+  const r=agrupar(RECORTE,"rpa",modoCor(F)).sort((a,b)=>String(a.chave).localeCompare(String(b.chave)));
+  document.getElementById("blocoRpa").innerHTML = r.length ? r.map(g=>linhaBarra(g,`barra.setRpa(${F.rpas.length===1?"null":`'${esc(g.chave)}'`})`)).join("") : `<div class="vazio">Nada no recorte</div>`;
+  const t=agrupar(RECORTE,"tipo_servico",modoCor(F));
+  document.getElementById("blocoTipo").innerHTML = t.length ? t.map(g=>linhaBarra(g,`barra.setTipo(${F.tipos.length===1?"null":`'${esc(g.chave).replace(/'/g,"\\'")}'`})`).replace("grid-template-columns:110px","grid-template-columns:170px")).join("") : `<div class="vazio">Nada no recorte</div>`;
+}
+
+function desenharGrafico(){
+  const campo=F.modo==="criacao"?"data_abertura":"ult_fiscal";
+  document.getElementById("tituloIdade").textContent = F.modo==="criacao" ? "Quando os IDs foram criados" : "Quando foi a última fiscalização";
+  const m=new Map(); let nunca=0;
+  for(const o of BASE){ const v=o[campo]; if(!v){nunca++;continue;} const k=v.slice(0,7); m.set(k,(m.get(k)||0)+1); }
+  const ks=[...m.keys()].sort().slice(-18);
+  const rot=ks.map(mesRot), val=ks.map(k=>m.get(k));
+  if(F.modo!=="criacao" && nunca){ rot.unshift("Nunca"); val.unshift(nunca); }
+  const chaves = (F.modo!=="criacao" && nunca) ? ["nunca", ...ks.map(k=>"mes:"+k)] : ks.map(k=>"mes:"+k);
+  grafBarras(document.getElementById("grafMes"), rot, [{label:"IDs", data:val,
+    backgroundColor: chaves.map((c,i)=>{ const base=rot[i]==="Nunca"?"#D63B32":"#1C4250"; return FOCO&&FOCO!==c? base+"55" : (FOCO===c?"#FFA929":base); })}],
+    {onClick:i=>ligarFoco(chaves[i])});
+  document.getElementById("grafMes").style.cursor="pointer";
+}
+
+/* ── Base da comparação: com várias coletas por dia, a "anterior" pode ser de minutos atrás ── */
+function montarBases(){
+  const sel=document.getElementById("selBase"); if(!sel) return;
+  if(!BASES.length){ sel.style.display="none"; return; }
+  const ref=new Date("2026-10-29T14:32:26");
+  const perto=h=>{ const alvo=ref-h*3600e3; return BASES.reduce((m,b)=>Math.abs(new Date(b.data_hora)-alvo)<Math.abs(new Date(m.data_hora)-alvo)?b:m, BASES[0]); };
+  const atalhos=[["Coleta anterior (a última)",BASES[0]],["Ontem",perto(24)],["7 dias atrás",perto(168)],["30 dias atrás",perto(720)],
+    ["Primeira coleta da história",BASES[BASES.length-1]]];
+  const rot=b=>`${dataBR(b.data_hora.slice(0,10)).slice(0,5)} ${b.data_hora.slice(11,16)}`;
+  sel.innerHTML=`<optgroup label="Atalhos">${atalhos.map(([t,b])=>`<option value="${b.id}">${t} · ${rot(b)}</option>`).join("")}</optgroup>`+
+    `<optgroup label="Todas as coletas guardadas">${BASES.map(b=>`<option value="${b.id}">${rot(b)}/${b.data_hora.slice(2,4)}</option>`).join("")}</optgroup>`;
+  const idx=[...sel.options].findIndex(o=>+o.value===CID_ANT&&o.parentNode.label==="Atalhos"&&o.text.startsWith("Ontem"));
+  sel.selectedIndex = idx>=0 ? idx : [...sel.options].findIndex(o=>+o.value===CID_ANT);
+  sel.onchange=()=>{ CID_ANT=+sel.value; ANT=null; desenharAnterior(); carregarBase(CID_ANT); };
+}
+function carregarBase(id){
+  carregarColeta(id).then(a=>{ if(id!==CID_ANT) return; ANT=a; ANT._idx=new Map(ANT.rows.map(o=>[o.os_id,o]));
+    if(FOCO==="novos") atualizar(false); else { desenharAnterior(); desenharTabela(); } });
+}
+
+function desenharAnterior(){
+  const el=document.getElementById("blocoAnterior"), sub=document.getElementById("subAnterior");
+  if(!CID_ANT){ sub.textContent="primeira coleta";
+    el.innerHTML=`<p style="margin:0 0 10px;color:var(--suave)">Ainda não há coleta anterior para comparar. Enquanto isso, a leitura retroativa usa as datas da própria planilha:</p>`+retroRecorte(); return; }
+  if(!ANT){ el.innerHTML=`<div class="vazio">Carregando coleta anterior…</div>`; return; }
+  if(!ANT._idx){ ANT._idx=new Map(ANT.rows.map(o=>[o.os_id,o])); }
+  sub.textContent="vs coleta de "+dataBR(ANT.coleta.data_hora.slice(0,10))+" "+ANT.coleta.data_hora.slice(11,16);
+  const antRec=filtrarBase(ANT.rows,F), idsAtual=new Map(DADOS.map(o=>[o.os_id,o])), idsRec=new Set(BASE.map(o=>o.os_id));
+  const lSair=antRec.filter(o=>!idsAtual.has(o.os_id));
+  const lFisc=antRec.filter(o=>idsAtual.has(o.os_id)&&!idsRec.has(o.os_id)).map(o=>idsAtual.get(o.os_id));
+  window._ant={sair:lSair, fisc:lFisc};
+  const sairamAberto=lSair.length, fiscalizados=lFisc.length;
+  const entraram=BASE.filter(o=>!ANT._idx.has(o.os_id)).length;
+  const delta=BASE.length-antRec.length;
+  const resolvidosPct=pct(sairamAberto+fiscalizados, antRec.length);
+  el.innerHTML=`
+   <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+     <div class="passo"><div class="rot" style="font-size:11px;color:var(--suave);text-transform:uppercase;font-weight:600">Recorte antes → agora</div>
+       <div class="num" style="font-size:22px;color:var(--navy)">${fmt(antRec.length)} → ${fmt(BASE.length)}</div>
+       <div class="${delta>0?"up":delta<0?"down":"neutro"}" style="font-weight:600">${delta>0?"+":""}${fmt(delta)} IDs</div></div>
+     <div class="passo"><div class="rot" style="font-size:11px;color:var(--suave);text-transform:uppercase;font-weight:600">Andou desde a comparação</div>
+       <div class="num" style="font-size:22px;color:var(--verde)">${resolvidosPct}%</div><div class="progresso" style="margin-top:6px"><i style="width:${resolvidosPct}%;background:var(--verde)"></i></div></div>
+   </div>
+   <table class="tabela" style="margin-top:10px">
+     <tr class="linha-acao" onclick="modalLista('Saíram do aberto desde a coleta de comparação', window._ant.sair, CID_ANT, 'Dados como estavam na coleta anterior (finalizados ou cancelados depois dela).')"><td><i class="bolinha" style="background:#2E9D57"></i> Saíram do aberto (finalizados/cancelados)</td><td class="n">${fmt(sairamAberto)}</td><td style="width:60px;text-align:right;color:var(--muito-suave)">lista ›</td></tr>
+     <tr class="linha-acao" onclick="modalLista('Fiscalizados desde a coleta de comparação', window._ant.fisc, CID, 'Seguem abertos, mas saíram do recorte porque receberam visita.')"><td><i class="bolinha" style="background:#2F6FB3"></i> Fiscalizados (saíram do recorte, seguem abertos)</td><td class="n">${fmt(fiscalizados)}</td><td style="text-align:right;color:var(--muito-suave)">lista ›</td></tr>
+     <tr class="linha-acao ${FOCO==="novos"?"sel-fiscal":""}" onclick="ligarFoco('novos')"><td><i class="bolinha" style="background:#D63B32"></i> Entraram no recorte (OS novas)</td><td class="n">${fmt(entraram)}</td><td style="text-align:right;color:var(--muito-suave)">${FOCO==="novos"?"desligar":"filtrar"} ›</td></tr>
+   </table>`;
+}
+function retroRecorte(){
+  const ref=new Date("2026-10-29T12:00:00");
+  const jan=[[7,"últimos 7 dias"],[15,"últimos 15 dias"],[30,"últimos 30 dias"]];
+  const todos=filtrarBase(DADOS,{...F,ate:null});  // retroativo ignora o filtro rápido
+  return `<table class="tabela">${jan.map(([n,t])=>{ const c=todos.filter(o=>o.ult_fiscal&&o.dias_fiscal<=n).length;
+     return `<tr><td>Fiscalizados nos ${t} (mesmos filtros, sem corte de mês)</td><td class="n">${fmt(c)}</td></tr>`;}).join("")}
+     <tr><td>Nunca fiscalizados</td><td class="n">${fmt(todos.filter(o=>!o.ult_fiscal).length)}</td></tr></table>`;
+}
+
+function desenharTabela(){
+  const q=document.getElementById("buscaTabela").value.toLowerCase().trim();
+  const tab=document.getElementById("tabela"), cont=document.getElementById("contTabela");
+  if(abaAtual==="lista"){
+    let l=RECORTE.filter(o=>!q||Busca.casa(o.os_id+" "+o.via+" "+o.tipo_servico+" "+(o.bairro||"")+" "+(o.logradouro||""),q));
+    l=l.sort((a,b)=>(b.dias_fiscal??9999)-(a.dias_fiscal??9999));
+    cont.textContent=`${fmt(l.length)} IDs${l.length>500?" · mostrando os 500 mais atrasados":""}`;
+    tab.innerHTML=`<thead><tr><th>ID</th><th>Tipo de serviço</th><th>Logradouro</th><th>Bairro</th><th>RPA</th><th>Via</th><th class="n">Últ. fiscalização</th><th class="n">Dias</th><th class="n">Criada</th><th>Fiscal</th></tr></thead><tbody>`+
+      l.slice(0,500).map(o=>`<tr class="clicavel" onclick="focar('${o.os_id}')"><td class="num"><i class="bolinha" style="background:${CORES[corDe(o,modoCor(F))]}"></i> ${esc(o.os_id)}</td><td>${esc(o.tipo_servico)}</td><td>${esc(o.logradouro)}<div style="color:var(--muito-suave);font-size:12px">${esc(o.trecho)}</div></td><td>${esc(o.bairro)}</td><td>${esc(o.rpa)}</td><td>${esc(o.tipo_via)}</td><td class="n">${dataBR(o.ult_fiscal)}</td><td class="n">${o.dias_fiscal??"—"}</td><td class="n">${dataBR(o.data_abertura)}</td><td>${esc(o.fiscal_nome)}</td></tr>`).join("")+"</tbody>";
+    return;
+  }
+  const chave = abaAtual==="via" ? "via" : abaAtual;
+  let g=agrupar(RECORTE,chave,modoCor(F)).filter(x=>!q||String(x.chave).toLowerCase().includes(q));
+  const antMap = ANT ? new Map(agrupar(filtrar(ANT.rows,F),chave,modoCor(F)).map(x=>[x.chave,x.total])) : null;
+  cont.textContent=`${fmt(g.length)} ${abaAtual==="via"?"logradouros":abaAtual==="bairro"?"bairros":"fiscais"}`;
+  const rotulo={bairro:"Bairro",via:"Logradouro · Bairro",fiscal_nome:"Fiscal"}[abaAtual];
+  const crit = modoCor(F)==="fiscalizacao"?["VERMELHO"]:["VINHO","VERMELHO"];
+  tab.innerHTML=`<thead><tr><th>${rotulo}</th><th class="n">IDs</th><th style="width:28%">Distribuição por prazo</th><th class="n">${modoCor(F)==="fiscalizacao"?"Críticos":"> 60 dias"}</th><th class="n">Nunca fisc.</th>${antMap?'<th class="n">Comparação</th><th class="n">Δ</th>':""}<th></th></tr></thead><tbody>`+
+    g.slice(0,400).map(x=>{ const a=antMap?(antMap.get(x.chave)||0):null, d=a!=null?x.total-a:null;
+      const acao = abaAtual==="bairro" ? `barra.setBairro('${esc(x.chave).replace(/'/g,"\\'")}')` : abaAtual==="fiscal_nome" ? `barra.setFiscal('${esc(x.chave).replace(/'/g,"\\'")}')` : `focarVia('${esc(x.chave).replace(/'/g,"\\'")}')`;
+      return `<tr class="clicavel" onclick="${acao}"><td><b style="color:var(--navy)">${esc(x.chave)}</b></td><td class="n">${fmt(x.total)}</td><td>${barraPilha(x.cores,x.total,modoCor(F))}</td>
+      <td class="n">${fmt(crit.reduce((s,c)=>s+(x.cores[c]||0),0))}</td><td class="n">${fmt(x.nunca)}</td>
+      ${antMap?`<td class="n">${fmt(a)}</td><td class="n ${d>0?"up":d<0?"down":"neutro"}">${d>0?"+":""}${fmt(d)}</td>`:""}
+      <td style="text-align:right;color:var(--muito-suave)">${abaAtual==="via"?"ver no mapa":"filtrar"} ›</td></tr>`; }).join("")+"</tbody>";
+}
+
+function focar(id){ const o=RECORTE.find(x=>x.os_id===id); if(o&&o.lat){ mapa.setView([o.lat,o.lng],17); L.popup().setLatLng([o.lat,o.lng]).setContent(popupHTML(o,extraPopup(o))).openOn(mapa); window.scrollTo({top:0,behavior:"smooth"}); } }
+function focarVia(via){ const p=RECORTE.filter(o=>o.via===via&&o.lat).map(o=>[o.lat,o.lng]); if(p.length){ mapa.fitBounds(p,{padding:[40,40],maxZoom:17}); window.scrollTo({top:0,behavior:"smooth"}); } }
+
+function salvarLote(){
+  if(!RECORTE.length){ toast("O recorte está vazio."); return; }
+  const hoje=new Date().toISOString().slice(0,10);
+  const nome = (F.tipos.length===1?F.tipos[0]:F.tipos.length?F.tipos.length+" tipos":"Todos os tipos") +
+     (F.ate? (F.modo==="criacao"?" · criados até ":" · sem fiscalização até ")+mesRot(F.ate.slice(0,7)) : "") + (F.rpas.length?" · "+F.rpas.join("/"):"");
+  document.getElementById("loteNome").value=nome; document.getElementById("loteData").value=hoje;
+  document.getElementById("loteResumo").innerHTML=`<b>${fmt(RECORTE.length)} IDs</b> · ${descreverFiltro(F)}`;
+  document.getElementById("modalLote").classList.add("aberto");
+}
+async function confirmarLote(){
+  const corpo={coleta:CID, nome:document.getElementById("loteNome").value, data_entrega:document.getElementById("loteData").value,
+    obs:document.getElementById("loteObs").value, ids:RECORTE.map(o=>o.os_id), criterio:{...F, descricao:descreverFiltro(F)}};
+  const r=await fetch("/api/lotes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(corpo)});
+  const j=await r.json(); if(j.ok) location.href=j.url; else toast(j.erro||"Erro ao salvar");
+}
+/* ── Painel "agora" (coleta rápida) ─────────────────────── */
+const Agora={
+  tipo:"Buraco Siga", mapa:null, dados:null, timer:null,
+  async carregar(ajustar=false){
+    if(!document.getElementById("painelAgora")) return;
+    const j=await (await fetch("/api/tempo_real?tipo="+encodeURIComponent(this.tipo))).json(); this.dados=j;
+    const naCamada=Camada.atual==="buraco";
+    if(naCamada) document.getElementById("agoraTitulo").textContent=this.tipo+" agora";
+    document.getElementById("agoraAlertas").innerHTML=(j.alertas||[]).map(a=>`<div class="agora-alerta ${a.nivel}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>${esc(a.msg)}</span></div>`).join("");
+    if(j.vazio||j.erro){ document.getElementById("agoraSub").textContent=j.erro||"ainda sem coleta"; return; }
+    const quando=new Date(j.coleta.data_hora), min=Math.round((Date.now()-quando)/60000);
+    const ha=min<1?"agora há pouco":min<60?`há ${min} min`:min<1440?`há ${Math.round(min/60)} h`:`em ${dataBR(j.coleta.data_hora.slice(0,10))}`;
+    this.subHTML=`coleta ${j.coleta.fonte==="rapida"?"rápida":"geral"} das <b>${j.coleta.data_hora.slice(11,16)}</b> (${ha})`;
+    if(naCamada) document.getElementById("agoraSub").innerHTML=this.subHTML;
+    const rows=await carregarColeta(j.coleta.id).then(c=>c.rows.filter(o=>o.tipo_servico===this.tipo));
+    const cb=document.getElementById("cntBuraco"); if(cb) cb.textContent=fmt(rows.length);
+    const cnt=c=>rows.filter(o=>o.cor_fiscal===c).length, nunca=rows.filter(o=>!o.ult_fiscal).length;
+    const d=j.total_24h!=null? j.total-j.total_24h : null;
+    const k=(cor,rot,val,det,c)=>`<div class="ak clicavel" data-cor="${cor}" onclick="Agora.porCor('${cor}')" title="Clique para ver só estes no mapa"><div class="rot">${rot}</div><div class="val" style="${c?"color:"+c:""}">${val}</div><div class="det">${det||""}</div></div>`;
+    document.getElementById("agoraKpis").innerHTML=
+      k("","Em aberto",fmt(j.total), d==null?"":`<span class="${d>0?"up":d<0?"down":"neutro"}">${d>0?"+":""}${fmt(d)}</span> em 24 h`)+
+      k("VERMELHO","Críticos",fmt(cnt("VERMELHO")),`${pct(cnt("VERMELHO"),j.total)}% · ${fmt(nunca)} nunca fisc.`,"#D63B32")+
+      k("LARANJA","Atrasados",fmt(cnt("LARANJA")),"prazo SIGA","#C4620F")+k("AMARELO","Atenção",fmt(cnt("AMARELO")),"prazo SIGA","#A57F0E")+
+      k("VERDE","Em dia",fmt(cnt("VERDE")),"prazo SIGA","#2E9D57")+
+      `<div class="ak hoje"><div class="rot">Hoje</div><div class="hoje-l"><span><b>${fmt(j.hoje.criou)}</b> criados</span><span><b>${fmt(j.hoje.fiscalizou)}</b> fiscalizados</span><span><b>${fmt(j.hoje.fechou)}</b> fechados</span></div></div>`;
+    if(!this.mapa){ this.mapa=criarMapa("mapaAgora"); setTimeout(()=>this.mapa.invalidateSize(),300); }
+    this.rows=rows; this.desenhar(ajustar||!this._ajustado); this._ajustado=true;
+    document.getElementById("agoraLeg").innerHTML=legendaHTML("fiscalizacao");
+    const S=j.serie||[];
+    grafLinha(document.getElementById("agoraSerie"), S.map(p=>p.t.slice(8,10)+"/"+p.t.slice(5,7)+" "+p.t.slice(11,16)), S.map(p=>p.total));
+    document.getElementById("agoraFiscais").innerHTML=`<thead><tr><th>Fiscal</th><th class="n">Abertos</th><th class="n">Críticos</th><th class="n">Fisc.</th><th class="n">Criou</th><th class="n">Fechou</th><th class="n">Último</th></tr></thead><tbody>`+
+      (j.por_fiscal.map(f=>`<tr class="linha-acao ag-fiscal" data-nome="${esc(f.nome)}" onclick="Agora.porFiscal(this.dataset.nome)" title="Ver só os pontos deste fiscal no mapa"><td><b style="color:var(--navy)">${esc(f.nome)}</b> <span style="font-size:11px;color:var(--muito-suave)">${esc(f.rpa)}</span></td><td class="n">${fmt(f.abertos)}</td><td class="n" style="color:${f.criticos?"#D63B32":"inherit"}">${fmt(f.criticos)}</td>
+        <td class="n"><b>${f.fiscalizou||"·"}</b></td><td class="n">${f.criou||"·"}</td><td class="n">${f.fechou||"·"}</td><td class="n">${f.ultimo||"—"}</td></tr>`).join("")||`<tr><td colspan="7" class="vazio">Sem registros hoje</td></tr>`)+"</tbody>";
+    this.marcar();
+  },
+  /* ── Filtros do mapa: cor (cards), fiscal (tabela) e RPA (chips) — combinam entre si ── */
+  filtro:{cor:"", fiscal:null, rpa:null}, rows:[],
+  porCor(c){ this.filtro.cor = (c && this.filtro.cor===c) ? "" : c; if(!c) this.filtro={cor:"",fiscal:null,rpa:null}; this.desenhar(true); },
+  porFiscal(nome){ this.filtro.fiscal = this.filtro.fiscal===nome ? null : nome; this.filtro.rpa=null; this.desenhar(true); },   // o fiscal já define a RPA
+  porRpa(r){ this.filtro.rpa = (!r || this.filtro.rpa===r) ? null : r; this.filtro.fiscal=null; this.desenhar(true); },
+  limpar(){ this.filtro={cor:"",fiscal:null,rpa:null}; this.desenhar(true); },
+  passa(o, ignorar){ const F=this.filtro;
+    return (ignorar==="cor"||!F.cor||o.cor_fiscal===F.cor) && (ignorar==="fiscal"||!F.fiscal||o.fiscal_nome===F.fiscal) && (ignorar==="rpa"||!F.rpa||o.rpa===F.rpa); },
+  desenhar(ajustar){
+    const lst=this.rows.filter(o=>this.passa(o));
+    const n=plotar(this.mapa, lst, "fiscalizacao", ajustar && lst.length>0, extraPopup);
+    // chips de RPA: contam o que passa nos outros filtros
+    const base=this.rows.filter(o=>this.passa(o,"rpa")), rp={};
+    base.forEach(o=>{ const k=o.rpa||"Sem RPA"; rp[k]=(rp[k]||0)+1; });
+    const CR={"RPA 1":"#0A7BEA","RPA 2":"#12A4B6","RPA 3":"#17A35B","RPA 4":"#E5A100","RPA 5":"#E5383B","RPA 6":"#7B4FD6"};
+    document.getElementById("agoraRpas").innerHTML=`<button class="${!this.filtro.rpa?"on":""}" onclick="Agora.porRpa(null)">Todas <b>${fmt(base.length)}</b></button>`+
+      Object.keys(rp).sort().map(k=>`<button class="${this.filtro.rpa===k?"on":""}" style="--c:${CR[k]||"#5F7180"}" onclick="Agora.porRpa('${esc(k)}')"><i></i>${esc(k.replace("RPA ","RPA "))} <b>${fmt(rp[k])}</b></button>`).join("");
+    // resumo do filtro
+    const F=this.filtro, nomes={VERMELHO:"Críticos",LARANJA:"Atrasados",AMARELO:"Atenção",VERDE:"Em dia"}, partes=[];
+    if(F.cor) partes.push(nomes[F.cor]); if(F.rpa) partes.push(F.rpa); if(F.fiscal) partes.push(F.fiscal);
+    const fl=document.getElementById("agoraFiltro"); fl.hidden=!partes.length;
+    fl.innerHTML=partes.length?`<span>${partes.map(esc).join(" · ")}</span><b>${fmt(n)}</b> no mapa <button onclick="Agora.limpar()" title="Limpar filtros">✕</button>`:"";
+    this.marcar();
+  },
+  marcar(){ const F=this.filtro;
+    document.querySelectorAll("#agoraKpis .ak.clicavel").forEach(el=>el.classList.toggle("ativo", (el.dataset.cor||"")===(F.cor||"") && (!!F.cor || (!F.fiscal && !F.rpa))));
+    document.querySelectorAll("#agoraFiscais tr.ag-fiscal").forEach(el=>el.classList.toggle("sel", el.dataset.nome===F.fiscal)); },
+  async coletar(){
+    const r=await fetch("/api/rapida/coletar",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({tipo:this.tipo})});
+    const j=await r.json(); if(!r.ok){ toast(j.erro||"Não foi possível iniciar"); return; }
+    toast("Coletando "+this.tipo+" no SIGA (em segundo plano)…"); this.acompanhar();
+  },
+  async acompanhar(){
+    if(window.ESTATICO) return;
+    const st=await (await fetch("/api/rapida/status")).json(), btn=document.getElementById("agoraBtn");
+    const rod=st.estado==="rodando";
+    btn.disabled=rod; btn.querySelector("span").textContent=rod?(st.etapa||"Coletando…").slice(0,34):"Atualizar";
+    btn.classList.toggle("girando",rod);
+    document.getElementById("agoraAuto").innerHTML = st.auto ? `automático · próxima ${st.proxima?st.proxima.slice(11,16):"—"}` : `<a href="/coletas#automacao">ligar automático</a>`;
+    if(this._rodava && !rod){ if(st.estado==="ok") toast(this.tipo+" atualizado"); else if(st.estado==="erro") toast("Coleta rápida: "+(st.etapa||"falhou"),5000); this.carregar(); }
+    this._rodava=rod; clearTimeout(this.timer); this.timer=setTimeout(()=>this.acompanhar(), rod?4000:60000);
+  },
+  recolher(){ const p=document.getElementById("painelAgora"); p.classList.toggle("fechado");
+    try{ localStorage.setItem("agoraFechado", p.classList.contains("fechado")?"1":"0"); }catch(e){}
+    if(!p.classList.contains("fechado")&&this.mapa) setTimeout(()=>this.mapa.invalidateSize(),200); },
+  iniciar(){
+    if(!document.getElementById("painelAgora")) return;
+    try{ if(localStorage.getItem("agoraFechado")==="1") document.getElementById("painelAgora").classList.add("fechado"); }catch(e){}
+    document.querySelectorAll("#agoraTipos button").forEach(b=>b.onclick=()=>{ this.tipo=b.dataset.v; this._ajustado=false;
+      document.querySelectorAll("#agoraTipos button").forEach(x=>x.classList.toggle("on",x===b)); this.carregar(true); });
+    this.carregar(true); this.acompanhar();
+    setInterval(()=>this.carregar(false), 5*60000);        // recarrega os dados a cada 5 min
+  }
+};
+/* ── Chuva em Recife (CEMADEN) ─────────────────────────── */
+const Chuva={
+  graf:null,
+  async carregar(){
+    const el=document.getElementById("painelChuva"); let j;
+    try{ j=await (await fetch("/api/chuva")).json(); }catch(e){ return; }
+    if(!j||j.configurado===false){ el.hidden=true; const l=document.getElementById("chuvaLigar"); if(l&&!window.ESTATICO) l.hidden=false; return; }
+    el.hidden=false;
+    const sub=document.getElementById("chuvaSub");
+    if(j.vazio||j.erro){ sub.textContent=j.erro||(j.status&&j.status.erro)||"aguardando a primeira leitura do CEMADEN…"; return; }
+    const st=j.status||{}, q=st.quando?new Date(st.quando):null, min=q?Math.round((Date.now()-q)/60000):null;
+    sub.innerHTML=`${j.estacoes} pluviômetros · média da cidade${q?` · atualizado ${min<2?"agora há pouco":min<60?`há ${min} min`:`às ${st.quando.slice(11,16)}`}`:""}${st.estado==="erro"?` · <span style="color:#A92B23">última tentativa falhou</span>`:""}`;
+    document.getElementById("chuvaAlertas").innerHTML=(j.alertas||[]).map(a=>`<div class="agora-alerta ${a.nivel}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>${esc(a.msg)}</span></div>`).join("");
+    const mm=v=>v==null?"—":(v<10?String(v).replace(".",","):fmt(Math.round(v)));
+    const nivel=v=>v==null?"":v>=50?"forte":v>=20?"moderada":v>=5?"fraca":v>0?"garoa":"seco";
+    const blocoRef=b=>{ if(!b.ref) return `<div class="det">${b.dias_com_dado<b.dias?`${b.dias_com_dado}/${b.dias} dias com dado`:`${b.chuvosos} dia(s) com chuva`}</div>`;
+      const p=b.pct_ref, cor=p>=130?"#2F6FB3":p>=80?"#5F7180":"#C4620F", w=Math.min(p,200)/2;
+      return `<div class="ref-barra" title="média do mesmo período em ${b.ref.anos.join(", ")}"><i style="width:${w}%;background:${cor}"></i><span class="marco"></span></div>
+        <div class="det"><b style="color:${cor}">${p}%</b> do habitual (${mm(b.ref.mm)} mm)</div>`; };
+    const k=(rot,val,det,cls)=>`<div class="ck ${cls||""}"><div class="rot">${rot}</div><div class="val">${val}<small> mm</small></div>${det}</div>`;
+    const h=j.hoje||{}, h24=j.h24||{};
+    document.getElementById("chuvaKpis").innerHTML=
+      k("Hoje",mm(h.mm),`<div class="det">${h.mm!=null?nivel(h.mm):"sem leitura"}${h.max!=null&&h.max>h.mm?` · máx. ${mm(h.max)} mm num ponto`:""}</div>`,"hoje")+
+      k("Últimas 24 h",mm(h24.mm),`<div class="det">${h24.max!=null?`máx. ${mm(h24.max)} mm · ${esc(h24.max_nome||"")}`:""}</div>`)+
+      j.blocos.map(b=>k(b.chave==="semana"?"7 dias":b.chave==="mes"?"Mês "+b.rot:"Ano "+b.rot, mm(b.mm), blocoRef(b))).join("");
+    const S=j.serie||[], lb=S.map(p=>p.dia.slice(8,10)+"/"+p.dia.slice(5,7));
+    const cores=S.map(p=>p.mm==null?"#E2E7ED":p.mm>=50?"#1F4E8C":p.mm>=20?"#2F6FB3":p.mm>=5?"#6FA3D8":"#B7D0EA");
+    document.getElementById("chuvaLegenda").innerHTML=`<span><i style="background:#2F6FB3"></i>chuva (mm)</span><span><i style="background:#EE7D22;height:2px"></i>novos ${esc(j.tipo||"IDs")} criados</span>`;
+    if(this.graf) this.graf.destroy();
+    this.graf=new Chart(document.getElementById("chuvaSerie"),{data:{labels:lb,datasets:[
+      {type:"bar",label:"Chuva (mm)",data:S.map(p=>p.mm),backgroundColor:cores,borderRadius:2,yAxisID:"y",order:2},
+      {type:"line",label:"Novos "+(j.tipo||"IDs"),data:S.map(p=>p.criados),borderColor:"#EE7D22",backgroundColor:"#EE7D22",borderWidth:2,pointRadius:0,cubicInterpolationMode:"monotone",yAxisID:"y1",order:1}]},
+      options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:"index",intersect:false},
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.datasetIndex===0?` chuva: ${c.raw==null?"sem dado":mm(c.raw)+" mm"}${S[c.dataIndex].max!=null?` (máx. ${mm(S[c.dataIndex].max)})`:""}`:` ${c.raw} novos`}}},
+        scales:{x:{grid:{display:false},ticks:{maxTicksLimit:10,font:{size:10}}},y:{beginAtZero:true,grid:{color:"#EEF1F4"},ticks:{font:{size:10}},title:{display:true,text:"mm",font:{size:10}}},
+          y1:{position:"right",beginAtZero:true,grid:{display:false},ticks:{font:{size:10},precision:0}}}}});
+    const P=j.previsao||[], dsem=["dom","seg","ter","qua","qui","sex","sáb"];
+    document.getElementById("chuvaPrev").innerHTML=`<b>Previsão</b><span class="est">estimativa de modelo</span>`+
+      (P.slice(1,4).map(p=>{ const d=new Date(p.dia+"T12:00:00");
+        return `<div class="pv"><span class="d">${dsem[d.getDay()]} ${p.dia.slice(8,10)}/${p.dia.slice(5,7)}</span><span class="g ${nivel(p.mm)}">${mm(p.mm)} mm</span><span class="p">${p.prob!=null?p.prob+"%":""}</span></div>`; }).join("")||`<div class="det">indisponível</div>`);
+    document.getElementById("chuvaRodape").innerHTML=`Pluviômetros: dados da rede observacional do CEMADEN/MCTI (média das estações de Recife; “habitual” = mesmo período nos anos anteriores com dado). Previsão: Open-Meteo. <a href="${window.ESTATICO?"analises.html":"/analises"}#chuva">Chuva × buracos em Análises →</a>`;
+  },
+  async atualizar(){
+    const r=await fetch("/api/chuva/atualizar",{method:"POST"}), j=await r.json(), b=document.getElementById("chuvaBtn");
+    if(!r.ok){ toast(j.erro||"Não foi possível"); return; }
+    b.disabled=true; b.classList.add("girando");
+    const t=setInterval(async()=>{ const s=await (await fetch("/api/chuva/status")).json();
+      if(!s.rodando){ clearInterval(t); b.disabled=false; b.classList.remove("girando"); toast(s.estado==="erro"?"Chuva: "+s.erro:"Chuva atualizada",5000); this.carregar(); } },3000);
+  },
+  recolher(){ const p=document.getElementById("painelChuva"); p.classList.toggle("fechado");
+    try{ localStorage.setItem("chuvaFechado", p.classList.contains("fechado")?"1":"0"); }catch(e){} },
+  iniciar(){
+    try{ if(localStorage.getItem("chuvaFechado")==="1") document.getElementById("painelChuva").classList.add("fechado"); }catch(e){}
+    this.carregar(); setInterval(()=>this.carregar(), 10*60000);
+  }
+};
+/* ── Faixa do dia: tábua de marés (destaque) + chuva resumida + risco de alagamento ── */
+const DSEM=["domingo","segunda","terça","quarta","quinta","sexta","sábado"], DS3=["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+const m2=v=>v==null?"—":v.toFixed(2).replace(".",","), m1=v=>v==null?"—":v.toFixed(1).replace(".",","), mmF=v=>v==null?"—":(v<10?String(Math.round(v*10)/10).replace(".",","):fmt(Math.round(v)));
+const hojeISO=()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const ICONE={alerta:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg>`, check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>`, chuva:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15.5A4.5 4.5 0 0 0 17.5 7a6 6 0 0 0-11.4 1.8A4 4 0 0 0 7 16.5"/><path d="M8 19l-1 2M12 18l-1 3M16 19l-1 2"/>
+</svg>`, mare:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M2 17c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M12 3v4M9.5 5.5 12 8l2.5-2.5"/>
+</svg>`,
+  ancora:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M8 11h8M4.5 14.5A7.5 7.5 0 0 0 12 21a7.5 7.5 0 0 0 7.5-6.5M3 15l1.5-1 1.5 1M18 15l1.5-1 1.5 1"/></svg>`,
+  sol:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v2M5.6 5.6 7 7M3 12h2M19 12h2M17 7l1.4-1.4M7 16a5 5 0 1 1 10 0M3 20h18"/></svg>`};
+const Dia={
+  j:null,
+  async carregar(){
+    let j; try{ j=await (await fetch("/api/mare")).json(); }catch(e){ return; }
+    const el=document.getElementById("painelDia"); if(!j||j.erro||(!j.dia.curva.some(p=>p[1]!=null)&&!j.chuva)){ el.hidden=true; return; }
+    this.j=j; el.hidden=false; const R=j.risco, L=j.limiares;
+    const d=new Date(j.dia.dia+"T12:00:00"), atual=j.dia.dia===hojeISO();
+    document.getElementById("dfData").textContent=(atual?"Hoje · ":"")+DSEM[d.getDay()]+", "+dataBR(j.dia.dia).slice(0,5)+(atual?"":" · dados de "+j.quando.slice(11,16));
+    const ic={alto:"alerta",atencao:"alerta",baixo:"check"}[R.nivel];
+    const rr=document.getElementById("dfRisco"); rr.className="df-risco "+R.nivel;
+    rr.innerHTML=`${ICONE[ic]}<div><b>${esc(R.titulo)}</b><span>${esc(R.texto)}${R.dica?" "+esc(R.dica):""}</span>
+      ${R.alertar?`<button type="button" class="df-ir" onclick="Camada.trocar('crit',true)">Ver pontos de alagamento críticos →</button>`:""}</div>`;
+    const A=R.aviso;
+    document.getElementById("dfAviso").innerHTML=A?`<div class="df-aviso ${A.nivel}">${ICONE.sol}<div><b>${esc(A.titulo)}</b><span>${esc(A.texto)}</span></div>
+      <button type="button" class="btn peq" onclick="Camada.trocar('crit',true)">Ver os críticos primeiro →</button></div>`:"";
+    this.chuva(j); this.mare(j, atual); this.prev(j); this.mini(j, atual);
+    let exp=false; try{ exp=localStorage.getItem("dfExpandido")==="1"; }catch(e){} el.classList.toggle("compacta",!exp);
+    document.getElementById("dfRodape").innerHTML=`${esc(j.fonte_txt||"")}${j.chuva?" · Chuva: pluviômetros CEMADEN/MCTI · previsão Open-Meteo":""}. <a href="${window.ESTATICO?"analises.html":"/analises"}#drenagem">Chuva, maré e alagamentos em Análises →</a>`;
+    Camada.alerta(R.alertar, R);
+  },
+  expandir(sim){ const el=document.getElementById("painelDia"); el.classList.toggle("compacta",!sim);
+    try{ localStorage.setItem("dfExpandido",sim?"1":"0"); }catch(e){} },
+  mini(j, atual){
+    const D=j.dia, L=j.limiares, R=j.risco, C=j.chuva||{}, el=document.getElementById("dfMini");
+    const d=new Date(D.dia+"T12:00:00");
+    let curva="";
+    if(D.curva.some(p=>p[1]!=null)){
+      const W=420,H=64, vmin=Math.min(0,D.min||0), vmax=Math.max(2.3,D.max||0), X=i=>W*i/(D.curva.length-1), Y=v=>H-4-(v-vmin)/(vmax-vmin)*(H-14);
+      const pts=D.curva.map((p,i)=>p[1]==null?null:[X(i),Y(p[1])]).filter(Boolean);
+      const lin="M"+pts.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L"), hx=h=>W*h/24;
+      let sv=`<rect x="${hx(L.exp[0])}" y="0" width="${hx(L.exp[1])-hx(L.exp[0])}" height="${H}" class="exp"/>
+        <line x1="0" y1="${Y(L.sem_chuva||1.7)}" x2="${W}" y2="${Y(L.sem_chuva||1.7)}" class="lim17"/>
+        <path d="${lin} L${W},${H} L0,${H} Z" class="ar"/><path d="${lin}" class="cv"/>`;
+      D.extremos.filter(e=>e.tipo==="alta").forEach(e=>{ const [h,m]=e.hora.split(":").map(Number), x=hx(h+m/60), y=Y(e.altura), c=e.altura>=(L.sem_chuva||1.7)?"crit":"";
+        sv+=`<circle cx="${x}" cy="${y}" r="3" class="pt ${c}"/><text x="${Math.min(Math.max(x,26),W-26)}" y="${Math.max(y-6,9)}" class="${c}">${e.hora} · ${m1(e.altura)}</text>`; });
+      if(atual&&j.agora.nivel!=null){ const [h,m]=j.agora.hora.split(":").map(Number), x=hx(h+m/60); sv+=`<line x1="${x}" y1="0" x2="${x}" y2="${H}" class="ag"/><circle cx="${x}" cy="${Y(j.agora.nivel)}" r="3.5" class="pa"/>`; }
+      curva=`<svg viewBox="0 0 ${W} ${H}" class="dm-curva" preserveAspectRatio="none" aria-hidden="true">${sv}</svg>`;
+    }
+    const P=j.proxima_alta, cP=P&&P.altura>=(L.sem_chuva||1.7)?"crit":"";
+    el.innerHTML=`<div class="dm-tit"><span>${atual?"Hoje · ":""}${DS3[d.getDay()]} ${dataBR(D.dia).slice(0,5)}</span><b>${ICONE.mare}Maré e chuva</b></div>
+      <div class="dm-risco ${R.nivel}" title="${esc(R.texto)}">${ICONE[R.nivel==="baixo"?"check":"alerta"]}<span>${esc(R.titulo)}</span></div>
+      <div class="dm-mare">${curva}<div class="dm-mare-info">${atual&&j.agora.nivel!=null?`<span>agora <b>${m2(j.agora.nivel)} m</b> ${j.agora.subindo?"↑":"↓"}</span>`:""}${P?`<span>preamar <b class="${cP}">${P.hora} · ${m2(P.altura)} m</b></span>`:""}<em>Marinha · CHM</em></div></div>
+      ${j.chuva&&!C.erro?`<button type="button" class="dm-chuva" onclick="Dia.irChuva()" title="Ver a chuva em detalhe">${ICONE.chuva}<span>1 h <b>${mmF(C.h1)} mm</b></span><span>24 h <b>${mmF(C.h24)} mm</b></span>${C.max_rpa?`<span>+ chuva <b>${esc(C.max_rpa)}</b></span>`:""}<img class="dm-tuba" src="${window.ESTATICO?"static":"/static"}/marca/tuba.webp" alt="" aria-hidden="true"></button>`:""}
+      <button type="button" class="dm-exp" onclick="Dia.expandir(true)" title="Ver a tábua de marés completa, a chuva e a previsão">Expandir ▾</button>`;
+  },
+  irChuva(){ const c=document.getElementById("painelChuva"); if(!c||c.hidden) return;
+    c.classList.remove("fechado"); const y=c.getBoundingClientRect().top+window.scrollY-90; window.scrollTo({top:y,behavior:"smooth"});
+    c.classList.add("piscou"); setTimeout(()=>c.classList.remove("piscou"),1600); },
+  chuva(j){
+    const C=j.chuva, el=document.getElementById("dfChuva");
+    if(!C||C.erro){ el.innerHTML=`<span class="df-cab">${ICONE.chuva}<b>Chuva</b></span><span class="df-vazio">${C&&C.erro?esc(C.erro):"Pluviometria (CEMADEN) não ligada."}</span>`; el.disabled=true; return; }
+    const R=C.por_rpa||[], mx=Math.max(1,...R.map(r=>r.mm));
+    const q=C.atualizado?new Date(C.atualizado):null, min=q?Math.round((Date.now()-q)/60000):null;
+    const agora=(C.h1||0)>=0.2;
+    el.innerHTML=`<span class="df-cab">${ICONE.chuva}<b>Chuva</b><span>${q?(min<60?`há ${min} min`:"às "+C.atualizado.slice(11,16)):""}</span></span>
+      <span class="dc-agora ${agora?"sim":""}"><i></i>${agora?"chovendo agora":"sem chuva agora"}</span>
+      <span class="dc-l"><span>Última hora</span><b>${mmF(C.h1)} mm</b></span>
+      <span class="dc-l"><span>24 horas</span><b>${mmF(C.h24)} mm</b></span>
+      <span class="dc-l"><span>Mais chuva</span><b>${esc(C.max_rpa||"—")}</b></span>
+      ${R.length?`<span class="dc-rpas">${R.map(r=>`<span title="${esc(r.rpa)}: ${mmF(r.mm)} mm"><i style="height:${Math.max(10,r.mm/mx*100)}%" class="${r.rpa===C.max_rpa?"max":""}"></i><em>${esc(r.rpa.replace("RPA ",""))}</em></span>`).join("")}</span>`:""}
+      <span class="dc-mais">Ver chuva em detalhe ↓</span>
+      <img class="dc-tuba" src="${window.ESTATICO?"static":"/static"}/marca/tuba.webp" alt="" aria-hidden="true">`;
+  },
+  mare(j, atual){
+    const D=j.dia, L=j.limiares, el=document.getElementById("dfMare");
+    const selo=`<span class="df-oficial" title="Previsão oficial de marés do Centro de Hidrografia da Marinha (CHM)">${ICONE.ancora}<span><b>Fonte oficial</b>Marinha do Brasil · CHM${j.tabua_ano?" · tábua "+j.tabua_ano:""}</span></span>`;
+    if(!D.curva.some(p=>p[1]!=null)){ el.innerHTML=`<div class="df-cab">${ICONE.mare}<b>Tábua de marés · Porto do Recife</b></div><div class="df-vazio">Sem tábua de marés para hoje.${window.ESTATICO?"":` <a href="/coletas#mare">Importar a tábua da Marinha</a>`}</div>`; return; }
+    const W=640,H=272,top=26,bot=236, vmin=Math.min(0,D.min||0), vmax=Math.max(2.3,D.max||0), y1=top+74, y0=bot-50, X=i=>W*i/(D.curva.length-1), Y=v=>y0-(v-vmin)/(vmax-vmin)*(y0-y1);
+    const pts=D.curva.map((p,i)=>p[1]==null?null:[X(i),Y(p[1])]).filter(Boolean);
+    const linha="M"+pts.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L"), area=linha+` L${W},${bot} L0,${bot} Z`;
+    const hx=h=>W*h/24, y16=Y(L.atencao), y17=Y(L.sem_chuva||1.7);
+    let svg=`<defs><linearGradient id="gMare" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5FD3C7" stop-opacity=".45"/><stop offset="1" stop-color="#5FD3C7" stop-opacity=".04"/></linearGradient>
+        <clipPath id="cAcima"><rect x="0" y="0" width="${W}" height="${y16}"/></clipPath></defs>
+      <rect x="${hx(L.exp[0])}" y="${top}" width="${hx(L.exp[1])-hx(L.exp[0])}" height="${bot-top}" class="exp"/>
+      <text x="${hx(L.exp[0])+6}" y="${top-9}" class="t-exp" text-anchor="start">expediente ${String(L.exp[0]).padStart(2,"0")}h–${L.exp[1]}h</text>
+      <line x1="0" y1="${y16}" x2="${W}" y2="${y16}" class="lim16"/><line x1="0" y1="${y17}" x2="${W}" y2="${y17}" class="lim17"/>
+      <path d="${area}" fill="url(#gMare)"/><path d="${area}" class="area-acima" clip-path="url(#cAcima)"/>
+      <path d="${linha}" class="curva"/>`;
+    const pill=(x,y,l1,l2,cls,acima)=>{ const w=Math.max(l1.length,l2.length)*6.6+18, h=34, px=Math.min(Math.max(x-w/2,2),W-w-2), py=acima?y-h-10:y+10;
+      return `<g class="tag ${cls}"><rect x="${px}" y="${py}" width="${w}" height="${h}" rx="9"/><text x="${px+w/2}" y="${py+14}" class="tg1">${l1}</text><text x="${px+w/2}" y="${py+27}" class="tg2">${l2}</text></g>`; };
+    D.extremos.forEach(e=>{ const [h,m]=e.hora.split(":").map(Number), x=hx(h+m/60), y=Y(e.altura), alta=e.tipo==="alta", c=alta&&e.altura>=(L.sem_chuva||1.7)?"crit":alta&&e.altura>=L.atencao?"aten":"";
+      svg+=`<circle cx="${x}" cy="${y}" r="4.5" class="pt ${c}"/>`+pill(x,y,(alta?"preamar ":"baixa-mar ")+e.hora,m2(e.altura)+" m",c||(alta?"alta":"baixa"),alta); });
+    if(atual&&j.agora.nivel!=null){ const [h,m]=j.agora.hora.split(":").map(Number), x=hx(h+m/60), y=Y(j.agora.nivel);
+      const txt=`agora ${j.agora.hora} · ${m2(j.agora.nivel)} m ${j.agora.subindo?"↑":"↓"}`, w=txt.length*6.4+20, px=Math.min(Math.max(x-w/2,2),W-w-2);
+      svg+=`<line x1="${x}" y1="${top+22}" x2="${x}" y2="${bot}" class="agora"/><circle cx="${x}" cy="${y}" r="9" class="pt-agora-halo"/><circle cx="${x}" cy="${y}" r="5" class="pt-agora"/>
+        <g class="tag-agora"><rect x="${px}" y="${top}" width="${w}" height="22" rx="11"/><text x="${px+w/2}" y="${top+15}">${txt}</text></g>`; }
+    svg+=[0,3,6,9,12,15,18,21,24].map(h=>`<text x="${h===24?W-12:h===0?10:hx(h)}" y="${H-6}" class="t-h">${String(h).padStart(2,"0")}h</text>`).join("");
+    const P=j.proxima_alta, S=j.semana||[], smax=Math.max(...S.map(s=>s.max||0),2.6);
+    const pmin=P?P.min:null, falta=pmin==null?"":pmin<60?`daqui a ${pmin} min`:`daqui a ${Math.floor(pmin/60)} h ${pmin%60} min`;
+    const cP=P&&P.altura>=(L.sem_chuva||1.7)?"crit":P&&P.altura>=L.atencao?"aten":"";
+    el.innerHTML=`<div class="df-cab">${ICONE.mare}<b>Tábua de marés · Porto do Recife</b>${D.fonte==="modelo"?`<span class="df-selo modelo">estimativa de modelo</span>`:selo}</div>
+      <div class="df-mare-grade"><div><svg viewBox="0 0 ${W} ${H}" class="df-curva" role="img" aria-label="Curva da maré de ${dataBR(D.dia)}">${svg}</svg>
+        <div class="df-leg"><span><i class="l16"></i>${m1(L.atencao)} m: com chuva, alaga</span><span><i class="l17"></i>${m1(L.sem_chuva||1.7)} m: alaga até sem chuva</span><span><i class="e"></i>horário dos fiscais</span></div></div>
+        <div class="df-mare-lado">
+          ${P?`<div class="df-box"><span>Próxima maré alta</span><b class="${cP}">${P.hora}</b><strong class="${cP}">${m2(P.altura)} m</strong><em>${atual?falta:dataBR(P.dia)}</em></div>`:""}
+          ${S.length?`<div class="df-box"><span>Próximos 7 dias</span><div class="df-sem">${S.map(s=>{ const dd=new Date(s.dia+"T12:00:00");
+            return `<div title="${DS3[dd.getDay()]} ${dataBR(s.dia).slice(0,5)}: máxima ${m2(s.max)} m${s.expediente?" (acima de "+m1(L.sem_chuva||1.7)+" m no horário dos fiscais)":s.exp16?" (acima de "+m1(L.atencao)+" m no horário dos fiscais)":""}"><i style="height:${Math.max(10,((s.max||0)-1.2)/(smax-1.2)*100)}%" class="${s.expediente?"exp":s.exp16?"exp16":""}"></i><span>${DS3[dd.getDay()].slice(0,1)}</span></div>`; }).join("")}</div>
+            <em><i class="q17"></i>${m1(L.sem_chuva||1.7)} m+ no expediente <i class="q16"></i>${m1(L.atencao)} m+</em></div>`:""}
+        </div></div>`;
+  },
+  prev(j){
+    const P=j.risco.previsao||[];
+    document.getElementById("dfPrev").innerHTML=P.map(p=>{ const d=new Date(p.dia+"T12:00:00");
+      return `<div class="df-pv"><b>${DS3[d.getDay()]} ${dataBR(p.dia).slice(0,5)}</b><span>${p.mm!=null?mmF(p.mm)+" mm":"sem previsão de chuva"}${p.janela?` · maré +${m1(j.limiares.atencao)} m das ${p.janela.replace("–"," às ")}${p.pico?" (até "+m2(p.pico)+" m)":""}`:" · maré baixa no expediente"}</span><em class="${p.nivel}">${esc(p.rotulo)}</em></div>`; }).join("");
+  },
+  iniciar(){ this.carregar(); setInterval(()=>this.carregar(), 10*60000); }
+};
+
+/* ── Camadas do mapa: Buraco Siga → críticos → pontos de alagamento ─────── */
+const COSTA=[[-7.96,-34.826],[-7.99,-34.828],[-8.01,-34.834],[-8.04,-34.852],[-8.06,-34.866],[-8.08,-34.875],[-8.10,-34.882],[-8.13,-34.892],[-8.16,-34.900],[-8.19,-34.908],[-8.22,-34.918]];
+const Camada={
+  atual:"buraco", dados:null, mapa:null, ondas:null,
+  async carregarAlag(){
+    try{ this.dados=await (await fetch("/api/alagamentos")).json(); }catch(e){ this.dados={pontos:[]}; }
+    const P=this.dados.pontos||[];
+    document.getElementById("cntCrit").textContent=fmt(P.filter(p=>p.critico).length);
+    return this.dados;
+  },
+  alerta(liga, R){
+    // a camada de críticos só aparece nos dias de chuva e/ou maré a partir de 1,8 m; pisca até a pessoa clicar
+    let visto=null, fechou=null; try{ visto=localStorage.getItem("alagVisto"); fechou=localStorage.getItem("alagPopFechado"); }catch(e){}
+    const b=document.querySelector('#agoraCamada button[data-c="crit"]'); if(!b) return;
+    b.hidden=!liga; b.classList.toggle("alerta",!!liga && visto!==hojeISO()); b.title=liga?R.titulo:"";
+    if(!liga && this.atual==="crit") this.trocar("buraco",false);
+    const pop=document.getElementById("alagPop"); if(pop) pop.remove();
+    if(liga && visto!==hojeISO() && fechou!==hojeISO()){
+      const d=document.createElement("div"); d.id="alagPop"; d.className="alag-pop"; d.setAttribute("role","alert");
+      d.innerHTML=`${ICONE.alerta}<div><b>${esc(R.titulo)}</b><span>${esc(R.texto)}</span>
+        <button type="button" class="btn peq" onclick="Camada.trocar('crit',true)">Ver pontos de alagamento críticos →</button></div>
+        <button type="button" class="alag-pop-x" aria-label="Fechar aviso" onclick="Camada.fecharPop()">✕</button>`;
+      document.body.appendChild(d); requestAnimationFrame(()=>d.classList.add("on"));
+    }
+  },
+  fecharPop(){ try{ localStorage.setItem("alagPopFechado",hojeISO()); }catch(e){} const p=document.getElementById("alagPop"); if(p) p.remove(); },
+  async trocar(c, manual=true){
+    if(manual){ try{ sessionStorage.setItem("camadaMapa",c); }catch(e){} }
+    if(c==="crit"){ try{ localStorage.setItem("alagVisto",hojeISO()); }catch(e){}
+      const bc=document.querySelector('#agoraCamada button[data-c="crit"]'); if(bc){ bc.classList.remove("alerta"); bc.hidden=false; }
+      const pp=document.getElementById("alagPop"); if(pp) pp.remove(); }
+    this.atual=c;
+    document.querySelectorAll("#agoraCamada button").forEach(b=>b.classList.toggle("on",b.dataset.c===c));
+    const alag=c!=="buraco", p=document.getElementById("painelAgora");
+    p.classList.toggle("modo-alag",alag); p.classList.toggle("modo-crit",c==="crit"); p.classList.remove("fechado");
+    document.getElementById("agoraCorpo").hidden=alag; document.getElementById("agoraAlertas").hidden=alag;
+    document.getElementById("alagCorpo").hidden=!alag;
+    document.getElementById("agoraBtn").hidden=alag;
+    if(!alag){ document.getElementById("agoraTitulo").textContent=Agora.tipo+" agora"; document.getElementById("agoraSub").innerHTML=Agora.subHTML||""; setTimeout(()=>Agora.mapa&&Agora.mapa.invalidateSize(),150); return; }
+    if(!this.dados) await this.carregarAlag();
+    this.desenhar();
+    if(manual){ const y=p.getBoundingClientRect().top+window.scrollY-96; if(Math.abs(window.scrollY-y)>200) window.scrollTo({top:y,behavior:"smooth"}); }
+  },
+  cor(p){ return p.nunca?"#5B1F5E":p.dias_sem_visita<=15?"#0B7A8C":p.dias_sem_visita<=45?"#E0921F":"#B8321A"; },
+  popup(p){
+    const uf=p.ult_fiscal?`${dataBR(p.ult_fiscal.slice(0,10))}${p.ult_fiscal.length>10&&p.ult_fiscal.slice(11,16)!=="00:00"?" às "+p.ult_fiscal.slice(11,16):""}`:"nunca";
+    const mar=p.mare_ult!=null?`maré ${m2(p.mare_ult)} m ${p.mare_ult_tend||""}`:(p.mare_ult_max!=null?`maré máx. do dia ${m2(p.mare_ult_max)} m`:"");
+    const ch=p.chuva_ult!=null?(p.chuva_ult<0.2?"sem chuva":mmF(p.chuva_ult)+" mm no dia"):"";
+    return `<div class="pop-alag"><span class="pop-id">ID ${esc(p.os_id)}</span><span class="pop-tag" style="background:${this.cor(p)}">${p.nunca?"nunca fiscalizado":"visto há "+p.dias_sem_visita+" d"}</span>
+      <div style="margin-top:4px"><b>${esc(p.tipo)}</b>${p.dias_aberto!=null?` · aberto há ${p.dias_aberto} d`:""}</div>
+      <div>${esc(p.logradouro)}${p.trecho?" · "+esc(p.trecho):""}</div><div style="color:#5F7180">${esc(p.bairro)} · ${esc(p.rpa)}</div>
+      <table class="pop-tab"><tr><td>Fiscal</td><td><b>${esc(p.fiscal||"—")}</b></td></tr>
+        <tr><td>Últ. fiscalização</td><td><b>${uf}</b>${mar||ch?`<br><span>${[mar,ch].filter(Boolean).join(" · ")}</span>`:""}</td></tr>
+        <tr><td>No mesmo ponto</td><td><b>${p.reinc} OS em ${this.dados.reinc_dias||90} d</b>${p.reinc_mare?`<br><span>${p.reinc_mare} com maré acima de ${m1(Dia.j?Dia.j.limiares.atencao:1.6)} m</span>`:""}</td></tr>
+        ${p.visto_siga?`<tr><td>Em aberto no SIGA</td><td>visto em ${dataBR(p.visto_siga.slice(0,10))} ${p.visto_siga.slice(11,16)}</td></tr>`:""}</table>
+      <div style="margin-top:4px">${sigaLinks(p.os_id)}</div>${p.lat?`<div><a href="https://www.google.com/maps?q=${p.lat},${p.lng}" target="_blank">Abrir no Google Maps ↗</a></div>`:""}</div>`;
+  },
+  desenharOndas(crit){
+    if(this.ondas) this.ondas.clearLayers(); else this.ondas=L.layerGroup().addTo(this.mapa);
+    const cor=crit?"#E0613F":"#3FA7B5";
+    for(let k=0;k<4;k++){ const off=0.016+k*0.017, linha=[];
+      for(let lat=-7.94;lat>=-8.24;lat-=0.0008){
+        let i=COSTA.findIndex(c=>c[0]<=lat); if(i===-1) i=COSTA.length-1; if(i<1) i=1;
+        const a=COSTA[i-1], b=COSTA[Math.min(i,COSTA.length-1)], f=(a[0]-lat)/((a[0]-b[0])||1), lngC=a[1]+(b[1]-a[1])*Math.max(0,Math.min(1,f));
+        linha.push([lat, lngC+off+Math.sin((lat*260)+k*1.9)*0.0028]); }
+      L.polyline(linha,{color:cor,weight:k===0?3:2.2,opacity:.55-k*.1,interactive:false,lineCap:"round"}).addTo(this.ondas); }
+    L.marker([-8.075,-34.80],{interactive:false,icon:L.divIcon({className:"",html:`<span class="mapa-mar ${crit?"crit":""}">${ICONE.mare}Mar · Atlântico</span>`,iconSize:[130,24],iconAnchor:[65,12]})}).addTo(this.ondas);
+  },
+  desenhar(){
+    const crit=this.atual==="crit", D=this.dados||{pontos:[]}, P=(D.pontos||[]).filter(p=>p.critico===crit);
+    document.getElementById("agoraTitulo").textContent=crit?"Pontos de alagamento críticos":"Pontos de alagamento";
+    const col=(D.coletas||[]).find(c=>c.classe===(crit?"crit":"alag"));
+    document.getElementById("agoraSub").innerHTML=`${fmt(P.length)} em aberto no SIGA`+(col?` · visto pela última vez às <b>${col.data_hora.slice(11,16)}</b> de ${dataBR(col.data_hora.slice(0,10)).slice(0,5)}`:"");
+    const R=Dia.j&&Dia.j.risco;
+    document.getElementById("alagBarra").innerHTML=(R?`<span class="risco ${R.nivel}">${esc(R.titulo)}</span>`:"")+
+      `<button type="button" class="btn peq prox" onclick="Camada.trocar('buraco',true)">← Voltar ao ${esc(Agora.tipo)}</button>`;
+    if(!this.mapa){ this.mapa=criarMapa("mapaAlag"); }
+    setTimeout(()=>this.mapa.invalidateSize(),120);
+    this.desenharOndas(crit);
+    this.mapa._camada.clearLayers(); this.marc={}; const pts=[];
+    P.forEach(p=>{ if(!p.lat) return; const c=this.cor(p);
+      const m=p.critico? L.marker([p.lat,p.lng],{icon:L.divIcon({className:"",html:`<span class="mk-losango" style="background:${c}"></span>`,iconSize:[18,18],iconAnchor:[9,9]})})
+                        : L.circleMarker([p.lat,p.lng],{radius:7,color:"#fff",weight:2,fillColor:c,fillOpacity:.95});
+      m.bindPopup(()=>this.popup(p),{maxWidth:320}).addTo(this.mapa._camada); this.marc[p.os_id]=m; pts.push([p.lat,p.lng]); });
+    if(pts.length) this.mapa.fitBounds(pts,{padding:[30,30],maxZoom:15}); else this.mapa.setView([-8.08,-34.90],12);
+    const vistos=Object.entries(D.tipos_vistos||{}).map(([t,n])=>`${esc(t)} (${n} em aberto)`).join(", ");
+    document.getElementById("alagLista").innerHTML=P.slice(0,60).map(p=>`<button type="button" class="alag-item" onclick="Camada.focar('${esc(p.os_id)}')">
+        <i style="background:${this.cor(p)}"></i><div><b>${esc(p.logradouro||"—")}</b><span>${esc(p.bairro)} · ${esc(p.rpa)} · ${esc(p.fiscal||"sem fiscal")}${p.reinc_mare?` · alagou ${p.reinc_mare}× com maré alta`:p.reinc>1?` · ${p.reinc} OS no ponto`:""}</span></div>
+        <em style="color:${this.cor(p)}">${p.nunca?"nunca<br>visto":"visto há<br>"+p.dias_sem_visita+" d"}</em></button>`).join("")||
+      `<div class="vazio" style="padding:18px">Nenhum ponto ${crit?"crítico ":""}em aberto no SIGA.${vistos?`<br><span style="font-size:12px">Tipos com “alagamento” já vistos: ${vistos}.</span>`:`<br><span style="font-size:12px">O painel ainda não viu nenhuma OS de “${crit?"Ponto de Alagamento Crítico":"Ponto de Alagamento"}” nas coletas.</span>`}</div>`;
+    const k=n=>fmt(P.filter(n).length);
+    document.getElementById("alagKpis").innerHTML=`<div><b>${fmt(P.length)}</b><span>em aberto</span></div><div><b class="v">${k(p=>p.dias_sem_visita>45||p.nunca)}</b><span>sem visita +45 d</span></div><div><b class="t">${k(p=>p.reinc>=3)}</b><span>reincidentes</span></div>`;
+  },
+  focar(id){ const m=this.marc&&this.marc[id]; if(!m) return; this.mapa.setView(m.getLatLng(),17); m.openPopup(); },
+  iniciar(){
+    if(!document.getElementById("agoraCamada")) return;
+    document.querySelectorAll("#agoraCamada button").forEach(b=>b.onclick=()=>this.trocar(b.dataset.c,true));
+    let s=null; try{ s=sessionStorage.getItem("camadaMapa"); }catch(e){}
+    this.carregarAlag().then(()=>{ const b=document.querySelector('#agoraCamada button[data-c="crit"]'); if(s==="crit"&&b&&!b.hidden) this.trocar(s,false); });
+    setInterval(()=>this.carregarAlag().then(()=>{ if(this.atual!=="buraco") this.desenhar(); }), 10*60000);
+  }
+};
+iniciar();
+Agora.iniciar();
+Chuva.iniciar();
+Dia.iniciar();
+Camada.iniciar();
+setTimeout(()=>mapa&&mapa.invalidateSize(),400);
+</script>
+
+</body>
+</html>

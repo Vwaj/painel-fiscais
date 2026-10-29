@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lotes de cobrança · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1793296857">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-lotes">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 29/10/2026 14:32</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+
+<section class="lf-faixa">
+  <div class="lf-cont">
+    <div class="lf-tit"><h1>Lotes de cobrança</h1>
+      <p>Cada lote é uma demanda passada aos fiscais. O que mudou desde a coleta anterior aparece em destaque.</p></div>
+    <div class="lf-dir">
+      <span class="lf-selo"><i></i>Coleta de <b>29/10/2026 14:32</b> comparada com <b>29/10/2026 12:12</b></span>
+      <div class="lf-bts so-local"><a class="lf-bt" href="/conferir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Conferir demanda já enviada</a>
+        <a class="lf-bt lar" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/>
+</svg>Novo lote a partir do mapa</a></div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="lf-kpis">
+  <div><span>Cobranças ativas</span><b>17</b><small>2.874 IDs cobrados</small></div>
+  <div><span>Novos na última coleta</span><b class="verde">+33</b>
+    <small class="verde">▲ 6 saíram · 27 fiscalizados · 6 lote(s)</small></div>
+  <div><span>Concluído (geral)</span><b>19,5%</b>
+    <small class="verde">▲ 1,1 pp desde a coleta anterior</small></div>
+  <div><span>Ainda falta</span><b>2.314</b><small>IDs pendentes nos lotes</small></div>
+  <div><span>Precisam de atenção</span><b class="vermelho">1</b>
+    <small>1 parado(s) · 0 atrasado(s) · 0 lento(s)</small></div>
+</section>
+
+
+<a class="card papel-cta" href="geovista_buscar.html"><span class="papel-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>
+</svg></span>
+  <div><b>Tenho o papel em mãos</b><span>Código da OS do GeoVista ou rua + número → veja se já tem ID no SIGA, se foi executada e o que está aberto na rua.</span></div>
+  <span class="btn prim">Buscar</span></a>
+
+<div class="card" id="envio" style="margin-bottom:16px">
+  <div class="card-cab"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg>Envio diário — refiscalização</h3>
+    <span class="sub">o que cada fiscal recebeu no WhatsApp (forçar envio) e quanto refiscalizou</span>
+    <div class="dir so-local"><form method="post" action="/lotes/registrar-envio" onsubmit="return confirm('Registrar como enviada hoje a lista do processador do SIGA-BOT (planilha das 7h)?')">
+      <button class="btn peq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>
+</svg>Registrar envio de hoje</button></form></div></div>
+  
+  <div class="card-corpo" style="color:var(--suave);font-size:13px">Ainda não há envio registrado. Com a linha de gancho no fim do <span class="mono">forcar_envio.py</span>/<span class="mono">enviador.py</span>, cada envio entra aqui sozinho; ou use <b>Registrar envio de hoje</b> depois de enviar. (Veja “Envio diário” no LEIA-ME.)</div>
+  
+</div>
+
+
+
+
+<div class="filtros" style="align-items:center">
+  <div class="campo"><label>Situação</label>
+    <div class="chips" id="fSit"><span class="chip on" data-v="todas">todas</span><span class="chip " data-v="a começar">a começar (3)</span><span class="chip " data-v="no ritmo">no ritmo (12)</span><span class="chip " data-v="lento">lento</span><span class="chip " data-v="parado">parado (1)</span><span class="chip " data-v="atrasado">atrasado</span><span class="chip " data-v="concluído">concluído (1)</span></div></div>
+  <div class="campo"><label>Ordenar por</label>
+    <select id="fOrdem"><option value="mudou">Novidades da última coleta primeiro</option><option value="recente">Envio mais recente</option><option value="antigo">Envio mais antigo</option><option value="pct">Menor % concluído</option>
+      <option value="parado">Mais tempo parado</option><option value="ritmo">Maior ritmo</option><option value="previsao">Termina antes</option></select></div>
+  <div class="campo"><label>Mostrar</label><label style="display:flex;gap:6px;align-items:center;min-height:36px;font-size:13px"><input type="checkbox" id="fArq"> arquivadas</label></div>
+  <span style="margin-left:auto;font-size:12px;color:var(--muito-suave)">“Parado” = 3 dias úteis sem avanço · ritmo = feitos por dia útil (últimos 3)</span>
+</div>
+
+<form method="post" action="/lotes/excluir-varios" id="formLimpeza">
+<div class="filtros so-local" style="align-items:center">
+  <b style="color:var(--navy);display:inline-flex;gap:6px;align-items:center"><span style="width:16px;height:16px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span>Limpar histórico</b>
+  <button class="btn peq" name="modo" value="selecionados" onclick="return confirmar('selecionadas')">Excluir selecionadas</button>
+  <button class="btn peq" name="modo" value="arquivados" onclick="return confirmarArquivadas()">Excluir arquivadas</button>
+  <span style="display:inline-flex;gap:6px;align-items:center">entregues antes de <input type="date" name="antes" style="min-height:30px;padding:3px 8px">
+    <button class="btn peq" name="modo" value="antes" onclick="return confirmarData()">Excluir</button></span>
+  <label style="margin-left:auto;font-size:13px;color:var(--suave);display:flex;gap:6px;align-items:center"><input type="checkbox" onchange="document.querySelectorAll('.sel-cob').forEach(c=>c.checked=this.checked)"> marcar todas</label>
+</div>
+
+<div class="grade g2" id="gradeCob">
+
+  <div class="card cob lc" data-sit="a começar" data-ativo="1" data-envio="2026-10-29"
+       data-pct="0.0" data-parado="0" data-ritmo="0.0" data-prev="9999"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="32" aria-label="Selecionar Demanda de Fiscalização · 29/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 29/10/2026 · 59 IDs</span></div>
+        <h3><a href="lote_32.html">Demanda de Fiscalização · 29/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento, Abatimento Compesa - Água, Abatimento Compesa - Esgoto., Abatimento Copergás, +7 · Fiscal: WELDSON</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-a-começar">a começar</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:32" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 29/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_32.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#1E7A45">W</i><b>WELDSON</b><span class="lc-rpa lc-r5">RPA 5</span><small>59 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 0.0%, #FFA929 0.0% 0.0%, #7FB6E6 0.0% 0.0%, #E6ECF1 0)" role="img" aria-label="0% concluído">
+          <div><b>0%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">0</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">0</b></div><div><span>Faltam</span><b>59</b></div></div>
+          <div class="lc-barra"><span style="width:0.0%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:0.0%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (29/10):</b>
+          <span>nenhum feito ainda</span></div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="m">ainda não começou</b></div>
+        <div><span>Previsão de término</span><b>—</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="m">ainda nenhum</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="a começar" data-ativo="1" data-envio="2026-10-29"
+       data-pct="0.0" data-parado="0" data-ritmo="0.0" data-prev="9999"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="31" aria-label="Selecionar Demanda de Fiscalização · 29/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 29/10/2026 · 62 IDs</span></div>
+        <h3><a href="lote_31.html">Demanda de Fiscalização · 29/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento, Abatimento Compesa - Água, Abatimento Compesa - Esgoto., Abatimento Copergás, +39 · Bairros: Agua Fria · Fiscal: CARLOS M</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-a-começar">a começar</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:31" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 29/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_31.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#7B4FD6">CM</i><b>CARLOS M</b><span class="lc-rpa lc-r2">RPA 2</span><small>62 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 0.0%, #FFA929 0.0% 0.0%, #7FB6E6 0.0% 0.0%, #E6ECF1 0)" role="img" aria-label="0% concluído">
+          <div><b>0%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">0</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">0</b></div><div><span>Faltam</span><b>62</b></div></div>
+          <div class="lc-barra"><span style="width:0.0%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:0.0%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (29/10):</b>
+          <span>nenhum feito ainda</span></div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="m">ainda não começou</b></div>
+        <div><span>Previsão de término</span><b>—</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="m">ainda nenhum</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc lc-mudou" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-29"
+       data-pct="5.3" data-parado="0" data-ritmo="17.0" data-prev="2026-11-24"
+       data-mud="17" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="30" aria-label="Selecionar Demanda de Fiscalização · 29/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 29/10/2026 · 321 IDs</span></div>
+        <h3><a href="lote_30.html">Demanda de Fiscalização · 29/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 31/10/2026 ou antes (inclui nunca fiscalizados) · Fiscal: WASHINGTON</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        <span class="lc-novo" title="Avançou entre a coleta anterior e a última">+17 na última coleta</span>
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:30" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 29/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_30.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#0B7F8C">W</i><b>WASHINGTON</b><span class="lc-rpa lc-r4">RPA 4</span><small>321 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 0.0%, #FFA929 0.0% 5.3%, #7FB6E6 5.3% 5.3%, #E6ECF1 0)" role="img" aria-label="5% concluído">
+          <div><b>5%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">1</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">16</b></div><div><span>Faltam</span><b>304</b></div></div>
+          <div class="lc-barra"><span style="width:0.0%;background:#2E9D57"></span><span class="novo" style="width:5.3%"></span><span style="width:0.0%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud on">
+        <div><b>Desde a entrega (29/10):</b>
+          <span class="v">1 saíram do aberto</span><span class="sep">·</span><span class="a">16 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span class="v">+17 feitos</span><span class="sep">·</span><span class="v">1 saíram</span><span class="sep">·</span><span class="a">16 fiscalizados</span>
+          </div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">17 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>24/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-28"
+       data-pct="47.1" data-parado="0" data-ritmo="8.0" data-prev="2026-11-02"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="29" aria-label="Selecionar Demanda de Fiscalização · 28/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 28/10/2026 · 17 IDs</span></div>
+        <h3><a href="lote_29.html">Demanda de Fiscalização · 28/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 31/10/2026 ou antes (inclui nunca fiscalizados) · Tipos: Ponto de Alagamento Crítico</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:29" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 28/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_29.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#B35F00">M</i><b>MARCELO</b><span class="lc-rpa lc-r4">RPA 4</span><small>4 IDs</small></span><span class="lc-p"><i style="background:#0A64C2">AJ</i><b>ADRIANO J</b><span class="lc-rpa lc-r6">RPA 6</span><small>3 IDs</small></span><span class="lc-p"><i style="background:#0B7F8C">R</i><b>RENILSON</b><span class="lc-rpa lc-r6">RPA 6</span><small>3 IDs</small></span><span class="lc-p"><i style="background:#1E7A45">W</i><b>WELDSON</b><span class="lc-rpa lc-r5">RPA 5</span><small>3 IDs</small></span><span class="lc-p mais"><i style="background:#8A99A6">+</i><b>+3</b><small>4 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 17.6%, #FFA929 17.6% 17.6%, #7FB6E6 17.6% 47.1%, #E6ECF1 0)" role="img" aria-label="47% concluído">
+          <div><b>47%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">3</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">5</b></div><div><span>Faltam</span><b>9</b></div></div>
+          <div class="lc-barra"><span style="width:17.6%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:29.4%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (28/10):</b>
+          <span class="v">3 saíram do aberto</span><span class="sep">·</span><span class="a">5 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">8 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>02/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-28"
+       data-pct="11.8" data-parado="1" data-ritmo="2.0" data-prev="2026-11-10"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="28" aria-label="Selecionar Pendências — DEMANDA MARCELO 13.10 · 28/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 28/10/2026 · 17 IDs</span></div>
+        <h3><a href="lote_28.html">Pendências — DEMANDA MARCELO 13.10 · 28/10/2026</a></h3>
+        <div class="lc-crit">Pendentes do lote “DEMANDA MARCELO 13.10” (entregue em 13/10/2026)</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:28" onclick="return confirm('Excluir a cobrança “Pendências — DEMANDA MARCELO 13.10 · 28/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_28.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#B35F00">M</i><b>MARCELO</b><span class="lc-rpa lc-r4">RPA 4</span><small>17 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 5.9%, #FFA929 5.9% 5.9%, #7FB6E6 5.9% 11.8%, #E6ECF1 0)" role="img" aria-label="12% concluído">
+          <div><b>12%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">1</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">1</b></div><div><span>Faltam</span><b>15</b></div></div>
+          <div class="lc-barra"><span style="width:5.9%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:5.9%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (28/10):</b>
+          <span class="v">1 saíram do aberto</span><span class="sep">·</span><span class="a">1 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">2 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>10/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">ontem (28/10)</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc lc-mudou" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-28"
+       data-pct="4.9" data-parado="0" data-ritmo="5.0" data-prev="2026-11-26"
+       data-mud="2" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="25" aria-label="Selecionar Demanda de Fiscalização · 28/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 28/10/2026 · 103 IDs</span></div>
+        <h3><a href="lote_25.html">Demanda de Fiscalização · 28/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 31/10/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento · Fiscal: WELLINGTON</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        <span class="lc-novo" title="Avançou entre a coleta anterior e a última">+2 na última coleta</span>
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:25" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 28/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_25.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#B35F00">W</i><b>WELLINGTON</b><span class="lc-rpa lc-r1">RPA 1</span><small>103 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 2.9%, #FFA929 2.9% 4.9%, #7FB6E6 4.9% 4.9%, #E6ECF1 0)" role="img" aria-label="5% concluído">
+          <div><b>5%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">3</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">2</b></div><div><span>Faltam</span><b>98</b></div></div>
+          <div class="lc-barra"><span style="width:2.9%;background:#2E9D57"></span><span class="novo" style="width:1.9%"></span><span style="width:0.0%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud on">
+        <div><b>Desde a entrega (28/10):</b>
+          <span class="v">3 saíram do aberto</span><span class="sep">·</span><span class="a">2 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span class="v">+2 feitos</span><span class="sep">·</span><span class="v">1 saíram</span><span class="sep">·</span><span class="a">1 fiscalizados</span>
+          </div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">5 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>26/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="a começar" data-ativo="1" data-envio="2026-10-27"
+       data-pct="0.0" data-parado="2" data-ritmo="0.0" data-prev="9999"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="23" aria-label="Selecionar Demanda de Fiscalização · 27/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 27/10/2026 · 248 IDs</span></div>
+        <h3><a href="lote_23.html">Demanda de Fiscalização · 27/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento, Abatimento Compesa - Água, Abatimento Compesa - Esgoto., Abatimento Copergás, +47 · Fiscal: ADRIANO J</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-a-começar">a começar</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:23" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 27/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_23.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#0A64C2">AJ</i><b>ADRIANO J</b><span class="lc-rpa lc-r6">RPA 6</span><small>248 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 0.0%, #FFA929 0.0% 0.0%, #7FB6E6 0.0% 0.0%, #E6ECF1 0)" role="img" aria-label="0% concluído">
+          <div><b>0%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">0</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">0</b></div><div><span>Faltam</span><b>248</b></div></div>
+          <div class="lc-barra"><span style="width:0.0%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:0.0%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (27/10):</b>
+          <span>nenhum feito ainda</span></div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="m">ainda não começou</b></div>
+        <div><span>Previsão de término</span><b>—</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="m">ainda nenhum</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="concluído" data-ativo="1" data-envio="2026-10-27"
+       data-pct="100.0" data-parado="0" data-ritmo="2.5" data-prev="2026-10-29"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="22" aria-label="Selecionar Demanda de Fiscalização · 27/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 27/10/2026 · 5 IDs</span></div>
+        <h3><a href="lote_22.html">Demanda de Fiscalização · 27/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Fiscal: WASHINGTON</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-concluido">concluído</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:22" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 27/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_22.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#0B7F8C">W</i><b>WASHINGTON</b><span class="lc-rpa lc-r4">RPA 4</span><small>5 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 80.0%, #FFA929 80.0% 80.0%, #7FB6E6 80.0% 100.0%, #E6ECF1 0)" role="img" aria-label="100% concluído">
+          <div><b>100%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">4</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">1</b></div><div><span>Faltam</span><b>0</b></div></div>
+          <div class="lc-barra"><span style="width:80.0%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:20.0%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (27/10):</b>
+          <span class="v">4 saíram do aberto</span><span class="sep">·</span><span class="a">1 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">2,5 por dia útil</b></div>
+        <div><span>Concluído em</span><b class="t">27/10</b></div>
+        
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="">27/10</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc lc-mudou" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-27"
+       data-pct="15.9" data-parado="0" data-ritmo="22.0" data-prev="2026-11-13"
+       data-mud="1" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="20" aria-label="Selecionar Demanda de Fiscalização · 27/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 27/10/2026 · 276 IDs</span></div>
+        <h3><a href="lote_20.html">Demanda de Fiscalização · 27/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        <span class="lc-novo" title="Avançou entre a coleta anterior e a última">+1 na última coleta</span>
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:20" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização · 27/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_20.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#1E7A45">JP</i><b>JOÃO PAULO</b><span class="lc-rpa lc-r2">RPA 2</span><small>97 IDs</small></span><span class="lc-p"><i style="background:#1E7A45">J</i><b>JAÍLSON</b><span class="lc-rpa lc-r3">RPA 3</span><small>72 IDs</small></span><span class="lc-p"><i style="background:#B35F00">W</i><b>WELLINGTON</b><span class="lc-rpa lc-r1">RPA 1</span><small>63 IDs</small></span><span class="lc-p"><i style="background:#0A64C2">AJ</i><b>ADRIANO J</b><span class="lc-rpa lc-r6">RPA 6</span><small>10 IDs</small></span><span class="lc-p mais"><i style="background:#8A99A6">+</i><b>+6</b><small>34 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 5.4%, #FFA929 5.4% 5.8%, #7FB6E6 5.8% 15.9%, #E6ECF1 0)" role="img" aria-label="16% concluído">
+          <div><b>16%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">15</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">29</b></div><div><span>Faltam</span><b>232</b></div></div>
+          <div class="lc-barra"><span style="width:5.4%;background:#2E9D57"></span><span class="novo" style="width:0.4%"></span><span style="width:10.1%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud on">
+        <div><b>Desde a entrega (27/10):</b>
+          <span class="v">15 saíram do aberto</span><span class="sep">·</span><span class="a">29 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span class="v">+1 feito</span><span class="sep">·</span><span class="v">1 saíram</span>
+          </div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">22 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>13/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc lc-mudou" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-26"
+       data-pct="3.1" data-parado="0" data-ritmo="2.0" data-prev="2027-03-09"
+       data-mud="4" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="19" aria-label="Selecionar Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 26/10/2026 · 191 IDs</span></div>
+        <h3><a href="lote_19.html">Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 25/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento Compesa - Água, Abatimento Compesa - Esgoto., Abatimento Copergás · Fiscal: JOÃO PAULO</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        <span class="lc-novo" title="Avançou entre a coleta anterior e a última">+4 na última coleta</span>
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:19" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_19.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#1E7A45">JP</i><b>JOÃO PAULO</b><span class="lc-rpa lc-r2">RPA 2</span><small>191 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 1.0%, #FFA929 1.0% 3.1%, #7FB6E6 3.1% 3.1%, #E6ECF1 0)" role="img" aria-label="3% concluído">
+          <div><b>3%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">2</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">4</b></div><div><span>Faltam</span><b>185</b></div></div>
+          <div class="lc-barra"><span style="width:1.0%;background:#2E9D57"></span><span class="novo" style="width:2.1%"></span><span style="width:0.0%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud on">
+        <div><b>Desde a entrega (26/10):</b>
+          <span class="v">2 saíram do aberto</span><span class="sep">·</span><span class="a">4 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span class="v">+4 feitos</span><span class="sep">·</span><span class="v">1 saíram</span><span class="sep">·</span><span class="a">3 fiscalizados</span>
+          </div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">2 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>09/03</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc lc-mudou" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-26"
+       data-pct="12.7" data-parado="0" data-ritmo="17.0" data-prev="2026-11-27"
+       data-mud="5" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="18" aria-label="Selecionar Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 26/10/2026 · 401 IDs</span></div>
+        <h3><a href="lote_18.html">Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026</a></h3>
+        <div class="lc-crit">Sem fiscalização desde 25/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Abatimento Compesa - Água, Abatimento Compesa - Esgoto., Abatimento Copergás</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        <span class="lc-novo" title="Avançou entre a coleta anterior e a última">+5 na última coleta</span>
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:18" onclick="return confirm('Excluir a cobrança “Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_18.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#1E7A45">JP</i><b>JOÃO PAULO</b><span class="lc-rpa lc-r2">RPA 2</span><small>191 IDs</small></span><span class="lc-p"><i style="background:#1E7A45">J</i><b>JAÍLSON</b><span class="lc-rpa lc-r3">RPA 3</span><small>112 IDs</small></span><span class="lc-p"><i style="background:#0B7F8C">R</i><b>RENILSON</b><span class="lc-rpa lc-r6">RPA 6</span><small>35 IDs</small></span><span class="lc-p"><i style="background:#1E7A45">W</i><b>WELDSON</b><span class="lc-rpa lc-r5">RPA 5</span><small>29 IDs</small></span><span class="lc-p mais"><i style="background:#8A99A6">+</i><b>+5</b><small>34 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 4.2%, #FFA929 4.2% 5.5%, #7FB6E6 5.5% 12.7%, #E6ECF1 0)" role="img" aria-label="13% concluído">
+          <div><b>13%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">17</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">34</b></div><div><span>Faltam</span><b>350</b></div></div>
+          <div class="lc-barra"><span style="width:4.2%;background:#2E9D57"></span><span class="novo" style="width:1.2%"></span><span style="width:7.2%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud on">
+        <div><b>Desde a entrega (26/10):</b>
+          <span class="v">17 saíram do aberto</span><span class="sep">·</span><span class="a">34 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span class="v">+5 feitos</span><span class="sep">·</span><span class="v">1 saíram</span><span class="sep">·</span><span class="a">4 fiscalizados</span>
+          </div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">17 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>27/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="parado" data-ativo="1" data-envio="2026-10-23"
+       data-pct="18.1" data-parado="3" data-ritmo="0.0" data-prev="2026-11-25"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="17" aria-label="Selecionar Pendências — JAÍLSON + CARLOS M + FABIO · REFISCALIZAR · 23/10/2026">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">demanda gerada</span>
+          <span>entregue 23/10/2026 · 193 IDs</span></div>
+        <h3><a href="lote_17.html">Pendências — JAÍLSON + CARLOS M + FABIO · REFISCALIZAR · 23/10/2026</a></h3>
+        <div class="lc-crit">Pendentes do lote “JAÍLSON + CARLOS M + FABIO · REFISCALIZAR” (entregue em 09/10/2026)</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-parado">parado</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:17" onclick="return confirm('Excluir a cobrança “Pendências — JAÍLSON + CARLOS M + FABIO · REFISCALIZAR · 23/10/2026”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_17.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#1E7A45">J</i><b>JAÍLSON</b><span class="lc-rpa lc-r3">RPA 3</span><small>134 IDs</small></span><span class="lc-p"><i style="background:#7B4FD6">CM</i><b>CARLOS M</b><span class="lc-rpa lc-r3">RPA 3</span><small>57 IDs</small></span><span class="lc-p"><i style="background:#1E7A45">JP</i><b>JOÃO PAULO</b><span class="lc-rpa lc-r3">RPA 3</span><small>2 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 3.6%, #FFA929 3.6% 3.6%, #7FB6E6 3.6% 18.1%, #E6ECF1 0)" role="img" aria-label="18% concluído">
+          <div><b>18%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">7</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">28</b></div><div><span>Faltam</span><b>158</b></div></div>
+          <div class="lc-barra"><span style="width:3.6%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:14.5%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (23/10):</b>
+          <span class="v">7 saíram do aberto</span><span class="sep">·</span><span class="a">28 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="r">0 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>25/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="">26/10</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc lc-mudou" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-14"
+       data-pct="40.5" data-parado="0" data-ritmo="8.7" data-prev="2026-11-30"
+       data-mud="4" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="5" aria-label="Selecionar FABIO · DEMANDA JOAO P">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">conferência</span>
+          <span>entregue 14/10/2026 · 316 IDs</span></div>
+        <h3><a href="lote_5.html">FABIO · DEMANDA JOAO P</a></h3>
+        <div class="lc-crit">Demanda importada · padrão 02 · PDF do painel (IDs embutidos) · DEMANDA JOAO P.pdf</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        <span class="lc-novo" title="Avançou entre a coleta anterior e a última">+4 na última coleta</span>
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:5" onclick="return confirm('Excluir a cobrança “FABIO · DEMANDA JOAO P”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_5.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#1E7A45">JP</i><b>JOÃO PAULO</b><span class="lc-rpa lc-r2">RPA 2</span><small>248 IDs</small></span><span class="lc-p"><i style="background:#7B4FD6">F</i><b>FABIO</b><span class="lc-rpa lc-r2">RPA 2</span><small>68 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 21.5%, #FFA929 21.5% 22.8%, #7FB6E6 22.8% 40.5%, #E6ECF1 0)" role="img" aria-label="40% concluído">
+          <div><b>40%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">68</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">60</b></div><div><span>Faltam</span><b>188</b></div></div>
+          <div class="lc-barra"><span style="width:21.5%;background:#2E9D57"></span><span class="novo" style="width:1.3%"></span><span style="width:17.7%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud on">
+        <div><b>Desde a entrega (14/10):</b>
+          <span class="v">68 saíram do aberto</span><span class="sep">·</span><span class="a">60 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span class="v">+4 feitos</span><span class="sep">·</span><span class="v">1 saíram</span><span class="sep">·</span><span class="a">3 fiscalizados</span>
+          </div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">8,7 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>30/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-13"
+       data-pct="81.5" data-parado="1" data-ritmo="4.3" data-prev="2026-11-04"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="27" aria-label="Selecionar DEMANDA MARCELO 13.10">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">conferência</span>
+          <span>entregue 13/10/2026 · 81 IDs</span></div>
+        <h3><a href="lote_27.html">DEMANDA MARCELO 13.10</a></h3>
+        <div class="lc-crit">Demanda importada · padrão 02 · PDF do painel · DEMANDA MARCELO 13.10.pdf</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:27" onclick="return confirm('Excluir a cobrança “DEMANDA MARCELO 13.10”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_27.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#B35F00">M</i><b>MARCELO</b><span class="lc-rpa lc-r4">RPA 4</span><small>81 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 1.2%, #FFA929 1.2% 1.2%, #7FB6E6 1.2% 81.5%, #E6ECF1 0)" role="img" aria-label="82% concluído">
+          <div><b>82%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">1</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">65</b></div><div><span>Faltam</span><b>15</b></div></div>
+          <div class="lc-barra"><span style="width:1.2%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:80.2%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (13/10):</b>
+          <span class="v">1 saíram do aberto</span><span class="sep">·</span><span class="a">65 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">4,3 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>04/11</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">ontem (28/10)</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+  <div class="card cob lc" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-09"
+       data-pct="45.1" data-parado="0" data-ritmo="5.3" data-prev="2026-12-10"
+       data-mud="0" style="">
+    <div class="lc-cab">
+      <input type="checkbox" class="sel-cob so-local" name="lote" value="2" aria-label="Selecionar JAÍLSON + CARLOS M + FABIO · REFISCALIZAR">
+      <div class="lc-tit">
+        <div class="lc-meta"><span class="lc-et">conferência</span>
+          <span>entregue 09/10/2026 · 288 IDs</span></div>
+        <h3><a href="lote_2.html">JAÍLSON + CARLOS M + FABIO · REFISCALIZAR</a></h3>
+        <div class="lc-crit">Demanda importada · padrão 01 · Planilha do SIGA impressa · REFISCALIZAR.pdf</div>
+      </div>
+      <div class="lc-dir">
+        <span class="lc-sit lc-s-no-ritmo">no ritmo</span>
+        
+        <button class="lc-x so-local" title="Excluir esta cobrança" name="unico" value="lote:2" onclick="return confirm('Excluir a cobrança “JAÍLSON + CARLOS M + FABIO · REFISCALIZAR”?')"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button>
+      </div>
+    </div>
+    <a class="lc-corpo" href="lote_2.html">
+      <div class="lc-resp"><span class="lc-rot">Responsável</span><div class="lc-pessoas">
+        <span class="lc-p"><i style="background:#1E7A45">J</i><b>JAÍLSON</b><span class="lc-rpa lc-r3">RPA 3</span><small>152 IDs</small></span><span class="lc-p"><i style="background:#7B4FD6">CM</i><b>CARLOS M</b><span class="lc-rpa lc-r3">RPA 3</span><small>110 IDs</small></span><span class="lc-p"><i style="background:#1E7A45">—</i><b>—</b><span class="lc-rpa lc-r3">RPA 3</span><small>16 IDs</small></span><span class="lc-p"><i style="background:#1E7A45">JP</i><b>JOÃO PAULO</b><span class="lc-rpa lc-r3">RPA 3</span><small>10 IDs</small></span>
+      </div></div>
+      
+      
+      
+      <div class="lc-prog">
+        <div class="lc-anel" style="background:conic-gradient(#2E9D57 0 14.9%, #FFA929 14.9% 14.9%, #7FB6E6 14.9% 45.1%, #E6ECF1 0)" role="img" aria-label="45% concluído">
+          <div><b>45%</b><span>concluído</span></div></div>
+        <div class="lc-nums">
+          <div class="lc-3"><div><span>Saíram</span><b style="color:#2E9D57">43</b></div><div><span>Fiscalizados</span><b style="color:#2F78C4">87</b></div><div><span>Faltam</span><b>158</b></div></div>
+          <div class="lc-barra"><span style="width:14.9%;background:#2E9D57"></span><span class="novo" style="width:0.0%"></span><span style="width:30.2%;background:#7FB6E6"></span></div>
+        </div>
+      </div>
+      <div class="lc-mud">
+        <div><b>Desde a entrega (09/10):</b>
+          <span class="v">43 saíram do aberto</span><span class="sep">·</span><span class="a">87 fiscalizados</span>
+          </div>
+        <div><b>Na última coleta:</b>
+          <span>sem novidade</span></div>
+      </div>
+      
+      
+      <div class="lc-pe">
+        <div><span>Ritmo</span><b class="">5,3 por dia útil</b></div>
+        <div><span>Previsão de término</span><b>10/12</b></div>
+        <div><span>Prazo</span><b class="m">sem prazo</b></div>
+        <div><span>Último avanço</span><b class="v">hoje</b></div>
+      </div>
+      
+    </a>
+  </div>
+
+
+  <div class="card cob cob-gv" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-14"
+       data-pct="22" data-parado="0" data-ritmo="2.3" data-prev="2027-02-11"
+       data-busca="RPA3 - OS EM ANDAMENTO geovista">
+    <div class="card-cab"><h3><a href="geovista_2.html" style="color:inherit">RPA3 - OS EM ANDAMENTO</a></h3><span class="tag laranja">GeoVista</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span></span></div>
+    <a class="card-corpo" href="geovista_2.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:10px">entregue em 14/10/2026</div>
+      <div class="cob-gv-linha">
+        
+
+<svg class="anel" width="92" height="92" viewBox="0 0 100 100" role="img" aria-label="andamento">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#E4E9EF" stroke-width="11"/>
+  <g transform="rotate(-90 50 50)" fill="none" stroke-width="11">
+    <circle  cx="50" cy="50" r="42" stroke="#2E9D57" stroke-dasharray="11.886936936936936 263.89" stroke-dashoffset="0"/>
+    <circle  cx="50" cy="50" r="42" stroke="#7FC79A" stroke-dasharray="29.71734234234234 263.89" stroke-dashoffset="-11.886936936936936"/>
+    <circle  cx="50" cy="50" r="42" stroke="#12A4B6" stroke-dasharray="15.453018018018017 263.89" stroke-dashoffset="-41.604279279279275"/>
+  </g>
+  <text  x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#112D37" font-family="Inter, sans-serif">22%</text>
+</svg>
+        <div class="cob-gv-num">
+          <div><span>Total</span><b class="num">222</b></div>
+          <div class="ok"><span>Resolvidas</span><b class="num">48</b></div>
+          <div class="falta"><span>Faltam</span><b class="num">174</b></div>
+        </div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="112" height="26">
+  <rect x="0" y="18.0" width="5" height="8.0" rx="1" fill="#2E9D57"><title>14/10: 7</title></rect>
+  <rect x="7" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>15/10: 1</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>16/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="35" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>19/10: 0</title></rect>
+  <rect x="42" y="23.0" width="5" height="3.0" rx="1" fill="#2E9D57"><title>20/10: 2</title></rect>
+  <rect x="49" y="22.0" width="5" height="4.0" rx="1" fill="#2E9D57"><title>21/10: 3</title></rect>
+  <rect x="56" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>22/10: 1</title></rect>
+  <rect x="63" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>23/10: 23</title></rect>
+  <rect x="70" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect>
+  <rect x="77" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>25/10: 0</title></rect>
+  <rect x="84" y="21.0" width="5" height="5.0" rx="1" fill="#2E9D57"><title>26/10: 4</title></rect>
+  <rect x="91" y="21.0" width="5" height="5.0" rx="1" fill="#2E9D57"><title>27/10: 4</title></rect>
+  <rect x="98" y="23.0" width="5" height="3.0" rx="1" fill="#2E9D57"><title>28/10: 2</title></rect>
+  <rect x="105" y="24.0" width="5" height="2.0" rx="1" fill="#2E9D57"><title>29/10: 1</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">resolvidas por dia</div>
+          <div style="font-size:11.5px;color:var(--suave);margin-top:2px"><span class="delta pos">+15.3 pp</span> em 7 dias</div></div>
+      </div>
+      <div class="gv-quebra" style="margin:10px 0">
+        <span class="gv-q" style="--c:#2E9D57"><i></i><b>10</b> ID confirmado</span>
+        <span class="gv-q" style="--c:#7FC79A"><i></i><b>25</b> já tinham ID</span>
+        <span class="gv-q" style="--c:#12A4B6"><i></i><b>13</b> executadas</span>
+        <span class="tag azul">28 ID(s) novo(s) após o envio</span></div>
+      <div class="lstats">
+  <div><span>resolvidas</span><b>48</b><i>de 222</i></div>
+  <div><span>falta</span><b>174</b><i>78% do total</i></div>
+  <div><span>desde o envio</span><b>15 d</b><i>11 úteis</i></div>
+  <div><span>ritmo</span><b>2.3/dia</b><i>média 4.4 · caindo</i></div>
+  <div><span>% por dia</span><b>2.0%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>11/02</b><i>~75 dia(s) útil(eis)</i></div>
+</div>
+
+    </a>
+  </div>
+
+  <div class="card cob cob-gv" data-sit="no ritmo" data-ativo="1" data-envio="2026-10-13"
+       data-pct="20" data-parado="2" data-ritmo="1.0" data-prev="2027-01-20"
+       data-busca="RPA2 - OS EM ANDAMENTO geovista">
+    <div class="card-cab"><h3><a href="geovista_1.html" style="color:inherit">RPA2 - OS EM ANDAMENTO</a></h3><span class="tag laranja">GeoVista</span>
+      <span class="dir">
+<span class="tag azul">no ritmo</span></span></div>
+    <a class="card-corpo" href="geovista_1.html" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave);font-size:12.5px;margin-bottom:10px">entregue em 13/10/2026</div>
+      <div class="cob-gv-linha">
+        
+
+<svg class="anel" width="92" height="92" viewBox="0 0 100 100" role="img" aria-label="andamento">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#E4E9EF" stroke-width="11"/>
+  <g transform="rotate(-90 50 50)" fill="none" stroke-width="11">
+    <circle  cx="50" cy="50" r="42" stroke="#2E9D57" stroke-dasharray="0.0 263.89" stroke-dashoffset="0"/>
+    <circle  cx="50" cy="50" r="42" stroke="#7FC79A" stroke-dasharray="42.79297297297297 263.89" stroke-dashoffset="-0.0"/>
+    <circle  cx="50" cy="50" r="42" stroke="#12A4B6" stroke-dasharray="10.698243243243242 263.89" stroke-dashoffset="-42.79297297297297"/>
+  </g>
+  <text  x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#112D37" font-family="Inter, sans-serif">20%</text>
+</svg>
+        <div class="cob-gv-num">
+          <div><span>Total</span><b class="num">74</b></div>
+          <div class="ok"><span>Resolvidas</span><b class="num">15</b></div>
+          <div class="falta"><span>Faltam</span><b class="num">59</b></div>
+        </div>
+        <div style="margin-left:auto;text-align:right">
+<svg class="mini" width="119" height="26">
+  <rect x="0" y="2.0" width="5" height="24.0" rx="1" fill="#2E9D57"><title>13/10: 12</title></rect>
+  <rect x="7" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>14/10: 0</title></rect>
+  <rect x="14" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>15/10: 0</title></rect>
+  <rect x="21" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>16/10: 0</title></rect>
+  <rect x="28" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>17/10: 0</title></rect>
+  <rect x="35" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>18/10: 0</title></rect>
+  <rect x="42" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>19/10: 0</title></rect>
+  <rect x="49" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>20/10: 0</title></rect>
+  <rect x="56" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>21/10: 0</title></rect>
+  <rect x="63" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>22/10: 0</title></rect>
+  <rect x="70" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>23/10: 0</title></rect>
+  <rect x="77" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>24/10: 0</title></rect>
+  <rect x="84" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>25/10: 0</title></rect>
+  <rect x="91" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>26/10: 0</title></rect>
+  <rect x="98" y="20.0" width="5" height="6.0" rx="1" fill="#2E9D57"><title>27/10: 3</title></rect>
+  <rect x="105" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>28/10: 0</title></rect>
+  <rect x="112" y="25" width="5" height="1" rx="1" fill="#D8DEE5"><title>29/10: 0</title></rect></svg><div style="font-size:10.5px;color:var(--muito-suave)">resolvidas por dia</div>
+          <div style="font-size:11.5px;color:var(--suave);margin-top:2px"><span class="delta pos">+4.1 pp</span> em 7 dias</div></div>
+      </div>
+      <div class="gv-quebra" style="margin:10px 0">
+        <span class="gv-q" style="--c:#2E9D57"><i></i><b>0</b> ID confirmado</span>
+        <span class="gv-q" style="--c:#7FC79A"><i></i><b>12</b> já tinham ID</span>
+        <span class="gv-q" style="--c:#12A4B6"><i></i><b>3</b> executadas</span>
+        </div>
+      <div class="lstats">
+  <div><span>resolvidas</span><b>15</b><i>de 74</i></div>
+  <div><span>falta</span><b>59</b><i>80% do total</i></div>
+  <div><span>desde o envio</span><b>16 d</b><i>12 úteis</i></div>
+  <div><span>ritmo</span><b>1.0/dia</b><i>média 1.2 · estável</i></div>
+  <div><span>% por dia</span><b>1.7%</b><i>do total, em média</i></div>
+  <div><span>previsão</span><b>20/01</b><i>~59 dia(s) útil(eis)</i></div>
+</div>
+
+    </a>
+  </div>
+
+
+  <div class="card cob so-local" data-sit="" data-ativo="1" data-envio="2026-10-23" data-pct="0" data-parado="0" data-ritmo="0" data-prev="9999">
+    <div class="card-cab"><input type="checkbox" class="sel-cob" name="ocorr" value="6">
+      <h3><a href="/ocorrencias/6" style="color:inherit">GeoVista sem ID no SIGA - 23-10-2026</a></h3><span class="tag verde">ocorrências</span>
+      <span class="dir sub">entregue em 23/10/2026</span>
+      <button class="btn peq" title="Excluir esta cobrança" name="unico" value="ocorr:6" onclick="return confirm('Excluir a conferência “GeoVista sem ID no SIGA - 23-10-2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="/ocorrencias/6" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave)"><b class="num" style="color:var(--navy);font-size:22px">30</b> ocorrência(s) para ir ao local · RPAs RPA 2</div>
+    </a>
+  </div>
+
+  <div class="card cob so-local" data-sit="" data-ativo="1" data-envio="2026-10-23" data-pct="0" data-parado="0" data-ritmo="0" data-prev="9999">
+    <div class="card-cab"><input type="checkbox" class="sel-cob" name="ocorr" value="5">
+      <h3><a href="/ocorrencias/5" style="color:inherit">GeoVista sem ID no SIGA - 23-10-2026</a></h3><span class="tag verde">ocorrências</span>
+      <span class="dir sub">entregue em 23/10/2026</span>
+      <button class="btn peq" title="Excluir esta cobrança" name="unico" value="ocorr:5" onclick="return confirm('Excluir a conferência “GeoVista sem ID no SIGA - 23-10-2026”?')" style="padding:4px 7px"><span style="width:15px;height:15px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg></span></button></div>
+    <a class="card-corpo" href="/ocorrencias/5" style="display:block;text-decoration:none;color:inherit">
+      <div style="color:var(--suave)"><b class="num" style="color:var(--navy);font-size:22px">109</b> ocorrência(s) para ir ao local · RPAs RPA 3</div>
+    </a>
+  </div>
+
+</div>
+<div class="vazio" id="semCob" hidden>Nenhuma cobrança nesta situação.</div>
+</form>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1793296857"></script>
+
+<script>
+const N_ARQ=0;
+function confirmarArquivadas(){ if(!N_ARQ){ toast('Não há cobranças arquivadas.'); return false; } return confirm(`Excluir ${N_ARQ} cobrança(s) arquivada(s)?`); }
+function confirmarData(){ const d=document.querySelector('input[name="antes"]').value; if(!d){ toast('Escolha a data primeiro.'); return false; }
+  return confirm('Excluir todas as cobranças entregues antes de '+d.split('-').reverse().join('/')+'?'); }
+function confirmar(){ const n=document.querySelectorAll('.sel-cob:checked').length; if(!n){ toast('Marque ao menos uma cobrança.'); return false; } return confirm(`Excluir ${n} cobrança(s) selecionada(s)?`); }
+/* filtro por situação e ordenação dos cards */
+let SIT="todas";
+function aplicarCob(){
+  const g=document.getElementById("gradeCob"); if(!g) return;
+  const ord=document.getElementById("fOrdem").value, arq=document.getElementById("fArq").checked;
+  const cs=[...g.querySelectorAll(".cob")];
+  const k={mudou:c=>[(+c.dataset.mud||0)*1e9+(+(c.dataset.envio||"0").replace(/-/g,"")),-1], recente:c=>[c.dataset.envio,-1], antigo:c=>[c.dataset.envio,1], pct:c=>[+c.dataset.pct,1], parado:c=>[+c.dataset.parado,-1], ritmo:c=>[+c.dataset.ritmo,-1], previsao:c=>[c.dataset.prev,1]}[ord];
+  cs.sort((a,b)=>{ const [x,s]=k(a), [y]=k(b); return (x>y?1:x<y?-1:0)*s; }).forEach(c=>g.appendChild(c));
+  let n=0; cs.forEach(c=>{ const ok=(SIT==="todas"||c.dataset.sit===SIT)&&(arq||c.dataset.ativo==="1"); c.hidden=!ok; if(ok) n++; });
+  document.getElementById("semCob").hidden=n>0;
+}
+document.querySelectorAll("#fSit .chip").forEach(c=>c.onclick=()=>{ SIT=c.dataset.v; document.querySelectorAll("#fSit .chip").forEach(x=>x.classList.toggle("on",x===c)); aplicarCob(); });
+const fo=document.getElementById("fOrdem"); if(fo){ fo.onchange=aplicarCob; document.getElementById("fArq").onchange=aplicarCob; aplicarCob(); }
+</script>
+
+</body>
+</html>

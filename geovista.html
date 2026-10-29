@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Conferir GeoVista · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1793296857">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-geovista">
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Lotes de cobrança</a>
+      <a href="geovista.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 29/10/2026 14:32</div></div>
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<div class="cab-pagina">
+  <div><h1>Conferir GeoVista × SIGA</h1>
+    <p>Envie a planilha exportada do GeoVista. Para cada OS (G…), o painel procura no aberto do SIGA um ID no mesmo logradouro, bairro e trecho.</p></div>
+</div>
+
+
+
+<a class="card papel-cta" href="geovista_buscar.html"><span class="papel-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>
+</svg></span>
+  <div><b>Tenho o papel em mãos</b><span>Digite o código da OS (ex.: G9036) ou a rua e o número e veja na hora se já existe ID no SIGA, se foi executada e o que está aberto naquela rua.</span></div>
+  <span class="btn prim">Buscar</span></a>
+
+
+
+
+<div class="card mt">
+  <div class="card-cab"><h3>Conferências GeoVista</h3><span class="sub">reabra após novas coletas para ver o que ganhou ID</span></div>
+  <div class="gv-lista">
+  
+    <div class="gv-item">
+      <a href="geovista_2.html">
+
+<svg class="anel" width="74" height="74" viewBox="0 0 100 100" role="img" aria-label="andamento">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#E4E9EF" stroke-width="11"/>
+  <g transform="rotate(-90 50 50)" fill="none" stroke-width="11">
+    <circle  cx="50" cy="50" r="42" stroke="#2E9D57" stroke-dasharray="11.886936936936936 263.89" stroke-dashoffset="0"/>
+    <circle  cx="50" cy="50" r="42" stroke="#7FC79A" stroke-dasharray="29.71734234234234 263.89" stroke-dashoffset="-11.886936936936936"/>
+    <circle  cx="50" cy="50" r="42" stroke="#12A4B6" stroke-dasharray="15.453018018018017 263.89" stroke-dashoffset="-41.604279279279275"/>
+  </g>
+  <text  x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#112D37" font-family="Inter, sans-serif">22%</text>
+</svg></a>
+      <div class="gv-item-txt"><a href="geovista_2.html"><b>RPA3 - OS EM ANDAMENTO</b></a>
+        <span>RPA3 - OS EM ANDAMENTO.xlsx · importada em 13/10/2026 · demanda entregue em 14/10/2026</span>
+        <div class="gv-quebra" style="margin-top:6px"><span class="gv-q" style="--c:#2E9D57"><i></i><b>10</b> ID confirmado</span>
+          <span class="gv-q" style="--c:#7FC79A"><i></i><b>25</b> já tinham ID</span><span class="gv-q" style="--c:#12A4B6"><i></i><b>13</b> executadas</span>
+          <span class="gv-q" style="--c:#D8DEE5"><i></i><b>174</b> faltam de 222</span></div></div>
+      <div class="gv-item-bt"><a class="btn peq" href="geovista_2.html">Abrir</a>
+        </div>
+    </div>
+  
+    <div class="gv-item">
+      <a href="geovista_1.html">
+
+<svg class="anel" width="74" height="74" viewBox="0 0 100 100" role="img" aria-label="andamento">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#E4E9EF" stroke-width="11"/>
+  <g transform="rotate(-90 50 50)" fill="none" stroke-width="11">
+    <circle  cx="50" cy="50" r="42" stroke="#2E9D57" stroke-dasharray="0.0 263.89" stroke-dashoffset="0"/>
+    <circle  cx="50" cy="50" r="42" stroke="#7FC79A" stroke-dasharray="42.79297297297297 263.89" stroke-dashoffset="-0.0"/>
+    <circle  cx="50" cy="50" r="42" stroke="#12A4B6" stroke-dasharray="10.698243243243242 263.89" stroke-dashoffset="-42.79297297297297"/>
+  </g>
+  <text  x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#112D37" font-family="Inter, sans-serif">20%</text>
+</svg></a>
+      <div class="gv-item-txt"><a href="geovista_1.html"><b>RPA2 - OS EM ANDAMENTO</b></a>
+        <span>RPA2 - OS EM ANDAMENTO.xlsx · importada em 13/10/2026 · demanda entregue em 13/10/2026</span>
+        <div class="gv-quebra" style="margin-top:6px"><span class="gv-q" style="--c:#2E9D57"><i></i><b>0</b> ID confirmado</span>
+          <span class="gv-q" style="--c:#7FC79A"><i></i><b>12</b> já tinham ID</span><span class="gv-q" style="--c:#12A4B6"><i></i><b>3</b> executadas</span>
+          <span class="gv-q" style="--c:#D8DEE5"><i></i><b>59</b> faltam de 74</span></div></div>
+      <div class="gv-item-bt"><a class="btn peq" href="geovista_1.html">Abrir</a>
+        </div>
+    </div>
+  
+  </div>
+</div>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1793296857"></script>
+
+</body>
+</html>
