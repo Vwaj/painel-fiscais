@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Demandas · histórico · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1793974286">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-lotes">
+
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Demandas</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      <button class="and-selo av-selo" id="avSelo" type="button" onclick="Avisos.abrir()" title="Avisos do dia: ontem (ou o último dia trabalhado) inteiro e o andamento de hoje"><i class="av-ponto" id="avPonto" hidden></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>Avisos</span></button>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 07/11/2026 13:02</div></div>
+      
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+
+
+<section class="lf-faixa">
+  <div class="lf-cont">
+    <div class="lf-tit"><h1>Demandas</h1>
+      <p>Toda demanda 100% feita, da mais recente para a mais antiga: quando terminou e em quantos dias úteis.</p></div>
+    <div class="lf-dir">
+      <span class="lf-selo"><i></i>Coleta de <b>07/11/2026 13:02</b></span>
+      <div class="lf-bts so-local"><a class="lf-bt" href="/conferir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Conferir demanda já enviada</a>
+        <a class="lf-bt lar" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/>
+</svg>Nova demanda a partir do mapa</a></div>
+    </div>
+  </div>
+</section>
+<nav class="dm-abas" aria-label="Demandas">
+  <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg>Por fiscal</a>
+  <a href="demandas_rpa.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Por RPA</a>
+  <a href="demandas_coletivas.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Coletivas</a>
+  <a href="demandas_historico.html" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Histórico</a>
+  <a href="demandas_lista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Por demanda</a>
+  <a href="demandas_periodo.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Últimos dias</a>
+</nav>
+
+
+<section class="dmf-kpis">
+  <div><span>Demandas concluídas</span><b class="v">5</b><small>100% dos IDs feitos</small></div>
+  <div><span>IDs resolvidos</span><b>217</b><small>somando todas</small></div>
+</section>
+<div class="card"><table class="tabela dmh-tab">
+  <thead><tr><th>Concluída</th><th>Demanda</th><th>Fiscal</th><th>Entregue</th><th class="n">Dias úteis</th><th class="n">IDs</th><th class="n">Fiscalizados</th><th class="n">Saíram do aberto</th></tr></thead>
+  <tbody>
+  <tr class="linha-acao" onclick="location.href='/lotes/18'">
+    <td><span class="tag verde">✓ 03/11/2026</span></td>
+    <td><b style="color:var(--navy)">DEMANDA JAÍLSON</b> <i class="dv-chip">dividida</i> <i class="dv-chip" style="background:#E8F1FB;color:#0A64C2">coletiva</i>
+      <div style="font-size:11.5px;color:var(--muito-suave)">Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026</div></td>
+    <td>JAÍLSON, FABIO +9</td><td>26/10/2026</td><td class="n">6</td>
+    <td class="n"><b>49</b></td><td class="n">31</td><td class="n">18</td></tr>
+  
+  <tr class="linha-acao" onclick="location.href='/lotes/32'">
+    <td><span class="tag verde">✓ 30/10/2026</span></td>
+    <td><b style="color:var(--navy)">Demanda de Fiscalização · 29/10/2026</b>
+      </td>
+    <td>WELDSON</td><td>29/10/2026</td><td class="n">2</td>
+    <td class="n"><b>34</b></td><td class="n">29</td><td class="n">5</td></tr>
+  
+  <tr class="linha-acao" onclick="location.href='/lotes/22'">
+    <td><span class="tag verde">✓ 27/10/2026</span></td>
+    <td><b style="color:var(--navy)">Demanda de Fiscalização · 27/10/2026</b>
+      </td>
+    <td>WASHINGTON</td><td>27/10/2026</td><td class="n">1</td>
+    <td class="n"><b>4</b></td><td class="n">0</td><td class="n">4</td></tr>
+  
+  <tr class="linha-acao" onclick="location.href='/lotes/17'">
+    <td><span class="tag verde">✓ 26/10/2026</span></td>
+    <td><b style="color:var(--navy)">Pendências — JAÍLSON + CARLOS M + FABIO · REFISCALIZAR · 23/10/2026</b> <i class="dv-chip" style="background:#E8F1FB;color:#0A64C2">coletiva</i>
+      </td>
+    <td>JAÍLSON, CARLOS M +1</td><td>23/10/2026</td><td class="n">2</td>
+    <td class="n"><b>35</b></td><td class="n">28</td><td class="n">7</td></tr>
+  
+  <tr class="linha-acao" onclick="location.href='/lotes/2'">
+    <td><span class="tag verde">✓ 22/10/2026</span></td>
+    <td><b style="color:var(--navy)">JAÍLSON + CARLOS M + FABIO · REFISCALIZAR</b> <i class="dv-chip" style="background:#E8F1FB;color:#0A64C2">coletiva</i>
+      </td>
+    <td>JAÍLSON, CARLOS M +1</td><td>09/10/2026</td><td class="n">9</td>
+    <td class="n"><b>95</b></td><td class="n">59</td><td class="n">36</td></tr>
+  </tbody></table></div>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<div class="av-fundo" id="avFundo" hidden onclick="if(event.target===this)Avisos.fechar()"><section class="av-modal" role="dialog" aria-modal="true" aria-labelledby="avTit">
+  <header class="av-cab"><div><span class="av-chip">Avisos do dia</span><h2 id="avTit">Ontem e hoje</h2><p id="avPeriodo"></p></div>
+    <button type="button" class="and-x" onclick="Avisos.fechar()" aria-label="Fechar">✕</button></header>
+  <div class="av-corpo" id="avCorpo"><div class="av-carregando">Montando o resumo…</div></div>
+  <footer class="av-rod"><a class="btn" href="desempenho.html" id="avDesemp">Ver no Desempenho</a><a class="btn" href="lotes.html">Demandas</a>
+    <button type="button" class="btn prim" onclick="Avisos.entendi()">Entendi</button></footer>
+</section></div>
+<script>window.PAGINA = "lotes";window.ALAG_MAPA = false;</script>
+<script src="static/avisos.js?v=1793974286" defer></script>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1793974286"></script>
+
+</body>
+</html>

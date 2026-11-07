@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Demandas · por fiscal · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1793974286">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-lotes">
+
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Demandas</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      <button class="and-selo av-selo" id="avSelo" type="button" onclick="Avisos.abrir()" title="Avisos do dia: ontem (ou o último dia trabalhado) inteiro e o andamento de hoje"><i class="av-ponto" id="avPonto" hidden></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>Avisos</span></button>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 07/11/2026 13:02</div></div>
+      
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+
+
+<section class="lf-faixa">
+  <div class="lf-cont">
+    <div class="lf-tit"><h1>Demandas</h1>
+      <p>Cada fiscal uma vez só, com as demandas pendentes dele. Demanda 100% feita vai para o Histórico.</p></div>
+    <div class="lf-dir">
+      <span class="lf-selo"><i></i>Coleta de <b>07/11/2026 13:02</b></span>
+      <div class="lf-bts so-local"><a class="lf-bt" href="/conferir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Conferir demanda já enviada</a>
+        <a class="lf-bt lar" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/>
+</svg>Nova demanda a partir do mapa</a></div>
+    </div>
+  </div>
+</section>
+<nav class="dm-abas" aria-label="Demandas">
+  <a href="lotes.html" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg>Por fiscal</a>
+  <a href="demandas_rpa.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Por RPA</a>
+  <a href="demandas_coletivas.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Coletivas</a>
+  <a href="demandas_historico.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Histórico</a>
+  <a href="demandas_lista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Por demanda</a>
+  <a href="demandas_periodo.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Últimos dias</a>
+</nav>
+
+
+
+
+<section class="dmf-kpis">
+  <div><span>Demandas ativas</span><b>23</b><small>1.314 IDs com 8 fiscais</small></div>
+  <div><span>Feitos</span><b class="v">730</b><small>56% do total</small></div>
+  <div class="dmf-k-orig"><span>Faltam</span><b>584</b><small>IDs pendentes nas demandas ativas</small></div>
+  <div><span>sex 06/11</span><b class="v">76</b><small>resolvidos no último dia útil</small></div>
+  <div><span>Hoje</span><b class="">0</b><small>até a coleta de 13:02</small></div>
+</section>
+
+<div class="dmf-ctrl">
+  <div class="seg" id="dmfNat"><button data-v="" class="on">Todos</button><button data-v="SIGA">SIGA</button><button data-v="Drenagem">Drenagem</button></div>
+  <div class="seg" id="dmfOrd"><button data-v="falta" class="on">Mais pendentes</button><button data-v="parado">Parados primeiro</button><button data-v="pct">Mais adiantados</button></div>
+  <span class="dmf-leg"><i class="q0"></i>0 <i class="q1"></i><i class="q2"></i><i class="q3"></i><i class="q4"></i> mais resolvidos no dia · <i class="qn"></i> fim de semana/feriado</span>
+</div>
+
+<div class="dmf-lista" id="dmfLista">
+
+  
+  <article class="dmf" id="f-FÁBIO" data-nat="SIGA" data-falta="92" data-pct="67" data-parado="0" style="--c:#3F51B5">
+    <header class="dmf-cab">
+      <span class="dmf-av">F</span>
+      <div class="dmf-nome"><b>FÁBIO</b>
+        <span><i class="lc-rpa lc-r2">RPA 2</i><i class="dmf-nat ">SIGA</i><small>F13</small>
+          <i class="dmf-div" title="O mesmo login do SIGA é usado por mais de uma pessoa. Cada uma tem as próprias demandas.">mesmo login de JOÃO P</i></span></div>
+      <span class="dmf-st ontem">andou no último dia útil</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>183 de 275 feitos · 67%</small></div>
+          <div class="dmf-g-num"><b>92</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:67%"></i></div>
+        </div>
+        
+
+<form method="post" action="/lotes/unificar" class="dmj so-local"
+      onsubmit="return confirm('Juntar numa demanda só tudo o que falta de FÁBIO?\n\n92 ID(s) pendentes de 2 demandas vão para UMA demanda nova de hoje.\nAs demandas antigas ficam só com o que já foi feito e vão para o Histórico.')">
+  <input type="hidden" name="nome" value="FÁBIO"><input type="hidden" name="volta" value="/lotes?">
+  <span class="dmj-txt"><b>2 demandas com pendentes</b> — junte numa só para o fiscal ter uma lista única</span>
+  <button class="dmj-bt">Juntar numa demanda só (92 IDs)</button>
+</form>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>18</b></span><span>hoje <b>0</b></span>
+          <span>último avanço <b>06/11</b></span></div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q1" title="qui 29/10: 10"><span>10</span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q1" title="sex 30/10: 18"><span>18</span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q1" title="ter 03/11: 11"><span>11</span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q0" title="qua 04/11: 0"><span></span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q1" title="qui 05/11: 3"><span>3</span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q1" title="sex 06/11: 18"><span>18</span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="on" style="opacity:0.48" title="11h: 1"></i><i class="" style="" title="12h: 0"></i><i class="on" style="opacity:1.0" title="13h: 5"></i><i class="on" style="opacity:1.0" title="14h: 5"></i><i class="on" style="opacity:0.74" title="15h: 3"></i><i class="on" style="opacity:0.87" title="16h: 4"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>18</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_5.html" class="dmf-chip div" title="FABIO · DEMANDA JOAO P" style="--pc:#3F51B5">
+        <b class="dv-nome" style="color:#3F51B5">DEMANDA FÁBIO</b>
+          <em class="dv-chip">dividida · a outra parte é <span class="dv-outra" style="background:#8E3B6B">DEMANDA JOÃO P</span></em>
+          <small class="dmf-chip-n">entregue 14/10</small>
+        
+        <span>faltam <b>44</b> de 176 · 75%</span>
+        <i style="width:75%"></i></a><a href="lote_19.html" class="dmf-chip div" title="Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026" style="--pc:#3F51B5">
+        <b class="dv-nome" style="color:#3F51B5">DEMANDA FÁBIO</b>
+          <em class="dv-chip">dividida · a outra parte é <span class="dv-outra" style="background:#8E3B6B">DEMANDA JOÃO P</span></em>
+          <small class="dmf-chip-n">entregue 26/10</small>
+        
+        <span>faltam <b>48</b> de 99 · 52%</span>
+        <i style="width:52%"></i></a></div>
+      
+      
+    </footer>
+  </article>
+
+  
+  <article class="dmf" id="f-WASHINGTON" data-nat="SIGA" data-falta="44" data-pct="86" data-parado="0" style="--c:#B35F00">
+    <header class="dmf-cab">
+      <span class="dmf-av">W</span>
+      <div class="dmf-nome"><b>WASHINGTON</b>
+        <span><i class="lc-rpa lc-r4">RPA 4</i><i class="dmf-nat ">SIGA</i><small>F06</small>
+          </span></div>
+      <span class="dmf-st ontem">andou no último dia útil</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>277 de 321 feitos · 86%</small></div>
+          <div class="dmf-g-num"><b>44</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:86%"></i></div>
+        </div>
+        
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 29/10/2026</b></span></div>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>17</b></span><span>hoje <b>0</b></span>
+          <span>último avanço <b>06/11</b></span></div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q3" title="qui 29/10: 50"><span>50</span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q3" title="sex 30/10: 53"><span>53</span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q3" title="ter 03/11: 47"><span>47</span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q4" title="qua 04/11: 84"><span>84</span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q2" title="qui 05/11: 26"><span>26</span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q1" title="sex 06/11: 17"><span>17</span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="on" style="opacity:1.0" title="12h: 17"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>17</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_30.html" class="dmf-chip" title="Demanda de Fiscalização · 29/10/2026">
+        <b>Demanda 29/10</b><small class="dmf-chip-n">Demanda de Fiscalização · 29/10/2026</small>
+        <span>faltam <b>44</b> de 321 · 86%</span>
+        <i style="width:86%"></i></a></div>
+      
+      <div class="dmf-dem-g dmf-dem-ok"><span class="dmf-dem-rot">✓ Demandas concluídas <small>(1)</small></span>
+      <a href="lote_22.html" class="dmf-chip ok" title="Demanda de Fiscalização · 27/10/2026">
+        <b>✓ Demanda de Fiscalização · 27/10/2026</b><span>4 IDs · concluída 27/10</span></a>
+      </div>
+    </footer>
+  </article>
+
+  
+  <article class="dmf" id="f-RONALD" data-nat="SIGA" data-falta="31" data-pct="59" data-parado="0" style="--c:#3F51B5">
+    <header class="dmf-cab">
+      <span class="dmf-av">R</span>
+      <div class="dmf-nome"><b>RONALD</b>
+        <span><i class="lc-rpa lc-r1">RPA 1</i><i class="dmf-nat ">SIGA</i><small>F04</small>
+          </span></div>
+      <span class="dmf-st ontem">andou no último dia útil</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>45 de 76 feitos · 59%</small></div>
+          <div class="dmf-g-num"><b>31</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:59%"></i></div>
+        </div>
+        
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 03/11/2026</b></span></div>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>19</b></span><span>hoje <b>0</b></span>
+          <span>último avanço <b>06/11</b></span></div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q0" title="qui 29/10: 0"><span></span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q0" title="sex 30/10: 0"><span></span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q0" title="ter 03/11: 0"><span></span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q1" title="qua 04/11: 13"><span>13</span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q1" title="qui 05/11: 13"><span>13</span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q1" title="sex 06/11: 19"><span>19</span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="on" style="opacity:0.48" title="9h: 1"></i><i class="" style="" title="10h: 0"></i><i class="on" style="opacity:0.74" title="11h: 3"></i><i class="on" style="opacity:0.74" title="12h: 3"></i><i class="on" style="opacity:0.74" title="13h: 3"></i><i class="on" style="opacity:1.0" title="14h: 5"></i><i class="on" style="opacity:0.87" title="15h: 4"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>19</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_35.html" class="dmf-chip" title="Demanda de Fiscalização · 03/11/2026">
+        <b>Demanda 03/11</b><small class="dmf-chip-n">Demanda de Fiscalização · 03/11/2026</small>
+        <span>faltam <b>31</b> de 76 · 59%</span>
+        <i style="width:59%"></i></a></div>
+      
+      
+    </footer>
+  </article>
+
+  
+  <article class="dmf" id="f-JOÃO-P" data-nat="SIGA" data-falta="6" data-pct="93" data-parado="0" style="--c:#8E3B6B">
+    <header class="dmf-cab">
+      <span class="dmf-av">JP</span>
+      <div class="dmf-nome"><b>JOÃO P</b>
+        <span><i class="lc-rpa lc-r2">RPA 2</i><i class="dmf-nat ">SIGA</i><small>F13</small>
+          <i class="dmf-div" title="O mesmo login do SIGA é usado por mais de uma pessoa. Cada uma tem as próprias demandas.">mesmo login de FÁBIO</i></span></div>
+      <span class="dmf-st ontem">andou no último dia útil</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>86 de 92 feitos · 93%</small></div>
+          <div class="dmf-g-num"><b>6</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:93%"></i></div>
+        </div>
+        
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>DEMANDA JOÃO P</b></span></div>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>17</b></span><span>hoje <b>0</b></span>
+          <span>último avanço <b>06/11</b></span></div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q0" title="qui 29/10: 0"><span></span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q0" title="sex 30/10: 0"><span></span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q0" title="ter 03/11: 0"><span></span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q2" title="qua 04/11: 36"><span>36</span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q2" title="qui 05/11: 33"><span>33</span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q1" title="sex 06/11: 17"><span>17</span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="on" style="opacity:0.57" title="9h: 2"></i><i class="on" style="opacity:1.0" title="10h: 6"></i><i class="on" style="opacity:0.78" title="11h: 4"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="on" style="opacity:0.78" title="14h: 4"></i><i class="on" style="opacity:0.46" title="15h: 1"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>17</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_39.html" class="dmf-chip div" title="Pendências — Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026 · 03/11/2026 · JOÃO P" style="--pc:#8E3B6B">
+        <b class="dv-nome" style="color:#8E3B6B">DEMANDA JOÃO P</b>
+          <em class="dv-chip">dividida · a outra parte é <span class="dv-outra" style="background:#8E3B6B">DEMANDA RESTANTE</span></em>
+          <small class="dmf-chip-n">entregue 03/11</small>
+        
+        <span>faltam <b>6</b> de 92 · 93%</span>
+        <i style="width:93%"></i></a></div>
+      
+      
+    </footer>
+  </article>
+
+  
+  <article class="dmf" id="f-WELDSON" data-nat="SIGA" data-falta="3" data-pct="88" data-parado="1" style="--c:#B3261E">
+    <header class="dmf-cab">
+      <span class="dmf-av">W</span>
+      <div class="dmf-nome"><b>WELDSON</b>
+        <span><i class="lc-rpa lc-r5">RPA 5</i><i class="dmf-nat ">SIGA</i><small>F07</small>
+          </span></div>
+      <span class="dmf-st calmo">sem avanço recente</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>22 de 25 feitos · 88%</small></div>
+          <div class="dmf-g-num"><b>3</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:88%"></i></div>
+        </div>
+        
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Pendências — Demanda de Fiscalização · 29/10/20…</b></span></div>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>0</b></span><span>hoje <b>0</b></span>
+          <span>último avanço <b>05/11</b></span></div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q0" title="qui 29/10: 0"><span></span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q2" title="sex 30/10: 34"><span>34</span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q1" title="ter 03/11: 12"><span>12</span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q1" title="qua 04/11: 8"><span>8</span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q1" title="qui 05/11: 2"><span>2</span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q0" title="sex 06/11: 0"><span></span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_37.html" class="dmf-chip" title="Pendências — Demanda de Fiscalização · 29/10/2026 · 03/11/2026">
+        <b>Demanda 03/11</b><small class="dmf-chip-n">Pendências — Demanda de Fiscaliza…</small>
+        <span>faltam <b>3</b> de 25 · 88%</span>
+        <i style="width:88%"></i></a></div>
+      
+      <div class="dmf-dem-g dmf-dem-ok"><span class="dmf-dem-rot">✓ Demandas concluídas <small>(1)</small></span>
+      <a href="lote_32.html" class="dmf-chip ok" title="Demanda de Fiscalização · 29/10/2026">
+        <b>✓ Demanda de Fiscalização · 29/10/2026</b><span>34 IDs · concluída 30/10</span></a>
+      </div>
+    </footer>
+  </article>
+
+  
+  <article class="dmf" id="f-MARCELO" data-nat="Drenagem" data-falta="218" data-pct="0" data-parado="999" style="--c:#0A64C2">
+    <header class="dmf-cab">
+      <span class="dmf-av">M</span>
+      <div class="dmf-nome"><b>MARCELO</b>
+        <span><i class="lc-rpa lc-r5">RPA 5</i><i class="dmf-nat dr">Drenagem</i><small>F12</small>
+          </span></div>
+      <span class="dmf-st parado">ainda não começou</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>0 de 218 feitos · 0%</small></div>
+          <div class="dmf-g-num"><b>218</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:0%"></i></div>
+        </div>
+        
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 04/11/2026</b></span></div>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>0</b></span><span>hoje <b>0</b></span>
+          </div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q0" title="qui 29/10: 0"><span></span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q0" title="sex 30/10: 0"><span></span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q0" title="ter 03/11: 0"><span></span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q0" title="qua 04/11: 0"><span></span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q0" title="qui 05/11: 0"><span></span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q0" title="sex 06/11: 0"><span></span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_44.html" class="dmf-chip" title="Demanda de Fiscalização · 04/11/2026">
+        <b>Demanda 04/11</b><small class="dmf-chip-n">Demanda de Fiscalização · 04/11/2026</small>
+        <span>faltam <b>218</b> de 218 · 0%</span>
+        <i style="width:0%"></i></a></div>
+      
+      
+    </footer>
+  </article>
+
+  
+  <article class="dmf" id="f-ADRIANO-J" data-nat="Drenagem" data-falta="187" data-pct="24" data-parado="0" style="--c:#8E3B6B">
+    <header class="dmf-cab">
+      <span class="dmf-av">AJ</span>
+      <div class="dmf-nome"><b>ADRIANO J</b>
+        <span><i class="lc-rpa lc-r6">RPA 6</i><i class="dmf-nat dr">Drenagem</i><small>F10</small>
+          </span></div>
+      <span class="dmf-st ontem">andou no último dia útil</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>58 de 245 feitos · 24%</small></div>
+          <div class="dmf-g-num"><b>187</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:24%"></i></div>
+        </div>
+        
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 27/10/2026</b></span></div>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>5</b></span><span>hoje <b>0</b></span>
+          <span>último avanço <b>06/11</b></span></div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q0" title="qui 29/10: 0"><span></span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q0" title="sex 30/10: 0"><span></span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q0" title="ter 03/11: 0"><span></span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q0" title="qua 04/11: 0"><span></span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q3" title="qui 05/11: 53"><span>53</span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q1" title="sex 06/11: 5"><span>5</span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="on" style="opacity:0.51" title="13h: 1"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="on" style="opacity:1.0" title="16h: 4"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>5</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_23.html" class="dmf-chip" title="Demanda de Fiscalização · 27/10/2026">
+        <b>Demanda 27/10</b><small class="dmf-chip-n">Demanda de Fiscalização · 27/10/2026</small>
+        <span>faltam <b>187</b> de 245 · 24%</span>
+        <i style="width:24%"></i></a></div>
+      
+      
+    </footer>
+  </article>
+
+  
+  <article class="dmf" id="f-CARLOS-M" data-nat="Drenagem" data-falta="3" data-pct="95" data-parado="1" style="--c:#B3261E">
+    <header class="dmf-cab">
+      <span class="dmf-av">CM</span>
+      <div class="dmf-nome"><b>CARLOS M</b>
+        <span><i class="lc-rpa lc-r2">RPA 2</i><i class="dmf-nat dr">Drenagem</i><small>F11</small>
+          </span></div>
+      <span class="dmf-st calmo">sem avanço recente</span>
+    </header>
+    <div class="dmf-corpo">
+      <div class="dmf-prog">
+        
+        <div class="dmf-g dmf-g-orig">
+          <div class="dmf-g-cab"><span>Demandas pendentes</span><small>59 de 62 feitos · 95%</small></div>
+          <div class="dmf-g-num"><b>3</b><span>faltam</span></div>
+          <div class="dmf-barra"><i style="width:95%"></i></div>
+        </div>
+        
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 29/10/2026</b></span></div>
+
+
+        
+        <div class="dmf-dia"><span>sex 06/11 <b>0</b></span><span>hoje <b>0</b></span>
+          <span>último avanço <b>05/11</b></span></div>
+      </div>
+      <div class="dmf-calor" title="IDs das demandas resolvidos em cada dia">
+        <div class="dmf-rot">Resolvidos por dia</div>
+        <div class="dmf-cels">
+          <div class="dmf-cel q0" title="qui 29/10: 0"><span></span><small>qui<br>29/10</small></div>
+          <div class="dmf-cel q2" title="sex 30/10: 26"><span>26</span><small>sex<br>30/10</small></div>
+          <div class="dmf-cel fds q0" title="sáb 31/10: 0"><span></span><small>sáb<br>31/10</small></div>
+          <div class="dmf-cel fds q0" title="dom 01/11: 0"><span></span><small>dom<br>01/11</small></div>
+          <div class="dmf-cel fds q0" title="seg 02/11: 0"><span></span><small>seg<br>02/11</small></div>
+          <div class="dmf-cel q1" title="ter 03/11: 12"><span>12</span><small>ter<br>03/11</small></div>
+          <div class="dmf-cel q1" title="qua 04/11: 18"><span>18</span><small>qua<br>04/11</small></div>
+          <div class="dmf-cel q1" title="qui 05/11: 3"><span>3</span><small>qui<br>05/11</small></div>
+          <div class="dmf-cel q0" title="sex 06/11: 0"><span></span><small>sex<br>06/11</small></div>
+          <div class="dmf-cel fds hoje q0" title="sáb 07/11: 0"><span></span><small>sáb<br>07/11</small></div></div>
+      </div>
+      <div class="dmf-crono" title="Em que horas as visitas das demandas aconteceram">
+        <div class="dmf-rot">Cronograma <small>6h → 19h</small></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">sex 06/11</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+        <div class="dmf-cr"><span class="dmf-cr-d">hoje</span>
+          <div class="dmf-hs"><i class="" style="" title="6h: 0"></i><i class="" style="" title="7h: 0"></i><i class="" style="" title="8h: 0"></i><i class="" style="" title="9h: 0"></i><i class="" style="" title="10h: 0"></i><i class="" style="" title="11h: 0"></i><i class="" style="" title="12h: 0"></i><i class="" style="" title="13h: 0"></i><i class="" style="" title="14h: 0"></i><i class="" style="" title="15h: 0"></i><i class="" style="" title="16h: 0"></i><i class="" style="" title="17h: 0"></i><i class="" style="" title="18h: 0"></i><i class="" style="" title="19h: 0"></i></div>
+          <b>0</b></div>
+        
+      </div>
+    </div>
+    <footer class="dmf-dem">
+      
+      <div class="dmf-dem-g dmf-dem-orig"><span class="dmf-dem-rot">Demandas pendentes</span>
+      <a href="lote_31.html" class="dmf-chip" title="Demanda de Fiscalização · 29/10/2026">
+        <b>Demanda 29/10</b><small class="dmf-chip-n">Demanda de Fiscalização · 29/10/2026</small>
+        <span>faltam <b>3</b> de 62 · 95%</span>
+        <i style="width:95%"></i></a></div>
+      
+      
+    </footer>
+  </article>
+
+</div>
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<div class="av-fundo" id="avFundo" hidden onclick="if(event.target===this)Avisos.fechar()"><section class="av-modal" role="dialog" aria-modal="true" aria-labelledby="avTit">
+  <header class="av-cab"><div><span class="av-chip">Avisos do dia</span><h2 id="avTit">Ontem e hoje</h2><p id="avPeriodo"></p></div>
+    <button type="button" class="and-x" onclick="Avisos.fechar()" aria-label="Fechar">✕</button></header>
+  <div class="av-corpo" id="avCorpo"><div class="av-carregando">Montando o resumo…</div></div>
+  <footer class="av-rod"><a class="btn" href="desempenho.html" id="avDesemp">Ver no Desempenho</a><a class="btn" href="lotes.html">Demandas</a>
+    <button type="button" class="btn prim" onclick="Avisos.entendi()">Entendi</button></footer>
+</section></div>
+<script>window.PAGINA = "lotes";window.ALAG_MAPA = false;</script>
+<script src="static/avisos.js?v=1793974286" defer></script>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1793974286"></script>
+
+<script>
+(()=>{
+  const L=document.getElementById("dmfLista"); if(!L) return;
+  const S={nat:"",ord:"falta"};
+  try{ const g=JSON.parse(localStorage.getItem("dmfFiltro")||"{}"); Object.assign(S,g); }catch(e){}
+  function aplicar(){
+    const cs=[...L.children];
+    cs.forEach(c=>c.hidden=!!S.nat && c.dataset.nat!==S.nat);
+    const k={falta:c=>-c.dataset.falta, parado:c=>-c.dataset.parado*1000-c.dataset.falta, pct:c=>-c.dataset.pct}[S.ord];
+    cs.sort((a,b)=>k(a)-k(b)).forEach(c=>L.appendChild(c));
+    document.querySelectorAll("#dmfNat button").forEach(b=>b.classList.toggle("on",b.dataset.v===S.nat));
+    document.querySelectorAll("#dmfOrd button").forEach(b=>b.classList.toggle("on",b.dataset.v===S.ord));
+    try{ localStorage.setItem("dmfFiltro",JSON.stringify(S)); }catch(e){}
+  }
+  document.querySelectorAll("#dmfNat button").forEach(b=>b.onclick=()=>{S.nat=b.dataset.v;aplicar();});
+  document.querySelectorAll("#dmfOrd button").forEach(b=>b.onclick=()=>{S.ord=b.dataset.v;aplicar();});
+  aplicar();
+})();
+</script>
+
+</body>
+</html>
