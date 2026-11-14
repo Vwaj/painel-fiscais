@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Demandas · por RPA · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1794503176">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-lotes">
+
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Demandas</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      <button class="and-selo av-selo" id="avSelo" type="button" onclick="Avisos.abrir()" title="Avisos do dia: ontem (ou o último dia trabalhado) inteiro e o andamento de hoje"><i class="av-ponto" id="avPonto" hidden></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>Avisos</span></button>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 14/11/2026 13:02</div></div>
+      
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+
+
+<section class="lf-faixa">
+  <div class="lf-cont">
+    <div class="lf-tit"><h1>Demandas</h1>
+      <p>Cada RPA com os seus fiscais — inclusive duas pessoas no mesmo login.</p></div>
+    <div class="lf-dir">
+      <span class="lf-selo"><i></i>Coleta de <b>14/11/2026 13:02</b></span>
+      <div class="lf-bts so-local"><a class="lf-bt" href="/conferir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Conferir demanda já enviada</a>
+        <a class="lf-bt lar" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/>
+</svg>Nova demanda a partir do mapa</a></div>
+    </div>
+  </div>
+</section>
+<nav class="dm-abas" aria-label="Demandas">
+  <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg>Por fiscal</a>
+  <a href="demandas_rpa.html" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Por RPA</a>
+  <a href="demandas_coletivas.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Coletivas</a>
+  <a href="demandas_historico.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg>Histórico</a>
+  <a href="demandas_lista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Por demanda</a>
+  <a href="demandas_periodo.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Últimos dias</a>
+  
+</nav>
+
+
+
+<section class="dmr">
+  <header class="dmr-cab"><h2>RPA 1</h2><span style="font-size:13px">1 fiscal(is) · 50% feito</span>
+    <div class="dmr-n"><span>pendentes<b>18</b>faltam</span>
+      <span>sex 13/11<b>18</b>resolvidos</span><span>hoje<b>0</b>resolvidos</span></div></header>
+  <div class="dmr-fs">
+  
+    <div class="dmr-f" style="--c:#3F51B5">
+      <div class="dmr-f-cab"><span class="dmf-av">R</span><div><b>RONALD</b><small>SIGA · F05</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_78.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>18 de 36 feitos · 50%</small></div>
+        <div class="dmf-g-num"><b>18</b><span>faltam</span></div><div class="dmf-barra"><i style="width:50%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_78.html" class="dmr-dch" style="--pc:#3F51B5" title="Demanda de Fiscalização · 13/11/2026">
+  <b>Demanda de Fiscalização · 13/11/2026</b><span>faltam <b>18</b> de 36</span><i style="width:50%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 13/11/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (6)</div>
+      <div class="dmr-bai"><span>Sao Jose · 8</span><span>Santo Amaro · 4</span><span>Santo Antonio · 2</span><span>Soledade · 2</span><span>Boa Vista · 1</span><span>Cabanga · 1</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>18</b></span><span>hoje <b>0</b></span><span>último avanço <b>13/11</b></span></div>
+    </div>
+  
+  </div>
+</section>
+
+<section class="dmr">
+  <header class="dmr-cab"><h2>RPA 2</h2><span style="font-size:13px">3 fiscal(is) · 69% feito</span>
+    <div class="dmr-n"><span>pendentes<b>56</b>faltam</span>
+      <span>sex 13/11<b>45</b>resolvidos</span><span>hoje<b>0</b>resolvidos</span></div></header>
+  <div class="dmr-fs">
+  
+    <div class="dmr-f" style="--c:#B3261E">
+      <div class="dmr-f-cab"><span class="dmf-av">CM</span><div><b>CARLOS M</b><small>Drenagem · F12 · mesmo login de CARLOS ROBERTO</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_65.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>0 de 33 feitos · 0%</small></div>
+        <div class="dmf-g-num"><b>33</b><span>faltam</span></div><div class="dmf-barra"><i style="width:0%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_65.html" class="dmr-dch" style="--pc:#B3261E" title="Demanda de Fiscalização · 10/11/2026">
+  <b>Demanda de Fiscalização · 10/11/2026</b><span>faltam <b>33</b> de 33</span><i style="width:0%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 10/11/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (15)</div>
+      <div class="dmr-bai"><span>Alto Jose do Pinho · 14</span><span>Alto Jose Bonifacio · 3</span><span>Arruda · 2</span><span>Casa Amarela · 2</span><span>Espinheiro · 2</span><span>Brejo da Guabiraba · 1</span><span>+9</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>16</b></span><span>hoje <b>0</b></span><span>último avanço <b>13/11</b></span></div>
+    </div>
+  
+    <div class="dmr-f" style="--c:#8E3B6B">
+      <div class="dmr-f-cab"><span class="dmf-av">JP</span><div><b>JOÃO P</b><small>SIGA · F14</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_79.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>25 de 38 feitos · 66%</small></div>
+        <div class="dmf-g-num"><b>13</b><span>faltam</span></div><div class="dmf-barra"><i style="width:66%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_79.html" class="dmr-dch" style="--pc:#8E3B6B" title="Demanda de Fiscalização · 13/11/2026">
+  <b>Demanda de Fiscalização · 13/11/2026</b><span>faltam <b>13</b> de 38</span><i style="width:66%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 13/11/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (7)</div>
+      <div class="dmr-bai"><span>Campo Grande · 5</span><span>Campina do Barreto · 2</span><span>Encruzilhada · 2</span><span>Cajueiro · 1</span><span>Alto Santa Terezinha · 1</span><span>Arruda · 1</span><span>+1</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>25</b></span><span>hoje <b>0</b></span><span>último avanço <b>13/11</b></span></div>
+    </div>
+  
+    <div class="dmr-f" style="--c:#3F51B5">
+      <div class="dmr-f-cab"><span class="dmf-av">F</span><div><b>FÁBIO</b><small>SIGA · F06</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="/lotes#f-FÁBIO"
+         title="Ver o cartão do fiscal">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">2 demandas ›</small></span><small>101 de 111 feitos · 91%</small></div>
+        <div class="dmf-g-num"><b>10</b><span>faltam</span></div><div class="dmf-barra"><i style="width:91%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_19.html" class="dmr-dch" style="--pc:#3F51B5" title="DEMANDA FABIO — Demanda de Fiscalização — Abatimentos Concessionárias · 26/10/2026">
+  <b>DEMANDA FABIO</b><span>faltam <b>7</b> de 52</span><i style="width:87%"></i></a><a href="lote_43.html" class="dmr-dch" style="--pc:#3F51B5" title="DEMANDA FABIO — Pendências — FABIO · DEMANDA JOAO P · 04/11/2026">
+  <b>DEMANDA FABIO</b><span>faltam <b>3</b> de 59</span><i style="width:95%"></i></a></div>
+
+      
+
+<form method="post" action="/lotes/unificar" class="dmj so-local"
+      onsubmit="return confirm('Juntar numa demanda só tudo o que falta de FÁBIO?\n\n10 ID(s) pendentes de 2 demandas vão para UMA demanda nova de hoje.\nAs demandas antigas ficam só com o que já foi feito e vão para o Histórico.')">
+  <input type="hidden" name="nome" value="FÁBIO"><input type="hidden" name="volta" value="/lotes?aba=rpa">
+  <span class="dmj-txt"><b>2 demandas com pendentes</b> — junte numa só para o fiscal ter uma lista única</span>
+  <button class="dmj-bt">Juntar numa demanda só (10 IDs)</button>
+</form>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (5)</div>
+      <div class="dmr-bai"><span>Arruda · 3</span><span>Mangabeira · 2</span><span>Cajueiro · 2</span><span>Ponto de Parada · 2</span><span>Torre · 1</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>4</b></span><span>hoje <b>0</b></span><span>último avanço <b>13/11</b></span></div>
+    </div>
+  
+  </div>
+</section>
+
+<section class="dmr">
+  <header class="dmr-cab"><h2>RPA 3</h2><span style="font-size:13px">1 fiscal(is) · 26% feito</span>
+    <div class="dmr-n"><span>pendentes<b>37</b>faltam</span>
+      <span>sex 13/11<b>4</b>resolvidos</span><span>hoje<b>9</b>resolvidos</span></div></header>
+  <div class="dmr-fs">
+  
+    <div class="dmr-f" style="--c:#7B4FD6">
+      <div class="dmr-f-cab"><span class="dmf-av">CR</span><div><b>CARLOS ROBERTO</b><small>Drenagem · F12 · mesmo login de CARLOS M</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_83.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>13 de 50 feitos · 26%</small></div>
+        <div class="dmf-g-num"><b>37</b><span>faltam</span></div><div class="dmf-barra"><i style="width:26%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_83.html" class="dmr-dch" style="--pc:#7B4FD6" title="Demanda de Fiscalização · 13/11/2026">
+  <b>Demanda de Fiscalização · 13/11/2026</b><span>faltam <b>37</b> de 50</span><i style="width:26%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 13/11/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (2)</div>
+      <div class="dmr-bai"><span>Espinheiro · 30</span><span>Encruzilhada · 7</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>4</b></span><span>hoje <b>9</b></span><span>último avanço <b>14/11</b></span></div>
+    </div>
+  
+  </div>
+</section>
+
+<section class="dmr">
+  <header class="dmr-cab"><h2>RPA 4</h2><span style="font-size:13px">1 fiscal(is) · 99% feito</span>
+    <div class="dmr-n"><span>pendentes<b>4</b>faltam</span>
+      <span>sex 13/11<b>2</b>resolvidos</span><span>hoje<b>0</b>resolvidos</span></div></header>
+  <div class="dmr-fs">
+  
+    <div class="dmr-f" style="--c:#B35F00">
+      <div class="dmr-f-cab"><span class="dmf-av">W</span><div><b>WASHINGTON</b><small>SIGA · F07</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_30.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>317 de 321 feitos · 99%</small></div>
+        <div class="dmf-g-num"><b>4</b><span>faltam</span></div><div class="dmf-barra"><i style="width:99%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_30.html" class="dmr-dch" style="--pc:#B35F00" title="Demanda de Fiscalização · 29/10/2026">
+  <b>Demanda de Fiscalização · 29/10/2026</b><span>faltam <b>4</b> de 321</span><i style="width:99%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 29/10/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (2)</div>
+      <div class="dmr-bai"><span>Cordeiro · 3</span><span>Iputinga · 1</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>2</b></span><span>hoje <b>0</b></span><span>último avanço <b>13/11</b></span></div>
+    </div>
+  
+  </div>
+</section>
+
+<section class="dmr">
+  <header class="dmr-cab"><h2>RPA 5</h2><span style="font-size:13px">2 fiscal(is) · 38% feito</span>
+    <div class="dmr-n"><span>pendentes<b>191</b>faltam</span>
+      <span>sex 13/11<b>29</b>resolvidos</span><span>hoje<b>0</b>resolvidos</span></div></header>
+  <div class="dmr-fs">
+  
+    <div class="dmr-f" style="--c:#0A64C2">
+      <div class="dmr-f-cab"><span class="dmf-av">M</span><div><b>MARCELO</b><small>Drenagem · F13</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_44.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>17 de 206 feitos · 8%</small></div>
+        <div class="dmf-g-num"><b>189</b><span>faltam</span></div><div class="dmf-barra"><i style="width:8%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_44.html" class="dmr-dch" style="--pc:#0A64C2" title="Demanda de Fiscalização · 04/11/2026">
+  <b>Demanda de Fiscalização · 04/11/2026</b><span>faltam <b>189</b> de 206</span><i style="width:8%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 04/11/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (12)</div>
+      <div class="dmr-bai"><span>Afogados · 47</span><span>Cordeiro · 28</span><span>Barro · 22</span><span>Madalena · 21</span><span>Estancia · 17</span><span>Torre · 17</span><span>+6</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>29</b></span><span>hoje <b>0</b></span><span>último avanço <b>13/11</b></span></div>
+    </div>
+  
+    <div class="dmr-f" style="--c:#B3261E">
+      <div class="dmr-f-cab"><span class="dmf-av">W</span><div><b>WELDSON</b><small>SIGA · F08</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_64.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>100 de 102 feitos · 98%</small></div>
+        <div class="dmf-g-num"><b>2</b><span>faltam</span></div><div class="dmf-barra"><i style="width:98%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_64.html" class="dmr-dch" style="--pc:#B3261E" title="Demanda de Fiscalização · 10/11/2026">
+  <b>Demanda de Fiscalização · 10/11/2026</b><span>faltam <b>2</b> de 102</span><i style="width:98%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 10/11/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (2)</div>
+      <div class="dmr-bai"><span>Areias · 1</span><span>Afogados · 1</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>0</b></span><span>hoje <b>0</b></span><span>último avanço <b>12/11</b></span></div>
+    </div>
+  
+  </div>
+</section>
+
+<section class="dmr">
+  <header class="dmr-cab"><h2>RPA 6</h2><span style="font-size:13px">2 fiscal(is) · 47% feito</span>
+    <div class="dmr-n"><span>pendentes<b>130</b>faltam</span>
+      <span>sex 13/11<b>9</b>resolvidos</span><span>hoje<b>0</b>resolvidos</span></div></header>
+  <div class="dmr-fs">
+  
+    <div class="dmr-f" style="--c:#8E3B6B">
+      <div class="dmr-f-cab"><span class="dmf-av">AJ</span><div><b>ADRIANO J</b><small>Drenagem · F11</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_23.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>115 de 244 feitos · 47%</small></div>
+        <div class="dmf-g-num"><b>129</b><span>faltam</span></div><div class="dmf-barra"><i style="width:47%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_23.html" class="dmr-dch" style="--pc:#8E3B6B" title="Demanda de Fiscalização · 27/10/2026">
+  <b>Demanda de Fiscalização · 27/10/2026</b><span>faltam <b>129</b> de 244</span><i style="width:47%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Demanda de Fiscalização · 27/10/2026</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (6)</div>
+      <div class="dmr-bai"><span>Imbiribeira · 52</span><span>Boa Viagem · 40</span><span>Ipsep · 30</span><span>Ilha Joana Bezerra · 4</span><span>Barro · 2</span><span>Cohab · 1</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>9</b></span><span>hoje <b>0</b></span><span>último avanço <b>13/11</b></span></div>
+    </div>
+  
+    <div class="dmr-f" style="--c:#3F51B5">
+      <div class="dmr-f-cab"><span class="dmf-av">R</span><div><b>RENILSON</b><small>SIGA · F09</small></div></div>
+      
+      
+      <a class="dmf-g dmf-g-orig dmr-link" href="lote_76.html"
+         title="Abrir a demanda">
+        <div class="dmf-g-cab"><span>Demandas pendentes <small class="dmr-q">1 demanda ›</small></span><small>0 de 1 feitos · 0%</small></div>
+        <div class="dmf-g-num"><b>1</b><span>falta</span></div><div class="dmf-barra"><i style="width:0%"></i></div></a>
+      
+
+<div class="dmr-dem"><a href="lote_76.html" class="dmr-dch" style="--pc:#3F51B5" title="Tampões de fibra · Quebrados hoje · RENILSON · 12/11/2026">
+  <b>Tampões de fibra · Quebrados hoje ·…</b><span>faltam <b>1</b> de 1</span><i style="width:0%"></i></a></div>
+
+      
+
+<div class="dmj ok"><span class="dmj-txt">Uma demanda só: <b>Tampões de fibra · Quebrados hoje · RENILSON · …</b></span></div>
+
+
+      <div class="dmf-rot" style="margin-top:6px">Bairros com pendentes (1)</div>
+      <div class="dmr-bai"><span>Pina · 1</span></div>
+      <div class="dmf-dia" style="margin-top:6px"><span>sex 13/11 <b>0</b></span><span>hoje <b>0</b></span><span>último avanço <b>12/11</b></span></div>
+    </div>
+  
+  </div>
+</section>
+
+
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<div class="av-fundo" id="avFundo" hidden onclick="if(event.target===this)Avisos.fechar()"><section class="av-modal" role="dialog" aria-modal="true" aria-labelledby="avTit">
+  <header class="av-cab"><div><span class="av-chip">Avisos do dia</span><h2 id="avTit">Ontem e hoje</h2><p id="avPeriodo"></p></div>
+    <button type="button" class="and-x" onclick="Avisos.fechar()" aria-label="Fechar">✕</button></header>
+  <div class="av-corpo" id="avCorpo"><div class="av-carregando">Montando o resumo…</div></div>
+  <footer class="av-rod"><a class="btn" href="desempenho.html" id="avDesemp">Ver no Desempenho</a><a class="btn" href="lotes.html">Demandas</a>
+    <button type="button" class="btn prim" onclick="Avisos.entendi()">Entendi</button></footer>
+</section></div>
+<script>window.PAGINA = "lotes";window.ALAG_MAPA = false;</script>
+<script src="static/avisos.js?v=1794503176" defer></script>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1794503176"></script>
+
+</body>
+</html>

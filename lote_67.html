@@ -1,0 +1,298 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>DEMANDA FABIO — Demanda de Fiscalização · 11/11/2026 · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1794503176">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-lotes">
+
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Demandas</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      <button class="and-selo av-selo" id="avSelo" type="button" onclick="Avisos.abrir()" title="Avisos do dia: ontem (ou o último dia trabalhado) inteiro e o andamento de hoje"><i class="av-ponto" id="avPonto" hidden></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>Avisos</span></button>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 14/11/2026 13:02</div></div>
+      
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<div class="cab-pagina">
+  <div><p style="margin:0"><a href="lotes.html">‹ Demandas</a></p>
+    <h1>DEMANDA FABIO <small style="font-size:.55em;color:var(--suave);font-weight:500">DEMANDA FABIO — Demanda de Fiscalização · 11/11/2026</small></h1>
+    <p>Sem fiscalização desde 30/09/2026 ou antes (inclui nunca fiscalizados) · Tipos: Monitoramento Buraco - P · Fiscal: FABIO · entregue em <b>11/11/2026</b> · medido na coleta de 14/11/2026 13:02
+     · 64 ID(s) passados para JOÃO P em 11/11/2026</p></div>
+  <div class="acoes so-local">
+    <a class="btn prim" target="_blank" href="/demanda/gerar?lote=67&amp;formato=pdf&amp;titulo=Pend%C3%AAncias+%E2%80%94+DEMANDA+FABIO+%E2%80%94+Demanda+de+Fiscaliza%C3%A7%C3%A3o+%C2%B7+11/11/2026"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 12v6M9 15l3 3 3-3"/>
+</svg>PDF dos pendentes</a>
+    <button class="btn" onclick="abrirWhatsApp('lote=67&titulo=Pend%C3%AAncias%20%E2%80%94%20DEMANDA%20FABIO%20%E2%80%94%20Demanda%20de%20Fiscaliza%C3%A7%C3%A3o%20%C2%B7%2011/11/2026')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/>
+</svg>WhatsApp</button>
+    <a class="btn" href="/lotes/67/excel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>
+</svg>Excel da conferência</a>
+    <a class="btn" href="/demanda?lote=67"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/>
+</svg>Demanda filtrada…</a>
+    <a class="btn" href="/trocar-fiscal?lote=67" title="Abre Trocar fiscal com os IDs pendentes desta demanda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/>
+</svg>Trocar fiscal dos pendentes…</a>
+  </div>
+</div>
+
+
+<div class="dv-faixa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg><div><b>Demanda dividida entre 2 fiscais.</b> Cada parte é uma demanda própria; nenhum ID fica nas duas.
+  <div class="dv-partes"><a href="lote_68.html" class="dv-p"><span>outra parte</span><b>DEMANDA JOÃO P</b><small>64 IDs</small></a><a href="lote_67.html" class="dv-p esta"><span>esta parte</span><b>DEMANDA FABIO</b><small>0 IDs</small></a></div></div></div>
+
+
+
+<div class="kpis">
+  <div class="kpi destaque"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg></div><div><div class="rot">Concluído</div><div class="val">0%</div><div class="det"><span class="delta zero">0 pp</span> em 24 h · <span class="delta zero">0 pp</span> em 7 d</div></div></div>
+  <div class="kpi vermelho"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg></div><div><div class="rot">Ainda falta</div><div class="val">0</div><div class="det">de 0 IDs · 0 fiscalizados · 0 saíram</div></div></div>
+  <div class="kpi azul"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg></div><div><div class="rot">Ritmo</div><div class="val">0.0/dia</div><div class="det">média 0.0 · 0% do lote por dia</div></div></div>
+  <div class="kpi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg></div><div><div class="rot">Desde o envio</div><div class="val">3 d</div><div class="det">2 dia(s) úteis · 0 feitos nas últimas 24 h</div></div></div>
+  <div class="kpi verde"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+</svg></div><div><div class="rot">Previsão</div>
+    <div class="val">pronto</div><div class="det">
+<span class="tag verde">concluído</span></div></div></div>
+</div>
+
+<div class="grade g2" style="margin-bottom:16px">
+  <div class="card">
+    <div class="card-cab"><h3>Queima do lote</h3><span class="sub">pendentes dia a dia</span></div>
+    <div class="card-corpo" style="height:250px"><canvas id="grafQueima"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-cab"><h3>Feitos por dia</h3><span class="sub">fiscalizados ou saídos do aberto em cada dia</span></div>
+    <div class="card-corpo" style="height:170px"><canvas id="grafFeitos"></canvas></div>
+    <div class="card-corpo" style="padding-top:0"><div style="font-size:11px;color:var(--suave);text-transform:uppercase;font-weight:600;margin-bottom:4px">Calendário</div><div id="calLote" class="cal-lote"></div></div>
+  </div>
+</div>
+
+
+
+
+<details class="card so-local" style="margin-bottom:16px" >
+  <summary style="padding:13px 16px;cursor:pointer;font-weight:600;color:var(--navy)">Dados da demanda —
+    conta a partir de <b>11/11/2026</b>
+    <span class="tag laranja" style="margin-left:6px">registrada ao gerar a demanda</span>
+     · <span style="font-weight:400;color:var(--suave)">definir prazo</span></summary>
+  <form method="post" action="/lotes/67/editar" class="card-corpo" style="display:grid;grid-template-columns:1.2fr .7fr .7fr .8fr 1fr auto;gap:14px;align-items:end;border-top:1px solid var(--borda)">
+    <div class="campo"><label>Nome</label><input type="text" name="nome" value="DEMANDA FABIO — Demanda de Fiscalização · 11/11/2026"></div>
+    <div class="campo"><label>Fiscal responsável (pessoa)</label><input type="text" name="pessoa" list="listaPessoas" value="FABIO" placeholder="o do login"></div>
+    <div class="campo"><label>Data de entrega ao fiscal</label><input type="date" name="data" value="2026-11-11"></div>
+    <div class="campo"><label>Prazo para concluir (opcional)</label><input type="date" name="prazo" value=""></div>
+    <div style="font-size:12px;color:var(--muito-suave)">Com prazo, o painel diz se está adiantado ou atrasado e quantos IDs por dia útil faltam para cumprir.</div>
+    <button class="btn prim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v6h8M7 21v-7h10v7"/>
+</svg>Salvar</button>
+  </form>
+</details>
+<details class="card so-local" style="margin-bottom:16px" id="dividir">
+  <summary style="padding:13px 16px;cursor:pointer;font-weight:600;color:var(--navy)">Dividir entre dois fiscais por bairro
+    <span style="font-weight:400;color:var(--suave)">— para quando duas pessoas usam o mesmo login (ex.: FABIO e JOÃO P)</span></summary>
+  <form method="post" action="/lotes/67/dividir" class="card-corpo" style="border-top:1px solid var(--borda)"
+        onsubmit="const n=[...this.querySelectorAll('input[name=bairro]:checked')].reduce((s,c)=>s+ +c.dataset.n,0); if(!n){alert('Marque ao menos um bairro.');return false;} return confirm(n+' ID(s) pendentes vão para uma demanda nova de '+this.pessoa_nova.value.toUpperCase()+'. Eles saem desta demanda (nada fica contado em dobro). Continuar?')">
+    <p style="margin:0 0 10px;font-size:13px;color:var(--suave)">Marque os bairros que vão para o <b>outro fiscal</b>. Os IDs <b>pendentes</b> desses bairros saem desta demanda e vão para uma demanda nova dele, com a mesma data de entrega
+      (o que já foi feito continua contando aqui). Os bairros não marcados ficam nesta demanda.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:end;margin-bottom:12px">
+      <div class="campo"><label>Esta demanda fica com</label><input type="text" name="pessoa_atual" list="listaPessoas" value="FABIO" placeholder="ex.: FABIO"></div>
+      <div class="campo"><label>Os bairros marcados vão para</label><input type="text" name="pessoa_nova" list="listaPessoas" required placeholder="ex.: JOÃO P"></div>
+      <div id="divTot" style="font-size:13px;color:var(--navy);font-weight:600;padding-bottom:8px">0 IDs marcados</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px;max-height:300px;overflow:auto">
+      
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px">
+      <label style="font-size:13px;display:flex;gap:6px;align-items:center"><input type="checkbox" name="outras" value="1" checked>
+        Fazer o mesmo nas outras demandas ativas que têm esses IDs (original e pendências) — assim cada ID fica com uma pessoa só</label>
+      <button class="btn prim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Criar a demanda do outro fiscal</button></div>
+  </form>
+</details>
+<datalist id="listaPessoas"><option value="ADRIANO J"><option value="CARLOS M"><option value="CARLOS ROBERTO"><option value="DRENAGEM R1"><option value="FABIO"><option value="FÁBIO"><option value="JAÍLSON"><option value="JOÃO P"><option value="JOÃO PAULO"><option value="MARCELO"><option value="RENILSON"><option value="RONALD"><option value="WASHINGTON"><option value="WELDSON"><option value="WELLINGTON"></datalist>
+
+
+<div class="card" style="margin-bottom:16px">
+  <div class="card-cab"><h3>Andamento por login responsável</h3>
+    <span class="sub">cada ID só pode ser refiscalizado/finalizado pelo login que o criou</span>
+    <div class="dir so-local"><form method="post" action="/lotes/67/complementar" enctype="multipart/form-data" style="display:flex;gap:6px;align-items:center">
+      <label class="btn peq" style="cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>
+</svg>Anexar planilha complementar<input type="file" name="complementar" accept=".xlsx,.xls" style="display:none" onchange="this.form.submit()"></label></form></div></div>
+  <div class="card-corpo">
+    <div class="grade" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px">
+      <div class="rolagem" style="max-height:300px">
+<table class="tabela"><thead><tr><th>Login responsável</th><th class="n">Total</th><th class="n">Pendentes</th><th class="n">Fiscalizados</th><th class="n">Saíram</th><th style="width:30%">Concluído</th></tr></thead><tbody>
+
+</tbody></table>
+</div>
+      <div><div style="font-weight:600;color:var(--navy);margin-bottom:6px">IDs fiscalizados por dia (após a entrega)</div><div style="height:240px"><canvas id="grafDia"></canvas></div></div>
+    </div>
+    <p style="margin:12px 0 0;font-size:12px;color:var(--muito-suave)">Fiscalizado = última fiscalização do ID igual ou posterior à entrega, em qualquer coleta desde então. Para saber o que aconteceu com os que saíram do aberto, anexe a planilha complementar (exportação com qualquer status).</p>
+  </div>
+</div>
+
+<div class="grade g-mapa">
+  <div class="card">
+    <div class="card-cab"><h3>Mapa do lote</h3>
+      <div class="dir seg" id="segSit"><button data-v="Pendente" class="on">Pendentes</button><button data-v="todos">Todos</button></div></div>
+    <div id="mapa" style="height:480px"></div>
+    <div class="legenda" style="padding:10px 16px"><span><i class="bolinha" style="background:#D63B32"></i>pendente</span><span><i class="bolinha" style="background:#2F6FB3"></i>fiscalizado</span><span><i class="bolinha" style="background:#2E9D57"></i>saiu do aberto</span></div>
+  </div>
+  <div class="card">
+    <div class="card-cab"><h3>Evolução</h3><span class="sub">a cada coleta</span></div>
+    <div class="card-corpo" style="height:250px"><canvas id="grafEvo"></canvas></div>
+    <div class="card-cab" style="border-top:1px solid var(--borda)"><h3>Por RPA</h3></div>
+    <div class="card-corpo rolagem" style="max-height:240px;padding:0">
+<table class="tabela"><thead><tr><th>RPA</th><th class="n">Total</th><th class="n">Pendentes</th><th class="n">Fiscalizados</th><th class="n">Saíram</th><th style="width:30%">Concluído</th></tr></thead><tbody>
+
+</tbody></table>
+</div>
+  </div>
+</div>
+
+<div class="card mt">
+  <div class="abas" id="abasLote">
+    <button data-t="bairro" class="on">Por bairro</button><button data-t="via">Por logradouro</button><button data-t="tipo">Por tipo de serviço</button>
+    <button data-t="fiscal">Por fiscal</button><button data-t="itens">Lista de IDs</button>
+  </div>
+  <div class="rolagem" style="max-height:560px">
+    <div data-p="bairro">
+<table class="tabela"><thead><tr><th>Bairro</th><th class="n">Total</th><th class="n">Pendentes</th><th class="n">Fiscalizados</th><th class="n">Saíram</th><th style="width:30%">Concluído</th></tr></thead><tbody>
+
+</tbody></table>
+</div>
+    <div data-p="via" hidden>
+<table class="tabela"><thead><tr><th>Logradouro · Bairro</th><th class="n">Total</th><th class="n">Pendentes</th><th class="n">Fiscalizados</th><th class="n">Saíram</th><th style="width:30%">Concluído</th></tr></thead><tbody>
+
+</tbody></table>
+</div>
+    <div data-p="tipo" hidden>
+<table class="tabela"><thead><tr><th>Tipo de serviço</th><th class="n">Total</th><th class="n">Pendentes</th><th class="n">Fiscalizados</th><th class="n">Saíram</th><th style="width:30%">Concluído</th></tr></thead><tbody>
+
+</tbody></table>
+</div>
+    <div data-p="fiscal" hidden>
+<table class="tabela"><thead><tr><th>Fiscal</th><th class="n">Total</th><th class="n">Pendentes</th><th class="n">Fiscalizados</th><th class="n">Saíram</th><th style="width:30%">Concluído</th></tr></thead><tbody>
+
+</tbody></table>
+</div>
+    <div data-p="itens" hidden>
+      <div style="padding:10px 16px;border-bottom:1px solid var(--borda)"><input type="search" id="buscaItens" placeholder="Buscar ID, logradouro, bairro…" style="width:320px"></div>
+      <table class="tabela" id="tabItens"></table></div>
+  </div>
+</div>
+
+<div class="so-local" style="display:flex;gap:8px;margin-top:20px;justify-content:flex-end">
+  <form method="post" action="/lotes/67/arquivar"><button class="btn">Arquivar lote</button></form>
+  <form method="post" action="/lotes/67/excluir" onsubmit="return confirm('Excluir este lote? Os dados das coletas não são afetados.')"><button class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+</svg>Excluir</button></form>
+</div>
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<div class="av-fundo" id="avFundo" hidden onclick="if(event.target===this)Avisos.fechar()"><section class="av-modal" role="dialog" aria-modal="true" aria-labelledby="avTit">
+  <header class="av-cab"><div><span class="av-chip">Avisos do dia</span><h2 id="avTit">Ontem e hoje</h2><p id="avPeriodo"></p></div>
+    <button type="button" class="and-x" onclick="Avisos.fechar()" aria-label="Fechar">✕</button></header>
+  <div class="av-corpo" id="avCorpo"><div class="av-carregando">Montando o resumo…</div></div>
+  <footer class="av-rod"><a class="btn" href="desempenho.html" id="avDesemp">Ver no Desempenho</a><a class="btn" href="lotes.html">Demandas</a>
+    <button type="button" class="btn prim" onclick="Avisos.entendi()">Entendi</button></footer>
+</section></div>
+<script>window.PAGINA = "lotes";window.ALAG_MAPA = false;</script>
+<script src="static/avisos.js?v=1794503176" defer></script>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1794503176"></script>
+
+<script>
+const ITENS=[], EVO=[{"dia": "2026-11-11", "fiscalizado": 0, "pendente": 0, "rotulo": "11/11", "saiu": 0}, {"dia": "2026-11-12", "fiscalizado": 0, "pendente": 0, "rotulo": "12/11", "saiu": 0}, {"dia": "2026-11-13", "fiscalizado": 0, "pendente": 0, "rotulo": "13/11", "saiu": 0}, {"dia": "2026-11-14", "fiscalizado": 0, "pendente": 0, "rotulo": "14/11", "saiu": 0}], DIAS=[], COBRADO="FABIO", D={"delta_24h": 0, "delta_7d": 0, "diarios": [{"dia": "2026-11-11", "n": 0}, {"dia": "2026-11-12", "n": 0}, {"dia": "2026-11-13", "n": 0}, {"dia": "2026-11-14", "n": 0}], "dias": 3, "dias_uteis": 2, "falta": 0, "feitos": 0, "feitos_24h": 0, "feitos_7d": 0, "fiscalizado": 0, "inicio": "2026-11-11", "parado_dias": 0, "pct": 0, "pct_dia": 0, "prazo": null, "previsao_data": "2026-11-14", "previsao_dias": null, "ritmo_3d": 0.0, "ritmo_medio": 0.0, "saiu": 0, "situacao": "concluído", "tendencia": "", "total": 0, "ultimo_avanco": null};
+/* queima: pendentes por dia + linha do ritmo necessário até o prazo */
+(function(){
+  const rot=EVO.map(e=>e.rotulo), pend=EVO.map(e=>e.pendente), ds=[{type:"line",label:"Pendentes",data:pend,borderColor:"#D63B32",backgroundColor:"rgba(214,59,50,.08)",fill:true,tension:.2,pointRadius:0,borderWidth:2}];
+  let labels=rot.slice();
+  if(D.prazo && D.falta){ const ult=EVO.length?EVO[EVO.length-1].dia:null; const fim=new Date(D.prazo+"T12:00:00"); let d=new Date(ult+"T12:00:00");
+    const extra=[]; while(d<fim){ d.setDate(d.getDate()+1); extra.push(d.toISOString().slice(8,10)+"/"+d.toISOString().slice(5,7)); }
+    labels=rot.concat(extra); const n=labels.length-rot.length;
+    ds.push({type:"line",label:"Ritmo necessário",data:Array(rot.length-1).fill(null).concat([pend[pend.length-1]]).concat(extra.map((_,i)=>Math.max(0,Math.round(pend[pend.length-1]*(1-(i+1)/n))))),
+      borderColor:"#1C4250",borderDash:[5,4],pointRadius:0,borderWidth:1.5,fill:false}); }
+  const c=document.getElementById("grafQueima");
+  new Chart(c,{type:"line",data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:ds.length>1,position:"bottom"}},
+    scales:{y:{beginAtZero:true,grid:{color:"#EEF1F4"}},x:{grid:{display:false},ticks:{maxTicksLimit:12}}}}});
+  grafBarras(document.getElementById("grafFeitos"), D.diarios.map(x=>x.dia.slice(8,10)+"/"+x.dia.slice(5,7)), [{label:"Feitos",data:D.diarios.map(x=>x.n),backgroundColor:"#2E9D57"}]);
+  const max=Math.max(1,...D.diarios.map(x=>x.n));
+  document.getElementById("calLote").innerHTML=D.diarios.map(x=>{ const fds=[0,6].includes(new Date(x.dia+"T12:00:00").getDay());
+    return `<i title="${dataBR(x.dia)}: ${x.n}" style="background:${x.n?`rgba(46,157,87,${.25+.75*x.n/max})`:fds?"#F3F5F8":"#FBE3E1"}">${x.dia.slice(8,10)}</i>`; }).join("");
+})();
+grafBarras(document.getElementById("grafDia"), DIAS.map(d=>dataBR(d.dia).slice(0,5)),
+  [{label:"IDs fiscalizados",data:DIAS.map(d=>d.cobrado+d.outros),backgroundColor:"#2F6FB3"}]);
+const COR_SIT={"Pendente":"#D63B32","Fiscalizado":"#2F6FB3","Saiu do aberto":"#2E9D57"};
+const mapa=criarMapa("mapa"); let filtroSit="Pendente";
+function desenharMapa(){
+  mapa._camada.clearLayers(); const pts=[];
+  ITENS.filter(i=>i.lat&&(filtroSit==="todos"||i.situacao===filtroSit)).sort((a,b)=>a.situacao==="Pendente"?1:-1).forEach(i=>{
+    L.circleMarker([i.lat,i.lng],{radius:5.5,color:"#fff",weight:1.2,fillColor:COR_SIT[i.situacao],fillOpacity:.92})
+     .bindPopup(`<span class="pop-id">ID ${esc(i.os_id)}</span><span class="pop-tag" style="background:${COR_SIT[i.situacao]}">${i.situacao}</span>
+       <div style="margin-top:4px"><b>${esc(i.tipo_servico)}</b><br>${esc(i.logradouro)} ${i.trecho?"· "+esc(i.trecho):""}<br><span style="color:#5F7180">${esc(i.bairro)} · ${esc(i.rpa)}</span></div>
+       <div style="margin-top:4px">Últ. fiscalização na entrega: <b>${i.ult_fiscal_entrega}</b><br>Últ. fiscalização agora: <b>${i.ult_atual}</b><br>Login responsável: <b>${esc(i.fiscal_nome||"—")}</b></div>
+       <div style="margin-top:4px">${sigaLinks(i.os_id)}</div><a href="https://www.google.com/maps?q=${i.lat},${i.lng}" target="_blank">Google Maps ↗</a>`).addTo(mapa._camada);
+    pts.push([i.lat,i.lng]); });
+  if(pts.length) mapa.fitBounds(pts,{padding:[24,24],maxZoom:16});
+}
+document.querySelectorAll("#segSit button").forEach(b=>b.onclick=()=>{ filtroSit=b.dataset.v; document.querySelectorAll("#segSit button").forEach(x=>x.classList.toggle("on",x===b)); desenharMapa(); });
+desenharMapa(); setTimeout(()=>{ mapa.invalidateSize(); desenharMapa(); },350);
+grafBarras(document.getElementById("grafEvo"), EVO.map(e=>e.rotulo),
+  [{label:"Saíram",data:EVO.map(e=>e.saiu),backgroundColor:"#2E9D57"},{label:"Fiscalizados",data:EVO.map(e=>e.fiscalizado),backgroundColor:"#7FB6E6"},
+   {label:"Pendentes",data:EVO.map(e=>e.pendente),backgroundColor:"#D8DEE5"}],{empilhado:true});
+document.querySelectorAll("#abasLote button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#abasLote button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll("[data-p]").forEach(p=>p.hidden=p.dataset.p!==b.dataset.t); });
+function desenharItens(){
+  const q=document.getElementById("buscaItens").value.toLowerCase();
+  const l=ITENS.filter(i=>!q||Busca.casa(i.os_id+" "+i.logradouro+" "+i.bairro+" "+i.tipo_servico+" "+(i.fiscal_nome||""),q));
+  document.getElementById("tabItens").innerHTML=`<thead><tr><th>ID</th><th>Situação</th><th>Tipo de serviço</th><th>Logradouro</th><th>Bairro</th><th>RPA</th><th>Fiscal</th><th class="n">Últ. fisc. na entrega</th><th class="n">Últ. fisc. agora</th><th>Login responsável</th></tr></thead><tbody>`+
+   l.slice(0,1500).map(i=>`<tr><td class="num">${esc(i.os_id)}</td><td><span class="tag ${i.situacao==="Pendente"?"vermelho":i.situacao==="Fiscalizado"?"azul":"verde"}">${i.situacao}</span></td><td>${esc(i.tipo_servico)}</td><td>${esc(i.logradouro)}</td><td>${esc(i.bairro)}</td><td>${esc(i.rpa)}</td><td>${esc(i.fiscal_entrega||i.fiscal_nome)}</td><td class="n">${i.ult_fiscal_entrega}</td><td class="n">${i.situacao==="Pendente"?"—":i.ult_atual}</td><td>${esc(i.fiscal_nome||"—")}${i.status_siga&&i.status_siga!=="Aberto"&&i.status_siga!=="fora do aberto"?` <span class="tag verde">${esc(i.status_siga)}</span>`:""}</td></tr>`).join("")+"</tbody>";
+}
+document.getElementById("buscaItens").oninput=desenharItens; desenharItens();
+</script>
+
+</body>
+</html>

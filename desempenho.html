@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Desempenho · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1794503176">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-desempenho">
+
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="index.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Demandas</a>
+      <a href="geovista.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      <button class="and-selo av-selo" id="avSelo" type="button" onclick="Avisos.abrir()" title="Avisos do dia: ontem (ou o último dia trabalhado) inteiro e o andamento de hoje"><i class="av-ponto" id="avPonto" hidden></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>Avisos</span></button>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 14/11/2026 13:02</div></div>
+      
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<div class="cab-pagina">
+  <div>
+    <h1>Desempenho dos fiscais</h1>
+    <p>O que cada login criou, fiscalizou e finalizou no dia, a jornada estimada e a situação de prazo do que está com cada um.</p>
+  </div>
+  <div class="acoes so-local">
+    <button class="btn" type="button" onclick="conferirPeriodo()" title="Busca no SIGA, dia a dia, todos os IDs com fiscalização (qualquer status) e completa o histórico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/>
+</svg>Conferir dias com o SIGA</button>
+    <a class="btn" id="xlsDia" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>
+</svg>Excel do dia</a>
+    <a class="btn" id="xlsSemana" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>
+</svg>Excel da semana</a>
+    <a class="btn prim" id="pdfSemana" href="/relatorio/semanal" title="Uma folha para a chefia: ranking, alertas, envio diário e demandas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 12v6M9 15l3 3 3-3"/>
+</svg>Relatório semanal (PDF)</a>
+  </div>
+</div>
+
+<section class="pt-hero" id="cardPontos">
+  <div class="pt-hero-cab">
+    <div><span class="pt-chip">Prestação de contas · SIGA</span>
+      <h2 id="ptTitulo">Como cada fiscal SIGA foi na semana</h2>
+      <p>Jornada <b>40%</b> · Produção <b>30%</b> · Demandas <b>30%</b> — não é competição: cada um contra a meta e o ritmo normal da equipe. <b>Clique num fiscal</b> para ver a ficha dos últimos dias.</p></div>
+    <div class="pt-hero-dir">
+      <select id="fSemanaPt" aria-label="Semana"><option value="2026-11-09">09/11 a 15/11/2026</option><option value="2026-11-02">02/11 a 08/11/2026</option><option value="2026-10-26">26/10 a 01/11/2026</option><option value="2026-10-19">19/10 a 25/10/2026</option><option value="2026-10-12">12/10 a 18/10/2026</option><option value="2026-10-05">05/10 a 11/10/2026</option></select>
+      <button class="btn peq" type="button" onclick="document.getElementById('pontosComo').toggleAttribute('hidden')">Como é calculado</button></div>
+  </div>
+  <div class="pt-resumo" id="ptResumo"></div>
+  <div class="pt-como" id="pontosComo" hidden></div>
+  <div class="pt-lista" id="pontos"><div class="vazio" style="padding:16px">Carregando…</div></div>
+</section>
+
+<div class="filtros" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:16px">
+  <div class="campo"><label>Dia</label>
+    <select id="fDia"><option value="2026-11-14" >Sáb 14/11/2026</option><option value="2026-11-13" selected>Sex 13/11/2026</option><option value="2026-11-12" >Qui 12/11/2026</option><option value="2026-11-11" >Qua 11/11/2026</option><option value="2026-11-10" >Ter 10/11/2026</option><option value="2026-11-09" >Seg 09/11/2026</option><option value="2026-11-07" >Sáb 07/11/2026</option><option value="2026-11-06" >Sex 06/11/2026</option><option value="2026-11-05" >Qui 05/11/2026</option><option value="2026-11-04" >Qua 04/11/2026</option><option value="2026-11-03" >Ter 03/11/2026</option><option value="2026-11-02" >Seg 02/11/2026</option><option value="2026-10-31" >Sáb 31/10/2026</option><option value="2026-10-30" >Sex 30/10/2026</option></select></div>
+  <div class="campo"><label>Tipo de serviço</label><div style="display:flex;gap:6px;align-items:center"><div id="fTipos" class="so-local"></div>
+    <span class="chip" id="atalhoBuraco" title="Atalho: só Buraco Siga">Só Buraco Siga</span></div></div>
+  <div class="campo so-local" style="margin-left:auto"><label>Histórico de um ID</label>
+    <div style="display:flex;gap:6px"><input type="search" id="buscaId" placeholder="ex.: 44573" inputmode="numeric" style="width:130px" onkeydown="if(event.key==='Enter') abrirHistorico(this.value)">
+      <button class="btn" onclick="abrirHistorico(document.getElementById('buscaId').value)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Ver</button></div></div>
+  <div class="campo"><label>Operação</label>
+    <div class="seg" id="fNat"><button data-v="" class="on">Todas</button><button data-v="SIGA">SIGA</button><button data-v="Drenagem">Drenagem</button></div></div>
+</div>
+
+<div class="aviso" id="avisoDia" style="display:none"></div>
+<div class="conf-siga" id="confSiga" style="display:none"></div>
+<div class="kpis" id="kpis"></div>
+
+<div class="card">
+  <div class="card-cab"><h3>Produção do dia por fiscal</h3><span class="sub" id="subDia"></span>
+    <div class="dir legenda"><span><i class="bolinha" style="background:#2F6FB3"></i>criou</span><span><i class="bolinha" style="background:#1C4250"></i>fiscalizou</span><span style="color:var(--muito-suave)">faixa = 1º ao último registro</span></div></div>
+  <div class="rolagem" style="max-height:none"><table class="tabela" id="tabDia"></table></div>
+</div>
+
+<div class="grade g2 mt">
+  <div class="card">
+    <div class="card-cab"><h3>Onde trabalharam</h3><span class="sub" id="subMapa">clique num fiscal da tabela para isolar</span>
+      <div class="dir legenda"><span><i class="bolinha" style="background:#2F6FB3"></i>criou</span><span><i class="bolinha" style="background:#2E9D57"></i>fiscalizou</span><span><i class="bolinha" style="background:#9AA5B1"></i>finalizado</span></div></div>
+    <div id="mapa" style="height:460px"></div>
+  </div>
+  <div class="card">
+    <div class="card-cab"><h3 id="tituloDet">Ritmo do dia</h3><span class="sub" id="subDet">registros por hora · todos os fiscais</span>
+      <div class="dir"><button class="btn peq" id="limparSel" style="display:none" onclick="selecionar(null)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/>
+</svg>Todos</button></div></div>
+    <div class="card-corpo" style="height:180px"><canvas id="grafHora"></canvas></div>
+    <div class="rolagem" style="max-height:236px;border-top:1px solid var(--borda)"><table class="tabela" id="tabEventos"></table></div>
+  </div>
+</div>
+
+<div class="card mt">
+  <div class="card-cab"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>
+</svg> Semana</h3>
+    <select id="fSemana" style="min-width:200px"><option value="2026-11-09">09/11 a 15/11/2026</option><option value="2026-11-02">02/11 a 08/11/2026</option><option value="2026-10-26">26/10 a 01/11/2026</option><option value="2026-10-19">19/10 a 25/10/2026</option><option value="2026-10-12">12/10 a 18/10/2026</option><option value="2026-10-05">05/10 a 11/10/2026</option></select>
+    <span class="sub">ranking separado por operação · ações = IDs criados + fiscalizados + finalizados</span>
+    <div class="dir legenda"><span><i class="bolinha" style="background:#FBE3E1"></i>sem atividade</span><span><i class="bolinha" style="background:#FFEBD8"></i>pouca atividade</span></div></div>
+  <div class="grade" style="grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:0">
+    <div class="rolagem" style="max-height:none;border-right:1px solid var(--borda)"><table class="tabela" id="tabSemana"></table></div>
+    <div class="card-corpo"><h4 style="font-size:15px;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg> Alertas da semana</h4>
+      <div style="font-size:12px;color:var(--muito-suave);margin-bottom:6px">Dias úteis sem nenhum registro, com jornada estimada abaixo de 4h ou com menos de 40% do que o fiscal costuma fazer.</div>
+      <div id="alertas"></div></div>
+  </div>
+</div>
+
+<section class="eq" id="cardEvo">
+  <div class="eq-cab">
+    <div><span class="eq-chip">Evolução da equipe</span>
+      <h2 id="eqTit">Como a equipe está indo</h2>
+      <p id="eqSub">Período atual até ontem comparado com o anterior até a mesma altura.</p></div>
+    <div class="eq-dir"><div class="seg eq-seg" id="fGran"><button data-v="semana" class="on">Semana</button><button data-v="mes">Mês</button></div></div>
+  </div>
+  <div class="eq-frevo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="eq-ks" id="eqKs"></div>
+  <div class="eq-dren" id="eqDren"></div>
+  <div class="eq-corpo">
+    <div class="eq-card"><h3 id="eqGrafTit">Ações por semana</h3><p>barra = equipe SIGA · traço verde = Drenagem · período atual em amarelo · <b>clique numa barra</b> para ver aquele período</p>
+      <div class="eq-barras" id="eqBarras"></div>
+      <div class="eq-leg"><span><i class="az"></i>SIGA</span><span><i class="vd"></i>Drenagem</span><span><i class="am"></i>em andamento</span></div></div>
+    <div class="eq-card"><h3>Quem mudou</h3><p id="eqMudSub">variação de 10% ou mais, até a mesma altura · clique para abrir a ficha</p>
+      <div class="eq-cols"><div class="eq-col s"><h4>▲ Subiram</h4><div id="eqSobe"></div></div><div class="eq-col c"><h4>▼ Caíram</h4><div id="eqCai"></div></div></div>
+      <div class="eq-est" id="eqEst"></div></div>
+  </div>
+</section>
+
+<div class="card mt">
+  <div class="card-cab"><h3>Situação do que está aberto</h3><span class="sub" id="subAberto"></span>
+    <div class="dir"><div class="seg" id="fModo"><button data-v="fiscalizacao" class="on">Prazo da última fiscalização</button><button data-v="criacao">Data de criação</button></div></div></div>
+  <div class="grade g2" style="gap:0">
+    <div style="border-right:1px solid var(--borda)"><div class="card-corpo" style="padding-bottom:0"><b style="color:var(--navy)">Por fiscal</b> <span class="sub" style="color:var(--muito-suave);font-size:12px">· gerar demanda já filtra o fiscal e os tipos escolhidos</span></div>
+      <table class="tabela" id="tabAbFiscal"></table></div>
+    <div><div class="card-corpo" style="padding-bottom:0"><b style="color:var(--navy)">Por RPA</b></div><table class="tabela" id="tabAbRpa"></table></div>
+  </div>
+  <div class="card-corpo legenda" id="legAberto"></div>
+</div>
+
+<div class="fc-fundo" id="fcFundo" hidden onclick="if(event.target===this)Ficha.fechar()"><section class="fc-modal" role="dialog" aria-modal="true">
+  <header class="fc-cab"><span class="fc-av" id="fcAv"></span><div><h2 id="fcNome">Fiscal</h2><p id="fcSub"></p></div>
+    <div class="seg fc-per" id="fcPer"><button data-n="5">5 dias</button><button data-n="10" class="on">10 dias</button><button data-n="15">15 dias</button></div>
+    <button type="button" class="and-x" onclick="Ficha.fechar()" aria-label="Fechar">✕</button></header>
+  <div class="fc-corpo" id="fcCorpo"><div class="vazio" style="padding:40px">Carregando…</div></div>
+</section></div>
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<div class="av-fundo" id="avFundo" hidden onclick="if(event.target===this)Avisos.fechar()"><section class="av-modal" role="dialog" aria-modal="true" aria-labelledby="avTit">
+  <header class="av-cab"><div><span class="av-chip">Avisos do dia</span><h2 id="avTit">Ontem e hoje</h2><p id="avPeriodo"></p></div>
+    <button type="button" class="and-x" onclick="Avisos.fechar()" aria-label="Fechar">✕</button></header>
+  <div class="av-corpo" id="avCorpo"><div class="av-carregando">Montando o resumo…</div></div>
+  <footer class="av-rod"><a class="btn" href="desempenho.html" id="avDesemp">Ver no Desempenho</a><a class="btn" href="lotes.html">Demandas</a>
+    <button type="button" class="btn prim" onclick="Avisos.entendi()">Entendi</button></footer>
+</section></div>
+<script>window.PAGINA = "desempenho";window.ALAG_MAPA = false;</script>
+<script src="static/avisos.js?v=1794503176" defer></script>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1794503176"></script>
+
+<script>
+const CID=630;
+const S={dia:document.getElementById("fDia").value, tipos:[], nat:"", modo:"fiscalizacao", sel:null};
+let DIA=null, SEM=null, ABERTOS=[], mapa, mTipos;
+const TIPOS=[{"qt": 1904, "valor": "Abatimento"}, {"qt": 636, "valor": "Abatimento Compesa - Esgoto."}, {"qt": 1173, "valor": "Abatimento Compesa - Água"}, {"qt": 57, "valor": "Abatimento Copergás"}, {"qt": 21, "valor": "Abatimento Telefonia"}, {"qt": 7, "valor": "Baixa no Pavimento"}, {"qt": 17, "valor": "Boca de lobo"}, {"qt": 17, "valor": "Buraco - Demanda Extra"}, {"qt": 198, "valor": "Buraco - Stand-by"}, {"qt": 30, "valor": "Buraco Concessionária"}, {"qt": 5197, "valor": "Buraco Siga"}, {"qt": 196, "valor": "Caixa Coletora"}, {"qt": 94, "valor": "Caixa de Gaveta (CG)"}, {"qt": 2, "valor": "Canaleta"}, {"qt": 6, "valor": "DNIT"}, {"qt": 71, "valor": "Drenagem"}, {"qt": 48, "valor": "Elevação de tampão"}, {"qt": 15, "valor": "Fiscalização Recapeamento"}, {"qt": 48, "valor": "Fissuras interligadas"}, {"qt": 152, "valor": "Grelhas Pluviais"}, {"qt": 26, "valor": "Intervenção BRK"}, {"qt": 71, "valor": "Intervenção Compesa"}, {"qt": 2, "valor": "Junta de Dilatação"}, {"qt": 6, "valor": "Leito Natural"}, {"qt": 9, "valor": "Ligação Irregular"}, {"qt": 6, "valor": "Limpeza - DLU"}, {"qt": 366, "valor": "Limpeza Programada"}, {"qt": 80, "valor": "Limpeza Programada - CANAIS"}, {"qt": 626, "valor": "Monitoramento Buraco - P"}, {"qt": 16, "valor": "Monitoramento Viadutos"}, {"qt": 70, "valor": "Obra Drenagem"}, {"qt": 2, "valor": "Obra Governo do Estado"}, {"qt": 12, "valor": "Obra Sesan"}, {"qt": 173, "valor": "Pavimento em Bom Estado"}, {"qt": 39, "valor": "Pavimento em Paralelo"}, {"qt": 149, "valor": "Placa de Concreto"}, {"qt": 119, "valor": "Ponto de Alagamento"}, {"qt": 12, "valor": "Ponto de Alagamento Crítico"}, {"qt": 2, "valor": "Poço de visita (PV)"}, {"qt": 1093, "valor": "Pré-moldado"}, {"qt": 257, "valor": "Recapeamento Asfáltico"}, {"qt": 97, "valor": "Reconstrução de linha d\u0027água"}, {"qt": 133, "valor": "Recuperação de Paralelo"}, {"qt": 14, "valor": "Serviço GPO"}, {"qt": 13, "valor": "Serviço URB"}, {"qt": 330, "valor": "Tampão"}, {"qt": 132, "valor": "Tampão Concessionária"}, {"qt": 2, "valor": "Tampão Temporário"}, {"qt": 273, "valor": "Tampão de Fibra de vidro"}, {"qt": 115, "valor": "Tampão de Telefonia"}, {"qt": 371, "valor": "Vazamento"}, {"qt": 2, "valor": "Vistoria"}, {"qt": 42, "valor": "Vistoria Canais"}, {"qt": 6, "valor": "Área de Risco"}];
+const COR_ACAO={criou:"#2F6FB3",fiscalizou:"#2E9D57",fechou:"#9AA5B1"};
+const ROT_ACAO={criou:"Criou",fiscalizou:"Fiscalizou",fechou:"Finalizado"};
+const H0=6,H1=18;
+
+function q(extra={}){ const p=new URLSearchParams(); S.tipos.forEach(t=>p.append("tipo",t)); if(S.nat) p.set("natureza",S.nat);
+  for(const [k,v] of Object.entries(extra)) p.set(k,v); return p.toString(); }
+function semanaDe(d){ const x=new Date(d+"T12:00:00"); x.setDate(x.getDate()-((x.getDay()+6)%7)); return x.toISOString().slice(0,10); }
+function tagStatus(s){ const c=s.startsWith("sem atividade")?"vermelho":s.startsWith("pouca")?"laranja":s==="normal"?"verde":s.includes("fim de semana")?"azul":"";
+  return `<span class="tag ${c}">${esc(s)}</span>`; }
+
+async function conferirSiga(dia){
+  const fd=new FormData(); fd.append("dia",dia);
+  const j=await (await fetch("/desempenho/conferir",{method:"POST",body:fd})).json();
+  if(window.And && And.abrir) And.abrir(); else alert(j.msg);
+}
+async function conferirPeriodo(){
+  const desde=prompt("Conferir com o SIGA todos os dias (seg–sáb) ainda não conferidos desde (dd/mm/aaaa):");
+  if(!desde) return; const m=desde.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(!m){ alert("Use dd/mm/aaaa"); return; }
+  const fd=new FormData(); fd.append("desde",`${m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`);
+  const j=await (await fetch("/desempenho/conferir",{method:"POST",body:fd})).json(); alert(j.msg);
+}
+async function carregarDia(){
+  DIA=await (await fetch("/api/desempenho/dia?"+q({dia:S.dia}))).json();
+  if(DIA.erro){ document.getElementById("avisoDia").style.display="flex"; document.getElementById("avisoDia").innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><div>${esc(DIA.erro)}</div>`; return; }
+  document.getElementById("xlsDia").href="/desempenho/excel?"+q({dia:S.dia});
+  const av=document.getElementById("avisoDia");
+  av.style.display=DIA.aviso?"flex":"none"; av.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><div><b>${DIA.situacao==="parcial"?"Dia com dados parciais.":"Dia ainda em aberto."}</b> ${esc(DIA.aviso)}</div>`;
+  const cs=document.getElementById("confSiga"), sg=DIA.siga;
+  if(sg){ const ac=sg.acrescentados||{}; const mais=(ac.criou||0)+(ac.fiscalizou||0);
+    cs.style.display="flex"; cs.className="conf-siga ok";
+    cs.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg><div><b>Conferido com o SIGA:</b> ${fmt(sg.n)} IDs com fiscalização neste dia (filtro “Fiscalização” = ${dataBR(DIA.dia)}, todos os status).
+      ${mais?` O painel tinha visto ${fmt(sg.painel_antes)}; a conferência acrescentou <b>${fmt(mais)}</b>.`:" Bateu com o que o painel já tinha."}
+      <span class="sub">conferido em ${dataBR(sg.quando.slice(0,10))} ${sg.quando.slice(11,16)}</span></div>
+      `; }
+  else { cs.style.display="none"; cs.className="conf-siga";
+    cs.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><div><b>Dia ainda não conferido com o SIGA.</b> O painel vê ${fmt(DIA.ids_dia||0)} IDs com ação neste dia, só pelo que as coletas de IDs em aberto mostraram
+      — visitas em IDs que saíram do aberto no mesmo dia, ou visitados de novo antes da coleta seguinte, ficam de fora.</div>
+      `; }
+  const k=DIA.kpis;
+  document.getElementById("kpis").innerHTML=`
+   <div class="kpi destaque"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg></div><div><div class="rot">Ações no dia</div><div class="val">${fmt(k.acoes)}</div><div class="det">${DIA.dia_semana} ${dataBR(DIA.dia)} · criados + fiscalizados + finalizados</div></div></div>
+   <div class="kpi azul"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/>
+</svg></div><div><div class="rot">IDs criados</div><div class="val">${fmt(k.criou)}</div><div class="det">abertos pelos fiscais</div></div></div>
+   <div class="kpi verde"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg></div><div><div class="rot">Fiscalizados</div><div class="val">${fmt(k.fiscalizou)}</div><div class="det">IDs com visita no dia</div></div></div>
+   <div class="kpi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+</svg></div><div><div class="rot">Finalizados</div><div class="val">${fmt(k.fechou)}</div><div class="det">saíram do aberto no dia</div></div></div>
+   <div class="kpi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+</svg></div><div><div class="rot">Fiscais ativos</div><div class="val">${k.ativos}/${k.fiscais}</div><div class="det">${fmt(k.bairros)} bairros visitados</div></div></div>
+   <div class="kpi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg></div><div><div class="rot">Jornada média</div><div class="val">${k.horas_media}</div><div class="det">estimada pelos horários</div></div></div>`;
+  desenharTabDia(); desenharMapa(); desenharDetalhe();
+}
+
+function jornadaHTML(login){
+  const evs=DIA.eventos.filter(e=>e.fiscal_login===login && e.hora);
+  if(!evs.length) return `<div class="jornada"></div>`;
+  const pos=h=>{ const [a,b]=h.split(":").map(Number); return Math.max(0,Math.min(100,((a+b/60)-H0)/(H1-H0)*100)); };
+  const hs=evs.map(e=>e.hora).sort(); const i=pos(hs[0]), f=pos(hs[hs.length-1]);
+  return `<div class="jornada" title="${hs[0]} → ${hs[hs.length-1]}"><div class="faixa" style="left:${i}%;width:${Math.max(f-i,.6)}%"></div>`+
+    evs.map(e=>`<span class="ev ${e.acao}" style="left:${pos(e.hora)}%"></span>`).join("")+`</div>`;
+}
+
+function desenharTabDia(){
+  const L=DIA.fiscais;
+  document.getElementById("subDia").textContent=`${L.filter(l=>l.acoes).length} de ${L.length} com registro`;
+  document.getElementById("tabDia").innerHTML=`<thead><tr><th>Fiscal</th><th>RPA</th><th class="n">Criou</th><th class="n">Fiscalizou</th><th class="n">Finalizados</th><th class="n">Bairros</th><th class="n">Início</th><th class="n">Fim</th><th class="n" title="Estimativa: do 1º ao último registro do dia no SIGA.">Jornada</th>
+    <th style="width:22%"><div class="regua">${[6,8,10,12,14,16,18].map(h=>`<span>${h}h</span>`).join("")}</div></th><th>Situação</th></tr></thead><tbody>`+
+    L.map(l=>`<tr class="linha-acao ${S.sel===l.login?"sel-fiscal":""}" onclick="selecionar('${l.login}')">
+      <td><b style="color:var(--navy)">${esc(l.nome)}</b> <button class="fc-bt" type="button" onclick="event.stopPropagation();abrirFicha('${l.login}')" title="Ficha dos últimos dias">ficha ›</button><div style="font-size:11.5px;color:var(--muito-suave)">${l.substituto?`no lugar de ${esc(l.titular)} · `:(window.ESTATICO?"":esc(l.login)+" · ")}${esc(l.natureza)}</div></td>
+      <td>${esc(l.rpa)}</td><td class="n">${l.criou||"—"}</td><td class="n">${l.fiscalizou||"—"}</td><td class="n">${l.fechou||"—"}</td>
+      <td class="n" title="${esc(l.lista_bairros.join(", "))}">${l.bairros||"—"}</td><td class="n">${l.inicio||"—"}</td><td class="n">${l.fim||"—"}</td>
+      <td class="n"><b>${l.horas_txt}</b></td><td>${jornadaHTML(l.login)}</td>
+      <td>${tagStatus(l.status)}${l.motivos.length?`<div style="font-size:11.5px;color:var(--suave);margin-top:2px">${esc(l.motivos.join("; "))}</div>`:""}</td></tr>`).join("")+"</tbody>";
+}
+
+function selecionar(login){ S.sel = S.sel===login?null:login; desenharTabDia(); desenharMapa(true); desenharDetalhe(); }
+
+function desenharMapa(ajustar=true){
+  mapa._camada.clearLayers(); const pts=[];
+  const evs=DIA.eventos.filter(e=>e.lat && (!S.sel||e.fiscal_login===S.sel));
+  for(const e of evs){
+    L.circleMarker([e.lat,e.lng],{radius:6,color:"#fff",weight:1.3,fillColor:COR_ACAO[e.acao],fillOpacity:.92})
+     .bindPopup(`<span class="pop-id">ID ${esc(e.os_id)}</span><span class="pop-tag" style="background:${COR_ACAO[e.acao]}">${ROT_ACAO[e.acao]}${e.hora?" "+e.hora:""}</span>
+       <div style="margin-top:4px"><b>${esc(e.tipo_servico)}</b></div><div>${esc(e.logradouro)}${e.trecho?" · "+esc(e.trecho):""}</div>
+       <div style="color:#5F7180">${esc(e.bairro)} · ${esc(e.rpa)}</div><div>Fiscal: ${esc(e.fiscal_nome)}</div>${e.janela?`<div style="color:#5F7180">sumiu do aberto entre ${esc(e.janela)}</div>`:""}`)
+     .addTo(mapa._camada); pts.push([e.lat,e.lng]); }
+  if(ajustar&&pts.length) mapa.fitBounds(pts,{padding:[24,24],maxZoom:16});
+  document.getElementById("subMapa").textContent=`${fmt(pts.length)} pontos`+(S.sel?" · "+(DIA.fiscais.find(f=>f.login===S.sel)?.nome||""):" · clique num fiscal da tabela para isolar");
+}
+
+function desenharDetalhe(){
+  const f=S.sel?DIA.fiscais.find(x=>x.login===S.sel):null;
+  const evs=DIA.eventos.filter(e=>!S.sel||e.fiscal_login===S.sel);
+  document.getElementById("tituloDet").textContent=f?`Dia de ${f.nome}`:"Ritmo do dia";
+  document.getElementById("subDet").textContent=f?`${f.inicio||"?"} → ${f.fim||"?"} · ${f.horas_txt} · ${f.bairros} bairros`:"registros por hora · todos os fiscais";
+  document.getElementById("limparSel").style.display=f?"":"none";
+  const horas=[...Array(H1-H0+1).keys()].map(i=>i+H0);
+  const serie=a=>horas.map(h=>evs.filter(e=>e.acao===a&&e.hora&&+e.hora.slice(0,2)===h).length);
+  grafBarras(document.getElementById("grafHora"),horas.map(h=>h+"h"),[{label:"Criou",data:serie("criou"),backgroundColor:"#2F6FB3"},{label:"Fiscalizou",data:serie("fiscalizou"),backgroundColor:"#1C4250"}],{empilhado:true});
+  const ord=evs.slice().sort((a,b)=>(a.hora||"99").localeCompare(b.hora||"99"));
+  document.getElementById("tabEventos").innerHTML=`<thead><tr><th>Hora</th><th>Ação</th><th>ID</th><th>Tipo</th><th>Logradouro · Bairro</th>${S.sel?"":"<th>Fiscal</th>"}</tr></thead><tbody>`+
+    (ord.slice(0,400).map(e=>`<tr><td class="num">${e.hora||"—"}</td><td class="nowrap"><i class="bolinha" style="background:${COR_ACAO[e.acao]}"></i> ${ROT_ACAO[e.acao]}</td><td class="num">${esc(e.os_id)}</td>
+      <td>${esc(e.tipo_servico)}</td><td>${esc(e.logradouro)}<div style="font-size:11.5px;color:var(--muito-suave)">${esc(e.bairro)}</div></td>${S.sel?"":`<td>${esc(e.fiscal_nome)}</td>`}</tr>`).join("")
+     || `<tr><td colspan="6" class="vazio">Nenhum registro neste dia</td></tr>`)+"</tbody>";
+}
+
+async function carregarPontos(sem){
+  const el=document.getElementById("pontos");
+  let P; try{ P=await (await fetch("/api/desempenho/pontuacao?semana="+sem)).json(); }catch(e){ P={erro:"Não carregou."}; }
+  if(P.erro||!P.fiscais){ el.innerHTML=`<div class="vazio" style="padding:16px">${esc(P.erro||"Sem dados.")}</div>`; return; }
+  document.getElementById("pontosComo").innerHTML=`<b>Não é competição:</b> cada fiscal SIGA é comparado com uma meta e com o ritmo normal da equipe.
+    <b>Jornada (${P.pesos[0]}%)</b>: horas em campo estimadas pelos horários das visitas, contra ${String(P.jornada_alvo).replace(".",",")} h; dia útil sem ação conta 0.
+    <b>Produção (${P.pesos[1]}%)</b>: ações por dia útil contra a mediana da equipe (${String(P.mediana_equipe).replace(".",",")}/dia nesta semana).
+    <b>Demandas (${P.pesos[2]}%)</b>: IDs das demandas resolvidos contra o esperado (o que estava pendente com ele, até ${P.meta_demanda} por dia útil).
+    Só contam dias úteis completos (${P.dias.length} nesta semana); feriado não conta. Drenagem fica de fora.`;
+  if(!P.fiscais.length||!P.dias.length){ el.innerHTML=`<div class="vazio" style="padding:16px">Nenhum dia útil completo nesta semana ainda.</div>`; return; }
+  const bar=(v,r)=>v==null?`<div class="pt-c"><span>${r}</span><b class="m">${r==="Demandas"?"sem demanda":"—"}</b></div>`:`<div class="pt-c"><span>${r}</span><b>${v}</b><div class="pt-b"><i class="${v>=80?"v":v>=60?"a":"r"}" style="width:${v}%"></i></div></div>`;
+  const cont={v:0,a:0,r:0}; P.fiscais.forEach(f=>{ if(cont[f.cls]!=null) cont[f.cls]++; });
+  const notas=P.fiscais.map(f=>f.nota).filter(v=>v!=null), media=notas.length?Math.round(notas.reduce((a,b)=>a+b,0)/notas.length):null;
+  document.getElementById("ptResumo").innerHTML=`<div class="pt-r1"><b>${media??"—"}</b><span>nota média da equipe SIGA</span></div>
+    <div class="pt-r v"><b>${cont.v}</b><span>em dia</span></div><div class="pt-r a"><b>${cont.a}</b><span>atenção</span></div><div class="pt-r r"><b>${cont.r}</b><span>precisa melhorar</span></div>
+    <div class="pt-r1"><b>${P.dias.length}</b><span>dia(s) útil(eis) completo(s) na semana</span></div>`;
+  el.innerHTML=P.fiscais.map(f=>`<div class="pt-f" role="button" tabindex="0" onclick="abrirFicha('${f.login}')" title="Ver a ficha de ${esc(f.nome)}">
+    <div class="pt-n"><b>${esc(f.nome)}</b><span>${esc(f.rpa||"")}</span></div>
+    <div class="pt-nota ${f.cls}"><b>${f.nota??"—"}</b><span>${esc(f.situacao)}</span></div>
+    ${bar(f.J,"Jornada")}${bar(f.P,"Produção")}${bar(f.D,"Demandas")}
+    <div class="pt-dias">${f.por_dia.map(x=>`<i class="${x.cls}" title="${dataBR(x.dia)} · nota ${x.nota??"—"} · ${x.acoes} ações · ${x.horas} · ${x.dem} da demanda">${x.nota??"·"}<small>${["dom","seg","ter","qua","qui","sex","sáb"][new Date(x.dia+"T12:00:00").getDay()]}</small></i>`).join("")}</div>
+    <div class="pt-txt">${f.positivos.map(t=>`<span class="pos">+ ${esc(t)}</span>`).join("")}${f.negativos.map(t=>`<span class="neg">− ${esc(t)}</span>`).join("")}</div>
+  </div>`).join("");
+}
+async function carregarSemana(){
+  const sem=document.getElementById("fSemana").value; if(!sem) return;
+  const sp=document.getElementById("fSemanaPt"); if(sp && sp.value!==sem) sp.value=sem;
+  carregarPontos(sem);
+  SEM=await (await fetch("/api/desempenho/semana?"+q({semana:sem}))).json();
+  if(SEM.erro){ document.getElementById("tabSemana").innerHTML=`<tr><td class="vazio">${esc(SEM.erro)}</td></tr>`; document.getElementById("alertas").innerHTML=""; return; }
+  document.getElementById("xlsSemana").href="/desempenho/excel?"+q({semana:sem});
+  document.getElementById("pdfSemana").href="/relatorio/semanal?semana="+sem;
+  const cel=(p,sit)=>{ const fds=new Date(p.dia+"T12:00:00").getDay()%6===0;
+    if(sit!=="completo"&&!p.acoes) return `<i class="nd" title="${sit}">·</i>`;
+    const c=p.status.startsWith("sem")?"zero":p.status.startsWith("pouca")?"fraco":fds?"fds":"";
+    return `<i class="${c}" style="${c?"":`background:rgba(46,157,87,${Math.min(.15+p.acoes/45,.85)})`}" title="${dataBR(p.dia)} · ${p.acoes} ações${p.horas?" · "+p.inicio+"–"+p.fim:""} · ${p.status}">${p.acoes||"0"}</i>`; };
+  let nat=null;
+  document.getElementById("tabSemana").innerHTML=`<thead><tr><th></th><th>Fiscal</th><th class="n">Ações</th><th class="n">Criou</th><th class="n">Fisc.</th><th class="n">Finaliz.</th><th class="n">Dias</th><th class="n">Média/dia</th><th class="n" title="Média por dia trabalhado: do 1º ao último registro no SIGA. Dias com 1 registro só não entram.">Jornada média/dia</th>
+     <th><div class="calor">${SEM.dias.map(d=>`<span style="font-size:10px;text-align:center;color:var(--muito-suave)">${d.rot.slice(0,3)}<br>${d.rot.slice(4)}</span>`).join("")}</div></th></tr></thead><tbody>`+
+    SEM.ranking.map(r=>{ const cab=r.natureza!==nat?`<tr><td colspan="10" style="background:#F6F8FA;font-weight:700;color:var(--navy);font-size:12px;text-transform:uppercase;letter-spacing:.5px">${esc(r.natureza)}</td></tr>`:""; nat=r.natureza;
+      return cab+`<tr class="linha-acao" onclick="irDia('${r.login}')"><td><span class="medalha ${r.posicao<=3?"m"+r.posicao:""}">${r.posicao}</span></td>
+      <td><b style="color:var(--navy)">${esc(r.nome)}</b> <span style="font-size:11.5px;color:var(--muito-suave)">${esc(r.rpa)}${r.substituto?" · login de "+esc(r.titular):""}</span></td>
+      <td class="n"><b>${fmt(r.acoes)}</b></td><td class="n">${fmt(r.criou)}</td><td class="n">${fmt(r.fiscalizou)}</td><td class="n">${fmt(r.fechou)}</td>
+      <td class="n">${r.dias_trabalhados}/${r.dias_uteis}</td><td class="n">${r.media_dia}</td><td class="n">${r.horas_media}</td>
+      <td><div class="calor">${r.por_dia.map((p,i)=>cel(p,SEM.dias[i].situacao)).join("")}</div></td></tr>`; }).join("")+"</tbody>";
+  document.getElementById("alertas").innerHTML = SEM.alertas.length ? SEM.alertas.map(a=>`<div class="alerta-item">
+      <div class="dia">${a.dia_semana} ${dataBR(a.dia).slice(0,5)}</div>
+      <div><b style="color:var(--navy)">${esc(a.nome)}</b> <span style="font-size:11.5px;color:var(--muito-suave)">${esc(a.rpa)}</span><br>${tagStatus(a.tipo)} <span style="font-size:12px;color:var(--suave)">${esc(a.motivos.join("; "))}</span></div></div>`).join("")
+    : `<div class="aviso ok" style="margin:6px 0 0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg><div>Nenhum alerta nos dias úteis já fechados desta semana.</div></div>`;
+}
+function irDia(login){ S.sel=login; document.getElementById("tabDia").scrollIntoView({behavior:"smooth",block:"start"}); desenharTabDia(); desenharMapa(true); desenharDetalhe(); }
+
+function desenharAbertos(){
+  const rows=ABERTOS.filter(o=>(!S.tipos.length||S.tipos.includes(o.tipo_servico))&&(!S.nat||o.natureza===S.nat));
+  const modo=S.modo==="criacao"?"criacao":"fiscalizacao", ordem=ORDEM_COR[modo].filter(c=>c!=="CINZA").slice().reverse();
+  document.getElementById("subAberto").textContent=`${fmt(rows.length)} IDs em aberto na última coleta${S.tipos.length?" · "+(S.tipos.length<=2?S.tipos.join(", "):S.tipos.length+" tipos"):""}`;
+  document.getElementById("legAberto").innerHTML=legendaHTML(modo);
+  const tab=(chave,el,demanda)=>{ const g=agrupar(rows,chave,modo).sort((a,b)=>String(a.chave).localeCompare(String(b.chave),"pt-BR"));
+    document.getElementById(el).innerHTML=`<thead><tr><th>${chave==="rpa"?"RPA":"Fiscal"}</th><th class="n">Abertos</th><th style="width:26%">Prazo</th>${ordem.map(c=>`<th class="n"><i class="bolinha" style="background:${CORES[c]}"></i></th>`).join("")}<th class="n">Nunca</th>${demanda?"<th></th>":""}</tr></thead><tbody>`+
+      g.map(x=>{ const p=new URLSearchParams(); p.set("modo",modo); S.tipos.forEach(t=>p.append("tipo",t)); p.append(chave==="rpa"?"rpa":"fiscal",x.chave);
+        return `<tr><td><b style="color:var(--navy)">${esc(x.chave)}</b></td><td class="n">${fmt(x.total)}</td><td>${barraPilha(x.cores,x.total,modo)}</td>
+        ${ordem.map(c=>`<td class="n" style="color:${(x.cores[c]||0)&&(c==="VERMELHO"||c==="VINHO")?"var(--vermelho)":"inherit"}">${x.cores[c]||"·"}</td>`).join("")}<td class="n">${x.nunca||"·"}</td>
+        ${demanda?`<td style="text-align:right;white-space:nowrap"><a class="icone-btn" title="Ver na Visão geral" href="${window.ESTATICO?"index.html":"/"}?${p}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg></a> <a class="icone-btn so-local" title="Gerar demanda" href="/demanda?${p}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>
+</svg></a></td>`:""}</tr>`; }).join("")+"</tbody>";
+  };
+  tab("fiscal_nome","tabAbFiscal",true); tab("rpa","tabAbRpa",true);
+}
+
+async function iniciar(){
+  mapa=criarMapa("mapa");
+  mTipos=criarMulti(document.getElementById("fTipos"),"Tipos",TIPOS,[],v=>{S.tipos=v; marcarAtalho(); tudo();});
+  document.getElementById("fDia").onchange=e=>{ S.dia=e.target.value; S.sel=null;
+    const sw=document.getElementById("fSemana"), w=semanaDe(S.dia); if([...sw.options].some(o=>o.value===w)){ sw.value=w; carregarSemana(); } carregarDia(); };
+  document.getElementById("fSemana").onchange=carregarSemana;
+  document.querySelectorAll("#fGran button").forEach(b=>b.onclick=()=>{ GRAN=b.dataset.v; SEL_EVO=null; EQ_REF=null; document.querySelectorAll("#fGran button").forEach(x=>x.classList.toggle("on",x===b)); carregarEvo(); });
+  document.getElementById("fSemana").value=semanaDe(S.dia);
+  document.querySelectorAll("#fNat button").forEach(b=>b.onclick=()=>{ S.nat=b.dataset.v; document.querySelectorAll("#fNat button").forEach(x=>x.classList.toggle("on",x===b)); S.sel=null; tudo(); });
+  document.querySelectorAll("#fModo button").forEach(b=>b.onclick=()=>{ S.modo=b.dataset.v; document.querySelectorAll("#fModo button").forEach(x=>x.classList.toggle("on",x===b)); desenharAbertos(); });
+  const bur=TIPOS.find(t=>/buraco\s*siga/i.test(t.valor));
+  const at=document.getElementById("atalhoBuraco");
+  if(!bur) at.style.display="none";
+  at.onclick=()=>{ S.tipos = at.classList.contains("on")?[]:[bur.valor]; mTipos.set(S.tipos); marcarAtalho(); tudo(); };
+  carregarColeta(CID).then(c=>{ ABERTOS=c.rows; desenharAbertos(); });
+  tudo();
+}
+function marcarAtalho(){ const at=document.getElementById("atalhoBuraco"); at.classList.toggle("on",S.tipos.length===1&&/buraco\s*siga/i.test(S.tipos[0])); }
+function tudo(){ carregarDia(); carregarSemana(); carregarEvo(); if(ABERTOS.length) desenharAbertos(); }
+
+/* ── Comparativos semanais / mensais ── */
+let EVO=null, GRAN="semana", SEL_EVO=null;
+function spark(vals, atualParcial){
+  const max=Math.max(1,...vals), w=8, g=3, h=26;
+  return `<svg width="${vals.length*(w+g)}" height="${h}" style="display:block">${vals.map((v,i)=>{ const bh=Math.max(1,Math.round(v/max*(h-2)));
+    return `<rect x="${i*(w+g)}" y="${h-bh}" width="${w}" height="${bh}" rx="1.5" fill="${i===vals.length-1&&atualParcial?"#9DB8C6":"#1C4250"}"><title>${fmt(v)}</title></rect>`; }).join("")}</svg>`;
+}
+
+let EQ_REF=null;
+function eqEscolher(ref){ EQ_REF=ref; carregarEquipe(); }
+async function carregarEquipe(){
+  let Q; try{ Q=await (await fetch("/api/desempenho/equipe?gran="+GRAN+(EQ_REF?"&ref="+EQ_REF:""))).json(); }catch(e){ Q={erro:"Não carregou."}; }
+  if(Q.erro||!Q.kpis){ document.getElementById("eqKs").innerHTML=`<div class="vazio">${esc(Q.erro||"Sem dados.")}</div>`; return; }
+  const per=GRAN==="mes"?"mês":"semana", perA=GRAN==="mes"?"o mês passado":"a semana passada";
+  const PE=Q.periodo||{}, passado=PE.completo;
+  document.getElementById("eqTit").textContent=passado
+    ?(GRAN==="mes"?`Como a equipe foi em ${PE.rot}`:`Como a equipe foi na semana de ${dataBR(PE.inicio).slice(0,5)} a ${dataBR(PE.fim).slice(0,5)}`)
+    :(GRAN==="mes"?"Como a equipe está indo no mês":"Como a equipe está indo na semana");
+  const fe=Q.feriados||{};
+  document.getElementById("eqSub").innerHTML=Q.tem_cmp?`Est${GRAN==="mes"?"e":"a"} ${per} <b>até ${dataBR(Q.corte).slice(0,5)}</b> comparad${GRAN==="mes"?"o":"a"} com ${perA} <b>até ${dataBR(Q.mesmo_ponto).slice(0,5)}</b> — meia ${per} nunca é comparada com ${GRAN==="mes"?"um mês cheio":"uma semana cheia"}.${fe.atual&&fe.atual.length?` <span class="eq-fer">feriado: ${esc(fe.atual.join(", "))}</span>`:""}${fe.anterior&&fe.anterior.length?` <span class="eq-fer">antes: ${esc(fe.anterior.join(", "))}</span>`:""}`
+    :`O ${per} atual ainda não tem dia fechado para comparar.`;
+  if(passado) document.getElementById("eqSub").innerHTML=`${GRAN==="mes"?"Mês":"Semana"} inteir${GRAN==="mes"?"o":"a"} comparad${GRAN==="mes"?"o":"a"} com ${GRAN==="mes"?"o mês":"a semana"} anterior.${fe.atual&&fe.atual.length?` <span class="eq-fer">feriado: ${esc(fe.atual.join(", "))}</span>`:""}${fe.anterior&&fe.anterior.length?` <span class="eq-fer">antes: ${esc(fe.anterior.join(", "))}</span>`:""}`;
+  if(Q.aviso) document.getElementById("eqSub").innerHTML+=` <span class="eq-fer">${esc(Q.aviso)}</span>`;
+  if(EQ_REF) document.getElementById("eqSub").innerHTML+=` <button type="button" class="eq-volta" onclick="eqEscolher(null)">↩ voltar para ${GRAN==="mes"?"o mês":"a semana"} atual</button>`;
+  const seta=(v,unid="%")=>v==null?`<em class="eq-v n">sem comparação</em>`:v>0?`<em class="eq-v s">▲ ${v}${unid}</em>`:v<0?`<em class="eq-v c">▼ ${Math.abs(v)}${unid}</em>`:`<em class="eq-v n">= igual</em>`;
+  document.getElementById("eqKs").innerHTML=Q.kpis.map(k=>{
+    const v=k.dec&&k.v!=null?String(k.v).replace(".",","):(typeof k.v==="number"?fmt(k.v):(k.v??"—"));
+    const ant=k.dec&&k.ant!=null?String(k.ant).replace(".",","):(typeof k.ant==="number"?fmt(k.ant):(k.ant??"—"));
+    const sv=k.var_min!=null?seta(k.var_min," min"):(k.igual!==undefined&&k.igual!==0?(k.igual?`<em class="eq-v n">= igual</em>`:(k.melhor?`<em class="eq-v s">▲ melhor</em>`:`<em class="eq-v c">▼ pior</em>`)):seta(k.var));
+    return `<div class="eq-k ${k.cor}"><span>${esc(k.rot)}</span><b>${v}</b>${sv}<small>${perA}: ${ant} · ${esc(k.det)}</small></div>`; }).join("");
+  const D=Q.drenagem;
+  document.getElementById("eqDren").innerHTML=`<b>Drenagem</b> <span>acompanhamento, sem comparação de produção</span> · ${fmt(D.acoes)} ações ${seta(D.var)} · ${D.fiscais.map(f=>`${esc(f.nome)} <b>${f.acoes}</b>`).join(" · ")} · limpezas programadas fiscalizadas: <b>${D.limpezas}</b>`;
+  document.getElementById("eqGrafTit").textContent=`Ações por ${per} · últim${GRAN==="mes"?"os":"as"} ${Q.barras.length}`;
+  const mx=Math.max(1,...Q.barras.map(b=>b.siga+0));
+  document.getElementById("eqBarras").innerHTML=Q.barras.map(b=>`<div class="eq-b${b.atual?" atual":""}${b.sel?" sel":""} clic" role="button" tabindex="0" title="Ver ${GRAN==="mes"?"este mês":"esta semana"}" onclick="eqEscolher('${b.fim}')"><b>${fmt(b.siga)}</b>
+    <div class="eq-bar"><i style="height:${b.siga/mx*100}%"></i><em style="bottom:${Math.min(b.drenagem/mx*100,100)}%" title="Drenagem ${b.drenagem}"></em></div><small>${esc(b.rot)}${b.atual?"*":""}</small></div>`).join("");
+  const sp=(s,cor)=>{ const m=Math.max(1,...s); return `<svg width="92" height="26" viewBox="0 0 92 26">${s.map((v,i)=>`<rect x="${i*92/s.length+1}" y="${26-Math.max(2,v/m*24)}" width="${92/s.length-3}" height="${Math.max(2,v/m*24)}" rx="2" fill="${cor}" opacity="${i===s.length-1?.45:1}"/>`).join("")}</svg>`; };
+  const lin=(m,cor,cls)=>`<div class="eq-f" role="button" tabindex="0" onclick="abrirFicha('${m.login}')"><div><b>${esc(m.nome)}</b><span>${esc(m.rpa||"")}</span></div>${sp(m.serie,cor)}
+    <div class="eq-num"><span>${m.antes} → <b>${m.agora}</b></span><em class="eq-v ${cls}">${m.var>0?"▲":"▼"} ${Math.abs(m.var)}%</em></div></div>`;
+  document.getElementById("eqSobe").innerHTML=Q.subiram.map(m=>lin(m,"#00A651","s")).join("")||'<div class="eq-vz">ninguém subiu 10% ou mais</div>';
+  document.getElementById("eqCai").innerHTML=Q.cairam.map(m=>lin(m,"#E4002B","c")).join("")||'<div class="eq-vz">ninguém caiu 10% ou mais</div>';
+  document.getElementById("eqEst").innerHTML=Q.estaveis.length?`Sem grande mudança: ${Q.estaveis.map(e=>`${esc(e.nome)} (${e.var>0?"▲":e.var<0?"▼":"="} ${Math.abs(e.var)}%)`).join(" · ")}`:"";
+}
+async function carregarEvo(){
+  carregarEquipe(); return;            // a tabela antiga de comparativos saiu da página (a Evolução da equipe substitui)
+  EVO=await (await fetch("/api/desempenho/evolucao?"+q({gran:GRAN, n:GRAN==="mes"?6:8}))).json();
+  if(EVO.erro){ document.getElementById("tabEvo").innerHTML=`<tr><td class="vazio">${esc(EVO.erro)}</td></tr>`; return; }
+  const P=EVO.periodos, atual=P[P.length-1], parcial=!atual.completo, ant=P[P.length-2];
+  document.getElementById("subEvo").textContent = EVO.ate_mesmo_ponto
+    ? `Δ = ${GRAN==="mes"?"este mês":"esta semana"} até ${dataBR(EVO.corte).slice(0,5)} × ${GRAN==="mes"?"mês":"semana"} anterior até ${dataBR(EVO.ate_mesmo_ponto).slice(0,5)}`
+    : "período atual ainda sem dia fechado para comparar";
+  let nat=null;
+  document.getElementById("tabEvo").innerHTML=`<thead><tr><th></th><th>Fiscal</th><th>Últimos ${P.length} ${GRAN==="mes"?"meses":"semanas"}</th><th class="n">${atual.rot}${parcial?" (até agora)":""}</th><th class="n">${ant.rot}</th><th class="n" title="até ontem × mesmo ponto do período anterior">Δ</th><th class="n">Média/dia</th><th class="n">Dias</th><th class="n" title="Média por dia trabalhado: do 1º ao último registro no SIGA. Dias com 1 registro só não entram.">Jornada média/dia</th></tr></thead><tbody>`+
+    EVO.fiscais.map(f=>{ const v=f.valores, a=v[v.length-1], b=v[v.length-2];
+      const cab=f.natureza!==nat?`<tr><td colspan="9" style="background:#F6F8FA;font-weight:700;color:var(--navy);font-size:12px;text-transform:uppercase;letter-spacing:.5px">${esc(f.natureza)}</td></tr>`:""; nat=f.natureza;
+      const d=f.delta_pct;
+      return cab+`<tr class="linha-acao ${SEL_EVO===f.login?"sel-fiscal":""}" onclick="selEvo('${f.login}')"><td><span class="medalha ${f.posicao<=3?"m"+f.posicao:""}">${f.posicao||"·"}</span></td>
+        <td><b style="color:var(--navy)">${esc(f.nome)}</b> <span style="font-size:11.5px;color:var(--muito-suave)">${esc(f.rpa||"")}</span></td>
+        <td>${spark(v.map(x=>x.acoes), parcial)}</td><td class="n"><b>${fmt(a.acoes)}</b></td><td class="n">${fmt(b.acoes)}</td>
+        <td class="n ${d==null?"neutro":d<0?"up":"down"}">${d==null?"—":(d>0?"+":"")+d+"%"}</td>
+        <td class="n">${a.media_dia||"—"}</td><td class="n">${a.dias}</td><td class="n">${a.horas!=null?fmtHoras(a.horas):"—"}</td></tr>`; }).join("")+"</tbody>";
+  desenharGrafEvo();
+}
+function fmtHoras(h){ const m=Math.round(h*60); return Math.floor(m/60)+"h"+String(m%60).padStart(2,"0"); }
+function selEvo(l){ SEL_EVO = SEL_EVO===l?null:l; carregarEvoTabelaSel(); desenharGrafEvo(); }
+function carregarEvoTabelaSel(){ document.querySelectorAll("#tabEvo tr.linha-acao").forEach(tr=>tr.classList.toggle("sel-fiscal", tr.getAttribute("onclick")===`selEvo('${SEL_EVO}')`)); }
+function desenharGrafEvo(){
+  const P=EVO.periodos, rot=P.map(p=>p.rot+(p.completo?"":"*"));
+  if(SEL_EVO){ const f=EVO.fiscais.find(x=>x.login===SEL_EVO);
+    document.getElementById("tituloEvo").textContent="Por período — "+f.nome;
+    grafBarras(document.getElementById("grafEvo"), rot, [{label:"Fiscalizou",data:f.valores.map(v=>v.fiscalizou),backgroundColor:"#1C4250"},
+      {label:"Criou",data:f.valores.map(v=>v.criou),backgroundColor:"#2F6FB3"},{label:"Finalizados",data:f.valores.map(v=>v.fechou),backgroundColor:"#9AA5B1"}]);
+  } else {
+    document.getElementById("tituloEvo").textContent="Ações por período — todos";
+    grafBarras(document.getElementById("grafEvo"), rot, [{label:"SIGA",data:EVO.totais.map(t=>t.siga),backgroundColor:"#1C4250"},
+      {label:"Drenagem",data:EVO.totais.map(t=>t.drenagem),backgroundColor:"#3D9E6A"}],{empilhado:true});
+  }
+}
+
+/* ── Ficha do fiscal: últimos 5/10/15 dias ─────────────────────────── */
+const Ficha={login:null,n:10,graf:[],
+  async abrir(login,n){ this.login=login; if(n) this.n=n;
+    document.getElementById("fcFundo").hidden=false; document.body.classList.add("av-aberto");
+    document.querySelectorAll("#fcPer button").forEach(b=>b.classList.toggle("on",+b.dataset.n===this.n));
+    document.getElementById("fcCorpo").innerHTML='<div class="vazio" style="padding:40px">Montando a ficha…</div>';
+    let F; try{ F=await (await fetch(`/api/desempenho/fiscal?login=${encodeURIComponent(login)}&dias=${this.n}`)).json(); }catch(e){ F={erro:"Não carregou."}; }
+    if(F.erro){ document.getElementById("fcCorpo").innerHTML=`<div class="vazio" style="padding:40px">${esc(F.erro)}</div>`; return; }
+    this.render(F); },
+  fechar(){ document.getElementById("fcFundo").hidden=true; document.body.classList.remove("av-aberto"); this.graf.forEach(g=>g.destroy()); this.graf=[]; },
+  render(F){
+    const R=F.resumo, ini=F.nome.replace(/\./g," ").split(/\s+/).slice(0,2).map(x=>x[0]).join("");
+    document.getElementById("fcAv").textContent=ini; document.getElementById("fcNome").textContent=F.nome;
+    document.getElementById("fcSub").textContent=`${F.rpa||""}${F.rpa?" · ":""}${F.natureza} · ${F.login} · ${dataBR(F.de)} a ${dataBR(F.ate)}`;
+    const k=(v,r,c="")=>`<div class="fc-k ${c}"><b>${v}</b><span>${r}</span></div>`;
+    const alertasT=R.atrasos+R.saidas_cedo+R.poucas+R.sem_acao;
+    const dias=F.dias.filter(x=>x.util||x.acoes);
+    const linhas=dias.slice().reverse().map(x=>`<tr class="${x.util?"":"fc-fds"}">
+      <td><b>${esc(x.rot)}</b>${x.feriado?`<div class="fc-tag">${esc(x.feriado)}</div>`:""}${x.situacao!=="completo"&&x.util?`<div class="fc-tag and">em andamento</div>`:""}</td>
+      <td class="n ${x.alertas.some(a=>a[1].startsWith("primeiro"))?"fc-a":""}">${x.inicio||"—"}</td>
+      <td class="n ${x.alertas.some(a=>a[1].startsWith("último"))?"fc-a":""}">${x.fim||"—"}</td><td class="n">${x.horas||"—"}</td>
+      <td class="n">${x.criou||"—"}</td><td class="n"><b>${x.fiscalizou||"—"}</b></td><td class="n">${x.fechou||"—"}</td><td class="n">${x.demandas||"—"}</td>
+      <td class="n">${x.equipe_med!=null?Math.round(x.equipe_med):"—"}</td>
+      <td>${x.drenagem?`<span class="fc-tag dr" title="limpeza programada/drenagem demoram mais: contam como mais de uma ação">${x.limpeza?"limpeza programada":"drenagem"}</span>`:""}
+        ${x.alertas.map(a=>`<span class="fc-al ${a[0]}">${esc(a[1])}</span>`).join("")||(x.util&&x.situacao==="completo"&&x.acoes?'<span class="fc-ok">ok</span>':"")}</td></tr>`).join("");
+    const tl=(arr,cor)=>{ const mx=Math.max(1,...arr.map(t=>t[1])); return arr.length?arr.map(([t,v])=>`<div class="fc-tp"><span>${esc(t)}</span><div><i style="width:${v/mx*100}%;background:${cor}"></i></div><b>${v}</b></div>`).join(""):'<div class="fc-vz">nenhum</div>'; };
+    document.getElementById("fcCorpo").innerHTML=`
+      <div class="fc-ks">${k(`${R.trabalhados}/${R.dias_uteis}`,"dias úteis com registro")}${k(R.media_dia.toLocaleString("pt-BR"),"ações por dia trabalhado")}
+        ${k(R.inicio_med||"—","início típico",R.inicio_med&&R.inicio_med>`${String(F.expediente[0]).padStart(2,"0")}:30`?"a":"")}
+        ${k(R.fim_med||"—","último registro típico",R.fim_med&&R.fim_med<`${String(F.expediente[1]-1).padStart(2,"0")}:00`?"a":"")}${k(R.horas_med,"horas em campo (média)")}
+        ${k(R.fiscalizou,"fiscalizados")}${k(R.criou,"criados")}${k(R.fechou,"finalizados")}${k(R.demandas,"IDs de demanda resolvidos")}</div>
+      <div class="fc-sinais ${alertasT?"":"ok"}">${alertasT?`<b>Pontos para conferir:</b> ${[R.atrasos?`${R.atrasos} dia(s) com início depois de ${String(F.expediente[0]).padStart(2,"0")}:30`:"",R.saidas_cedo?`${R.saidas_cedo} dia(s) com último registro antes de ${String(F.expediente[1]-1).padStart(2,"0")}:00`:"",R.poucas?`${R.poucas} dia(s) com poucas ações`:"",R.sem_acao?`${R.sem_acao} dia(s) útil(eis) sem nenhuma ação`:""].filter(Boolean).join(" · ")}`:"<b>Nenhum ponto de atenção</b> nos dias úteis completos do período."}
+        ${R.dias_limpeza?` <span class="fc-nota">${R.dias_limpeza} dia(s) com limpeza programada/drenagem — esses serviços demoram mais (1 limpeza ≈ ${F.pesos.limpeza} fiscalizações no critério de poucas ações).</span>`:""}</div>
+      <div class="fc-grade">
+        <div class="fc-card"><h4>Ações por dia</h4><span>criados, fiscalizados e finalizados · linha = mediana da equipe ${esc(F.natureza)}</span><div style="height:230px"><canvas id="fcG1"></canvas></div></div>
+        <div class="fc-card"><h4>Horário de trabalho</h4><span>do primeiro ao último registro · faixa = expediente ${String(F.expediente[0]).padStart(2,"0")}:00–${F.expediente[1]}:00 · ponto = 1ª fiscalização</span><div style="height:230px"><canvas id="fcG2"></canvas></div></div>
+      </div>
+      <div class="fc-grade fc-g3">
+        <div class="fc-card"><h4>Fiscalizados por tipo</h4>${tl(F.tipos.fiscalizou,"#2E9D57")}</div>
+        <div class="fc-card"><h4>Criados por tipo</h4>${tl(F.tipos.criou,"#2F6FB3")}</div>
+        <div class="fc-card"><h4>Finalizados por tipo</h4>${tl(F.tipos.fechou,"#9AA5B1")}</div>
+      </div>
+      <div class="fc-card"><h4>Dia a dia</h4><span>horários dos registros no SIGA (o primeiro registro não é a hora de chegada) · em laranja: fora do esperado</span>
+        <div class="rolagem" style="max-height:none"><table class="tabela fc-tab"><thead><tr><th>Dia</th><th class="n">Início</th><th class="n">Último</th><th class="n">Horas</th>
+          <th class="n">Criados</th><th class="n">Fiscalizados</th><th class="n">Finalizados</th><th class="n">Demanda</th><th class="n" title="mediana de ações por fiscal da equipe no dia">Equipe</th><th>Observações</th></tr></thead><tbody>${linhas}</tbody></table></div></div>
+      <p class="fc-exp">Sinais para conferir, não vereditos. Início: primeiro registro depois de ${String(F.expediente[0]).padStart(2,"0")}:30 · quando o dia começa criando IDs, a 1ª fiscalização aparece só se vier 30 min ou mais depois (e após ${String(F.expediente[0]+1).padStart(2,"0")}:30) · último registro antes de ${String(F.expediente[1]-1).padStart(2,"0")}:00 · poucas ações: abaixo da metade do que ele costuma fazer (limpeza programada e drenagem contam como mais de uma ação). Só dias úteis completos; feriados não contam.</p>`;
+    this.graf.forEach(g=>g.destroy()); this.graf=[];
+    const rot=F.dias.map(x=>x.rot);
+    this.graf.push(new Chart(document.getElementById("fcG1"),{type:"bar",data:{labels:rot,datasets:[
+      {label:"Fiscalizados",data:F.dias.map(x=>x.fiscalizou),backgroundColor:"#2E9D57",stack:"a"},
+      {label:"Criados",data:F.dias.map(x=>x.criou),backgroundColor:"#2F6FB3",stack:"a"},
+      {label:"Finalizados",data:F.dias.map(x=>x.fechou),backgroundColor:"#B9C6D0",stack:"b"},
+      {type:"line",label:"Equipe (mediana)",data:F.dias.map(x=>x.equipe_med),borderColor:"#F2A900",backgroundColor:"#F2A900",pointRadius:3,borderDash:[5,4],spanGaps:true}]},
+      options:{maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{boxWidth:12}}},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true}}}}));
+    const h=t=>{ if(!t) return null; const [a,b]=t.split(":").map(Number); return a+b/60; };
+    const E0=F.expediente[0],E1=F.expediente[1];
+    const faixa={id:"faixaExp",beforeDatasetsDraw(c){ const y=c.scales.y,x=c.scales.x,ctx=c.ctx; ctx.save(); ctx.fillStyle="rgba(46,157,87,.08)";
+      ctx.fillRect(x.left,y.getPixelForValue(E1),x.right-x.left,y.getPixelForValue(E0)-y.getPixelForValue(E1)); ctx.restore(); }};
+    this.graf.push(new Chart(document.getElementById("fcG2"),{type:"bar",plugins:[faixa],data:{labels:rot,datasets:[
+      {label:"Do 1º ao último registro",data:F.dias.map(x=>x.inicio&&x.fim?[h(x.inicio),h(x.fim)]:null),
+        backgroundColor:F.dias.map(x=>x.alertas.some(a=>a[1].startsWith("primeiro")||a[1].startsWith("último"))?"#F2A900":"#1C4250"),borderRadius:4,barPercentage:.55},
+      {type:"line",label:"1ª fiscalização",data:F.dias.map(x=>h(x.prim_fisc)),showLine:false,pointRadius:4,pointBackgroundColor:"#2E9D57",borderColor:"#2E9D57"}]},
+      options:{maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>{ const v=c.raw; const f=t=>`${String(Math.floor(t)).padStart(2,"0")}:${String(Math.round(t%1*60)).padStart(2,"0")}`;
+        return Array.isArray(v)?`${f(v[0])} → ${f(v[1])}`:(v!=null?`1ª fiscalização ${f(v)}`:""); }}}},
+        scales:{x:{grid:{display:false}},y:{min:6,max:19,reverse:true,ticks:{stepSize:1,callback:v=>v+"h"}}}}}));
+  }
+};
+function abrirFicha(login){ Ficha.abrir(login); }
+document.querySelectorAll("#fcPer button").forEach(b=>b.onclick=()=>Ficha.abrir(Ficha.login,+b.dataset.n));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!document.getElementById("fcFundo").hidden) Ficha.fechar(); });
+document.getElementById("fSemanaPt").onchange=e=>{ const sw=document.getElementById("fSemana"); sw.value=e.target.value; carregarSemana(); };
+iniciar();
+setTimeout(()=>mapa&&mapa.invalidateSize(),400);
+</script>
+
+</body>
+</html>
