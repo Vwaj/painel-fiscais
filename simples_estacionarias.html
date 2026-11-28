@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="VWAJ">
+<title>Estacionárias · Acompanhamento de Fiscais</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Fraunces:opsz,—,600;9..144,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/simples.css?v=1795787784">
+</head>
+<body>
+
+<div class="pg mono">
+  <div class="listra" aria-hidden="true"></div>
+  <div class="est-cab">
+    <div class="dentro">
+      <div>
+        <a class="volta" href="index.html">‹ Início</a>
+        <h1>Estacionárias nos canais</h1>
+        <p>Cada vistoria do SIGA, canal por canal: quantas estacionárias havia, quando, quem vistoriou e a foto.</p>
+        <div class="est-kpis">
+          <div><b>12</b><small>estacionárias agora</small></div>
+          <div><b>15</b><small>vistorias na semana · antes 12</small></div>
+          <div><b>7<span style="font-size: 18px;"> de 9</span></b><small>canais vistoriados na semana</small></div>
+          <div><b>27/11</b><small>última vistoria lida</small></div>
+        </div>
+        
+        <div class="est-mud" title="Última vistoria de cada canal comparada com a vistoria anterior do mesmo canal">
+          <span class="rot">Na última vistoria de cada canal:</span>
+          
+          <span class="m-ruim">▲ 1 canal piorou</span>
+          <span class="m-ig">= 8 iguais</span>
+          <span class="m-saldo">▲ 1 a mais no total</span>
+        </div>
+        <div class="chips" style="margin-top: 12px;"><a class="chip" href="simples_estacionarias.html"
+          style="background: #fff; color: #0E7490;">Esta semana</a><a class="chip" href="simples_estacionarias_s1.html"
+          style="background: rgba(255,255,255,.16); color: #fff;">16/11</a><a class="chip" href="simples_estacionarias_s2.html"
+          style="background: rgba(255,255,255,.16); color: #fff;">09/11</a></div>
+      </div>
+      <div class="obra"><svg viewBox="0 0 600 230" role="img" aria-label="Escavadeira retirando entulho do canal enquanto dois trabalhadores com EPI ajudam com pás" style="width: 100%; max-width: 600px; height: auto; display: block;">
+  <circle cx="250" cy="40" r="22" fill="#F8D57E" opacity=".9"></circle>
+  <path d="M0 120 H110 L160 196 H340 L390 120 H600 V230 H0 Z" fill="#6B8F4E"></path>
+  <path d="M0 120 H110 L160 196 H340 L390 120 H600" fill="none" stroke="#4E6E36" stroke-width="3"></path>
+  <path d="M110 120 L160 196 L170 196 L124 120 Z M390 120 L340 196 L330 196 L376 120 Z" fill="#8B6B45"></path>
+  <path d="M150 182 H350 L340 196 H160 Z" fill="#5FA3A6"></path>
+  <path class="onda" d="M160 186 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" stroke="#CFEDEC" stroke-width="2" fill="none"></path>
+  <g fill="#7A5A3A"><ellipse cx="200" cy="184" rx="14" ry="6"></ellipse><ellipse cx="222" cy="186" rx="9" ry="5" fill="#5C4630"></ellipse><rect x="252" y="178" width="18" height="10" rx="2" fill="#94A3B8"></rect><circle cx="300" cy="184" r="7" fill="none" stroke="#1F2937" stroke-width="4"></circle></g>
+  <!-- estacionária (caçamba) na margem esquerda -->
+  <g transform="translate(14 82)"><path d="M0 8 H70 L62 38 H8 Z" fill="#E89B0C"></path><path d="M0 8 H70" stroke="#2E1702" stroke-width="3"></path><path d="M10 14 L60 14" stroke="#2E1702" stroke-width="1.5" opacity=".4"></path><ellipse cx="34" cy="8" rx="30" ry="5" fill="#7A5A3A"></ellipse></g>
+  <!-- escavadeira (genérica, sem marca) -->
+  <g transform="translate(420 0)">
+    <rect x="8" y="104" width="128" height="20" rx="10" fill="#1F2937"></rect>
+    <g fill="#4B5563"><circle cx="22" cy="114" r="6"></circle><circle cx="50" cy="114" r="6"></circle><circle cx="78" cy="114" r="6"></circle><circle cx="106" cy="114" r="6"></circle><circle cx="122" cy="114" r="6"></circle></g>
+    <rect x="34" y="94" width="76" height="12" fill="#374151"></rect>
+    <path d="M24 64 H122 Q132 64 132 74 V96 H24 Z" fill="#F5B400"></path>
+    <rect x="108" y="58" width="26" height="38" rx="4" fill="#D99A00"></rect>
+    <path d="M28 64 V30 Q28 26 32 26 H62 Q66 26 68 30 L74 64 Z" fill="#F5B400"></path>
+    <path d="M34 34 H60 L66 60 H34 Z" fill="#BFE3F2" opacity=".9"></path>
+    <rect x="112" y="40" width="6" height="20" fill="#374151"></rect>
+    <g class="braco">
+      <path d="M30 76 L-40 28 L-34 20 L36 66 Z" fill="#F5B400"></path>
+      <circle cx="-37" cy="24" r="6" fill="#374151"></circle>
+      <g class="vara">
+        <path d="M-40 22 L-86 132 L-76 136 L-32 28 Z" fill="#E0A400"></path>
+        <path d="M-96 128 Q-104 150 -84 158 L-60 150 L-70 130 Z" fill="#374151"></path>
+        <path d="M-96 154 l-4 6 M-88 158 l-3 6 M-80 158 l-2 6" stroke="#374151" stroke-width="3" stroke-linecap="round"></path>
+        <ellipse cx="-80" cy="134" rx="14" ry="6" fill="#7A5A3A"></ellipse>
+      </g>
+      <path d="M8 62 L-18 44" stroke="#9CA3AF" stroke-width="4" stroke-linecap="round"></path>
+    </g>
+  </g>
+  <!-- trabalhadores com EPI (capacete, colete refletivo, botas) e pás -->
+  <g transform="translate(128 118)">
+    <g class="trab">
+      <path d="M0 -26 Q0 -40 14 -40 Q28 -40 28 -26 Z" fill="#F5B400"></path><rect x="-4" y="-27" width="36" height="4" rx="2" fill="#D99A00"></rect>
+      <circle cx="14" cy="-16" r="9" fill="#C68B5E"></circle>
+      <path d="M2 -6 h24 l3 30 h-30 z" fill="#F97316"></path><path d="M3 6 h22 M2 14 h24" stroke="#F1F5F9" stroke-width="3"></path>
+      <rect x="4" y="24" width="8" height="26" rx="3" fill="#1E3A8A"></rect><rect x="16" y="24" width="8" height="26" rx="3" fill="#1E40AF"></rect>
+      <rect x="2" y="48" width="12" height="6" rx="2" fill="#111827"></rect><rect x="14" y="48" width="12" height="6" rx="2" fill="#111827"></rect>
+      <g class="pa1"><path d="M24 0 L52 44" stroke="#8B5E3C" stroke-width="4" stroke-linecap="round"></path><path d="M48 40 l12 4 l-2 14 l-14 -6 z" fill="#6B7280"></path><circle cx="24" cy="2" r="4" fill="#C68B5E"></circle></g>
+    </g>
+  </g>
+  <g transform="translate(232 132) scale(.92)">
+    <g class="trab2">
+      <path d="M0 -26 Q0 -40 14 -40 Q28 -40 28 -26 Z" fill="#F8FAFC"></path><rect x="-4" y="-27" width="36" height="4" rx="2" fill="#CBD5E1"></rect>
+      <circle cx="14" cy="-16" r="9" fill="#E8B98A"></circle>
+      <path d="M2 -6 h24 l3 30 h-30 z" fill="#84CC16"></path><path d="M3 6 h22 M2 14 h24" stroke="#F1F5F9" stroke-width="3"></path>
+      <rect x="4" y="24" width="8" height="26" rx="3" fill="#334155"></rect><rect x="16" y="24" width="8" height="26" rx="3" fill="#475569"></rect>
+      <rect x="2" y="48" width="12" height="6" rx="2" fill="#111827"></rect><rect x="14" y="48" width="12" height="6" rx="2" fill="#111827"></rect>
+      <g class="pa2"><path d="M4 0 L-24 44" stroke="#8B5E3C" stroke-width="4" stroke-linecap="round"></path><path d="M-20 40 l-12 4 l2 14 l14 -6 z" fill="#6B7280"></path><circle cx="4" cy="2" r="4" fill="#E8B98A"></circle></g>
+    </g>
+  </g>
+</svg>
+</div>
+    </div>
+    <div class="abas" id="abas">
+      <button type="button" class="aba on" data-rpa="">Todas</button>
+      <button type="button" class="aba" data-rpa="RPA 2">RPA 2</button><button type="button" class="aba" data-rpa="RPA 4">RPA 4</button><button type="button" class="aba" data-rpa="RPA 5">RPA 5</button><button type="button" class="aba" data-rpa="RPA 6">RPA 6</button>
+    </div>
+  </div>
+
+  <div class="est-g">
+    <section class="est-lista">
+      
+      <div class="est-h"><span>Canal</span><span>Últimas vistorias (estacionárias em cada uma)</span><span style="text-align: right;">Agora</span></div>
+      
+      <div class="ec" data-c="0" data-rpa="RPA 2" style="animation-delay: 0.00s;">
+        <div>
+          <div class="nm">Arruda I</div>
+          <div class="sb"><span class="rpt" style="background: #0891B2;">RPA 2</span>ID 61463, 61484 · 30 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="0" data-k="0" title="23/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.10s;"></i>
+            <span class="d">23/11</span>
+          </button>
+          <button type="button" class="v" data-c="0" data-k="1" title="23/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.14s;"></i>
+            <span class="d">23/11</span>
+          </button>
+          <button type="button" class="v" data-c="0" data-k="2" title="24/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.18s;"></i>
+            <span class="d">24/11</span>
+          </button>
+          <button type="button" class="v" data-c="0" data-k="3" title="24/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.22s;"></i>
+            <span class="d">24/11</span>
+          </button>
+          <button type="button" class="v" data-c="0" data-k="4" title="25/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.26s;"></i>
+            <span class="d">25/11</span>
+          </button>
+          <button type="button" class="v" data-c="0" data-k="5" title="25/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.30s;"></i>
+            <span class="d">25/11</span>
+          </button>
+          <button type="button" class="v" data-c="0" data-k="6" title="27/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.34s;"></i>
+            <span class="d">27/11</span>
+          </button>
+          <button type="button" class="v" data-c="0" data-k="7" title="27/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.38s;"></i>
+            <span class="d">27/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #475569;">2</b><small style="color: #475569;">● estável</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="1" data-rpa="RPA 2" style="animation-delay: 0.04s;">
+        <div>
+          <div class="nm">Arruda II</div>
+          <div class="sb"><span class="rpt" style="background: #0891B2;">RPA 2</span>ID 61471 · 7 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="1" data-k="0" title="03/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.10s;"></i>
+            <span class="d">03/11</span>
+          </button>
+          <button type="button" class="v" data-c="1" data-k="1" title="03/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.14s;"></i>
+            <span class="d">03/11</span>
+          </button>
+          <button type="button" class="v" data-c="1" data-k="2" title="09/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.18s;"></i>
+            <span class="d">09/11</span>
+          </button>
+          <button type="button" class="v" data-c="1" data-k="3" title="09/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.22s;"></i>
+            <span class="d">09/11</span>
+          </button>
+          <button type="button" class="v" data-c="1" data-k="4" title="16/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.26s;"></i>
+            <span class="d">16/11</span>
+          </button>
+          <button type="button" class="v" data-c="1" data-k="5" title="23/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.30s;"></i>
+            <span class="d">23/11</span>
+          </button>
+          <button type="button" class="v" data-c="1" data-k="6" title="23/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.34s;"></i>
+            <span class="d">23/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #475569;">1</b><small style="color: #475569;">● estável</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="2" data-rpa="RPA 4" style="animation-delay: 0.08s;">
+        <div>
+          <div class="nm">Cavouco II</div>
+          <div class="sb"><span class="rpt" style="background: #EA580C;">RPA 4</span>ID 61963 · 2 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="2" data-k="0" title="17/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.10s;"></i>
+            <span class="d">17/11</span>
+          </button>
+          <button type="button" class="v" data-c="2" data-k="1" title="18/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.14s;"></i>
+            <span class="d">18/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #94A3B8;">1</b><small style="color: #94A3B8;">poucas vistorias</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="3" data-rpa="RPA 4" style="animation-delay: 0.12s;">
+        <div>
+          <div class="nm">Canal ABC</div>
+          <div class="sb"><span class="rpt" style="background: #EA580C;">RPA 4</span>ID 61799 · 4 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="3" data-k="0" title="11/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.10s;"></i>
+            <span class="d">11/11</span>
+          </button>
+          <button type="button" class="v" data-c="3" data-k="1" title="11/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.14s;"></i>
+            <span class="d">11/11</span>
+          </button>
+          <button type="button" class="v" data-c="3" data-k="2" title="16/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.18s;"></i>
+            <span class="d">16/11</span>
+          </button>
+          <button type="button" class="v" data-c="3" data-k="3" title="25/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.22s;"></i>
+            <span class="d">25/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #94A3B8;">1</b><small style="color: #94A3B8;">poucas vistorias</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="4" data-rpa="RPA 5" style="animation-delay: 0.16s;">
+        <div>
+          <div class="nm">ABC</div>
+          <div class="sb"><span class="rpt" style="background: #059669;">RPA 5</span>ID 61836 · 2 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="4" data-k="0" title="12/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.10s;"></i>
+            <span class="d">12/11</span>
+          </button>
+          <button type="button" class="v" data-c="4" data-k="1" title="25/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.14s;"></i>
+            <span class="d">25/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #94A3B8;">1</b><small style="color: #94A3B8;">poucas vistorias</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="5" data-rpa="RPA 5" style="animation-delay: 0.20s;">
+        <div>
+          <div class="nm">Guarulhos</div>
+          <div class="sb"><span class="rpt" style="background: #059669;">RPA 5</span>ID 61531 · 5 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="5" data-k="0" title="05/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.10s;"></i>
+            <span class="d">05/11</span>
+          </button>
+          <button type="button" class="v" data-c="5" data-k="1" title="12/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.14s;"></i>
+            <span class="d">12/11</span>
+          </button>
+          <button type="button" class="v" data-c="5" data-k="2" title="12/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.18s;"></i>
+            <span class="d">12/11</span>
+          </button>
+          <button type="button" class="v" data-c="5" data-k="3" title="19/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.22s;"></i>
+            <span class="d">19/11</span>
+          </button>
+          <button type="button" class="v" data-c="5" data-k="4" title="25/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.26s;"></i>
+            <span class="d">25/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #475569;">1</b><small style="color: #475569;">● estável</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="6" data-rpa="RPA 6" style="animation-delay: 0.24s;">
+        <div>
+          <div class="nm">Jordão</div>
+          <div class="sb"><span class="rpt" style="background: #7C3AED;">RPA 6</span>ID 61503, 61508, 61510 · 6 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="6" data-k="0" title="04/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.10s;"></i>
+            <span class="d">04/11</span>
+          </button>
+          <button type="button" class="v" data-c="6" data-k="1" title="04/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.14s;"></i>
+            <span class="d">04/11</span>
+          </button>
+          <button type="button" class="v" data-c="6" data-k="2" title="04/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.18s;"></i>
+            <span class="d">04/11</span>
+          </button>
+          <button type="button" class="v" data-c="6" data-k="3" title="10/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.22s;"></i>
+            <span class="d">10/11</span>
+          </button>
+          <button type="button" class="v" data-c="6" data-k="4" title="10/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.26s;"></i>
+            <span class="d">10/11</span>
+          </button>
+          <button type="button" class="v" data-c="6" data-k="5" title="10/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.30s;"></i>
+            <span class="d">10/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #475569;">3</b><small style="color: #475569;">● estável</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="7" data-rpa="RPA 6" style="animation-delay: 0.28s;">
+        <div>
+          <div class="nm">Setúbal II</div>
+          <div class="sb"><span class="rpt" style="background: #7C3AED;">RPA 6</span>ID 61513 · 4 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="7" data-k="0" title="04/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.10s;"></i>
+            <span class="d">04/11</span>
+          </button>
+          <button type="button" class="v" data-c="7" data-k="1" title="06/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.14s;"></i>
+            <span class="d">06/11</span>
+          </button>
+          <button type="button" class="v" data-c="7" data-k="2" title="11/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.18s;"></i>
+            <span class="d">11/11</span>
+          </button>
+          <button type="button" class="v" data-c="7" data-k="3" title="26/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.22s;"></i>
+            <span class="d">26/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #94A3B8;">1</b><small style="color: #94A3B8;">poucas vistorias</small>
+          <span class="ult-d" style="color: #C2410C; background: #FEE2E2;">▲ 1 a mais</span></div>
+      </div>
+      
+      <div class="ec" data-c="8" data-rpa="RPA 6" style="animation-delay: 0.32s;">
+        <div>
+          <div class="nm">Solos Cavan</div>
+          <div class="sb"><span class="rpt" style="background: #7C3AED;">RPA 6</span>ID 61512 · 6 vistorias</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="8" data-k="0" title="04/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.10s;"></i>
+            <span class="d">04/11</span>
+          </button>
+          <button type="button" class="v" data-c="8" data-k="1" title="04/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.14s;"></i>
+            <span class="d">04/11</span>
+          </button>
+          <button type="button" class="v" data-c="8" data-k="2" title="06/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.18s;"></i>
+            <span class="d">06/11</span>
+          </button>
+          <button type="button" class="v" data-c="8" data-k="3" title="11/11: 0 estacionária(s)">
+            <span class="n" style="color: #94A3B8;">0</span>
+            <i style="height: 4px; background: #E2E8F0; animation-delay: 0.22s;"></i>
+            <span class="d">11/11</span>
+          </button>
+          <button type="button" class="v" data-c="8" data-k="4" title="19/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.26s;"></i>
+            <span class="d">19/11</span>
+          </button>
+          <button type="button" class="v" data-c="8" data-k="5" title="26/11: 1 estacionária(s)">
+            <span class="n" style="color: #0E7490;">1</span>
+            <i style="height: 12px; background: #0E7490; animation-delay: 0.30s;"></i>
+            <span class="d">26/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #475569;">1</b><small style="color: #475569;">● estável</small>
+          <span class="ult-d" style="color: #64748B; background: #F1F5F9;">= igual</span></div>
+      </div>
+      
+      <div class="ec" data-c="9" data-rpa="RPA 6" style="animation-delay: 0.36s;">
+        <div>
+          <div class="nm">ID 25614 (sem canal)</div>
+          <div class="sb"><span class="rpt" style="background: #7C3AED;">RPA 6</span>ID 25614 · 1 vistoria</div>
+        </div>
+        <div class="bars">
+          <button type="button" class="v" data-c="9" data-k="0" title="04/11: sem o número estacionária(s)">
+            <span class="n" style="color: #CBD5E1;">–</span>
+            <i style="height: 4px; background: #CBD5E1; animation-delay: 0.10s;"></i>
+            <span class="d">04/11</span>
+          </button>
+        </div>
+        <div class="tend"><b style="color: #94A3B8;">0</b><small style="color: #94A3B8;">poucas vistorias</small>
+          </div>
+      </div>
+      
+      <div class="nota" style="font-size: 12.5px; color: #64748B; margin-top: 12px; padding: 0 10px;">Altura da barra = estacionárias naquela vistoria. Laranja a partir de 5; cinza = vistoria sem caçamba. 📷 = foto da vistoria já baixada (a foto vem da última vistoria de cada ID). Clique numa barra para ver os detalhes.</div>
+      
+    </section>
+
+    <aside class="est-painel" id="painel" >
+      <div class="est-foto" id="pFoto"></div>
+      <div class="est-info">
+        <h3 id="pNome"></h3>
+        <div class="tags" id="pTags"></div>
+        <dl id="pDl"></dl>
+        <div class="navv"><button type="button" id="pAnt">‹ Vistoria anterior</button><button type="button" id="pProx">Próxima ›</button></div>
+      </div>
+    </aside>
+  </div>
+</div>
+<div class="zoom" id="zoom"><img alt="Foto da vistoria ampliada"></div>
+
+<script>window.ESTATICO=true;window.ESTATICO_SITE=true;</script>
+
+<script>
+(function(){
+  const H = [{"agora": 2, "canal": "Arruda I", "cor_rpa": "#0891B2", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61463, 61484", "rpa": "RPA 2", "tcor": "#475569", "tend": "● estável", "total": 30, "ultima": "27/11", "vist": [{"cor": "#0E7490", "d": "23/11", "dia": "2026-11-23", "fisc_id": "176614", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "08:46", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Guerra )", "os_id": "61484", "qtd": 1}, {"cor": "#0E7490", "d": "23/11", "dia": "2026-11-23", "fisc_id": "176859", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:13", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Guerra )", "os_id": "61484", "qtd": 1}, {"cor": "#0E7490", "d": "24/11", "dia": "2026-11-24", "fisc_id": "176985", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "09:34", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Loquipe)", "os_id": "61484", "qtd": 1}, {"cor": "#0E7490", "d": "24/11", "dia": "2026-11-24", "fisc_id": "177279", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:31", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Loquipe)", "os_id": "61484", "qtd": 1}, {"cor": "#0E7490", "d": "25/11", "dia": "2026-11-25", "fisc_id": "177377", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "09:20", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Loquipe)", "os_id": "61484", "qtd": 1}, {"cor": "#0E7490", "d": "25/11", "dia": "2026-11-25", "fisc_id": "177600", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:16", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Loquipe)", "os_id": "61484", "qtd": 1}, {"cor": "#0E7490", "d": "27/11", "dia": "2026-11-27", "fisc_id": "178023", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "08:58", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Loquipe)", "os_id": "61484", "qtd": 1}, {"cor": "#0E7490", "d": "27/11", "dia": "2026-11-27", "fisc_id": "178278", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:26", "obs": "vistoria canal do arruda I ( caixa estacionária empresa Loquipe)", "os_id": "61484", "qtd": 1}]}, {"agora": 1, "canal": "Arruda II", "cor_rpa": "#0891B2", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61471", "rpa": "RPA 2", "tcor": "#475569", "tend": "● estável", "total": 7, "ultima": "23/11", "vist": [{"cor": "#0E7490", "d": "03/11", "dia": "2026-11-03", "fisc_id": "172134", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "11:31", "obs": "Caixa estacionária canal do arruda II", "os_id": "61471", "qtd": 1}, {"cor": "#0E7490", "d": "03/11", "dia": "2026-11-03", "fisc_id": "172212", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:08", "obs": "Caixa estacionária canal do arruda II", "os_id": "61471", "qtd": 1}, {"cor": "#0E7490", "d": "09/11", "dia": "2026-11-09", "fisc_id": "173670", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:11", "obs": "Vistoria canal arruda II Caixa estacionária empresa Guerra", "os_id": "61471", "qtd": 1}, {"cor": "#0E7490", "d": "09/11", "dia": "2026-11-09", "fisc_id": "173717", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "15:12", "obs": "Vistoria canal arruda II Caixa estacionária empresa Guerra", "os_id": "61471", "qtd": 1}, {"cor": "#0E7490", "d": "16/11", "dia": "2026-11-16", "fisc_id": "175553", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:53", "obs": "Vistoria canal arruda II Caixa estacionária empresa Guerra", "os_id": "61471", "qtd": 1}, {"cor": "#0E7490", "d": "23/11", "dia": "2026-11-23", "fisc_id": "176853", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:00", "obs": "Vistoria canal arruda II Caixa estacionária empresa Guerra", "os_id": "61471", "qtd": 1}, {"cor": "#0E7490", "d": "23/11", "dia": "2026-11-23", "fisc_id": "176885", "fiscal": "Fiscal Drenagem RPA 2.3", "fotos": 0, "h": 25, "hora": "14:59", "obs": "Vistoria canal arruda II Caixa estacionária empresa Guerra", "os_id": "61471", "qtd": 1}]}, {"agora": 1, "canal": "Cavouco II", "cor_rpa": "#EA580C", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61963", "rpa": "RPA 4", "tcor": "#94A3B8", "tend": "poucas vistorias", "total": 2, "ultima": "18/11", "vist": [{"cor": "#0E7490", "d": "17/11", "dia": "2026-11-17", "fisc_id": "175676", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "09:52", "obs": "Aguando Caçamba", "os_id": "61963", "qtd": 1}, {"cor": "#0E7490", "d": "18/11", "dia": "2026-11-18", "fisc_id": "175939", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "06:53", "obs": "caçamba no local", "os_id": "61963", "qtd": 1}]}, {"agora": 1, "canal": "Canal ABC", "cor_rpa": "#EA580C", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61799", "rpa": "RPA 4", "tcor": "#94A3B8", "tend": "poucas vistorias", "total": 4, "ultima": "25/11", "vist": [{"cor": "#94A3B8", "d": "11/11", "dia": "2026-11-11", "fisc_id": "174269", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 8, "hora": "09:38", "obs": "em andamento", "os_id": "61799", "qtd": 0}, {"cor": "#0E7490", "d": "11/11", "dia": "2026-11-11", "fisc_id": "174583", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "20:50", "obs": "em andamento", "os_id": "61799", "qtd": 1}, {"cor": "#0E7490", "d": "16/11", "dia": "2026-11-16", "fisc_id": "175449", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "11:38", "obs": "em andamento Caçamba estacionária N⁰ 057", "os_id": "61799", "qtd": 1}, {"cor": "#0E7490", "d": "25/11", "dia": "2026-11-25", "fisc_id": "177655", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "16:07", "obs": "caçamba no local", "os_id": "61799", "qtd": 1}]}, {"agora": 1, "canal": "ABC", "cor_rpa": "#059669", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61836", "rpa": "RPA 5", "tcor": "#94A3B8", "tend": "poucas vistorias", "total": 2, "ultima": "25/11", "vist": [{"cor": "#0E7490", "d": "12/11", "dia": "2026-11-12", "fisc_id": "174619", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "10:05", "obs": "Caçamba estacionária N⁰ 22", "os_id": "61836", "qtd": 1}, {"cor": "#0E7490", "d": "25/11", "dia": "2026-11-25", "fisc_id": "177661", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "16:13", "obs": "Caçamba estacionária N⁰ 22", "os_id": "61836", "qtd": 1}]}, {"agora": 1, "canal": "Guarulhos", "cor_rpa": "#059669", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61531", "rpa": "RPA 5", "tcor": "#475569", "tend": "● estável", "total": 5, "ultima": "25/11", "vist": [{"cor": "#0E7490", "d": "05/11", "dia": "2026-11-05", "fisc_id": "172736", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "09:19", "obs": "", "os_id": "61531", "qtd": 1}, {"cor": "#94A3B8", "d": "12/11", "dia": "2026-11-12", "fisc_id": "174611", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 8, "hora": "09:47", "obs": "", "os_id": "61531", "qtd": 0}, {"cor": "#0E7490", "d": "12/11", "dia": "2026-11-12", "fisc_id": "174680", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "10:52", "obs": "Caçamba estacionária N⁰ 12", "os_id": "61531", "qtd": 1}, {"cor": "#0E7490", "d": "19/11", "dia": "2026-11-19", "fisc_id": "176547", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "19:41", "obs": "Caçamba estacionária", "os_id": "61531", "qtd": 1}, {"cor": "#0E7490", "d": "25/11", "dia": "2026-11-25", "fisc_id": "177659", "fiscal": "Fiscal Drenagem RPA 4.5", "fotos": 0, "h": 25, "hora": "16:10", "obs": "Caçamba estacionária no local", "os_id": "61531", "qtd": 1}]}, {"agora": 3, "canal": "Jordão", "cor_rpa": "#7C3AED", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61503, 61508, 61510", "rpa": "RPA 6", "tcor": "#475569", "tend": "● estável", "total": 6, "ultima": "10/11", "vist": [{"cor": "#0E7490", "d": "04/11", "dia": "2026-11-04", "fisc_id": "172447", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "11:29", "obs": "", "os_id": "61503", "qtd": 1}, {"cor": "#0E7490", "d": "04/11", "dia": "2026-11-04", "fisc_id": "172468", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "11:44", "obs": "", "os_id": "61508", "qtd": 1}, {"cor": "#0E7490", "d": "04/11", "dia": "2026-11-04", "fisc_id": "172477", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "11:48", "obs": "", "os_id": "61510", "qtd": 1}, {"cor": "#0E7490", "d": "10/11", "dia": "2026-11-10", "fisc_id": "174056", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "12:23", "obs": "", "os_id": "61510", "qtd": 1}, {"cor": "#0E7490", "d": "10/11", "dia": "2026-11-10", "fisc_id": "174061", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "12:27", "obs": "", "os_id": "61508", "qtd": 1}, {"cor": "#0E7490", "d": "10/11", "dia": "2026-11-10", "fisc_id": "174066", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "12:33", "obs": "", "os_id": "61503", "qtd": 1}]}, {"agora": 1, "canal": "Setúbal II", "cor_rpa": "#7C3AED", "delta": 1, "delta_cor": "#C2410C", "delta_txt": "▲ 1 a mais", "ids": "61513", "rpa": "RPA 6", "tcor": "#94A3B8", "tend": "poucas vistorias", "total": 4, "ultima": "26/11", "vist": [{"cor": "#94A3B8", "d": "04/11", "dia": "2026-11-04", "fisc_id": "172501", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "12:03", "obs": "sem caçamba", "os_id": "61513", "qtd": 0}, {"cor": "#94A3B8", "d": "06/11", "dia": "2026-11-06", "fisc_id": "173183", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "12:46", "obs": "sem caçamba", "os_id": "61513", "qtd": 0}, {"cor": "#94A3B8", "d": "11/11", "dia": "2026-11-11", "fisc_id": "174384", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "11:07", "obs": "sem caçamba", "os_id": "61513", "qtd": 0}, {"cor": "#0E7490", "d": "26/11", "dia": "2026-11-26", "fisc_id": "178013", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "19:22", "obs": "", "os_id": "61513", "qtd": 1}]}, {"agora": 1, "canal": "Solos Cavan", "cor_rpa": "#7C3AED", "delta": 0, "delta_cor": "#64748B", "delta_txt": "= igual", "ids": "61512", "rpa": "RPA 6", "tcor": "#475569", "tend": "● estável", "total": 6, "ultima": "26/11", "vist": [{"cor": "#94A3B8", "d": "04/11", "dia": "2026-11-04", "fisc_id": "172488", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "11:54", "obs": "", "os_id": "61512", "qtd": 0}, {"cor": "#94A3B8", "d": "04/11", "dia": "2026-11-04", "fisc_id": "172490", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "11:56", "obs": "sem caçamba", "os_id": "61512", "qtd": 0}, {"cor": "#94A3B8", "d": "06/11", "dia": "2026-11-06", "fisc_id": "173246", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "13:27", "obs": "sem caçamba", "os_id": "61512", "qtd": 0}, {"cor": "#94A3B8", "d": "11/11", "dia": "2026-11-11", "fisc_id": "174351", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "10:46", "obs": "sem caçamba", "os_id": "61512", "qtd": 0}, {"cor": "#0E7490", "d": "19/11", "dia": "2026-11-19", "fisc_id": "176552", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "22:22", "obs": "", "os_id": "61512", "qtd": 1}, {"cor": "#0E7490", "d": "26/11", "dia": "2026-11-26", "fisc_id": "178014", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 25, "hora": "19:29", "obs": "", "os_id": "61512", "qtd": 1}]}, {"agora": 0, "canal": "ID 25614 (sem canal)", "cor_rpa": "#7C3AED", "delta": null, "delta_cor": "#94A3B8", "delta_txt": "", "ids": "25614", "rpa": "RPA 6", "tcor": "#94A3B8", "tend": "poucas vistorias", "total": 1, "ultima": "04/11", "vist": [{"cor": "#CBD5E1", "d": "04/11", "dia": "2026-11-04", "fisc_id": "172429", "fiscal": "Fiscal SIGA RPA 6", "fotos": 0, "h": 8, "hora": "11:20", "obs": "ECO BARREIRAS", "os_id": "25614", "qtd": null}]}];
+  if (!H.length) return;
+  const URL_FOTO = "#".replace(/1$/, "");
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+  const $ = id => document.getElementById(id);
+  let sel = {c: 0, k: 0, f: 1};
+  function abre(c, k){
+    const canal = H[c], v = canal.vist[k];
+    sel = {c, k, f: 1};
+    document.querySelectorAll(".ec").forEach(x => x.classList.toggle("on", +x.dataset.c === c));
+    document.querySelectorAll(".bars .v").forEach(x => x.classList.toggle("on", +x.dataset.c === c && +x.dataset.k === k));
+    $("pNome").textContent = canal.canal;
+    const q = v.qtd == null ? "sem o número" : v.qtd + (v.qtd === 1 ? " estacionária" : " estacionárias");
+    $("pTags").innerHTML = `<span style="background:#FFEDD5;color:#9A3412">${esc(q)}</span>` +
+      `<span style="background:#E0F2FE;color:#075985">vistoria de ${esc(v.d)}${v.hora ? " às " + esc(v.hora) : ""}</span>`;
+    const ant = k > 0 ? canal.vist[k - 1] : null;
+    $("pDl").innerHTML = `<dt>ID SIGA</dt><dd style="font-family:'JetBrains Mono',monospace">${esc(v.os_id)}</dd>` +
+      `<dt>Fiscal</dt><dd>${esc(v.fiscal)}</dd>` +
+      `<dt>Antes</dt><dd>${ant ? esc((ant.qtd ?? "–") + " em " + ant.d) : "—"}</dd>` +
+      `<dt>Observação</dt><dd style="color:#334155">${v.obs ? "“" + esc(v.obs) + "”" : "—"}</dd>`;
+    $("pAnt").disabled = k === 0; $("pProx").disabled = k === canal.vist.length - 1;
+    foto();
+  }
+  function foto(){
+    const v = H[sel.c].vist[sel.k], box = $("pFoto");
+    if (!v.fotos) {
+      box.innerHTML = window.ESTATICO_SITE ? `<div class="sem">As fotos das vistorias ficam só no painel do escritório.</div>`
+        : `<div class="sem">Sem foto desta vistoria.<br><small>O painel guarda a foto da última vistoria de cada ID; ela é baixada junto com a leitura das estacionárias.</small></div>`;
+      return;
+    }
+    const src = URL_FOTO.replace("OID", encodeURIComponent(v.os_id)) + sel.f;
+    box.innerHTML = `<img src="${src}" alt="Foto da vistoria de ${esc(v.d)} no ${esc(H[sel.c].canal)}">` +
+      `<span class="qt">${sel.f} / ${v.fotos} foto${v.fotos > 1 ? "s" : ""}</span>` +
+      (v.fotos > 1 ? `<div class="nav"><button type="button" data-d="-1" aria-label="Foto anterior">‹</button><button type="button" data-d="1" aria-label="Próxima foto">›</button></div>` : "");
+    box.querySelector("img").addEventListener("click", () => { const z = $("zoom"); z.querySelector("img").src = src; z.classList.add("on"); });
+    box.querySelectorAll(".nav button").forEach(b => b.addEventListener("click", ev => {
+      ev.stopPropagation(); sel.f = ((sel.f - 1 + +b.dataset.d + v.fotos) % v.fotos) + 1; foto(); }));
+  }
+  $("zoom").addEventListener("click", () => $("zoom").classList.remove("on"));
+  document.querySelectorAll(".bars .v").forEach(b => b.addEventListener("click", ev => { ev.stopPropagation(); abre(+b.dataset.c, +b.dataset.k); }));
+  document.querySelectorAll(".ec").forEach(r => r.addEventListener("click", () => { const c = +r.dataset.c; abre(c, H[c].vist.length - 1); }));
+  $("pAnt").addEventListener("click", () => abre(sel.c, Math.max(0, sel.k - 1)));
+  $("pProx").addEventListener("click", () => abre(sel.c, Math.min(H[sel.c].vist.length - 1, sel.k + 1)));
+  const abas = document.querySelectorAll("#abas .aba");
+  abas.forEach(a => a.addEventListener("click", () => {
+    abas.forEach(x => x.classList.toggle("on", x === a));
+    const r = a.dataset.rpa; let pri = -1;
+    document.querySelectorAll(".ec").forEach(x => { const vis = !r || x.dataset.rpa === r; x.hidden = !vis; if (vis && pri < 0) pri = +x.dataset.c; });
+    if (pri >= 0) abre(pri, H[pri].vist.length - 1);
+  }));
+  // começa no canal com mais estacionárias agora
+  let ini = 0; H.forEach((c, i) => { if (c.agora > H[ini].agora) ini = i; });
+  abre(ini, H[ini].vist.length - 1);
+})();
+</script>
+
+</body>
+</html>

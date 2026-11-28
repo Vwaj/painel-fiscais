@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="VWAJ">
+<title>GeoVista × SIGA · Acompanhamento de Fiscais</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Fraunces:opsz,—,600;9..144,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/simples.css?v=1795787784">
+</head>
+<body>
+
+<div class="pg geo-pg">
+  
+<div class="cabeca" style="background: linear-gradient(110deg, #1E3A8A, #1D4ED8 60%, #4338CA); color: #fff;">
+  <div class="neve" aria-hidden="true"><i style="left: 0%; width: 3px; height: 3px; animation-duration: 7s, 3s; animation-delay: -0.0s, 0s;"></i><i style="left: 97%; width: 4px; height: 4px; animation-duration: 8s, 4s; animation-delay: -1.7s, 0s;"></i><i style="left: 94%; width: 5px; height: 5px; animation-duration: 9s, 3s; animation-delay: -3.4s, 0s;"></i><i style="left: 91%; width: 3px; height: 3px; animation-duration: 10s, 4s; animation-delay: -5.1s, 0s;"></i><i style="left: 88%; width: 4px; height: 4px; animation-duration: 11s, 3s; animation-delay: -6.8s, 0s;"></i><i style="left: 85%; width: 5px; height: 5px; animation-duration: 12s, 4s; animation-delay: -8.5s, 0s;"></i><i style="left: 82%; width: 3px; height: 3px; animation-duration: 7s, 3s; animation-delay: -1.1999999999999993s, 0s;"></i><i style="left: 79%; width: 4px; height: 4px; animation-duration: 8s, 4s; animation-delay: -2.9000000000000004s, 0s;"></i><i style="left: 76%; width: 5px; height: 5px; animation-duration: 9s, 3s; animation-delay: -4.6s, 0s;"></i></div>
+  <div class="faixa" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#E21E26"></path><circle cx="27" cy="44" r="4" fill="#E21E26"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><g stroke="#FAF0E4" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#FAF0E4"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#E21E26"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#E21E26" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><rect x="12" y="20" width="30" height="24" fill="#FAF0E4"></rect><rect x="10" y="15" width="34" height="7" fill="#FAF0E4"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="23" y="8" width="8" height="6" fill="#00504F"></rect><circle cx="27" cy="30" r="15" fill="#00504F"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #E21E26;"><rect x="20" y="22" width="14" height="24" rx="1" fill="#FAF0E4"></rect><path d="M27 8 C32 14 31 19 27 20 C23 19 22 14 27 8 Z" fill="#F8D57E"></path></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><polygon points="27,8 32,22 46,22 35,31 39,45 27,37 15,45 19,31 8,22 22,22" fill="#E21E26"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #00504F;"><path d="M27 10 C17 10 16 22 15 34 L11 40 H43 L39 34 C38 22 37 10 27 10 Z" fill="#FAF0E4"></path><circle cx="27" cy="44" r="4" fill="#FAF0E4"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #C4A574;"><polygon points="27,8 42,30 34,30 46,44 8,44 20,30 12,30" fill="#FAF0E4"></polygon></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #F9B8BA;"><g stroke="#E21E26" stroke-width="3" stroke-linecap="round"><path d="M27 9 V45 M11 18 L43 36 M11 36 L43 18"></path></g><g fill="#E21E26"><circle cx="27" cy="9" r="3"></circle><circle cx="27" cy="45" r="3"></circle><circle cx="11" cy="18" r="3"></circle><circle cx="43" cy="36" r="3"></circle><circle cx="11" cy="36" r="3"></circle><circle cx="43" cy="18" r="3"></circle></g></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #CDB4D6;"><path d="M10 26 Q18 14 27 24 Q36 14 44 26 Q36 34 27 28 Q18 34 10 26 Z" fill="#FAF0E4"></path><circle cx="23" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle><circle cx="31" cy="34" r="4" fill="#E21E26" stroke="#FAF0E4" stroke-width="1"></circle></svg><svg aria-hidden="true" viewBox="0 0 54 54" style="width: 28px; height: 28px; background: #FAF0E4;"><rect x="12" y="20" width="30" height="24" fill="#00504F"></rect><rect x="10" y="15" width="34" height="7" fill="#00504F"></rect><path d="M27 15 V44" stroke="#E21E26" stroke-width="3"></path></svg></div>
+  <div class="luzes" aria-hidden="true"><span class="luz" style="color: #FFE9A8; animation-delay: 0.00s;"></span><span class="luz" style="color: #E5484D; animation-delay: 0.53s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.06s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 1.59s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.32s;"></span><span class="luz" style="color: #6CB4FF; animation-delay: 0.85s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.38s;"></span><span class="luz" style="color: #E5484D; animation-delay: 0.11s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.64s;"></span><span class="luz" style="color: #F5A623; animation-delay: 1.17s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.70s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 0.43s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.96s;"></span><span class="luz" style="color: #E5484D; animation-delay: 1.49s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.22s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 0.75s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.28s;"></span><span class="luz" style="color: #6CB4FF; animation-delay: 0.01s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.54s;"></span><span class="luz" style="color: #E5484D; animation-delay: 1.07s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.60s;"></span><span class="luz" style="color: #F5A623; animation-delay: 0.33s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.86s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 1.39s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.12s;"></span><span class="luz" style="color: #E5484D; animation-delay: 0.65s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.18s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 1.71s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.44s;"></span><span class="luz" style="color: #6CB4FF; animation-delay: 0.97s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.50s;"></span><span class="luz" style="color: #E5484D; animation-delay: 0.23s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.76s;"></span><span class="luz" style="color: #F5A623; animation-delay: 1.29s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.02s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 0.55s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.08s;"></span><span class="luz" style="color: #E5484D; animation-delay: 1.61s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.34s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 0.87s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.40s;"></span><span class="luz" style="color: #6CB4FF; animation-delay: 0.13s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.66s;"></span><span class="luz" style="color: #E5484D; animation-delay: 1.19s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.72s;"></span><span class="luz" style="color: #F5A623; animation-delay: 0.45s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.98s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 1.51s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.24s;"></span><span class="luz" style="color: #E5484D; animation-delay: 0.77s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.30s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 0.03s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.56s;"></span><span class="luz" style="color: #6CB4FF; animation-delay: 1.09s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.62s;"></span><span class="luz" style="color: #E5484D; animation-delay: 0.35s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.88s;"></span><span class="luz" style="color: #F5A623; animation-delay: 1.41s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.14s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 0.67s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.20s;"></span><span class="luz" style="color: #E5484D; animation-delay: 1.73s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.46s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 0.99s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.52s;"></span><span class="luz" style="color: #6CB4FF; animation-delay: 0.25s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.78s;"></span><span class="luz" style="color: #E5484D; animation-delay: 1.31s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 0.04s;"></span><span class="luz" style="color: #F5A623; animation-delay: 0.57s;"></span><span class="luz" style="color: #FFE9A8; animation-delay: 1.10s;"></span><span class="luz" style="color: #4CC38A; animation-delay: 1.63s;"></span></div>
+  <div class="dentro">
+    <div>
+      <a class="volta" href="index.html">‹ Início</a>
+      <div class="titulo"><h1>GeoVista × SIGA</h1></div>
+      <p>As OS da planilha do GeoVista conferidas com o SIGA: o que já tem ID aberto, o que o SIGA já finalizou e o que ainda falta.</p>
+    </div>
+    <div class="acoes claro">
+      
+    <div class="geo-cab-dir">
+      <div class="geo-cab-l"><svg role="img" aria-label="Rua com o ponto do GeoVista ligado ao ID do SIGA" viewBox="0 0 200 120" class="geo-arte" style="width: 200px; height: 120px; flex: none;">
+<ellipse cx="100" cy="112" rx="84" ry="5" fill="rgba(0,0,0,.2)"></ellipse>
+<path d="M14 72 L100 30 L186 72 L100 114 Z" fill="#475569"></path>
+<path d="M14 72 L100 114 L100 120 L14 78 Z" fill="#1E293B"></path><path d="M100 114 L186 72 L186 78 L100 120 Z" fill="#334155"></path>
+<path d="M44 86 L66 75 M80 68 L102 57 M116 50 L138 39" stroke="#F8D57E" stroke-width="3" stroke-linecap="round"></path>
+<path class="geo-liga" d="M72 64 Q100 30 132 58" stroke="#fff" stroke-width="2.5" fill="none" stroke-dasharray="4 5"></path>
+<g class="geo-g"><path d="M72 64 C72 64 58 48 58 38 A14 14 0 1 1 86 38 C86 48 72 64 72 64Z" fill="#A78BFA" stroke="#4C1D95" stroke-width="1.5"></path><text x="72" y="43" text-anchor="middle" font-family="Barlow Semi Condensed, sans-serif" font-weight="800" font-size="14" fill="#2E1065">G</text></g>
+<g class="geo-s"><path d="M132 58 C132 58 118 42 118 32 A14 14 0 1 1 146 32 C146 42 132 58 132 58Z" fill="#86EFAC" stroke="#14532D" stroke-width="1.5"></path><path d="M126 32 l4 4 l8 -9" stroke="#14532D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g>
+</svg><div class="geo-pct"><b>57%</b><small>já existem no SIGA</small></div></div>
+      <div class="chips"><a class="chip" href="simples_geovista_g3.html" title="RPA 6 - GEOVISTA" 
+        style="background: rgba(255,255,255,.16); color: #fff;">27/11 · RPA 6 · 34 OS</a><a class="chip" href="simples_geovista_g2.html" title="RPA3 - OS EM ANDAMENTO" aria-current="page"
+        style="background: #fff; color: #1E3A8A;">13/10 · RPA 3 · 222 OS</a><a class="chip" href="simples_geovista_g1.html" title="RPA2 - OS EM ANDAMENTO" 
+        style="background: rgba(255,255,255,.16); color: #fff;">13/10 · RPA 2 · 74 OS</a></div>
+    </div>
+  
+      <div class="selo verde" title="">Dados de hoje, 07:03</div>
+    </div>
+  </div>
+</div>
+
+  <div class="corpo">
+    
+    <div class="geo-kpis">
+      <div class="geo-k sobe verde" style="background: #22C55E; animation-delay: 0.00s;">
+        <b>46</b><span>com ID no SIGA</span>
+        <small>inclui 13 executadas em campo</small>
+      </div>
+      <div class="geo-k sobe azul" style="background: #38BDF8; animation-delay: 0.07s;">
+        <b>80</b><span>já finalizados no SIGA</span>
+        <small>pela busca de finalizados de 2026</small>
+      </div>
+      <div class="geo-k sobe amarelo" style="background: #F59E0B; animation-delay: 0.14s;">
+        <b>45</b><span>rua com ID, número distante</span>
+        <small>a conferir</small>
+      </div>
+      <div class="geo-k sobe vermelho" style="background: #EF4444; animation-delay: 0.21s;">
+        <b>51</b><span>sem ID no SIGA</span>
+        <small>viram demanda de campo</small>
+      </div>
+    </div>
+
+    <section class="bloco sobe">
+      <div class="geo-h"><h2>Já finalizados no SIGA</h2>
+        <span>base: 10.851 Buraco Siga finalizados de 31/12/2025 a 27/11/2026 · busca de 28/11/2026 às 06:40</span></div>
+      <p class="geo-p">O GeoVista apontou o buraco e, no mesmo lugar (rua, bairro e número perto), o SIGA tem um ID que <b>já foi finalizado</b>.</p>
+      
+      <div class="geo-fins" id="geoFins">
+        <div class="geo-f" >
+          <b class="mono-n">G9576</b><span>Rua Afonso Albuquerque de Melo, 420 · Santana</span><span class="geo-det">detectado 04/10/2026</span>
+          <span>ID <b class="mono-n">61927</b> · <span class="geo-fin-tag">finalizado em 24/11/2026</span></span>
+        </div>
+        <div class="geo-f" >
+          <b class="mono-n">G8462</b><span>Rua Alto Nossa Senhora de Fátima, 474 · Vasco da Gama</span><span class="geo-det">detectado 18/09/2026</span>
+          <span>ID <b class="mono-n">61621</b> · <span class="geo-fin-tag">finalizado em 16/11/2026</span></span>
+        </div>
+        <div class="geo-f" >
+          <b class="mono-n">G7665</b><span>Rua Vasco da Gama, 424 · Vasco da Gama</span><span class="geo-det">detectado 02/09/2026</span>
+          <span>ID <b class="mono-n">60926</b> · <span class="geo-fin-tag">finalizado em 16/11/2026</span></span>
+        </div>
+        <div class="geo-f" >
+          <b class="mono-n">G6672</b><span>Rua Monte Horeb, 114 · Alto Jose do Pinho</span><span class="geo-det">detectado 01/09/2026</span>
+          <span>ID <b class="mono-n">60874</b> · <span class="geo-fin-tag">finalizado em 13/11/2026</span></span>
+        </div>
+        <div class="geo-f" >
+          <b class="mono-n">G7072</b><span>Rua Conselheiro Peretti, 218 · Casa Amarela</span><span class="geo-det">detectado 16/09/2026</span>
+          <span>ID <b class="mono-n">61595</b> · <span class="geo-fin-tag">finalizado em 12/11/2026</span></span>
+        </div>
+        <div class="geo-f" >
+          <b class="mono-n">G9153</b><span>Rua Santo Elias, 38 · Espinheiro</span><span class="geo-det">detectado 01/10/2026</span>
+          <span>ID <b class="mono-n">61578</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" >
+          <b class="mono-n">G8952</b><span>Estrada do Arraial, 1764 · Casa Amarela</span><span class="geo-det">detectado 26/09/2026</span>
+          <span>ID <b class="mono-n">61596</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" >
+          <b class="mono-n">G7176</b><span>Rua Alfredo de Castro, 101 · Espinheiro</span><span class="geo-det">detectado 29/08/2026</span>
+          <span>ID <b class="mono-n">61576</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7054</b><span>Avenida Norte Miguel Arraes de Alencar, 3868 · Tamarineira</span><span class="geo-det">detectado 24/08/2026</span>
+          <span>ID <b class="mono-n">61583</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G6612</b><span>Avenida Governador Agamenon Magalhães, 990 · Espinheiro</span><span class="geo-det">detectado 22/08/2026</span>
+          <span>ID <b class="mono-n">61580</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G6632</b><span>Avenida Norte Miguel Arraes de Alencar, 5173 · Casa Amarela</span><span class="geo-det">detectado 22/08/2026</span>
+          <span>ID <b class="mono-n">61620</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3827</b><span>Avenida Governador Agamenon Magalhães, 990 · Espinheiro</span><span class="geo-det">detectado 02/08/2026</span>
+          <span>ID <b class="mono-n">61580</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4909</b><span>Avenida Norte Miguel Arraes de Alencar, 3889 · Tamarineira</span><span class="geo-det">detectado 24/07/2026</span>
+          <span>ID <b class="mono-n">61583</b> · <span class="geo-fin-tag">finalizado em 11/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G9572</b><span>Avenida Dezessete de Agosto, 1191 · Casa Forte</span><span class="geo-det">detectado 07/10/2026</span>
+          <span>ID <b class="mono-n">61561</b> · <span class="geo-fin-tag">finalizado em 09/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7178</b><span>Rua Planalto, 254 · Vasco da Gama</span><span class="geo-det">detectado 18/09/2026</span>
+          <span>ID <b class="mono-n">61254</b> · <span class="geo-fin-tag">finalizado em 09/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G6732</b><span>Rua Padre Roma, 291 · Parnamirim</span><span class="geo-det">detectado 09/09/2026</span>
+          <span>ID <b class="mono-n">61249</b> · <span class="geo-fin-tag">finalizado em 09/11/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7907</b><span>Rua Antônio Batista de Souza, 130 · Macaxeira</span><span class="geo-det">detectado 10/09/2026</span>
+          <span>ID <b class="mono-n">61167</b> · <span class="geo-fin-tag">finalizado em 28/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7654</b><span>Avenida Dezessete de Agosto, 2656 · Poco</span><span class="geo-det">detectado 10/09/2026</span>
+          <span>ID <b class="mono-n">61165</b> · <span class="geo-fin-tag">finalizado em 28/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8574</b><span>Rua Santa Izabel, 46 · Casa Amarela</span><span class="geo-det">detectado 22/09/2026</span>
+          <span>ID <b class="mono-n">60647</b> · <span class="geo-fin-tag">finalizado em 27/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7188</b><span>Rua Frederico Ozanan, 106 · Vasco da Gama</span><span class="geo-det">detectado 25/09/2026</span>
+          <span>ID <b class="mono-n">60054</b> · <span class="geo-fin-tag">finalizado em 22/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4826</b><span>Rua Marquês do Paraná, 271 · Espinheiro</span><span class="geo-det">detectado 23/07/2026</span>
+          <span>ID <b class="mono-n">60689</b> · <span class="geo-fin-tag">finalizado em 22/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7340</b><span>Rua Doutor Antônio da Rosa Borges, 95 · Brejo de Beberibe</span><span class="geo-det">detectado 02/09/2026</span>
+          <span>ID <b class="mono-n">60101</b> · <span class="geo-fin-tag">finalizado em 21/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7335</b><span>Rua Alexandrino, 175 · Casa Amarela</span><span class="geo-det">detectado 02/09/2026</span>
+          <span>ID <b class="mono-n">59581</b> · <span class="geo-fin-tag">finalizado em 19/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7280</b><span>Rua São Domingos Sávio, 135 · Alto Jose Bonifacio</span><span class="geo-det">detectado 01/09/2026</span>
+          <span>ID <b class="mono-n">60175</b> · <span class="geo-fin-tag">finalizado em 19/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8092</b><span>Rua Dois de Fevereiro, 350 · Vasco da Gama</span><span class="geo-det">detectado 13/09/2026</span>
+          <span>ID <b class="mono-n">60538</b> · <span class="geo-fin-tag">finalizado em 15/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8099</b><span>Rua Dois de Fevereiro, 350 · Vasco da Gama</span><span class="geo-det">detectado 13/09/2026</span>
+          <span>ID <b class="mono-n">60538</b> · <span class="geo-fin-tag">finalizado em 15/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8894</b><span>Rua Valeriano Lobo, 264 · Alto Jose do Pinho</span><span class="geo-det">detectado 27/09/2026</span>
+          <span>ID <b class="mono-n">60136</b> · <span class="geo-fin-tag">finalizado em 14/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7185</b><span>Rua Valeriano Lobo, 263 · Alto Jose do Pinho</span><span class="geo-det">detectado 27/08/2026</span>
+          <span>ID <b class="mono-n">60136</b> · <span class="geo-fin-tag">finalizado em 14/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8852</b><span>Rua Alto José Bonifácio, 59 · Alto Jose Bonifacio</span><span class="geo-det">detectado 07/10/2026</span>
+          <span>ID <b class="mono-n">60137</b> · <span class="geo-fin-tag">finalizado em 13/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8872</b><span>Rua Alto José Bonifácio, 73 · Alto Jose Bonifacio</span><span class="geo-det">detectado 30/09/2026</span>
+          <span>ID <b class="mono-n">60137</b> · <span class="geo-fin-tag">finalizado em 13/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8812</b><span>Rua Diadema, 300 · Vasco da Gama</span><span class="geo-det">detectado 28/09/2026</span>
+          <span>ID <b class="mono-n">60141</b> · <span class="geo-fin-tag">finalizado em 13/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4994</b><span>Rua Carlos Marighella, 445 · Macaxeira</span><span class="geo-det">detectado 27/07/2026</span>
+          <span>ID <b class="mono-n">59713</b> · <span class="geo-fin-tag">finalizado em 08/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8874</b><span>Rua Alfredo Fernandes, 150 · Casa Forte</span><span class="geo-det">detectado 28/09/2026</span>
+          <span>ID <b class="mono-n">60149</b> · <span class="geo-fin-tag">finalizado em 07/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8673</b><span>Rua Doutor João Santos Filho, 11 B · Parnamirim</span><span class="geo-det">detectado 25/09/2026</span>
+          <span>ID <b class="mono-n">60150</b> · <span class="geo-fin-tag">finalizado em 07/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4333</b><span>Estrada dos Pintos, 53 · Dois Irmaos</span><span class="geo-det">detectado 07/07/2026</span>
+          <span>ID <b class="mono-n">59410</b> · <span class="geo-fin-tag">finalizado em 05/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G6495</b><span>Rua Dois de Fevereiro, 95 · Vasco da Gama</span><span class="geo-det">detectado 02/09/2026</span>
+          <span>ID <b class="mono-n">59048</b> · <span class="geo-fin-tag">finalizado em 02/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G6436</b><span>Rua Luiza da Costa Melo, 103 · Macaxeira</span><span class="geo-det">detectado 18/08/2026</span>
+          <span>ID <b class="mono-n">59329</b> · <span class="geo-fin-tag">finalizado em 01/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3573</b><span>Rua Dois de Fevereiro, 336 · Vasco da Gama</span><span class="geo-det">detectado 06/06/2026</span>
+          <span>ID <b class="mono-n">59051</b> · <span class="geo-fin-tag">finalizado em 01/10/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G5439</b><span>Rua Bela Vista, 261 · Casa Amarela</span><span class="geo-det">detectado 20/09/2026</span>
+          <span>ID <b class="mono-n">59657</b> · <span class="geo-fin-tag">finalizado em 29/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7106</b><span>Rua Córrego do Ouro, 486 A · Alto Jose Bonifacio</span><span class="geo-det">detectado 01/09/2026</span>
+          <span>ID <b class="mono-n">59055</b> · <span class="geo-fin-tag">finalizado em 18/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3636</b><span>Rua Carneiro Vilela, 578 · Aflitos</span><span class="geo-det">detectado 10/06/2026</span>
+          <span>ID <b class="mono-n">59042</b> · <span class="geo-fin-tag">finalizado em 16/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4622</b><span>Rua Hoel Sette, 152 · Jaqueira</span><span class="geo-det">detectado 01/09/2026</span>
+          <span>ID <b class="mono-n">58771</b> · <span class="geo-fin-tag">finalizado em 15/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3849</b><span>Rua Hoel Sette, 158 · Jaqueira</span><span class="geo-det">detectado 31/08/2026</span>
+          <span>ID <b class="mono-n">58771</b> · <span class="geo-fin-tag">finalizado em 15/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3016</b><span>Rua Hoel Sette, 130 · Jaqueira</span><span class="geo-det">detectado 18/07/2026</span>
+          <span>ID <b class="mono-n">58770</b> · <span class="geo-fin-tag">finalizado em 15/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7278</b><span>Rua Dois de Fevereiro, 162 · Vasco da Gama</span><span class="geo-det">detectado 01/09/2026</span>
+          <span>ID <b class="mono-n">58559</b> · <span class="geo-fin-tag">finalizado em 10/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8120</b><span>Rua Visconde de Abaeté, 62 · Tamarineira</span><span class="geo-det">detectado 09/09/2026</span>
+          <span>ID <b class="mono-n">58318</b> · <span class="geo-fin-tag">finalizado em 09/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4273</b><span>Rua Jornalista Paulo Bittencourt, 119 · Derby</span><span class="geo-det">detectado 05/07/2026</span>
+          <span>ID <b class="mono-n">58374</b> · <span class="geo-fin-tag">finalizado em 08/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3748</b><span>Rua Antônio Novais, 184 · Gracas</span><span class="geo-det">detectado 15/06/2026</span>
+          <span>ID <b class="mono-n">58437</b> · <span class="geo-fin-tag">finalizado em 08/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G6652</b><span>Rua Gomes Coutinho, 120 · Tamarineira</span><span class="geo-det">detectado 22/08/2026</span>
+          <span>ID <b class="mono-n">57829</b> · <span class="geo-fin-tag">finalizado em 03/09/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4016</b><span>Praça Casa Forte, 426 · Casa Forte</span><span class="geo-det">detectado 25/06/2026</span>
+          <span>ID <b class="mono-n">56109</b> · <span class="geo-fin-tag">finalizado em 24/08/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G5045</b><span>Rua Vasco da Gama, 1404 · Vasco da Gama</span><span class="geo-det">detectado 29/07/2026</span>
+          <span>ID <b class="mono-n">56379</b> · <span class="geo-fin-tag">finalizado em 19/08/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G2006</b><span>Rua Arlindo Cisneiros, 624 · Bomba do Hemeterio</span><span class="geo-det">detectado 24/07/2026</span>
+          <span>ID <b class="mono-n">57051</b> · <span class="geo-fin-tag">finalizado em 13/08/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G1989</b><span>Rua Córrego do Euclides, 671 · Alto Jose Bonifacio</span><span class="geo-det">detectado 03/05/2026</span>
+          <span>ID <b class="mono-n">56371</b> · <span class="geo-fin-tag">finalizado em 12/08/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G1700</b><span>Estrada do Arraial, 2516 B · Tamarineira</span><span class="geo-det">detectado 22/04/2026</span>
+          <span>ID <b class="mono-n">56016</b> · <span class="geo-fin-tag">finalizado em 31/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3771</b><span>Avenida Dezessete de Agosto, 387 · Casa Forte</span><span class="geo-det">detectado 16/06/2026</span>
+          <span>ID <b class="mono-n">56253</b> · <span class="geo-fin-tag">finalizado em 29/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3776</b><span>Rua da Baixa Verde, 305 · Derby</span><span class="geo-det">detectado 07/09/2026</span>
+          <span>ID <b class="mono-n">55438</b> · <span class="geo-fin-tag">finalizado em 20/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G2951</b><span>Rua Alto José Bonifácio, 729 · Alto Jose Bonifacio</span><span class="geo-det">detectado 26/05/2026</span>
+          <span>ID <b class="mono-n">54747</b> · <span class="geo-fin-tag">finalizado em 14/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3774</b><span>Estrada do Encanamento, 1210 · Parnamirim</span><span class="geo-det">detectado 17/06/2026</span>
+          <span>ID <b class="mono-n">54427</b> · <span class="geo-fin-tag">finalizado em 09/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4280</b><span>Rua Maria Amália, 488 · Macaxeira</span><span class="geo-det">detectado 05/07/2026</span>
+          <span>ID <b class="mono-n">54538</b> · <span class="geo-fin-tag">finalizado em 08/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4277</b><span>Rua Carlos Marighella, 130 · Macaxeira</span><span class="geo-det">detectado 05/07/2026</span>
+          <span>ID <b class="mono-n">54098</b> · <span class="geo-fin-tag">finalizado em 08/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G2553</b><span>Rua Maria Amália, 491 · Macaxeira</span><span class="geo-det">detectado 13/05/2026</span>
+          <span>ID <b class="mono-n">54538</b> · <span class="geo-fin-tag">finalizado em 08/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3177</b><span>Rua Luiz Cesário de Melo, 246 · Vasco da Gama</span><span class="geo-det">detectado 02/06/2026</span>
+          <span>ID <b class="mono-n">54518</b> · <span class="geo-fin-tag">finalizado em 07/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3473</b><span>Estrada do Arraial, 4365 · Monteiro</span><span class="geo-det">detectado 13/06/2026</span>
+          <span>ID <b class="mono-n">54422</b> · <span class="geo-fin-tag">finalizado em 06/07/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G9653</b><span>Avenida Dezessete de Agosto, 1112 · Casa Forte</span><span class="geo-det">detectado 06/10/2026</span>
+          <span>ID <b class="mono-n">53892</b> · <span class="geo-fin-tag">finalizado em 25/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3624</b><span>Rua Deputado Mário Monteiro, 76 · Casa Amarela</span><span class="geo-det">detectado 10/06/2026</span>
+          <span>ID <b class="mono-n">53795</b> · <span class="geo-fin-tag">finalizado em 19/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G1975</b><span>Rua Deputado Mário Monteiro, 52 · Casa Amarela</span><span class="geo-det">detectado 07/06/2026</span>
+          <span>ID <b class="mono-n">53795</b> · <span class="geo-fin-tag">finalizado em 19/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3236</b><span>Avenida Dezessete de Agosto, 941 · Casa Forte</span><span class="geo-det">detectado 03/06/2026</span>
+          <span>ID <b class="mono-n">52928</b> · <span class="geo-fin-tag">finalizado em 09/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G7184</b><span>Rua Guerra de Holanda, 158 · Poco</span><span class="geo-det">detectado 27/08/2026</span>
+          <span>ID <b class="mono-n">52296</b> · <span class="geo-fin-tag">finalizado em 02/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G5287</b><span>Rua Luiz Cesário de Melo, 415 · Nova Descoberta</span><span class="geo-det">detectado 03/08/2026</span>
+          <span>ID <b class="mono-n">52209</b> · <span class="geo-fin-tag">finalizado em 02/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4827</b><span>Rua Doutor Samuel Lins, 17 · Casa Forte</span><span class="geo-det">detectado 23/07/2026</span>
+          <span>ID <b class="mono-n">51672</b> · <span class="geo-fin-tag">finalizado em 02/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G4223</b><span>Avenida Vereador Otacílio Azevedo, 4705 · Brejo da Guabiraba</span><span class="geo-det">detectado 02/07/2026</span>
+          <span>ID <b class="mono-n">51966</b> · <span class="geo-fin-tag">finalizado em 01/06/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G2589</b><span>Avenida Chagas Ferreira, 800 · Dois Unidos</span><span class="geo-det">detectado 15/05/2026</span>
+          <span>ID <b class="mono-n">51538</b> · <span class="geo-fin-tag">finalizado em 21/05/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G2381</b><span>Rua Luiz Cesário de Melo, 361 · Vasco da Gama</span><span class="geo-det">detectado 07/09/2026</span>
+          <span>ID <b class="mono-n">50913</b> · <span class="geo-fin-tag">finalizado em 12/05/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G2591</b><span>Avenida Chagas Ferreira, 915 · Dois Unidos</span><span class="geo-det">detectado 15/05/2026</span>
+          <span>ID <b class="mono-n">49462</b> · <span class="geo-fin-tag">finalizado em 14/04/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G2596</b><span>Rua Alto do Eucalipto, 1922 · Vasco da Gama</span><span class="geo-det">detectado 14/05/2026</span>
+          <span>ID <b class="mono-n">49410</b> · <span class="geo-fin-tag">finalizado em 08/04/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G9092</b><span>Rua Doutor Tomé Dias, 39 · Casa Amarela</span><span class="geo-det">detectado 01/10/2026</span>
+          <span>ID <b class="mono-n">47660</b> · <span class="geo-fin-tag">finalizado em 04/03/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G5047</b><span>Avenida Vereador Otacílio Azevedo, 1083 · Brejo de Beberibe</span><span class="geo-det">detectado 28/07/2026</span>
+          <span>ID <b class="mono-n">46619</b> · <span class="geo-fin-tag">finalizado em 16/02/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G8033</b><span>Rua Nova Descoberta, 491 · Nova Descoberta</span><span class="geo-det">detectado 14/09/2026</span>
+          <span>ID <b class="mono-n">46295</b> · <span class="geo-fin-tag">finalizado em 11/02/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G3616</b><span>Rua Cardeal Arcoverde, 276 · Gracas</span><span class="geo-det">detectado 19/08/2026</span>
+          <span>ID <b class="mono-n">46198</b> · <span class="geo-fin-tag">finalizado em 11/02/2026</span></span>
+        </div>
+        <div class="geo-f" hidden>
+          <b class="mono-n">G6411</b><span>Rua Tereza Carneiro, 103 · Macaxeira</span><span class="geo-det">detectado 18/08/2026</span>
+          <span>ID <b class="mono-n">44900</b> · <span class="geo-fin-tag">finalizado em 16/01/2026</span></span>
+        </div>
+      </div>
+      <button type="button" class="geo-mais" id="geoMais">+ 72 · ver a lista completa</button>
+      
+    </section>
+
+    <section class="bloco sobe">
+      <div class="geo-h"><h2>Por bairro</h2>
+        <div class="legenda"><span><i style="background: #22C55E;"></i>com ID no SIGA</span><span><i style="background: #38BDF8;"></i>já finalizados no SIGA</span><span><i style="background: #F59E0B;"></i>rua com ID, número distante</span><span><i style="background: #EF4444;"></i>sem ID no SIGA</span></div></div>
+      <div class="geo-bairros">
+        <b>Bairro a confirmar</b>
+        <div class="geo-barra claro"><i style="width: 4.0%; background: #22C55E; animation-delay: 0.00s;" title="1 com ID no SIGA"></i><i style="width: 12.0%; background: #38BDF8; animation-delay: 0.05s;" title="3 já finalizados no SIGA"></i><i style="width: 36.0%; background: #F59E0B; animation-delay: 0.10s;" title="9 rua com ID, número distante"></i><i style="width: 48.0%; background: #EF4444; animation-delay: 0.15s;" title="12 sem ID no SIGA"></i></div>
+        <span class="n">25</span>
+        <b>Casa Amarela</b>
+        <div class="geo-barra claro"><i style="width: 13.0%; background: #22C55E; animation-delay: 0.00s;" title="3 com ID no SIGA"></i><i style="width: 39.1%; background: #38BDF8; animation-delay: 0.05s;" title="9 já finalizados no SIGA"></i><i style="width: 8.7%; background: #F59E0B; animation-delay: 0.10s;" title="2 rua com ID, número distante"></i><i style="width: 39.1%; background: #EF4444; animation-delay: 0.15s;" title="9 sem ID no SIGA"></i></div>
+        <span class="n">23</span>
+        <b>Vasco da Gama</b>
+        <div class="geo-barra claro"><i style="width: 26.1%; background: #22C55E; animation-delay: 0.00s;" title="6 com ID no SIGA"></i><i style="width: 60.9%; background: #38BDF8; animation-delay: 0.05s;" title="14 já finalizados no SIGA"></i><i style="width: 4.3%; background: #F59E0B; animation-delay: 0.10s;" title="1 rua com ID, número distante"></i><i style="width: 8.7%; background: #EF4444; animation-delay: 0.15s;" title="2 sem ID no SIGA"></i></div>
+        <span class="n">23</span>
+        <b>Alto Jose Bonifacio</b>
+        <div class="geo-barra claro"><i style="width: 57.9%; background: #22C55E; animation-delay: 0.00s;" title="11 com ID no SIGA"></i><i style="width: 31.6%; background: #38BDF8; animation-delay: 0.05s;" title="6 já finalizados no SIGA"></i><i style="width: 10.5%; background: #F59E0B; animation-delay: 0.10s;" title="2 rua com ID, número distante"></i></div>
+        <span class="n">19</span>
+        <b>Tamarineira</b>
+        <div class="geo-barra claro"><i style="width: 27.8%; background: #22C55E; animation-delay: 0.00s;" title="5 com ID no SIGA"></i><i style="width: 27.8%; background: #38BDF8; animation-delay: 0.05s;" title="5 já finalizados no SIGA"></i><i style="width: 33.3%; background: #F59E0B; animation-delay: 0.10s;" title="6 rua com ID, número distante"></i><i style="width: 11.1%; background: #EF4444; animation-delay: 0.15s;" title="2 sem ID no SIGA"></i></div>
+        <span class="n">18</span>
+        <b>Macaxeira</b>
+        <div class="geo-barra claro"><i style="width: 6.7%; background: #22C55E; animation-delay: 0.00s;" title="1 com ID no SIGA"></i><i style="width: 46.7%; background: #38BDF8; animation-delay: 0.05s;" title="7 já finalizados no SIGA"></i><i style="width: 33.3%; background: #F59E0B; animation-delay: 0.10s;" title="5 rua com ID, número distante"></i><i style="width: 13.3%; background: #EF4444; animation-delay: 0.15s;" title="2 sem ID no SIGA"></i></div>
+        <span class="n">15</span>
+        <b>Casa Forte</b>
+        <div class="geo-barra claro"><i style="width: 58.3%; background: #38BDF8; animation-delay: 0.00s;" title="7 já finalizados no SIGA"></i><i style="width: 25.0%; background: #F59E0B; animation-delay: 0.05s;" title="3 rua com ID, número distante"></i><i style="width: 16.7%; background: #EF4444; animation-delay: 0.10s;" title="2 sem ID no SIGA"></i></div>
+        <span class="n">12</span>
+        <b>Alto Jose do Pinho</b>
+        <div class="geo-barra claro"><i style="width: 45.5%; background: #22C55E; animation-delay: 0.00s;" title="5 com ID no SIGA"></i><i style="width: 27.3%; background: #38BDF8; animation-delay: 0.05s;" title="3 já finalizados no SIGA"></i><i style="width: 27.3%; background: #F59E0B; animation-delay: 0.10s;" title="3 rua com ID, número distante"></i></div>
+        <span class="n">11</span>
+        <b>Espinheiro</b>
+        <div class="geo-barra claro"><i style="width: 10.0%; background: #22C55E; animation-delay: 0.00s;" title="1 com ID no SIGA"></i><i style="width: 50.0%; background: #38BDF8; animation-delay: 0.05s;" title="5 já finalizados no SIGA"></i><i style="width: 30.0%; background: #F59E0B; animation-delay: 0.10s;" title="3 rua com ID, número distante"></i><i style="width: 10.0%; background: #EF4444; animation-delay: 0.15s;" title="1 sem ID no SIGA"></i></div>
+        <span class="n">10</span>
+        <b>Nova Descoberta</b>
+        <div class="geo-barra claro"><i style="width: 40.0%; background: #22C55E; animation-delay: 0.00s;" title="4 com ID no SIGA"></i><i style="width: 20.0%; background: #38BDF8; animation-delay: 0.05s;" title="2 já finalizados no SIGA"></i><i style="width: 20.0%; background: #F59E0B; animation-delay: 0.10s;" title="2 rua com ID, número distante"></i><i style="width: 20.0%; background: #EF4444; animation-delay: 0.15s;" title="2 sem ID no SIGA"></i></div>
+        <span class="n">10</span>
+        <b>Parnamirim</b>
+        <div class="geo-barra claro"><i style="width: 22.2%; background: #22C55E; animation-delay: 0.00s;" title="2 com ID no SIGA"></i><i style="width: 33.3%; background: #38BDF8; animation-delay: 0.05s;" title="3 já finalizados no SIGA"></i><i style="width: 22.2%; background: #F59E0B; animation-delay: 0.10s;" title="2 rua com ID, número distante"></i><i style="width: 22.2%; background: #EF4444; animation-delay: 0.15s;" title="2 sem ID no SIGA"></i></div>
+        <span class="n">9</span>
+        <b>Gracas</b>
+        <div class="geo-barra claro"><i style="width: 14.3%; background: #22C55E; animation-delay: 0.00s;" title="1 com ID no SIGA"></i><i style="width: 28.6%; background: #38BDF8; animation-delay: 0.05s;" title="2 já finalizados no SIGA"></i><i style="width: 14.3%; background: #F59E0B; animation-delay: 0.10s;" title="1 rua com ID, número distante"></i><i style="width: 42.9%; background: #EF4444; animation-delay: 0.15s;" title="3 sem ID no SIGA"></i></div>
+        <span class="n">7</span>
+        <b>Derby</b>
+        <div class="geo-barra claro"><i style="width: 40.0%; background: #38BDF8; animation-delay: 0.00s;" title="2 já finalizados no SIGA"></i><i style="width: 60.0%; background: #EF4444; animation-delay: 0.05s;" title="3 sem ID no SIGA"></i></div>
+        <span class="n">5</span>
+        <b>Guabiraba</b>
+        <div class="geo-barra claro"><i style="width: 100.0%; background: #EF4444; animation-delay: 0.00s;" title="5 sem ID no SIGA"></i></div>
+        <span class="n">5</span>
+      </div>
+    </section>
+    
+  </div>
+</div>
+
+<script>window.ESTATICO=true;window.ESTATICO_SITE=true;</script>
+
+<script>
+(function(){ const b = document.getElementById("geoMais"); if (!b) return;
+  b.addEventListener("click", () => { document.querySelectorAll("#geoFins [hidden]").forEach(x => x.hidden = false); b.remove(); }); })();
+</script>
+
+</body>
+</html>

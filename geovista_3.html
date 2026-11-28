@@ -1,0 +1,1070 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="VWAJ">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RPA 6 - GEOVISTA · Norconsult</title>
+<link rel="icon" href="static/logo_n.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/vendor/leaflet.css">
+<link rel="stylesheet" href="static/style.css?v=1795787784">
+<script src="static/vendor/leaflet.js"></script>
+<script src="static/vendor/chart.umd.js"></script>
+</head>
+<body class="estatico pg-geovista">
+
+<header class="topo">
+  <div class="topo-linha">
+    <a class="marca" href="visao_geral.html" style="text-decoration:none">
+      <img src="static/logo_n.png" alt="Norconsult">
+      <div><div class="t1">Acompanhamento de Fiscais</div>
+           <div class="t2">Norconsult · EMLURB Recife · SIGA</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="and-selo" style="margin-right:4px" title="Versão simplificada">✦ Simplificado</a>
+      <a href="visao_geral.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+</svg>Visão geral</a>
+      <a href="desempenho.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+</svg>Desempenho</a>
+      <a href="monitoramento.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/>
+</svg>Monitoramento</a>
+      <a href="lotes.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11M3 19l1.5 1.5L7 18"/>
+</svg>Demandas</a>
+      <a href="geovista.html" class="ativo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg>GeoVista</a>
+      <a href="analises.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+</svg>Análises</a>
+    
+    </nav>
+    <div class="topo-dir">
+      <div class="status-coleta" id="statusColeta"><div class="spin"></div><span id="statusTexto">Coletando…</span></div>
+      <button class="and-selo av-selo" id="avSelo" type="button" onclick="Avisos.abrir()" title="Avisos do dia: ontem (ou o último dia trabalhado) inteiro e o andamento de hoje"><i class="av-ponto" id="avPonto" hidden></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg><span>Avisos</span></button>
+      
+      
+      <div class="selo-leitura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+</svg><div><b>Versão de leitura</b><br>geral 28/11/2026 07:03</div></div>
+      
+      
+      
+    </div>
+  </div>
+</header>
+<main class="pagina">
+
+<div class="cab-pagina">
+  <div><p style="margin:0"><a href="geovista.html">‹ Conferir GeoVista</a></p>
+    <h1>RPA 6 - GEOVISTA</h1>
+    <p>34 OS do GeoVista × IDs abertos no SIGA (coleta de 28/11/2026 07:03) · só serviços de buraco</p>
+    <div class="gv-origem"><span><b>Origem da lista:</b> planilha BURACO_GEOVISTA - 2026 - 26.11.2026.xlsx
+      · importada em 27/11/2026 · 34 OS · RPA 6</span>
+      <span><b>Fotos:</b> 0 das 34 OS têm a foto do relatório de detecção</span></div></div>
+  </div>
+</div>
+
+
+
+
+<div class="card gv-hero">
+  <div class="gv-hero-anel">
+
+<svg class="anel" width="150" height="150" viewBox="0 0 100 100" role="img" aria-label="andamento">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#E4E9EF" stroke-width="11"/>
+  <g transform="rotate(-90 50 50)" fill="none" stroke-width="11">
+    <circle id=ringC cx="50" cy="50" r="42" stroke="#2E9D57" stroke-dasharray="0.0 263.89" stroke-dashoffset="0"/>
+    <circle id=ringA cx="50" cy="50" r="42" stroke="#7FC79A" stroke-dasharray="0.0 263.89" stroke-dashoffset="-0.0"/>
+    <circle id=ringE cx="50" cy="50" r="42" stroke="#12A4B6" stroke-dasharray="0.0 263.89" stroke-dashoffset="-0.0"/>
+    <circle id=ringF cx="50" cy="50" r="42" stroke="#3B5BDB" stroke-dasharray="0.0 263.89" stroke-dashoffset="-0.0"/>
+  </g>
+  <text id=ringPct x="50" y="50" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="700" fill="#112D37" font-family="Inter, sans-serif">0%</text>
+</svg>
+    <div class="gv-hero-rot">resolvidas</div></div>
+  <div class="gv-hero-meio">
+    <div class="gv-tiles">
+      <div class="gv-tile"><span>Total de OS</span><b class="num">34</b><i>na lista do GeoVista</i></div>
+      <div class="gv-tile ok"><span>Resolvidas</span><b class="num" id="gvRes">0</b><i>com ID, finalizadas ou executadas</i></div>
+      <div class="gv-tile falta"><span>Faltam</span><b class="num" id="gvPend">34</b><i>sem ID aberto, finalizado nem execução</i></div>
+      <div class="gv-tile"><span>Última atividade</span><b>—</b><i>nada confirmado ainda</i></div>
+    </div>
+    <div class="gv-quebra">
+      <span class="gv-q" style="--c:#2E9D57"><i></i><b id="gvConf">0</b> com ID confirmado por você</span>
+      <span class="gv-q" style="--c:#7FC79A"><i></i><b id="gvAuto">0</b> já tinham ID no SIGA</span>
+      <span class="gv-q" style="--c:#3B5BDB"><i></i><b id="gvFin">0</b> já finalizadas no SIGA</span>
+      <span class="gv-q" style="--c:#12A4B6"><i></i><b id="gvExec">0</b> executadas sem ID</span>
+      <span class="gv-q" style="--c:#D8DEE5"><i></i><b>34</b> faltam</span>
+    </div>
+    <span hidden id="gvPct">0%</span>
+    <div class="progresso" hidden><i id="gvBarraA"></i><i id="gvBarra"></i><i id="gvBarraE"></i></div>
+    <details class="gv-como"><summary>Como ler estes números</summary>
+      <div><b>Resolvida</b> é a OS do GeoVista que já tem um ID do SIGA ligado a ela, ou que foi executada em campo sem ID.
+        <b style="color:#2E9D57">ID confirmado</b>: você informou ou escolheu o ID. <b style="color:#5FAF7F">Já tinha ID</b>: o painel achou uma OS aberta no SIGA na mesma rua, bairro e número próximo.
+        <b style="color:#3B5BDB">Já finalizada no SIGA</b>: não há OS aberta, mas há um Buraco Siga <b>finalizado</b> este ano na mesma rua, bairro e número próximo (busca de finalizados do Monitoramento).
+        <b style="color:#0E8090">Executada</b>: resolvida em campo, sem ID no SIGA. <b>Faltam</b>: nenhuma dessas ainda.
+        A data de cada resolvida é o dia em que você confirmou (ou o dia em que o ID apareceu no SIGA, depois da entrega da demanda).</div></details>
+  </div>
+  <div class="gv-hero-dir">
+    <div class="gv-mini"><span>Situação</span>
+<span class="tag ">a começar</span></div>
+    <div class="gv-mini"><span>Desde a entrega</span><b>1 dia(s)</b><i>data de entrega não informada</i></div>
+    <div class="gv-mini"><span>Ritmo</span><b>0.0/dia útil</b><i><span class="delta zero">0.0 pp</span> em 7 dias</i></div>
+    <div class="gv-mini"><span>Previsão</span><b>—</b><i>sem ritmo ainda</i></div>
+    
+  </div>
+</div>
+
+<div class="grade gv-meio" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;margin:16px 0">
+  <div class="card"><div class="card-cab"><h3>Resolvidas por dia</h3><span class="sub">desde 27/11 · por tipo</span>
+      </div>
+    <div class="card-corpo" style="height:210px"><canvas id="grafGv"></canvas></div></div>
+  <div class="card"><div class="card-cab"><h3>Por bairro</h3><span class="sub">o que falta em cada um · clique para filtrar a lista</span></div>
+    <div class="rolagem" style="max-height:250px"><table class="tabela gv-bairros"><tbody>
+      <tr class="linha-acao" data-bairro="Imbiribeira" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Imbiribeira</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>9</b> <span style="color:var(--muito-suave)">de 9</span></td></tr><tr class="linha-acao" data-bairro="Boa Viagem" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Boa Viagem</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>6</b> <span style="color:var(--muito-suave)">de 6</span></td></tr><tr class="linha-acao" data-bairro="Cohab" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Cohab</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>6</b> <span style="color:var(--muito-suave)">de 6</span></td></tr><tr class="linha-acao" data-bairro="Pina" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Pina</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>4</b> <span style="color:var(--muito-suave)">de 4</span></td></tr><tr class="linha-acao" data-bairro="Ibura" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Ibura</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>3</b> <span style="color:var(--muito-suave)">de 3</span></td></tr><tr class="linha-acao" data-bairro="Jordão" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Jordão</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>3</b> <span style="color:var(--muito-suave)">de 3</span></td></tr><tr class="linha-acao" data-bairro="Barro" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Barro</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>1</b> <span style="color:var(--muito-suave)">de 1</span></td></tr><tr class="linha-acao" data-bairro="Ipsep" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Ipsep</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>1</b> <span style="color:var(--muito-suave)">de 1</span></td></tr><tr class="linha-acao" data-bairro="Jardim Jordão" onclick="filtrarBairro(this.dataset.bairro)"><td><b style="color:var(--navy)">Jardim Jordão</b></td>
+        <td style="width:38%"><div class="progresso" style="height:8px"><i style="width:0%;background:#2E9D57"></i></div></td>
+        <td class="n" style="white-space:nowrap"><b>1</b> <span style="color:var(--muito-suave)">de 1</span></td></tr>
+    </tbody></table></div></div>
+</div>
+
+<div class="gv-sit-tit">Situação de cada OS na conferência com o SIGA <span>· clique para filtrar</span></div>
+<div class="kpis" id="kpis">
+  <div class="kpi verde" data-cor="verde" style="cursor:pointer"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg></div><div><div class="rot">Já tem ID no SIGA</div><div class="val">0</div><div class="det">ID achado na rua ou informado por você</div></div></div>
+  <div class="kpi destaque" data-cor="amarelo" style="cursor:pointer"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5v.01"/>
+</svg></div><div><div class="rot">Rua com ID · conferir</div><div class="val">10</div><div class="det">OS na rua, mas em outro trecho</div></div></div>
+  <div class="kpi vermelho" data-cor="vermelho" style="cursor:pointer"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5.7 5.7 12.6 12.6"/>
+</svg></div><div><div class="rot">Sem ID no SIGA</div><div class="val">24</div><div class="det">nenhuma OS aberta na rua</div></div></div>
+  <div class="kpi" data-cor="azul" style="cursor:pointer"><div class="ic" style="color:#3B5BDB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg></div><div><div class="rot">Já finalizado no SIGA</div><div class="val" style="color:#3B5BDB">0</div><div class="det">sem OS aberta, mas finalizada no ano</div></div></div>
+  <div class="kpi" data-cor="executado" style="cursor:pointer"><div class="ic" style="color:#12A4B6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>
+</svg></div><div><div class="rot">Executadas sem ID</div><div class="val">0</div><div class="det">resolvidas em campo</div></div></div>
+  <div class="kpi"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+</svg></div><div><div class="rot">Bairro a confirmar</div><div class="val">0</div><div class="det">rua em vários bairros / fora da base</div></div></div>
+</div>
+
+<div class="gv-fin">
+  <span class="gv-fin-ic" aria-hidden="true">✓</span>
+  <div><b>Também conferido com os finalizados do SIGA:</b> 10.851 Buraco Siga finalizados de 31/12/2025 a 27/11/2026
+    · busca de finalizados em 28/11/2026 às 06:40. As OS sem ID aberto que batem com um finalizado (mesma rua, bairro e nº próximo) aparecem como <b style="color:#3B5BDB">Já finalizado no SIGA</b>.</div>
+  
+  
+</div>
+
+
+
+
+
+
+<div class="filtros">
+  <div class="campo"><label>Mostrar</label>
+    <div class="seg" id="segSit"><button data-v="" class="on">Todos</button><button data-v="verde">Tem ID no SIGA</button><button data-v="amarelo">Rua com ID (outro trecho)</button><button data-v="azul">Já finalizado</button><button data-v="vermelho">Sem ID</button></div></div>
+  <div class="campo"><label>Identificação</label>
+    <div class="seg" id="segIdent"><button data-v="" class="on">Todas</button><button data-v="pend">Pendentes</button><button data-v="ok">Identificadas</button><button data-v="exec">Executadas</button><button data-v="novo">Com ID novo provável</button></div></div>
+  <div class="campo"><label>Bairro (aferido)</label><select id="fBairro"><option value="">Todos</option><option>Barro</option><option>Boa Viagem</option><option>Cohab</option><option>Ibura</option><option>Imbiribeira</option><option>Ipsep</option><option>Jardim Jordão</option><option>Jordão</option><option>Pina</option></select></div>
+  <div class="campo"><label>Buscar</label><input type="search" id="fBusca" placeholder="OS, logradouro, ID…" style="width:280px"></div>
+  <span id="fCont" style="color:var(--suave);font-size:13px;align-self:center"></span>
+</div>
+
+<div class="card">
+  <table class="tabela" id="tab">
+    <thead><tr><th>OS GeoVista</th><th>Logradouro</th><th class="n">Altura</th><th>Bairro aferido</th><th>Situação</th><th>ID(s) SIGA</th><th style="min-width:210px">ID identificado</th><th>Foto</th><th></th></tr></thead>
+    <tbody>
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Barro" data-busca=" Avenida Desembargador Ribeiro Malta  Barro   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Desembargador Ribeiro Malta</b><div style="font-size:12px;color:var(--suave)">265</div></td>
+        <td class="n">—</td>
+        <td>Barro
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-1"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Boa Viagem" data-busca=" Avenida Conselheiro Aguiar  Boa Viagem   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Conselheiro Aguiar</b><div style="font-size:12px;color:var(--suave)">10</div></td>
+        <td class="n">—</td>
+        <td>Boa Viagem
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">4 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-2"><option value="62342">defronte a Crefisa / praia sul shopping</option><option value="62344">defronte ao armazém coral / sky fit</option><option value="62345">4741/ eletrônica Amazonas</option><option value="62347">restaurante Bella nordestina / defronte ao estacionamento do extra</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>62342</b></td><td>Buraco Siga</td><td>defronte a Crefisa / praia sul shopping</td>
+            <td>Boa Viagem</td><td class="n">—</td>
+            <td class="n">24/11/2026</td><td class="n">24/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.130281,-34.901147" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62344</b></td><td>Buraco Siga</td><td>defronte ao armazém coral / sky fit</td>
+            <td>Boa Viagem</td><td class="n">—</td>
+            <td class="n">24/11/2026</td><td class="n">24/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.12937297,-34.900787" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62345</b></td><td>Buraco Siga</td><td>4741/ eletrônica Amazonas</td>
+            <td>Boa Viagem</td><td class="n">—</td>
+            <td class="n">24/11/2026</td><td class="n">24/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.128838,-34.90058297" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62347</b></td><td>Buraco Siga</td><td>restaurante Bella nordestina / defronte ao estacionamento do extra</td>
+            <td>Boa Viagem</td><td class="n">—</td>
+            <td class="n">24/11/2026</td><td class="n">24/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.12677597,-34.899827" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Boa Viagem" data-busca=" Avenida Engenheiro Domingos Ferreira  Boa Viagem   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Engenheiro Domingos Ferreira</b><div style="font-size:12px;color:var(--suave)">3739</div></td>
+        <td class="n">—</td>
+        <td>Boa Viagem
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">3 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-3"><option value="20367">n1248 (energia)</option><option value="62613">890/ próximo a rua do Atlântico</option><option value="62615">engenheiro d com rua Arthur Muniz</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>20367</b></td><td>Buraco Concessionária</td><td>n1248 (energia)</td>
+            <td>Boa Viagem</td><td class="n">—</td>
+            <td class="n">10/01/2025</td><td class="n">10/01/2025</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.10050597,-34.887453" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62613</b></td><td>Buraco Siga</td><td>890/ próximo a rua do Atlântico</td>
+            <td>Boa Viagem</td><td class="n">—</td>
+            <td class="n">26/11/2026</td><td class="n">26/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.097497,-34.88635397" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62615</b></td><td>Buraco Siga</td><td>engenheiro d com rua Arthur Muniz</td>
+            <td>Boa Viagem</td><td class="n">—</td>
+            <td class="n">26/11/2026</td><td class="n">26/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.104015,-34.889108" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Boa Viagem" data-busca=" Avenida Herculano Bandeira  Boa Viagem   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Herculano Bandeira</b><div style="font-size:12px;color:var(--suave)">123</div></td>
+        <td class="n">—</td>
+        <td>Boa Viagem
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-4"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Boa Viagem" data-busca=" Rua Dez de Julho  Boa Viagem   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Dez de Julho</b><div style="font-size:12px;color:var(--suave)">399</div></td>
+        <td class="n">—</td>
+        <td>Boa Viagem
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-5"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Boa Viagem" data-busca=" Rua Ernesto de Paula Santos  Boa Viagem   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Ernesto de Paula Santos</b><div style="font-size:12px;color:var(--suave)">620</div></td>
+        <td class="n">—</td>
+        <td>Boa Viagem
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-6"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Boa Viagem" data-busca=" Rua Professor José Brandão  Boa Viagem   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Professor José Brandão</b><div style="font-size:12px;color:var(--suave)">2654</div></td>
+        <td class="n">—</td>
+        <td>Boa Viagem
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-7"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Cohab" data-busca=" Avenida Chapada do Araripe  Cohab   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Chapada do Araripe</b><div style="font-size:12px;color:var(--suave)">49</div></td>
+        <td class="n">—</td>
+        <td>Cohab
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-8"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Cohab" data-busca=" Avenida Doze de Junho  Cohab   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Doze de Junho</b><div style="font-size:12px;color:var(--suave)">1062</div></td>
+        <td class="n">—</td>
+        <td>Cohab
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-9"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Cohab" data-busca=" Avenida Mato Grosso  Cohab   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Mato Grosso</b><div style="font-size:12px;color:var(--suave)">38</div></td>
+        <td class="n">—</td>
+        <td>Cohab
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-10"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Cohab" data-busca=" Avenida Mato Grosso  Cohab   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Mato Grosso</b><div style="font-size:12px;color:var(--suave)">262</div></td>
+        <td class="n">—</td>
+        <td>Cohab
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-11"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Cohab" data-busca=" Avenida Presidente Médici  Cohab   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Presidente Médici</b><div style="font-size:12px;color:var(--suave)">506</div></td>
+        <td class="n">—</td>
+        <td>Cohab
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">3 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-12"><option value="59906">mercado dos gêmeos</option><option value="61217">numero 400</option><option value="61218">numero 395</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="opacity:.55">
+            <td class="num"><b>59906</b></td><td>Buraco Siga</td><td>mercado dos gêmeos</td>
+            <td>Barro <span style="font-size:11px">(outro bairro)</span></td><td class="n">—</td>
+            <td class="n">28/09/2026</td><td class="n">23/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.1091276,-34.9539421" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="opacity:.55">
+            <td class="num"><b>61217</b></td><td>Buraco Siga</td><td>numero 400</td>
+            <td>Barro <span style="font-size:11px">(outro bairro)</span></td><td class="n">—</td>
+            <td class="n">26/10/2026</td><td class="n">23/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.1091599,-34.9541249" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="opacity:.55">
+            <td class="num"><b>61218</b></td><td>Buraco Siga</td><td>numero 395</td>
+            <td>Barro <span style="font-size:11px">(outro bairro)</span></td><td class="n">—</td>
+            <td class="n">26/10/2026</td><td class="n">23/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.1091809,-34.9542713" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Cohab" data-busca=" Rua Expedicionário Francisco Vitoriano  Cohab   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Expedicionário Francisco Vitoriano</b><div style="font-size:12px;color:var(--suave)">99</div></td>
+        <td class="n">—</td>
+        <td>Cohab
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-13"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Ibura" data-busca=" Rua Carrapateira  Ibura   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Carrapateira</b><div style="font-size:12px;color:var(--suave)">63</div></td>
+        <td class="n">—</td>
+        <td>Ibura
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-14"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Ibura" data-busca=" Rua Emílio Monteiro Fonseca  Ibura   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Emílio Monteiro Fonseca</b><div style="font-size:12px;color:var(--suave)">1424</div></td>
+        <td class="n">—</td>
+        <td>Ibura
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-15"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Ibura" data-busca=" Rua Francisco Beltrão  Ibura   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Francisco Beltrão</b><div style="font-size:12px;color:var(--suave)">132</div></td>
+        <td class="n">—</td>
+        <td>Ibura
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">1 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-16"><option value="56927">numero 445</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>56927</b></td><td>Buraco - Demanda Extra</td><td>numero 445</td>
+            <td>Ibura</td><td class="n">—</td>
+            <td class="n">06/08/2026</td><td class="n">06/08/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.1257009,-34.934542" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Alfredo Marcondes  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Alfredo Marcondes</b><div style="font-size:12px;color:var(--suave)">13</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-17"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Alfredo Marcondes  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Alfredo Marcondes</b><div style="font-size:12px;color:var(--suave)">13</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-18"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Doutor Tavares Correia  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Doutor Tavares Correia</b><div style="font-size:12px;color:var(--suave)">77</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-19"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Gonçalves de Magalhães  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Gonçalves de Magalhães</b><div style="font-size:12px;color:var(--suave)">82</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-20"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Itamaracá  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Itamaracá</b><div style="font-size:12px;color:var(--suave)">221</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">2 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-21"><option value="62369">361</option><option value="62370">238</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>62369</b></td><td>Buraco Siga</td><td>361</td>
+            <td>Imbiribeira</td><td class="n">—</td>
+            <td class="n">24/11/2026</td><td class="n">24/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.109253,-34.914369" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62370</b></td><td>Buraco Siga</td><td>238</td>
+            <td>Imbiribeira</td><td class="n">—</td>
+            <td class="n">24/11/2026</td><td class="n">24/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.10698497,-34.91395097" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Joaquim Pessoa  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Joaquim Pessoa</b><div style="font-size:12px;color:var(--suave)">144</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-22"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Jornalista Cleófas de Oliveira  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Jornalista Cleófas de Oliveira</b><div style="font-size:12px;color:var(--suave)">130</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-23"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Sargento Silvino Macedo  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Sargento Silvino Macedo</b><div style="font-size:12px;color:var(--suave)">620</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-24"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Imbiribeira" data-busca=" Rua Álvaro Amorim  Imbiribeira   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Álvaro Amorim</b><div style="font-size:12px;color:var(--suave)">128</div></td>
+        <td class="n">—</td>
+        <td>Imbiribeira
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-25"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Ipsep" data-busca=" Rua Abdias Cabral de Moura  Ipsep   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Abdias Cabral de Moura</b><div style="font-size:12px;color:var(--suave)">95</div></td>
+        <td class="n">—</td>
+        <td>Ipsep
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">3 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-26"><option value="62699">301</option><option value="62737">próximo a Aldemar de oliveira</option><option value="62738">próximo ao 301</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>62699</b></td><td>Buraco Siga</td><td>301</td>
+            <td>Ipsep</td><td class="n">—</td>
+            <td class="n">27/11/2026</td><td class="n">27/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.10525797,-34.92695197" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62737</b></td><td>Buraco Siga</td><td>próximo a Aldemar de oliveira</td>
+            <td>Ipsep</td><td class="n">—</td>
+            <td class="n">27/11/2026</td><td class="n">27/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.10501,-34.92694197" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62738</b></td><td>Buraco Siga</td><td>próximo ao 301</td>
+            <td>Ipsep</td><td class="n">—</td>
+            <td class="n">27/11/2026</td><td class="n">27/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.10508197,-34.92695897" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Jardim Jordão" data-busca=" Rua Doutor Andrade Lyra  Jardim Jordão   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Doutor Andrade Lyra</b><div style="font-size:12px;color:var(--suave)">11</div></td>
+        <td class="n">—</td>
+        <td>Jardim Jordão
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-27"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Jordão" data-busca=" Avenida Maria Irene  Jordão   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Maria Irene</b><div style="font-size:12px;color:var(--suave)">23</div></td>
+        <td class="n">—</td>
+        <td>Jordão
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">1 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-28"><option value="58895">atacarejo Jordão</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>58895</b></td><td>Buraco - Stand-by</td><td>atacarejo Jordão</td>
+            <td>Jordao</td><td class="n">—</td>
+            <td class="n">09/09/2026</td><td class="n">03/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.1377689,-34.9366298" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Jordão" data-busca=" Rua Cristália  Jordão   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Cristália</b><div style="font-size:12px;color:var(--suave)">384</div></td>
+        <td class="n">—</td>
+        <td>Jordão
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-29"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Jordão" data-busca=" Rua Limoeiro  Jordão   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Limoeiro</b><div style="font-size:12px;color:var(--suave)">314</div></td>
+        <td class="n">—</td>
+        <td>Jordão
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-30"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Pina" data-busca=" Avenida Encanta Moça  Pina   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Encanta Moça</b><div style="font-size:12px;color:var(--suave)">839</div></td>
+        <td class="n">—</td>
+        <td>Pina
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">1 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-31"><option value="62586">157/880</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>62586</b></td><td>Buraco Siga</td><td>157/880</td>
+            <td>Pina</td><td class="n">—</td>
+            <td class="n">26/11/2026</td><td class="n">26/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.09641097,-34.88748797" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="vermelho" data-cor0="vermelho" data-sit0="Sem ID no SIGA" data-os="" data-ident="pend" data-novo="0" data-bairro="Pina" data-busca=" Avenida Herculano Bandeira  Pina   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Avenida Herculano Bandeira</b><div style="font-size:12px;color:var(--suave)">773</div></td>
+        <td class="n">—</td>
+        <td>Pina
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#D63B32;color:#fff">Sem ID no SIGA</span></td>
+        <td class="num">—</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-32"></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap"></td>
+      </tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Pina" data-busca=" Rua Manoel de Brito  Pina   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Manoel de Brito</b><div style="font-size:12px;color:var(--suave)">310</div></td>
+        <td class="n">—</td>
+        <td>Pina
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">2 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-33"><option value="62578">207/ motel corpus</option><option value="62637">próximo ao 19 batalhão</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>62578</b></td><td>Buraco Siga</td><td>207/ motel corpus</td>
+            <td>Pina</td><td class="n">—</td>
+            <td class="n">26/11/2026</td><td class="n">26/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.08783597,-34.889076" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr><tr style="">
+            <td class="num"><b>62637</b></td><td>Buraco Siga</td><td>próximo ao 19 batalhão</td>
+            <td>Pina</td><td class="n">—</td>
+            <td class="n">26/11/2026</td><td class="n">26/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.088877,-34.890343" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+      <tr class="linha clicavel" data-cor="amarelo" data-cor0="amarelo" data-sit0="Rua com ID — GeoVista sem número" data-os="" data-ident="pend" data-novo="0" data-bairro="Pina" data-busca=" Rua Tomé Gibson  Pina   " onclick="abrir(this)">
+        <td class="num"><b></b><div style="font-size:11px;color:var(--muito-suave)"></div></td>
+        <td><b style="color:var(--navy)">Rua Tomé Gibson</b><div style="font-size:12px;color:var(--suave)">400</div></td>
+        <td class="n">—</td>
+        <td>Pina
+          <div style="font-size:11px;color:var(--muito-suave)">informado no GeoVista</div></td>
+        <td><span class="tag sit-tag" style="background:#EE7D22;color:#fff">Rua com ID — GeoVista sem número</span></td>
+        <td class="num">1 na rua</td>
+        <td onclick="event.stopPropagation()">
+          <div class="id-leitura"><span style="color:var(--muito-suave)">—</span></div>
+          <datalist id="cand-34"><option value="62587">400/444</option></datalist>
+          <div class="id-info" style="font-size:11px;color:var(--muito-suave)"></div>
+        </td>
+        <td><span style="color:var(--muito-suave);font-size:12px">—</span></td>
+        <td style="color:var(--muito-suave);white-space:nowrap">ver IDs ›</td>
+      </tr>
+      
+      <tr class="det" hidden><td colspan="9" style="background:#FAFBFD;padding:8px 16px 14px">
+        <table class="tabela" style="background:#fff;border:1px solid var(--borda);border-radius:8px">
+          <thead><tr><th>ID SIGA</th><th>Tipo</th><th>Trecho</th><th>Bairro</th><th class="n">Dif. nº</th><th class="n">Aberto em</th><th class="n">Últ. fiscal.</th><th>Fiscal</th><th></th><th></th></tr></thead>
+          <tr style="">
+            <td class="num"><b>62587</b></td><td>Buraco Siga</td><td>400/444</td>
+            <td>Pina</td><td class="n">—</td>
+            <td class="n">26/11/2026</td><td class="n">26/11/2026</td><td style="font-size:12px">WELLINGTON</td>
+            <td></td>
+            <td><a href="https://www.google.com/maps?q=-8.098046,-34.88814097" target="_blank" onclick="event.stopPropagation()">mapa ↗</a></td></tr>
+        </table></td></tr>
+      
+    
+    </tbody>
+  </table>
+</div>
+
+<div class="rodape">Painel de Acompanhamento de Fiscais · SIGA-BOT · prazos: Arterial 1/2/3 · Coletora 3/5/7 · Local 5/7/10 dias
+  <div class="rod-vwaj"><img src="static/marca/vwaj_assinatura.png" alt="desenvolvido por VWAJ" title="desenvolvido por VWAJ"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<div class="av-fundo" id="avFundo" hidden onclick="if(event.target===this)Avisos.fechar()"><section class="av-modal" role="dialog" aria-modal="true" aria-labelledby="avTit">
+  <header class="av-cab"><div><span class="av-chip">Avisos do dia</span><h2 id="avTit">Ontem e hoje</h2><p id="avPeriodo"></p></div>
+    <button type="button" class="and-x" onclick="Avisos.fechar()" aria-label="Fechar">✕</button></header>
+  <div class="av-corpo" id="avCorpo"><div class="av-carregando">Montando o resumo…</div></div>
+  <footer class="av-rod"><a class="btn" href="desempenho.html" id="avDesemp">Ver no Desempenho</a><a class="btn" href="lotes.html">Demandas</a>
+    <button type="button" class="btn prim" onclick="Avisos.entendi()">Entendi</button></footer>
+</section></div>
+<script>window.PAGINA = "geovista";window.ALAG_MAPA = false;</script>
+<script src="static/avisos.js?v=1795787784" defer></script>
+<script>window.CARTO={key:"",estilo:"light_all",osm:true};window.ESTATICO=true;window.SIGA_URL="https://novosiga.rdmapps.com.br/pt-BR/service_orders/details?q%5Bid_eq%5D={id}";window.SIGA_URL_RESUMO="https://novosiga.rdmapps.com.br/pt-BR/service_orders/summary?q%5Bid_eq%5D={id}";</script>
+<script src="static/painel.js?v=1795787784"></script>
+
+
+
+<script>
+(function(){ const el=document.getElementById("gvLeitura"); let jaRodou=false;
+  async function ver(){ try{ const s=await (await fetch("/geovista/3/fotos/status")).json();
+      if(s.rodando){ jaRodou=true; el.innerHTML=`<div class="and-job comp" style="margin-bottom:12px"><div class="and-job-cab"><b>Lendo as fotos</b><span>${s.feitas} de ${s.total} · ${s.achadas} associada(s)</span></div>
+          <div class="and-barra"><i style="width:${s.total?s.feitas/s.total*100:0}%"></i></div><div class="and-pct">Pode mudar de aba — a leitura continua no painel.</div></div>`; setTimeout(ver,2500); }
+      else if(jaRodou){ el.innerHTML=`<div class="aviso ok">✓ Leitura concluída: ${s.achadas} de ${s.total} foto(s) associada(s)${s.pelo_endereco?` (${s.pelo_endereco} pela rua + número)`:""}. Recarregando…</div>`; setTimeout(()=>location.reload(),1500); }
+    }catch(e){} }
+  ver(); })();
+let cor=null, ident="";
+(function(){ const P=[{"auto": 0, "confirmado": 0, "dia": "2026-11-27", "executado": 0, "finalizado": 0}, {"auto": 0, "confirmado": 0, "dia": "2026-11-28", "executado": 0, "finalizado": 0}];
+  grafBarras(document.getElementById("grafGv"), P.map(x=>x.dia.slice(8,10)+"/"+x.dia.slice(5,7)),
+    [{label:"ID confirmado",data:P.map(x=>x.confirmado),backgroundColor:"#2E9D57"},{label:"Executadas",data:P.map(x=>x.executado),backgroundColor:"#12A4B6"},
+     {label:"Já tinham ID (apareceu no SIGA)",data:P.map(x=>x.auto),backgroundColor:"#7FC79A"},
+     {label:"Já finalizadas no SIGA",data:P.map(x=>x.finalizado||0),backgroundColor:"#3B5BDB"}],{empilhado:true}); })();
+function filtrarBairro(b){ const s=document.getElementById("fBairro"); s.value=b; filtrar(); document.getElementById("tab").scrollIntoView({behavior:"smooth",block:"start"}); }
+async function salvarId(os, inp, origem){
+  const v=(inp.value||"").trim();
+  const r=await fetch("/geovista/3/id",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({os, os_id:v, origem:origem||"manual"})});
+  const j=await r.json(); if(!r.ok){ toast(j.erro||"Erro"); return; }
+  const tr=document.querySelector(`tr.linha[data-os="${os}"]`);
+  if(j.executado){ situacao(tr,"exec"); const eb=tr.querySelector(".btn-exec"); eb.classList.add("on"); eb.textContent="✓ Executado"; eb.title="Desfazer: voltar para pendente";
+    inp.value=""; inp.style.borderColor="#12A4B6"; inp.style.background="#ECF8FA"; tr.dataset.ident="exec"; tr.dataset.novo="0";
+    tr.querySelector(".id-info").innerHTML='<span style="color:#0E8090">executado em campo · sem ID</span> · agora'; atualizarResumo(j.resumo);
+    toast(`${os} marcada como executada (sem ID)`); filtrar(); return; }
+  situacao(tr, v?"id":"");
+  tr.dataset.ident=(v||tr.dataset.cor==="verde"||tr.dataset.cor==="azul")?"ok":"pend"; if(v) tr.dataset.novo="0";
+  inp.style.borderColor=v?"#2E9D57":""; inp.style.background=v?"#F1FAF4":"";
+  tr.querySelector(".id-info").textContent = v ? ((origem==="confirmado"?"escolhido":"digitado")+" · "+j.situacao+(j.info?` · ${j.info.logradouro||""}`:"")) : "";
+  const eb=tr.querySelector(".btn-exec"); if(eb){ eb.classList.remove("on"); eb.textContent="Executado"; eb.title="Executado em campo, sem ID no SIGA"; }
+  atualizarResumo(j.resumo);
+  toast(v ? `${os} → ID ${v} salvo${j.info?"":" (ID ainda não visto nas coletas)"}` : `${os}: ID removido`); filtrar();
+}
+const CVJ={verde:"#2E9D57",amarelo:"#EE7D22",vermelho:"#D63B32",executado:"#12A4B6",azul:"#3B5BDB"};
+function situacao(tr, tipo){       /* tipo: "id" | "exec" | "" (volta à situação original da conferência) */
+  const t=tr.querySelector(".sit-tag"), c0=tr.dataset.cor0, s0=tr.dataset.sit0;
+  const [cor, txt]= tipo==="id"?["verde","Já tem ID no SIGA"]:(tipo==="exec"?["executado","Executado (sem ID)"]:[c0,s0]);
+  t.style.background=CVJ[cor]; t.textContent=txt; tr.dataset.cor=cor;
+  let a=tr.querySelector(".sit-ant"); if(cor!==c0){ if(!a){ a=document.createElement("div"); a.className="sit-ant"; a.style.cssText="font-size:11px;color:var(--muito-suave)"; t.after(a); } a.textContent="antes: "+s0; } else if(a) a.remove(); }
+function atualizarResumo(R){ document.getElementById("gvPct").textContent=R.pct+"%"; document.getElementById("gvPend").textContent=R.pendentes;
+  const C=263.89, t=R.total||1, a1=C*R.confirmados/t, a2=C*R.automaticos/t, a3=C*(R.executados||0)/t, g=id=>document.getElementById(id);
+  if(g("ringC")){ g("ringC").setAttribute("stroke-dasharray",a1+" "+C); g("ringA").setAttribute("stroke-dasharray",a2+" "+C); g("ringA").setAttribute("stroke-dashoffset",-a1);
+    g("ringE").setAttribute("stroke-dasharray",a3+" "+C); g("ringE").setAttribute("stroke-dashoffset",-(a1+a2));
+    if(g("ringF")){ g("ringF").setAttribute("stroke-dasharray",C*(R.finalizados||0)/t+" "+C); g("ringF").setAttribute("stroke-dashoffset",-(a1+a2+a3)); }
+    g("ringPct").textContent=Math.round(R.identificados/t*100)+"%"; }
+  if(g("gvFin")) g("gvFin").textContent=R.finalizados||0;
+  if(g("gvRes")) g("gvRes").textContent=R.identificados;
+  document.getElementById("gvBarra").style.width=(R.total?R.confirmados/R.total*100:0)+"%"; document.getElementById("gvBarraA").style.width=(R.total?R.automaticos/R.total*100:0)+"%";
+  document.getElementById("gvBarraE").style.width=(R.total?(R.executados||0)/R.total*100:0)+"%";
+  document.getElementById("gvAuto").textContent=R.automaticos; document.getElementById("gvConf").textContent=R.confirmados; document.getElementById("gvExec").textContent=R.executados||0; }
+async function executar(os, btn){
+  const tr=document.querySelector(`tr.linha[data-os="${os}"]`), desfazer=btn.classList.contains("on"), inp=tr.querySelector(".id-conf");
+  const corpo=desfazer?{os, os_id:""}:{os, executado:true};
+  const marca=(on)=>{ btn.classList.toggle("on",on); btn.textContent=on?"✓ Executado":"Executado"; btn.title=on?"Desfazer: voltar para pendente":"Executado em campo, sem ID no SIGA"; };
+  marca(!desfazer); btn.disabled=true; situacao(tr, desfazer?"":"exec");                       /* responde na hora; o resumo atualiza quando o painel recalcular */
+  let j; try{ const r=await fetch("/geovista/3/id",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(corpo)});
+    j=await r.json(); if(!r.ok) throw new Error(j.erro||"Erro"); } catch(e){ marca(desfazer); situacao(tr, desfazer?"exec":""); btn.disabled=false; toast(e.message||"Não consegui salvar."); return; }
+  btn.disabled=false;
+  inp.value=""; inp.style.borderColor=desfazer?"":"#12A4B6"; inp.style.background=desfazer?"":"#ECF8FA";
+  tr.dataset.ident=desfazer?((tr.dataset.cor==="verde"||tr.dataset.cor==="azul")?"ok":"pend"):"exec"; if(!desfazer) tr.dataset.novo="0";
+  tr.querySelector(".id-info").innerHTML=desfazer?"":'<span style="color:#0E8090">executado em campo · sem ID</span> · agora';
+  atualizarResumo(j.resumo); toast(desfazer?`${os}: voltou para pendente`:`${os} marcada como executada (sem ID)`); filtrar(); }
+function usarId(os, id, btn, origem){ const inp=document.querySelector(`tr.linha[data-os="${os}"] .id-conf`); inp.value=id; salvarId(os, inp, origem); }
+function abrir(tr){ const d=tr.nextElementSibling; if(d && d.classList.contains('det')) d.hidden=!d.hidden; }
+function filtrar(){
+  const b=document.getElementById('fBairro').value, q=document.getElementById('fBusca').value.trim(); let n=0;
+  document.querySelectorAll('tr.linha').forEach(tr=>{ const ok=(!cor||tr.dataset.cor===cor)&&(!b||tr.dataset.bairro===b)&&(!q||Busca.casa(tr.dataset.busca,q))
+      &&(!ident||(ident==="novo"?tr.dataset.novo==="1":tr.dataset.ident===ident));
+    tr.hidden=!ok; const d=tr.nextElementSibling; if(d&&d.classList.contains('det')&&!ok) d.hidden=true; if(ok) n++; });
+  document.getElementById('fCont').textContent=n+' OS';
+}
+document.querySelectorAll('#kpis .kpi[data-cor]').forEach(k=>k.onclick=()=>setCor(cor===k.dataset.cor?null:k.dataset.cor));
+function setCor(v){ cor=v||null; document.querySelectorAll('#segSit button').forEach(b=>b.classList.toggle('on',(b.dataset.v||null)===cor));
+  document.querySelectorAll('#kpis .kpi').forEach(x=>x.style.outline= cor&&x.dataset.cor===cor?'2px solid #FFA929':''); filtrar(); }
+document.querySelectorAll('#segSit button').forEach(b=>b.onclick=()=>setCor(b.dataset.v));
+document.querySelectorAll('#segIdent button').forEach(b=>b.onclick=()=>{ ident=b.dataset.v; document.querySelectorAll('#segIdent button').forEach(x=>x.classList.toggle('on',x===b)); filtrar(); });
+document.getElementById('fBairro').onchange=filtrar; document.getElementById('fBusca').oninput=filtrar; filtrar();
+</script>
+
+</body>
+</html>
